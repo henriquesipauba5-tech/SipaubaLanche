@@ -1,0 +1,66 @@
+
+/* CLOCANDO COR DE FUNDO NO CABEÇLHO*/
+header{
+    background-color: #ff0000;
+    FONT-FAMILY: poppins, sans-serif; /* FONTE DO CABEÇALHO */
+    color: white; /* COR DO TEXTO DO CABEÇALHO */
+}
+nav a{
+    color: white; /* COR DO TEXTO DO MENU */
+    text-decoration: none; /* REMOVE O SUBLINHADO DOS LINKS */
+    margin: 0 35px; /* ESPAÇAMENTO ENTRE OS LINKS */
+    text-align: center; /* ALINHAMENTO DO TEXTO DOS LINKS */
+}
+nav{  text-align: center; /* ALINHAMENTO DO TEXTO DOS LINKS */
+    border-color:aliceblue; /* COR DA BORDA DO MENU DE NAVEGAÇÃO */
+    border-width: 1px; /* LARGURA DA BORDA DO MENU DE NAVEGAÇÃO */
+    border-style: solid; /* ESTILO DA BORDA DO MENU DE NAVEGAÇÃO */
+    padding: 25px; /* PADDING DO MENU DE NAVEGAÇÃO */
+}
+.logo img{
+    width: 110px; /* LARGURA DA IMAGEM DO LOGO */
+    height: 110px; /* ALTURA AUTOMÁTICA PARA MANTER A PROPORÇÃO DA IMAGEM */
+}
+
+/* CONFIGURANDO A CAIXA DE PESQUISA */
+.caixa-pesquisa input{
+    padding: 10px; /* PADDING INTERNO DA CAIXA DE PESQUISA */
+    border: 1px solid #000000; /* BORDA DA CAIXA DE PESQUISA */
+    border-radius: 10px; /* ARREDONDAMENTO DOS CANTOS DA CAIXA DE PESQUISA */
+    width:200px; /* LARGURA DA CAIXA DE PESQUISA */
+   
+}
+/*CONFIGURANDO A DIV DA CAIXA DE PESQUISA*/
+.caixa-pesquisa{
+    display: inline-block; /* EXIBE A DIV COMO UM BLOCO INLINE */
+    justify-content: center; /* ALINHA O CONTEÚDO DA DIV AO CENTRO */
+    margin-top: 10px; /* MARGEM SUPERIOR DA DIV DA CAIXA DE PESQUISA */
+    margin-bottom: 10px; /* MARGEM INFERIOR DA DIV DA CAIXA DE PESQUISA */
+    position: relative; /* POSIÇÃO RELATIVA PARA PERMITIR O POSICIONAMENTO ABSOLUTO DO ÍCONE DE PESQUISA */
+}
+
+/*ALINHAR AS DIVS DO CABEÇALHO*/
+.topo{
+    display:flex; /* EXIBE AS DIVS COMO FLEXÍVEIS */
+    align-items: center; /* ALINHA OS ITENS AO CENTRO VERTICALMENTE */
+    justify-content: space-between;
+    /*DISRIBUIÇÃO DO ESPAÇO ENTRE AS DIVS DO CABEÇALHO*/
+    padding: 10px; /* DISTANCIA ENTRE AS BORDAS DO CABEÇALHO E O CONTEÚDO DAS DIVS */
+}
+/*CONFIGURANDO OS INTENS*/
+.caixa-pesquisa img{
+    height: 15px; /* ALTURA DA IMAGEM DO ÍCONE DE PESQUISA */
+    width: 18px; /* LARGURA DA IMAGEM DO ÍCONE DE PESQUISA */
+    position: absolute; /* POSIÇÃO ABSOLUTA PARA POSICIONAR O ÍCONE DE PESQUISA */
+    left: 5px; /* DISTÂNCIA DO ÍCONE DE PESQUISA PARA A ESQUERDA */
+    top: 50%; /* ALINHA O ÍCONE DE PESQUISA AO CENTRO VERTICALMENTE */ 
+    transform: translateY(-50%); /* AJUSTA O ALINHAMENTO VERTICAL DO ÍCONE DE PESQUISA */
+}
+
+.icones a img{
+    height: 50px; /* ALTURA DAS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
+    width: 50px; /* LARGURA DAS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
+    margin-right:  10px; /* MARGEM ENTRE AS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
+    left: 100px; /* DISTÂNCIA DOS ÍCONES DE REDES SOCIAIS PARA A ESQUERDA */
+    /*DISTANCIA ENTRA OS ICONES DE USUARIO E CARRINHO AO MEIO E AO LADO ESQUERDO*/
+}
