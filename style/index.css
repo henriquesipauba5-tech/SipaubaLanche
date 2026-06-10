@@ -15,7 +15,7 @@ nav{  text-align: center; /* ALINHAMENTO DO TEXTO DOS LINKS */
     border-color:aliceblue; /* COR DA BORDA DO MENU DE NAVEGAÇÃO */
     border-width: 1px; /* LARGURA DA BORDA DO MENU DE NAVEGAÇÃO */
     border-style: solid; /* ESTILO DA BORDA DO MENU DE NAVEGAÇÃO */
-    padding: 25px; /* PADDING DO MENU DE NAVEGAÇÃO */
+    padding: 95px; /* PADDING DO MENU DE NAVEGAÇÃO */
 }
 .logo img{
     width: 110px; /* LARGURA DA IMAGEM DO LOGO */
@@ -57,10 +57,34 @@ nav{  text-align: center; /* ALINHAMENTO DO TEXTO DOS LINKS */
     transform: translateY(-50%); /* AJUSTA O ALINHAMENTO VERTICAL DO ÍCONE DE PESQUISA */
 }
 
-.icones a img{
-    height: 50px; /* ALTURA DAS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
-    width: 50px; /* LARGURA DAS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
+nav img{
+    height: 30px; /* ALTURA DAS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
+    width: 30px; /* LARGURA DAS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
     margin-right:  10px; /* MARGEM ENTRE AS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
-    left: 100px; /* DISTÂNCIA DOS ÍCONES DE REDES SOCIAIS PARA A ESQUERDA */
+    left: 30px; /* DISTÂNCIA DOS ÍCONES DE REDES SOCIAIS PARA A ESQUERDA */
     /*DISTANCIA ENTRA OS ICONES DE USUARIO E CARRINHO AO MEIO E AO LADO ESQUERDO*/
+}
+nav button{
+    background-color: transparent; /* COR DE FUNDO TRANSPARENTE PARA O BOTÃO */
+    border: none; /* REMOVE A BORDA DO BOTÃO */
+    color: white; /* COR DO TEXTO DO BOTÃO */
+    font-size: 20px; /* TAMANHO DA FONTE DO BOTÃO */
+    cursor: pointer; /* CURSOR DE MÃO AO PASSAR O MOUSE SOBRE O BOTÃO */
+    margin: 0 100px; /* MARGEM ENTRE OS BOTÕES */
+    border-radius: 5px; /* ARREDONDAMENTO DOS CANTOS DO BOTÃO */
+}
+nav button:hover{
+    border: 1px solid white; /* ADICIONA UMA BORDA BRANCA AO PASSAR O MOUSE SOBRE O BOTÃO */
+}
+
+/*CONFIGURANDO ÁREA DE BANNER*/
+.imagem-banner img{
+    max-width: 100%; /* LARGURA MÁXIMA DO BANNER PARA SE AJUSTAR À LARGURA DA PÁGINA */
+}
+.banner{
+    display: flex; /* EXIBE O BANNER COMO FLEXÍVEL */
+    justify-content: space-between; /* DISTRIBUIÇÃO DO ESPAÇO ENTRE OS ITENS DO BANNER */
+    /*DISTRIBUIÇÃO DOS ELEMENTOS COM ESPAÇO ENTRE ELES*/
+    align-items: center; /* ALINHA OS ITENS AO CENTRO VERTICALMENTE */
+
 }
