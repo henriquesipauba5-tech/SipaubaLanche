@@ -1,90 +1,298 @@
-
 /* CLOCANDO COR DE FUNDO NO CABEÇLHO*/
-header{
+header {
     background-color: #ff0000;
-    FONT-FAMILY: poppins, sans-serif; /* FONTE DO CABEÇALHO */
-    color: white; /* COR DO TEXTO DO CABEÇALHO */
-}
-nav a{
-    color: white; /* COR DO TEXTO DO MENU */
-    text-decoration: none; /* REMOVE O SUBLINHADO DOS LINKS */
-    margin: 0 35px; /* ESPAÇAMENTO ENTRE OS LINKS */
-    text-align: center; /* ALINHAMENTO DO TEXTO DOS LINKS */
-}
-nav{  text-align: center; /* ALINHAMENTO DO TEXTO DOS LINKS */
-    border-color:aliceblue; /* COR DA BORDA DO MENU DE NAVEGAÇÃO */
-    border-width: 1px; /* LARGURA DA BORDA DO MENU DE NAVEGAÇÃO */
-    border-style: solid; /* ESTILO DA BORDA DO MENU DE NAVEGAÇÃO */
-    padding: 95px; /* PADDING DO MENU DE NAVEGAÇÃO */
-}
-.logo img{
-    width: 110px; /* LARGURA DA IMAGEM DO LOGO */
-    height: 110px; /* ALTURA AUTOMÁTICA PARA MANTER A PROPORÇÃO DA IMAGEM */
+    FONT-FAMILY: poppins, sans-serif;
+    /* FONTE DO CABEÇALHO */
+    color: white;
+    width: 100vw;
+    height: 100px;
+    /* COR DO TEXTO DO CABEÇALHO */
 }
 
-/* CONFIGURANDO A CAIXA DE PESQUISA */
-.caixa-pesquisa input{
-    padding: 10px; /* PADDING INTERNO DA CAIXA DE PESQUISA */
-    border: 1px solid #000000; /* BORDA DA CAIXA DE PESQUISA */
-    border-radius: 10px; /* ARREDONDAMENTO DOS CANTOS DA CAIXA DE PESQUISA */
-    width:200px; /* LARGURA DA CAIXA DE PESQUISA */
-   
+nav a {
+    color: white;
+    /* COR DO TEXTO DO MENU */
+    text-decoration: none;
+    /* REMOVE O SUBLINHADO DOS LINKS */
+    margin: 0 10px;
+    /* ESPAÇAMENTO ENTRE OS LINKS */
+    text-align: center;
+    /* ALINHAMENTO DO TEXTO DOS LINKS */
 }
-/*CONFIGURANDO A DIV DA CAIXA DE PESQUISA*/
-.caixa-pesquisa{
-    display: inline-block; /* EXIBE A DIV COMO UM BLOCO INLINE */
-    justify-content: center; /* ALINHA O CONTEÚDO DA DIV AO CENTRO */
-    margin-top: 10px; /* MARGEM SUPERIOR DA DIV DA CAIXA DE PESQUISA */
-    margin-bottom: 10px; /* MARGEM INFERIOR DA DIV DA CAIXA DE PESQUISA */
-    position: relative; /* POSIÇÃO RELATIVA PARA PERMITIR O POSICIONAMENTO ABSOLUTO DO ÍCONE DE PESQUISA */
+
+nav {
+    text-align: center;
+    /* ALINHAMENTO DO TEXTO DOS LINKS */
+    border-color: aliceblue;
+    /* COR DA BORDA DO MENU DE NAVEGAÇÃO */
+    border-width: 1px;
+    /* LARGURA DA BORDA DO MENU DE NAVEGAÇÃO */
+    border-style: solid;
+    /* ESTILO DA BORDA DO MENU DE NAVEGAÇÃO */
+    padding: 30px;
+    /* PADDING DO MENU DE NAVEGAÇÃO */
 }
+
+
+
+
+
 
 /*ALINHAR AS DIVS DO CABEÇALHO*/
-.topo{
-    display:flex; /* EXIBE AS DIVS COMO FLEXÍVEIS */
-    align-items: center; /* ALINHA OS ITENS AO CENTRO VERTICALMENTE */
+.topo {
+    display: flex;
+    /* EXIBE AS DIVS COMO FLEXÍVEIS */
+    align-items: center;
+    /* ALINHA OS ITENS AO CENTRO VERTICALMENTE */
     justify-content: space-between;
     /*DISRIBUIÇÃO DO ESPAÇO ENTRE AS DIVS DO CABEÇALHO*/
-    padding: 10px; /* DISTANCIA ENTRE AS BORDAS DO CABEÇALHO E O CONTEÚDO DAS DIVS */
-}
-/*CONFIGURANDO OS INTENS*/
-.caixa-pesquisa img{
-    height: 15px; /* ALTURA DA IMAGEM DO ÍCONE DE PESQUISA */
-    width: 18px; /* LARGURA DA IMAGEM DO ÍCONE DE PESQUISA */
-    position: absolute; /* POSIÇÃO ABSOLUTA PARA POSICIONAR O ÍCONE DE PESQUISA */
-    left: 5px; /* DISTÂNCIA DO ÍCONE DE PESQUISA PARA A ESQUERDA */
-    top: 50%; /* ALINHA O ÍCONE DE PESQUISA AO CENTRO VERTICALMENTE */ 
-    transform: translateY(-50%); /* AJUSTA O ALINHAMENTO VERTICAL DO ÍCONE DE PESQUISA */
+    padding: 10px;
+    /* DISTANCIA ENTRE AS BORDAS DO CABEÇALHO E O CONTEÚDO DAS DIVS */
 }
 
-nav img{
-    height: 30px; /* ALTURA DAS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
-    width: 30px; /* LARGURA DAS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
-    margin-right:  10px; /* MARGEM ENTRE AS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
-    left: 30px; /* DISTÂNCIA DOS ÍCONES DE REDES SOCIAIS PARA A ESQUERDA */
+
+
+nav img {
+    height: 30px;
+    /* ALTURA DAS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
+    width: 30px;
+    /* LARGURA DAS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
+    margin-right: 10px;
+    /* MARGEM ENTRE AS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
+    left: 30px;
+    /* DISTÂNCIA DOS ÍCONES DE REDES SOCIAIS PARA A ESQUERDA */
     /*DISTANCIA ENTRA OS ICONES DE USUARIO E CARRINHO AO MEIO E AO LADO ESQUERDO*/
 }
-nav button{
-    background-color: transparent; /* COR DE FUNDO TRANSPARENTE PARA O BOTÃO */
-    border: none; /* REMOVE A BORDA DO BOTÃO */
-    color: white; /* COR DO TEXTO DO BOTÃO */
-    font-size: 20px; /* TAMANHO DA FONTE DO BOTÃO */
-    cursor: pointer; /* CURSOR DE MÃO AO PASSAR O MOUSE SOBRE O BOTÃO */
-    margin: 0 100px; /* MARGEM ENTRE OS BOTÕES */
-    border-radius: 5px; /* ARREDONDAMENTO DOS CANTOS DO BOTÃO */
+
+nav button {
+    background-color: transparent;
+    /* COR DE FUNDO TRANSPARENTE PARA O BOTÃO */
+    border: none;
+    /* REMOVE A BORDA DO BOTÃO */
+    color: white;
+    /* COR DO TEXTO DO BOTÃO */
+    font-size: 20px;
+    /* TAMANHO DA FONTE DO BOTÃO */
+    cursor: pointer;
+    /* CURSOR DE MÃO AO PASSAR O MOUSE SOBRE O BOTÃO */
+    margin: 0 100px;
+    /* MARGEM ENTRE OS BOTÕES */
+    border-radius: 5px;
+    /* ARREDONDAMENTO DOS CANTOS DO BOTÃO */
 }
-nav button:hover{
-    border: 1px solid white; /* ADICIONA UMA BORDA BRANCA AO PASSAR O MOUSE SOBRE O BOTÃO */
+
+nav button:hover {
+    border: 1px solid white;
+    /* ADICIONA UMA BORDA BRANCA AO PASSAR O MOUSE SOBRE O BOTÃO */
 }
 
 /*CONFIGURANDO ÁREA DE BANNER*/
-.imagem-banner img{
-    max-width: 100%; /* LARGURA MÁXIMA DO BANNER PARA SE AJUSTAR À LARGURA DA PÁGINA */
+.imagens-banner img {
+    display: block;
+    /* EXIBE A IMAGEM COMO UM BLOCO */
+    width: 100%;
+    /* LARGURA DA IMAGEM DO BANNER OCUPANDO TODA A LARGURA DO CONTAINER */
+    height: auto;
+    /* ALTURA AUTOMÁTICA PARA MANTER A PROPORÇÃO DA IMAGEM DO BANNER */
 }
-.banner{
-    display: flex; /* EXIBE O BANNER COMO FLEXÍVEL */
-    justify-content: space-between; /* DISTRIBUIÇÃO DO ESPAÇO ENTRE OS ITENS DO BANNER */
-    /*DISTRIBUIÇÃO DOS ELEMENTOS COM ESPAÇO ENTRE ELES*/
-    align-items: center; /* ALINHA OS ITENS AO CENTRO VERTICALMENTE */
 
+.banner {
+    width: 100vw;
+    /* LARGURA DO BANNER OCUPANDO TODA A LARGURA DA JANELA DE VISUALIZAÇÃO */
+
+    height: auto;
+    /* ALTURA AUTOMÁTICA PARA MANTER A PROPORÇÃO DO BANNER */
+    margin: 0;
+    /* REMOVE A MARGEM DO BANNER */
+    padding: 0;
+    /* REMOVE O PADDING DO BANNER */
+}
+
+.imagens-banner {
+    width: 100%;
+    /* LARGURA DA DIV DO BANNER OCUPANDO TODA A LARGURA DO CONTAINER */
+    margin: 0;
+    position: relative;
+    /* POSIÇÃO RELATIVA PARA PERMITIR O USO DE POSIÇÃOMENTO ABSOLUTO NOS BOTÕES DO BANNER */
+}
+
+/*
+.botoes-banner {
+    position: absolute;
+   
+    top: 50%;
+   
+    left: 10%;
+   
+}
+
+.btn-comprar {
+    background-color: #ff0000;
+  
+    color: white;
+   
+    border-radius: 5px;
+ 
+    font-family: poppins, sans-serif;
+    padding: 5px 10px;
+
+}
+    
+
+/* configuração dos botões do banner quando mouse está sobre eles */
+.btn-anterior,
+.btn-proximo {
+    background-color: #ffffff;
+    /* COR DE FUNDO DO BOTÃO COMPRAR AO PASSAR O MOUSE SOBRE ELE */
+    color: #ff0000;
+    font-family: poppins, sans-serif;
+    border-radius: 10px;
+    border: none;
+    /*REMOVE A BORDA DOS BOTOES ANTERIOR E PROXIMO */
+    padding: 5px 20px;
+    /*PADDING DOS BOTOES ANTERIOR E PROXIMO*/
+}
+
+.btn-anterior:hover,
+.btn-anterior:hover {
+    background-color: #a21d54;
+    /*COR DE FUNFO DOS BOTOES ANTERIOR*/
+    color: black;
+    cursor: pointer;
+}
+
+.btn-comprar {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    background-color: #3d3d3a;
+    color: #ffffff;
+    border-radius: 10px;
+    font-family: poppins, sans-ferif;
+    font-size: 18px;
+    padding: 5px 20px;
+    border: none;
+}
+
+.btn-anterior {
+    position: absolute;
+    top: 50%;
+    left: 2%;
+    background-color: #ffffff;
+    color: #a21d54;
+
+
+}
+
+/*CONFIGURANDO A ÁREA DE OFERTA*/
+
+.oferta {
+    padding: 20px;
+    /*DISTANCIA ENTRE O CONTEUDO DA DIV
+    DE OFERTA E AS BORDAS DA DIV */
+}
+
+/*CONFIGURANDO OS TEXTOS DE OFERTA*/
+.titulos-ofertas {
+    font-family: poppins, sans-serif;
+    /*FONTE DO TITULO DAS OFERTAS */
+    display: grid;
+    /*EXIBE OS ELEMENTOS EM GRADE */
+    grid-template-columns: 2 80% 20%px;
+    /* DEFINE O TAMANHO DAS COLUNAS DA GRADE */
+    grid-template-rows: 2 50% 50%;
+    /* DEFINE O TAMANHO DAS LINHAS DA GRADE */
+}
+
+.titulos-ofertas h2 {
+    color: #000000;
+    /*COR DO TITULO DAS OFERTAS */
+    font-size: 90px;
+    /*TAMANHO DA FONTE DO TITULO DAS OFERTAS */
+    grid-column: 1;
+    /* OCUPA A PRIMEIRA COLUNA DA GRADE PARA ALINHAR O TITULO AO LADO DIREITA DO ICONE */
+    grid-row: 1;
+    /* OCUPA A PRINEIRA LINHA DA GRADE PARA ALINHAR P TITULO VERTICALMENTE COM O ICONE */
+    margin: 0;
+    /* REMOVE A MARGEM PADRÃO DO ELEMENTO H2 */
+}
+
+.titulos-ofertas p {
+    color: #ff0000;
+    /*COR DO TITULO DAS OFERTAS */
+    font-size: 75px;
+    /*TAMANHO DA FONTE DO TITULO DAS OFERTAS */
+    grid-column: 1;
+    /* OCUPA A PRIMEIRA COLUNA DA GRADE PARA ALINHAR O TITULO AO LADO DIREITA DO ICONE */
+    grid-row: 2;
+    /* OCUPA A PRINEIRA LINHA DA GRADE PARA ALINHAR P TITULO VERTICALMENTE COM O ICONE */
+    margin: 0;
+    /* REMOVE A MARGEM PADRÃO DO ELEMENTO H2 */
+
+}
+
+.titulos-ofertas a {
+    color: #000000;
+    /*COR DO TITULO DAS OFERTAS */
+    font-size: 85px;
+    /*TAMANHO DA FONTE DO TITULO DAS OFERTAS */
+    grid-column: 3;
+    /* OCUPA A PRIMEIRA COLUNA DA GRADE PARA ALINHAR O TITULO AO LADO DIREITA DO ICONE */
+    grid-row: 3;
+    /* OCUPA A PRINEIRA LINHA DA GRADE PARA ALINHAR P TITULO VERTICALMENTE COM O ICONE */
+    align-self: center;
+    /* ALINHA O LINK VERTICALMENTE NO CENTRO DA GRADE */
+    padding-left: 80%;
+    /* DISTANCIA ENTRE O LINK E O TITULO E SUBTITULO */
+}
+
+.lista-pordutos {
+    display: flex;
+    justify-content: space-between;
+    font-family: poppins, sans-serif;
+    margin-top: 30px;
+}
+
+.card-produtos {
+    width: 13%;
+    /* LARGURA DE CADA CARD DE PRODUTO */
+    height: 10%;
+    /* ALTURA DE CADA CARD DE PRODUTO */
+    background-color: #d9d9d9;
+    /* COR DE FUNDO DE CADA CARD DE PRODUTO */
+    border: 5px solid #ccc;
+    /*BORDA DE CADA CARD DE PRODUTO */
+    border: 85px;
+    /* ARRENDODAMENTO DAS BORDAS DE CADA CARD DE PORDUTO */
+    padding: 10px;
+    /* DISTANCIA ENTRE  O CONTEUDO DO CARD E AS BORDAS DO CARD */
+    text-align: center;
+    /* ALINHAMENTO DO TEXTO NO CENTRO DO CARD */
+}
+
+.card-produtos img {
+    width: 98%;
+    /* LARGURA DA IMAGEM CARD DE PRODUTO */
+    height: auto;
+    /* ALTURA DA IMAGEM CARD DE PRODUTO */
+    margin-bottom: 25px;
+    /* MARGEM INFERIOR DA IMAGEM DO PRODUTO */
+    border-radius: 50px;
+    /* ARRENDONDAMENTO DAS BORDAS DA IMAGEM DO PRODUTO */
+
+
+}
+
+.imagem-botao {
+    position: relative;
+    /* POSIÇÃO RELATIVA PARA POSICIONAR O BOTÃO DE FAVORITO DO CARD DE PRODUTO */
+}
+
+.favorito {
+    position: absolute;
+    border: none;
+    border-radius: 25%;
+    background-color: #d9d9d9;
+    top: 10px;
+    right: 10px;
 }
