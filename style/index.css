@@ -1,11 +1,11 @@
 /* CLOCANDO COR DE FUNDO NO CABEÇLHO*/
 header {
     background-color: #ff0000;
-    FONT-FAMILY: poppins, sans-serif;
+    font-family: poppins, sans-serif;
     /* FONTE DO CABEÇALHO */
     color: white;
     width: 100vw;
-    height: 100px;
+    height: 80px;
     /* COR DO TEXTO DO CABEÇALHO */
 }
 
@@ -29,14 +29,9 @@ nav {
     /* LARGURA DA BORDA DO MENU DE NAVEGAÇÃO */
     border-style: solid;
     /* ESTILO DA BORDA DO MENU DE NAVEGAÇÃO */
-    padding: 30px;
+    padding: 15px;
     /* PADDING DO MENU DE NAVEGAÇÃO */
 }
-
-
-
-
-
 
 /*ALINHAR AS DIVS DO CABEÇALHO*/
 .topo {
@@ -50,18 +45,15 @@ nav {
     /* DISTANCIA ENTRE AS BORDAS DO CABEÇALHO E O CONTEÚDO DAS DIVS */
 }
 
-
-
 nav img {
-    height: 30px;
+    height: 25px;
     /* ALTURA DAS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
-    width: 30px;
+    width: 25px;
     /* LARGURA DAS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
     margin-right: 10px;
     /* MARGEM ENTRE AS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
     left: 30px;
     /* DISTÂNCIA DOS ÍCONES DE REDES SOCIAIS PARA A ESQUERDA */
-    /*DISTANCIA ENTRA OS ICONES DE USUARIO E CARRINHO AO MEIO E AO LADO ESQUERDO*/
 }
 
 nav button {
@@ -71,11 +63,11 @@ nav button {
     /* REMOVE A BORDA DO BOTÃO */
     color: white;
     /* COR DO TEXTO DO BOTÃO */
-    font-size: 20px;
+    font-size: 16px;
     /* TAMANHO DA FONTE DO BOTÃO */
     cursor: pointer;
     /* CURSOR DE MÃO AO PASSAR O MOUSE SOBRE O BOTÃO */
-    margin: 0 100px;
+    margin: 0 20px;
     /* MARGEM ENTRE OS BOTÕES */
     border-radius: 5px;
     /* ARREDONDAMENTO DOS CANTOS DO BOTÃO */
@@ -99,7 +91,6 @@ nav button:hover {
 .banner {
     width: 100vw;
     /* LARGURA DO BANNER OCUPANDO TODA A LARGURA DA JANELA DE VISUALIZAÇÃO */
-
     height: auto;
     /* ALTURA AUTOMÁTICA PARA MANTER A PROPORÇÃO DO BANNER */
     margin: 0;
@@ -116,80 +107,43 @@ nav button:hover {
     /* POSIÇÃO RELATIVA PARA PERMITIR O USO DE POSIÇÃOMENTO ABSOLUTO NOS BOTÕES DO BANNER */
 }
 
-/*
-.botoes-banner {
-    position: absolute;
-   
-    top: 50%;
-   
-    left: 10%;
+/* .botoes-banner { position: absolute; top: 50%; left: 10%; } .btn-comprar { background-color: #ff0000; color: white; border-radius: 5px; font-family: poppins, sans-serif; padding: 5px 10px; } /* configuração dos botões do banner quando mouse está sobre eles */
+
+.btn-anterior{
+    position:absolute;
+    top: 30%;
+    left: 2%;
+    background-color: transparent;
+    color: #A21D54;
+    border-radius: 20px;
+    border: none;
+    padding: 10px;
+}
+.btn-proximo{
+    position:absolute;
+    top: 30%;
+    left: 93%;
+    background-color: transparent;
+    color: #A21D54;
+    border-radius: 20px;
+    border: none;
+    padding: 10px;
    
 }
 
-.btn-comprar {
-    background-color: #ff0000;
-  
-    color: white;
-   
-    border-radius: 5px;
- 
-    font-family: poppins, sans-serif;
-    padding: 5px 10px;
-
+.btn-anterior:hover, .btn-proximo:hover{
+    background-color: #A21D54;
+    color: #FFFFFF;
 }
-    
 
 /* configuração dos botões do banner quando mouse está sobre eles */
-.btn-anterior,
-.btn-proximo {
-    background-color: #ffffff;
-    /* COR DE FUNDO DO BOTÃO COMPRAR AO PASSAR O MOUSE SOBRE ELE */
-    color: #ff0000;
-    font-family: poppins, sans-serif;
-    border-radius: 10px;
-    border: none;
-    /*REMOVE A BORDA DOS BOTOES ANTERIOR E PROXIMO */
-    padding: 5px 20px;
-    /*PADDING DOS BOTOES ANTERIOR E PROXIMO*/
-}
-
-.btn-anterior:hover,
-.btn-anterior:hover {
-    background-color: #a21d54;
-    /*COR DE FUNFO DOS BOTOES ANTERIOR*/
-    color: black;
-    cursor: pointer;
-}
-
-.btn-comprar {
-    position: absolute;
-    top: 50%;
-    left: 20%;
-    background-color: #3d3d3a;
-    color: #ffffff;
-    border-radius: 10px;
-    font-family: poppins, sans-ferif;
-    font-size: 18px;
-    padding: 5px 20px;
-    border: none;
-}
-
-.btn-anterior {
-    position: absolute;
-    top: 50%;
-    left: 2%;
-    background-color: #ffffff;
-    color: #a21d54;
-
-
-}
 
 /*CONFIGURANDO A ÁREA DE OFERTA*/
 
-.oferta {
+.ofertas {
     padding: 20px;
-    /*DISTANCIA ENTRE O CONTEUDO DA DIV
-    DE OFERTA E AS BORDAS DA DIV */
+    
+    /*DISTANCIA ENTRE O CONTEUDO DA DIV DE OFERTA E AS BORDAS DA DIV */
 }
 
 /*CONFIGURANDO OS TEXTOS DE OFERTA*/
@@ -198,7 +152,7 @@ nav button:hover {
     /*FONTE DO TITULO DAS OFERTAS */
     display: grid;
     /*EXIBE OS ELEMENTOS EM GRADE */
-    grid-template-columns: 2 80% 20%px;
+    grid-template-columns: 2 80% 20%;
     /* DEFINE O TAMANHO DAS COLUNAS DA GRADE */
     grid-template-rows: 2 50% 50%;
     /* DEFINE O TAMANHO DAS LINHAS DA GRADE */
@@ -207,43 +161,32 @@ nav button:hover {
 .titulos-ofertas h2 {
     color: #000000;
     /*COR DO TITULO DAS OFERTAS */
-    font-size: 90px;
+    font-size: 42px;
     /*TAMANHO DA FONTE DO TITULO DAS OFERTAS */
     grid-column: 1;
-    /* OCUPA A PRIMEIRA COLUNA DA GRADE PARA ALINHAR O TITULO AO LADO DIREITA DO ICONE */
     grid-row: 1;
-    /* OCUPA A PRINEIRA LINHA DA GRADE PARA ALINHAR P TITULO VERTICALMENTE COM O ICONE */
     margin: 0;
-    /* REMOVE A MARGEM PADRÃO DO ELEMENTO H2 */
 }
 
 .titulos-ofertas p {
     color: #ff0000;
     /*COR DO TITULO DAS OFERTAS */
-    font-size: 75px;
+    font-size: 24px;
     /*TAMANHO DA FONTE DO TITULO DAS OFERTAS */
     grid-column: 1;
-    /* OCUPA A PRIMEIRA COLUNA DA GRADE PARA ALINHAR O TITULO AO LADO DIREITA DO ICONE */
     grid-row: 2;
-    /* OCUPA A PRINEIRA LINHA DA GRADE PARA ALINHAR P TITULO VERTICALMENTE COM O ICONE */
     margin: 0;
-    /* REMOVE A MARGEM PADRÃO DO ELEMENTO H2 */
-
 }
 
 .titulos-ofertas a {
     color: #000000;
     /*COR DO TITULO DAS OFERTAS */
-    font-size: 85px;
+    font-size: 20px;
     /*TAMANHO DA FONTE DO TITULO DAS OFERTAS */
     grid-column: 3;
-    /* OCUPA A PRIMEIRA COLUNA DA GRADE PARA ALINHAR O TITULO AO LADO DIREITA DO ICONE */
     grid-row: 3;
-    /* OCUPA A PRINEIRA LINHA DA GRADE PARA ALINHAR P TITULO VERTICALMENTE COM O ICONE */
     align-self: center;
-    /* ALINHA O LINK VERTICALMENTE NO CENTRO DA GRADE */
-    padding-left: 80%;
-    /* DISTANCIA ENTRE O LINK E O TITULO E SUBTITULO */
+    padding-left: 40%;
 }
 
 .lista-pordutos {
@@ -254,7 +197,7 @@ nav button:hover {
 }
 
 .card-produtos {
-    width: 13%;
+    width: 18%;
     /* LARGURA DE CADA CARD DE PRODUTO */
     height: 10%;
     /* ALTURA DE CADA CARD DE PRODUTO */
@@ -263,11 +206,13 @@ nav button:hover {
     border: 5px solid #ccc;
     /*BORDA DE CADA CARD DE PRODUTO */
     border: 85px;
-    /* ARRENDODAMENTO DAS BORDAS DE CADA CARD DE PORDUTO */
-    padding: 10px;
-    /* DISTANCIA ENTRE  O CONTEUDO DO CARD E AS BORDAS DO CARD */
+    /* ARREDONDAMENTO DAS BORDAS DE CADA CARD DE PRODUTO */
+    padding: 15px;
+    /* DISTANCIA ENTRE O CONTEUDO DO CARD E AS BORDAS DO CARD */
     text-align: center;
     /* ALINHAMENTO DO TEXTO NO CENTRO DO CARD */
+    border-radius: 20px;
+    margin: 10px;
 }
 
 .card-produtos img {
@@ -275,12 +220,10 @@ nav button:hover {
     /* LARGURA DA IMAGEM CARD DE PRODUTO */
     height: auto;
     /* ALTURA DA IMAGEM CARD DE PRODUTO */
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     /* MARGEM INFERIOR DA IMAGEM DO PRODUTO */
-    border-radius: 50px;
-    /* ARRENDONDAMENTO DAS BORDAS DA IMAGEM DO PRODUTO */
-
-
+    border-radius: 15px;
+    /* ARREDONDAMENTO DAS BORDAS DA IMAGEM DO PRODUTO */
 }
 
 .imagem-botao {
@@ -292,7 +235,79 @@ nav button:hover {
     position: absolute;
     border: none;
     border-radius: 25%;
-    background-color: #d9d9d9;
+    background-color: transparent;
     top: 10px;
     right: 10px;
+    width: 50px;
+}
+
+.favorito img {
+    width: 25px;
+    margin-top: 5px;
+}
+
+.card-produtos h3 {
+    font-size: 18px;
+    font-family: poppins, sans-serif;
+    color: #2e3f4f;
+    font-weight: bold;
+}
+
+/*CONFIGURANDO O PREÇO DO PRODUTO*/
+.card-produtos p {
+    font-size: 16px;
+    /* DEFINE O TAMANHO DO TEXTO */
+    font-family: poppins, sans-serif;
+    /* ALTERAR FONTE DO TEXTO */
+    color: #3a3d3b;
+    /* ADICIONA COR DE TEXTO */
+}
+
+/*CONFIGURANDO O BOTÃO DE ADICIONAR CARRINHO*/
+.btn-adicionar {
+    border-radius: 40%;
+    /* ARREDONDAR O BOTAO */
+    background-color: #3d3d3a;
+    /*COR DE FUNDO DO BOTAO*/
+    border: none;
+    margin-left: 80%;
+    width: 50px;
+    height: 50px;
+}
+
+.btn-adicionar img {
+    width: 22px;
+    /* ALTERANDO O TAMANHO DO ICONE DE CARRINHO */
+    padding-top: 10px;
+    /* DISTANCIAR A IMAGEM DO TOPO DO BOTAO */
+}
+
+.precos {
+    display: grid;
+    /* PERMITE COLOCAR ITENS UM AO LADO DO OUTRO */
+    grid-template-columns: 2;
+    /* DUAS COLUNAS */
+    grid-template-rows: 1;
+    /* UMA LINHA */
+    align-items: center;
+}
+
+.p-antigo {
+    grid-column: 1;
+    grid-row: 1;
+    text-decoration: line-through;
+    font-size: 12px;
+    color: #aba7ab;
+}
+
+.p-promocional {
+    grid-column: 2;
+    grid-row: 1;
+    text-decoration: bold;
+    font-size: 18px;
+    /* TAMANHO DO TEXTO */
+    color: #3a3d3b;
+    /*COR DE TEXTO */
+    text-align: left;
+    /* ALINHA O TEXTO PARA A ESQUERDA */
 }
