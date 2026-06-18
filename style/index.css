@@ -311,3 +311,61 @@ nav button:hover {
     text-align: left;
     /* ALINHA O TEXTO PARA A ESQUERDA */
 }
+
+/*CONFIGURAÇAO RODAPÉ*/
+
+footer{
+    background-color: #ff0000; /* COR DE FUNDO */
+    color: #FFFFFF; /* TODOS OS TEXTOS NA COR BRANCA */
+    font-family: poppins,sans-serif; /* TIPO DE FONTE */
+    padding: 10px; /* ESPACAMENTOS DENTRO DO RODAPE */
+
+}
+
+.superior{
+    display: flex; /* PERMINTIR FLEXIBILIDADE ENTRE AS COLUNAS */
+    gap: 10px; /* ESPAÇAMENTO ENTRE AS LINHAS */
+    justify-content: space-between; /* DEFINIR UM TAMANHO  IGUAL ENTRE AS DIVS */
+    flex-wrap: wrap; /* JOGA OS TEXTO PARA OUTRA LINHA CASO NÃO POSSA CABER NA DIV */
+    flex-wrap: wrap; /* JOGA OS TEXTOS PARA OUTRA LINHA CASO NÃO POSSA CABER NA DIV */
+    align-items: center; /* ALINHA OS PARAGRAFOS NO CENTRO */
+
+}
+
+.coluna1,.coluna2 {
+    flex:1; /* QUE CADA COLUNA OCUPA 1 ESPAÇO NA PÁGINA */
+}
+
+.superior h2 {
+    font-size: 25px;   /*TAMANHO DOS TITULOS */
+    font-weight: bold; /* APLIQUEI NEGRITO AOS TITULOS */
+
+}
+.superior p {
+    font-size: 12px;/* TAMANHO DOS PARAGRAFOS */
+
+}
+.superior a {
+    color: #0004ff; /* COR DOS LINKS */
+    font-size: 18px; /* TAMANHO DOS PARAGRAFOS */
+    text-decoration: none; /* REMOVE O SUBLINADO */
+}
+.superior uL {
+    text-decoration: none; /* RETIRAR DECORAÇÃO DO TEXTO */
+    list-style: none; /* RETIRAR A DECORAÇÃO DA LISTA */
+    padding: 0px; /* RETIRAR OS ESPAÇAMENTOS */
+}
+
+.superior img{
+    width: 35px/* DEFINIR TAMANHO DOS ICONES */
+
+}
+
+.coluna2 a img {
+    padding-right: 10px; /* DISTANCIAR A IMAGEM DO ENDEREÇO */
+
+}
+.coluna2 a{
+    display: flex; /* DEIXAR IMAGEM E ENDEREÇO LADO A LADO */
+    align-items: center; 
+}
