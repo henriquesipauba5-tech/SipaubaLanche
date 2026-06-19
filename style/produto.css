@@ -1,0 +1,92 @@
+
+/*PREENCHENDO TODA A TELA*/
+*{
+    margin: 0;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body{
+    overflow-x: hidden; /* REMOVE A BARRA DE ROLAGEM HORIZONTAL */
+    width: 100%; /* PREENCHER SEMPRE 100% A TELA */
+}
+
+/*CONFIGURANDO O CABEÇALHO*/
+header {
+    background-color: #ff0000;
+    font-family: poppins, sans-serif;
+    /* FONTE DO CABEÇALHO */
+    color: white;
+    width: 100vw;
+    height: 80px;
+    /* COR DO TEXTO DO CABEÇALHO */
+}
+
+nav a {
+    color: white;
+    /* COR DO TEXTO DO MENU */
+    text-decoration: none;
+    /* REMOVE O SUBLINHADO DOS LINKS */
+    margin: 0 10px;
+    /* ESPAÇAMENTO ENTRE OS LINKS */
+    text-align: center;
+    /* ALINHAMENTO DO TEXTO DOS LINKS */
+}
+
+nav {
+    text-align: center;
+    /* ALINHAMENTO DO TEXTO DOS LINKS */
+    border-color: aliceblue;
+    /* COR DA BORDA DO MENU DE NAVEGAÇÃO */
+    border-width: 1px;
+    /* LARGURA DA BORDA DO MENU DE NAVEGAÇÃO */
+    border-style: solid;
+    /* ESTILO DA BORDA DO MENU DE NAVEGAÇÃO */
+    padding: 15px;
+    /* PADDING DO MENU DE NAVEGAÇÃO */
+}
+
+/*ALINHAR AS DIVS DO CABEÇALHO*/
+.topo {
+    display: flex;
+    /* EXIBE AS DIVS COMO FLEXÍVEIS */
+    align-items: center;
+    /* ALINHA OS ITENS AO CENTRO VERTICALMENTE */
+    justify-content: space-between;
+    /*DISRIBUIÇÃO DO ESPAÇO ENTRE AS DIVS DO CABEÇALHO*/
+    padding: 10px;
+    /* DISTANCIA ENTRE AS BORDAS DO CABEÇALHO E O CONTEÚDO DAS DIVS */
+}
+
+nav img {
+    height: 25px;
+    /* ALTURA DAS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
+    width: 25px;
+    /* LARGURA DAS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
+    margin-right: 10px;
+    /* MARGEM ENTRE AS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
+    left: 30px;
+    /* DISTÂNCIA DOS ÍCONES DE REDES SOCIAIS PARA A ESQUERDA */
+}
+
+nav button {
+    background-color: transparent;
+    /* COR DE FUNDO TRANSPARENTE PARA O BOTÃO */
+    border: none;
+    /* REMOVE A BORDA DO BOTÃO */
+    color: white;
+    /* COR DO TEXTO DO BOTÃO */
+    font-size: 16px;
+    /* TAMANHO DA FONTE DO BOTÃO */
+    cursor: pointer;
+    /* CURSOR DE MÃO AO PASSAR O MOUSE SOBRE O BOTÃO */
+    margin: 0 20px;
+    /* MARGEM ENTRE OS BOTÕES */
+    border-radius: 5px;
+    /* ARREDONDAMENTO DOS CANTOS DO BOTÃO */
+}
+
+nav button:hover {
+    border: 1px solid white;
+    /* ADICIONA UMA BORDA BRANCA AO PASSAR O MOUSE SOBRE O BOTÃO */
+}

@@ -353,7 +353,7 @@ footer{
 .superior uL {
     text-decoration: none; /* RETIRAR DECORAÇÃO DO TEXTO */
     list-style: none; /* RETIRAR A DECORAÇÃO DA LISTA */
-    padding: 0px; /* RETIRAR OS ESPAÇAMENTOS */
+    padding: 15px; /* RETIRAR OS ESPAÇAMENTOS */
 }
 
 .superior img{
@@ -368,4 +368,20 @@ footer{
 .coluna2 a{
     display: flex; /* DEIXAR IMAGEM E ENDEREÇO LADO A LADO */
     align-items: center; 
+}
+
+/*CONFIGURAR PARA QUE O ELEMENTO DA PÁGINA PREENCHAM TODA A TELA*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*DEFINIR QUE A PÁGINA NÃO PRECISA DE BARRA HORIZONTAL*/
+
+body{
+    overflow-x: hidden; /* REMOVE A BARRA DE ROLAGEM HORIZONTAL */
+    width: 100%; /* PREENCHER SEMPRE 100% DA TELA */
+
 }
