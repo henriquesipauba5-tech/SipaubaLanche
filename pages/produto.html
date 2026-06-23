@@ -1,58 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produto</title>
     <!--CONEXÃO COM O CSS-->
-    <link rel="styesheet" href="./style/produto.css">
+    <link rel="stylesheet" href="/style/produto.css">
     <!--LOGO DA EMPRESA PARA O NAVEGADOR-->
     <link rel="icon" type="image/png" href="/assets/logo-navegador.png">
 </head>
+
 <body>
-    
+
 </body>
-   <!--CABEÇALHO/MENU-->
-    <header>
+<!--CABEÇALHO/MENU-->
+<header>
 
 
-        <NAV>
-            <button class="btn-home~>">
-                <img src="/assets/casa.png" alt="Logo do Sipauba Lanche">
-                Home
-            </button>
+    <NAV>
+        <button class="btn-home~>">
+            <img src="/assets/casa.png" alt="Logo do Sipauba Lanche">
+            Home
+        </button>
 
 
-            <button class="btn-home~>">
-                <img src="/assets/descontos.png" alt="Logo do Sipauba Lanche">
-                Promoçoes
-            </button>
-            <button class="btn-home~>">
-                <img src="/assets/sacola.png" alt="Logo do Sipauba Lanche">
-                Pedidos
-            </button>
+        <button class="btn-home~>">
+            <img src="/assets/descontos.png" alt="Logo do Sipauba Lanche">
+            Promoçoes
+        </button>
+        <button class="btn-home~>">
+            <img src="/assets/sacola.png" alt="Logo do Sipauba Lanche">
+            Pedidos
+        </button>
 
-            <button class="btn-home~>">
-                <img src="/assets/usuario.png" alt="Logo do Sipauba Lanche">
-                Entrar/Cadastrar
+        <button class="btn-home~>">
+            <img src="/assets/usuario.png" alt="Logo do Sipauba Lanche">
+            Entrar/Cadastrar
 
-            </button>
+        </button>
 
-        </NAV>
-    </header>
-    <body>
+    </NAV>
+</header>
+
+<body>
     <!--AREA DOS DADOS DO PRODUTO -->
     <div class="area-detalhes">
-       <div class="area-imagens">
+        <div class="area-imagens">
+            <div class="img-principal" id="img-principal">
+                <img id="imagem-maior">
+            </div>
+            <div class="area-textos">
+                <!--NOME DO PRODUTO-->
+                <h1 id="nome-produto"></h1>
+                <!--AREA DAS AVALIAÇÕES DO PRODUTO-->
+                <div class="avaliacoes-produto">
+                    <span id="valor-avaliacoes"></span>
+                </div>
+                <p id="preco-antigo"></p>
+                <!--AREA DO PRECO PROMOCIONAL-->
+                <div class="preco-promocional">
+                    <p id="preco-promocional"></p>
+                    <span id="desconto"></span>
+                </div>
+                <div id="complementos"></div>
+                <div id="quantidade">
+                <button id="diminuir"></button>
+                <span id="numero-quantidade"></span>
+                <button id="aumentar">0</button>
+                  </div>
+                  <div class="btn-add-carrinho">
+                   <button id="bnt-add-carrinho"></button>
+                  </div>
+                  <div class="btn-comprar">
+                        <button id="btn-comprar"></button>
+                  </div>
+                  <div class="area-frete">
+                  <p>Calcular o Frete</p>
+                  <input id="frete">
+                  <button id="btn-calcular-frete">Calcular</button>
+                  </div>
 
-</div>
-<div class="area-textos">
-    
-</div>
+
+            </div>
+        </div>
+
+    </div>
 
 
-</div>
+    <!--FAZENDO A CONEXÃO COM O JAVASCRIPT-->
+    <script src="/js/produto.js"></script>
+</body>
 
-
-    </body>
 </html>

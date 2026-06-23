@@ -19,6 +19,7 @@ header {
     color: white;
     width: 100vw;
     height: 80px;
+
     /* COR DO TEXTO DO CABEÇALHO */
 }
 
@@ -89,4 +90,44 @@ nav button {
 nav button:hover {
     border: 1px solid white;
     /* ADICIONA UMA BORDA BRANCA AO PASSAR O MOUSE SOBRE O BOTÃO */
+}
+
+/*CONFIGURAR AS IMAGENS */
+
+/*GALERIA*/
+
+.area-detalhes {
+
+    max-width: 1200px; /* TAMNHO MAXIMO DE LARGURA DA ÁREA */
+    margin: 50 px; /* MARGEM DE ESPAÇAMENTO, DISTANCIAR AS IMAGENS DA BORDA DA TELA */
+    padding: 20px; /*SERVE  PARA SEPARAR OS ELEMEMTOS DE PERTO DAS BORDAS DA TELA */
+
+    display: flex; /* PERMITIR QUE AS IMAGENS FIQUEM UMA ABAIXO DA OUTRA OU UMA DO LADO DA OUTRA */
+    gap: 50px; 
+}
+
+.area-imagens {
+    display: flex; 
+    gap: 20px; /* E A DISTANCIA AS TAGS DENTRO DA DIV */
+}
+
+.area-detalhes {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    
+    display: flex;
+    gap: 50px;
+}
+
+.area-imagens {
+    display: flex;
+    gap: 20px;
+}
+
+.img-principal img {
+    width: 600px;
+    border-radius: 15px;
+    border:#000000 solid 2px;
+
 }
