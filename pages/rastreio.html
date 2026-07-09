@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rastreio do Pedido</title>
+
+    <link rel="stylesheet" href="../style/rastreio.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ================= NAVBAR ================= -->
+
+        <header>
+
+            <nav class="navbar">
+
+                <a href="index.html" class="menu">
+                    <i class="fa-solid fa-house"></i>
+                    <span>INÍCIO</span>
+                </a>
+
+                <a href="promocoes.html" class="menu">
+                    <i class="fa-solid fa-tags"></i>
+                    <span>PROMOÇÕES</span>
+                </a>
+
+                <a href="#" class="menu ativo">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>PEDIDOS</span>
+                </a>
+
+                <a href="login.html" class="menu">
+                    <i class="fa-solid fa-user"></i>
+                    <span>ENTRAR/CADASTRAR</span>
+                </a>
+
+            </nav>
+
+        </header>
+
+        <!-- ================= TÍTULO ================= -->
+
+        <section class="titulo">
+
+            <h1>RASTREIO DO SEU LANCHE</h1>
+
+        </section>
+
+        <!-- ================= CONTEÚDO ================= -->
+
+        <main>
+
+            <!-- ESQUERDA -->
+
+            <section class="painelEsquerdo">
+
+                <!-- STATUS -->
+
+                <section class="statusPedido">
+
+                    <div class="linhaStatus">
+
+                        <div class="status ativo" id="statusRecebido">
+
+                            <div class="circulo">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+
+                            <p>Pedido Recebido</p>
+
+                        </div>
+
+                        <div class="barra"></div>
+
+                        <div class="status ativo" id="statusPreparando">
+
+                            <div class="circulo">
+                                <i class="fa-solid fa-kitchen-set"></i>
+                            </div>
+
+                            <p>Preparando</p>
+
+                        </div>
+
+                        <div class="barra"></div>
+
+                        <div class="status ativo" id="statusEntrega">
+
+                            <div class="circulo">
+                                <i class="fa-solid fa-motorcycle"></i>
+                            </div>
+
+                            <p>Saiu para Entrega</p>
+
+                        </div>
+
+                        <div class="barra"></div>
+
+                        <div class="status" id="statusFinal">
+
+                            <div class="circulo">
+                                <i class="fa-solid fa-house"></i>
+                            </div>
+
+                            <p>Entregue</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="infoPedido">
+
+                        <div>
+
+                            <small>TEMPO ESTIMADO</small>
+
+                            <h2 id="tempoEntrega">
+
+                                15 - 20 MIN
+
+                            </h2>
+
+                        </div>
+
+                        <div>
+
+                            <small id="numeroPedido">
+
+                                PEDIDO #8842
+
+                            </small>
+
+                            <h3>
+
+                                Status:
+                                <span id="statusTexto">
+
+                                    Em Trânsito
+
+                                </span>
+
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- MAPA -->
+
+                <section class="mapa">
+
+                    <img
+                        id="imagemMapa"
+                        src="../assets/img/mapa.png"
+                        alt="Mapa">
+
+                    <div class="motorista">
+
+                        <div class="dadosMotorista">
+
+                            <img
+                                id="fotoEntregador"
+                                src="../assets/img/entregador.jpg"
+                                alt="Entregador">
+
+                            <div>
+
+                                <small>
+
+                                    SEU ENTREGADOR
+
+                                </small>
+
+                                <h3 id="nomeEntregador">
+
+                                    Ricardo Silva
+
+                                </h3>
+
+                                <p id="veiculoEntregador">
+
+                                    Honda CG 160 - ABC-1234
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="acoesMotorista">
+
+                            <button id="btnLigar">
+
+                                <i class="fa-solid fa-phone"></i>
+
+                            </button>
+
+                            <button id="btnChat">
+
+                                <i class="fa-solid fa-comment"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+            <!-- DIREITA -->
+
+            <aside class="painelDireito">
+
+                <h2>DETALHES DO PEDIDO</h2>
+
+                <div id="listaProdutos">
+
+                    <!-- JavaScript -->
+
+                </div>
+
+                <div class="resumo">
+
+                    <div class="linha">
+
+                        <span>Subtotal</span>
+
+                        <strong id="subtotal">
+
+                            R$ 0,00
+
+                        </strong>
+
+                    </div>
+
+                    <div class="linha">
+
+                        <span>Taxa de Entrega</span>
+
+                        <strong id="taxa">
+
+                            R$ 0,00
+
+                        </strong>
+
+                    </div>
+
+                    <div class="linha total">
+
+                        <span>TOTAL</span>
+
+                        <strong id="total">
+
+                            R$ 0,00
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                <div class="pagamento">
+
+                    <img
+                        id="iconePagamento"
+                        src="../assets/img/pix.png"
+                        alt="PIX">
+
+                    <span id="formaPagamento">
+
+                        Pagamento via PIX - Confirmado
+
+                    </span>
+
+                </div>
+
+            </aside>
+
+        </main>
+
+        <!-- AJUDA -->
+
+        <section class="suporte">
+
+            <button id="btnAjuda">
+
+                <i class="fa-solid fa-headset"></i>
+
+                PRECISA DE AJUDA?
+
+            </button>
+
+        </section>
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <div>
+
+                <h2>REDES SOCIAIS</h2>
+
+                <div class="redes">
+
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+
+                </div>
+
+            </div>
+
+            <div>
+
+                <h2>
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    LOCALIZAÇÃO
+
+                </h2>
+
+                <p id="footerRua">
+
+                    RUA 20
+
+                </p>
+
+                <p id="footerBairro">
+
+                    SETOR COIMBRA
+
+                </p>
+
+                <p id="footerCidade">
+
+                    PRAÇA DOS IMIGRANTES
+
+                </p>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+    <!-- TEMPLATE DOS PRODUTOS -->
+
+    <template id="templateProduto">
+
+        <div class="produto">
+
+            <img class="produtoImagem" src="" alt="Produto">
+
+            <div class="produtoInfo">
+
+                <h3 class="produtoNome"></h3>
+
+                <p class="produtoDescricao"></p>
+
+                <strong class="produtoPreco"></strong>
+
+            </div>
+
+        </div>
+
+    </template>
+
+    <script src="/js/rastreio.js"></script>
+
+</body>
+
+</html>

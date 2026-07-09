@@ -1,0 +1,180 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+header{
+    background:#ff0000;
+    height:90px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 40px;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo-area img{
+    width:55px;
+}
+
+.logo-area h2{
+    color:#000;
+    font-weight:700;
+}
+
+.menu{
+    display:flex;
+    gap:10px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:white;
+    background:#8f0000;
+    padding:10px 20px;
+    border-radius:30px;
+}
+
+.active{
+    background:#660000;
+}
+
+.container{
+    flex:1;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:50px 20px;
+}
+
+.card-login{
+    width:100%;
+    max-width:550px;
+}
+
+.card-login h1{
+    text-align:center;
+    font-size:48px;
+}
+
+.card-login p{
+    text-align:center;
+    color:#777;
+    margin-bottom:40px;
+}
+
+label{
+    font-weight:600;
+    margin-bottom:8px;
+    display:block;
+}
+
+input{
+    width:100%;
+    height:55px;
+
+    border:1px solid #ddd;
+    border-radius:8px;
+
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.senha-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.senha-header a{
+    color:#000;
+    font-size:13px;
+}
+
+button[type="submit"]{
+    width:100%;
+    height:55px;
+
+    background:black;
+    color:white;
+
+    border:none;
+    border-radius:8px;
+
+    cursor:pointer;
+    font-size:17px;
+}
+
+.divider{
+    margin:35px 0;
+    text-align:center;
+    position:relative;
+}
+
+.divider::before,
+.divider::after{
+    content:"";
+    position:absolute;
+    width:35%;
+    height:1px;
+    background:#ddd;
+    top:50%;
+}
+
+.divider::before{
+    left:0;
+}
+
+.divider::after{
+    right:0;
+}
+
+.divider span{
+    color:#999;
+    font-size:14px;
+}
+
+.social-login{
+    display:flex;
+    gap:15px;
+}
+
+.social-btn{
+    flex:1;
+    background:white;
+    border:1px solid #ddd;
+    height:55px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+footer{
+    border-top:1px solid #ddd;
+    padding:30px;
+    display:flex;
+    justify-content:space-between;
+}
+
+footer a{
+    margin-left:20px;
+    color:black;
+    text-decoration:none;
+}

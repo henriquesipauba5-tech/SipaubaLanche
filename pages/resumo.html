@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resumo do Pedido</title>
+
+    <link rel="stylesheet" href="/style/resumo.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ================= HEADER ================= -->
+
+        <header class="topo">
+
+            <h1>RESUMO DO PEDIDO</h1>
+
+        </header>
+
+        <!-- ================= CONTEÚDO ================= -->
+
+        <main>
+
+            <section class="pedido">
+
+                <div class="limpar-area">
+
+                    <button id="btnLimparCarrinho">
+                        LIMPAR CARRINHO
+                    </button>
+
+                </div>
+
+                <!-- Lista do Carrinho -->
+
+                <div id="listaCarrinho">
+
+                    <!-- JavaScript adiciona os produtos aqui -->
+
+                </div>
+
+            </section>
+
+            <!-- ================= PAGAMENTO ================= -->
+
+            <section class="pagamento">
+
+                <button id="btnPagamento">
+
+                    <div class="pagamento-esquerda">
+
+                        <img
+                            src="/assets/pix.png"
+                            id="imagemPagamento"
+                            alt="Pix">
+
+                        <span id="textoPagamento">
+                            PAGAMENTO PIX
+                        </span>
+
+                    </div>
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </button>
+
+            </section>
+
+            <!-- ================= ENDEREÇO ================= -->
+
+            <section class="endereco">
+
+                <h2>LOCALIZAÇÃO:</h2>
+
+                <div class="boxEndereco">
+
+                    <div class="icone">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                    </div>
+
+                    <div class="dadosEndereco">
+
+                        <p id="ruaEndereco">
+                            RUA 20
+                        </p>
+
+                        <p id="bairroEndereco">
+                            SETOR COIMBRA
+                        </p>
+
+                        <p id="cidadeEndereco">
+                            PRAÇAS DOS IMIGRANTES
+                        </p>
+
+                    </div>
+
+                    <button id="btnTrocarEndereco">
+                        Trocar
+                    </button>
+
+                </div>
+
+            </section>
+
+            <!-- ================= MAIS ITENS ================= -->
+
+            <div class="maisItens">
+
+                <button id="btnMaisItens">
+
+                    ADICIONAR MAIS ITENS
+
+                </button>
+
+            </div>
+
+            <!-- ================= RESUMO ================= -->
+
+            <section class="resumo">
+
+                <h3>RESUMO DE VALORES:</h3>
+
+                <div class="linha">
+
+                    <span>SUBTOTAL:</span>
+
+                    <strong id="subtotal">
+                        R$ 0,00
+                    </strong>
+
+                </div>
+
+                <div class="linha">
+
+                    <span>TAXA DE ENTREGA:</span>
+
+                    <strong id="taxaEntrega">
+                        R$ 0,00
+                    </strong>
+
+                </div>
+
+                <div class="linha desconto">
+
+                    <span>DESCONTO:</span>
+
+                    <strong id="desconto">
+                        -R$ 0,00
+                    </strong>
+
+                </div>
+
+                <div class="linha total">
+
+                    <span>TOTAL:</span>
+
+                    <strong id="total">
+                        R$ 0,00
+                    </strong>
+
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- ================= BOTÕES ================= -->
+
+        <section class="acoes">
+
+            <button id="btnVoltar">
+
+                VOLTAR
+
+            </button>
+
+            <button id="btnFinalizar">
+
+                <span>
+
+                    FINALIZAR
+
+                </span>
+
+                <strong id="valorFinal">
+
+                    R$ 0,00
+
+                </strong>
+
+            </button>
+
+        </section>
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer>
+
+            <div class="footerRedes">
+
+                <h3>REDES SOCIAIS</h3>
+
+                <div class="icones">
+
+                    <a href="#">
+
+                        <i class="fab fa-whatsapp"></i>
+
+                    </a>
+
+                    <a href="#">
+
+                        <i class="fab fa-instagram"></i>
+
+                    </a>
+
+                    <a href="#">
+
+                        <i class="fab fa-tiktok"></i>
+
+                    </a>
+
+                    <a href="#">
+
+                        <i class="fab fa-google-play"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="footerEndereco">
+
+                <h3>LOCALIZAÇÃO</h3>
+
+                <div class="info">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <div>
+
+                        <p id="footerRua">
+
+                            RUA 20
+
+                        </p>
+
+                        <p id="footerBairro">
+
+                            SETOR COIMBRA
+
+                        </p>
+
+                        <p id="footerCidade">
+
+                            PRAÇAS DOS IMIGRANTES
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+    </div>
+
+    <!-- ================= TEMPLATE DOS PRODUTOS ================= -->
+
+    <template id="templateProduto">
+
+        <div class="produto">
+
+            <img class="produtoImagem" src="" alt="Produto">
+
+            <div class="produtoInfo">
+
+                <h2 class="produtoNome"></h2>
+
+                <div class="produtoDescricao"></div>
+
+                <div class="produtoPreco">
+
+                    <span class="produtoQuantidade"></span>
+
+                    <strong class="produtoValor"></strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </template>
+
+    <script src="/js/resumo.js"></script>
+
+</body>
+
+</html>

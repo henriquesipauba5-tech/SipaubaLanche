@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Carrinho</title>
+
+<link rel="stylesheet" href="/style/carrinho.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="topo">
+
+        <h1>ITENS DO CARRINHO</h1>
+
+    </header>
+
+    <!-- ================= CONTEÚDO ================= -->
+
+    <main class="container">
+
+        <div class="acoes">
+
+            <button id="btnLimparCarrinho">
+                LIMPAR CARRINHO
+            </button>
+
+        </div>
+
+        <!-- LISTA DE PRODUTOS -->
+
+        <section id="listaCarrinho">
+
+            <!-- ITEM 1 -->
+
+            <article class="produto" data-id="1">
+
+                <div class="produtoImagem">
+
+                    <img src="/assets/produto1.png" alt="Onion Supremo">
+
+                </div>
+
+                <div class="produtoInfo">
+
+                    <h2 class="produtoNome">
+                        Onion Supremo
+                    </h2>
+
+                    <p class="produtoDescricao">
+                        Pão brioche, hambúrguer 160g, mussarela,
+                        barbecue, bacon, anel de cebola empanado,
+                        cebola roxa e molho especial.
+                    </p>
+
+                    <div class="adicionais">
+
+                        <span>
+                            Hambúrguer 160g
+                        </span>
+
+                        <span class="valorAdicional">
+                            + R$ 8,00
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="controleQuantidade">
+
+                    <button class="btnMenos">
+                        <i class="fa-solid fa-minus"></i>
+                    </button>
+
+                    <span class="quantidade">
+                        1
+                    </span>
+
+                    <button class="btnMais">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+
+                </div>
+
+            </article>
+
+            <!-- ITEM 2 -->
+
+            <article class="produto" data-id="2">
+
+                <div class="produtoImagem">
+
+                    <img src="/assets/coca.png" alt="Combo">
+
+                </div>
+
+                <div class="produtoInfo">
+
+                    <h2 class="produtoNome">
+                         Coca Cola Lata
+                    </h2>
+
+                    <p class="produtoDescricao">
+                      Coca Cola Lata Gelada
+                    </p>
+
+                </div>
+
+                <div class="controleQuantidade">
+
+                    <button class="btnMenos">
+                        <i class="fa-solid fa-minus"></i>
+                    </button>
+
+                    <span class="quantidade">
+                        1
+                    </span>
+
+                    <button class="btnMais">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+
+                </div>
+
+            </article>
+
+        </section>
+
+        <!-- ADICIONAR MAIS -->
+
+        <div class="adicionarMais">
+
+            <a href="produtos.html">
+                ADICIONAR MAIS ITENS
+            </a>
+
+        </div>
+
+        <!-- RESUMO -->
+
+        <section class="resumo">
+
+            <h3>RESUMO DE VALORES:</h3>
+
+            <div class="linha">
+
+                <span>Subtotal:</span>
+
+                <span id="subtotal">
+                    R$ 40,00
+                </span>
+
+            </div>
+
+            <div class="linha">
+
+                <span>Taxa de Entrega:</span>
+
+                <span id="taxaEntrega">
+                    R$ 10,00
+                </span>
+
+            </div>
+
+            <div class="linha desconto">
+
+                <span>Desconto:</span>
+
+                <span id="desconto">
+                    -R$ 6,00
+                </span>
+
+            </div>
+
+            <div class="linha total">
+
+                <span>Total:</span>
+
+                <span id="total">
+                    R$ 44,00
+                </span>
+
+            </div>
+
+        </section>
+
+        <!-- BOTÕES -->
+
+        <section class="botoes">
+
+            <button id="btnVoltar">
+                VOLTAR
+            </button>
+
+            <button id="btnContinuar">
+                CONTINUAR
+            </button>
+
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footerRedes">
+
+            <h3>REDES SOCIAIS</h3>
+
+            <div class="icones">
+
+                <a href="#">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+
+                <a href="#">
+                    <i class="fa-brands fa-google-play"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="footerLocalizacao">
+
+            <h3>LOCALIZAÇÃO</h3>
+
+            <div class="local">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <div>
+
+                    <p>RUA 20</p>
+
+                    <p>SETOR COIMBRA</p>
+
+                    <p>PRAÇA DOS IMIGRANTES</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="/js/carrinho.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,786 @@
+/* =======================================================
+   RESET
+======================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --vermelho:#ff1d1d;
+    --vermelho-hover:#e41313;
+
+    --cinza:#efefef;
+    --cinza-claro:#f8f8f8;
+    --cinza-escuro:#555;
+
+    --preto:#111;
+    --verde:#1fa93c;
+    --branco:#ffffff;
+
+    --sombra:0 8px 20px rgba(0,0,0,.10);
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:Arial, Helvetica, sans-serif;
+    background:#ffffff;
+    color:#222;
+
+}
+
+/* =======================================================
+   HEADER
+======================================================= */
+
+.topo{
+
+    width:100%;
+    background:var(--vermelho);
+
+    padding:35px 20px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+.topo h1{
+
+    color:#000;
+    font-size:2rem;
+    font-style:italic;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:1px;
+
+}
+
+/* =======================================================
+   CONTAINER
+======================================================= */
+
+.container{
+
+    width:min(1200px,95%);
+    margin:40px auto;
+
+}
+
+/* =======================================================
+   BOTÃO LIMPAR
+======================================================= */
+
+.acoes{
+
+    display:flex;
+    justify-content:flex-end;
+    margin-bottom:35px;
+
+}
+
+#btnLimparCarrinho{
+
+    background:#dedede;
+    border:none;
+
+    padding:12px 28px;
+
+    border-radius:40px;
+
+    font-weight:800;
+    font-style:italic;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#btnLimparCarrinho:hover{
+
+    background:#cfcfcf;
+    transform:translateY(-2px);
+
+}
+
+/* =======================================================
+   LISTA
+======================================================= */
+
+#listaCarrinho{
+
+    display:flex;
+    flex-direction:column;
+    gap:35px;
+
+}
+
+/* =======================================================
+   CARD PRODUTO
+======================================================= */
+
+.produto{
+
+    display:grid;
+
+    grid-template-columns:
+        110px
+        1fr
+        140px;
+
+    gap:25px;
+
+    align-items:center;
+
+}
+
+/* =======================================================
+   IMAGEM
+======================================================= */
+
+.produtoImagem{
+
+    width:100px;
+    height:100px;
+
+}
+
+.produtoImagem img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    box-shadow:var(--sombra);
+
+}
+
+/* =======================================================
+   INFORMAÇÕES
+======================================================= */
+
+.produtoInfo{
+
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+
+}
+
+.produtoNome{
+
+    font-size:1.35rem;
+    font-weight:900;
+
+    text-transform:uppercase;
+    font-style:italic;
+
+}
+
+.produtoDescricao{
+
+    border:1px solid #9b9b9b;
+
+    border-radius:8px;
+
+    background:#fafafa;
+
+    padding:12px;
+
+    font-size:.83rem;
+
+    line-height:1.5;
+
+    color:#444;
+
+}
+
+.adicionais{
+
+    width:300px;
+
+    display:flex;
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:12px 18px;
+
+    border:1px solid #bdbdbd;
+
+    border-radius:8px;
+
+    background:#f7f7f7;
+
+}
+
+.valorAdicional{
+
+    font-weight:bold;
+
+}
+
+/* =======================================================
+   QUANTIDADE
+======================================================= */
+
+.controleQuantidade{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:18px;
+
+    background:#efefef;
+
+    padding:12px 18px;
+
+    border-radius:40px;
+
+}
+
+.controleQuantidade button{
+
+    width:34px;
+    height:34px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#000;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.controleQuantidade button:hover{
+
+    transform:scale(1.08);
+
+    background:var(--vermelho);
+
+}
+
+.quantidade{
+
+    min-width:25px;
+
+    text-align:center;
+
+    font-size:1.1rem;
+
+    font-weight:bold;
+
+}
+
+/* =======================================================
+   ADICIONAR MAIS
+======================================================= */
+
+.adicionarMais{
+
+    margin:60px 0;
+
+    text-align:center;
+
+}
+
+.adicionarMais a{
+
+    text-decoration:none;
+
+    color:red;
+
+    font-style:italic;
+
+    font-weight:900;
+
+    transition:.3s;
+
+}
+
+.adicionarMais a:hover{
+
+    color:#b30000;
+
+}/* =======================================================
+   RESUMO DE VALORES
+======================================================= */
+
+.resumo{
+
+    width:100%;
+    max-width:650px;
+
+    margin:80px auto;
+
+}
+
+.resumo h3{
+
+    margin-bottom:30px;
+
+    font-size:1rem;
+    font-style:italic;
+    font-weight:900;
+
+    text-transform:uppercase;
+
+}
+
+.linha{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:14px 0;
+
+    border-bottom:1px solid #e5e5e5;
+
+    font-weight:bold;
+
+}
+
+.desconto span:last-child{
+
+    color:var(--verde);
+
+}
+
+.total{
+
+    margin-top:10px;
+
+    font-size:1.25rem;
+
+    color:#000;
+
+}
+
+/* =======================================================
+   BOTÕES
+======================================================= */
+
+.botoes{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:30px;
+
+    margin:80px 0 40px;
+
+}
+
+.botoes button{
+
+    width:220px;
+
+    height:60px;
+
+    border:none;
+
+    border-radius:40px;
+
+    font-size:1.5rem;
+
+    font-weight:900;
+
+    font-style:italic;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+}
+
+#btnVoltar{
+
+    background:#d8d8d8;
+
+    color:#111;
+
+}
+
+#btnVoltar:hover{
+
+    background:#bdbdbd;
+
+    transform:translateY(-3px);
+
+}
+
+#btnContinuar{
+
+    background:var(--vermelho);
+
+    color:#fff;
+
+}
+
+#btnContinuar:hover{
+
+    background:var(--vermelho-hover);
+
+    transform:translateY(-3px);
+
+}
+
+/* =======================================================
+   FOOTER
+======================================================= */
+
+footer{
+
+    width:100%;
+
+    background:var(--vermelho);
+
+    color:#fff;
+
+    padding:35px 8%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    flex-wrap:wrap;
+
+    gap:40px;
+
+}
+
+footer h3{
+
+    margin-bottom:20px;
+
+    font-size:1.1rem;
+
+    font-style:italic;
+
+    text-transform:uppercase;
+
+}
+
+.footerRedes{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.icones{
+
+    display:flex;
+
+    gap:20px;
+
+}
+
+.icones a{
+
+    color:#fff;
+
+    font-size:1.8rem;
+
+    transition:.3s;
+
+}
+
+.icones a:hover{
+
+    transform:scale(1.2);
+
+}
+
+.footerLocalizacao{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.local{
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+.local i{
+
+    font-size:1.8rem;
+
+    margin-top:5px;
+
+}
+
+.local p{
+
+    font-weight:bold;
+
+    line-height:1.8;
+
+}
+
+/* =======================================================
+   RESPONSIVO - TABLET
+======================================================= */
+
+@media(max-width:992px){
+
+    .produto{
+
+        grid-template-columns:90px 1fr;
+
+    }
+
+    .controleQuantidade{
+
+        grid-column:1 / 3;
+
+        justify-self:center;
+
+        margin-top:20px;
+
+    }
+
+    .adicionais{
+
+        width:100%;
+
+    }
+
+    .botoes{
+
+        flex-direction:column;
+
+    }
+
+    .botoes button{
+
+        width:100%;
+        max-width:420px;
+
+    }
+
+}
+
+/* =======================================================
+   RESPONSIVO - CELULAR
+======================================================= */
+
+@media(max-width:768px){
+
+    .topo{
+
+        padding:25px 15px;
+
+    }
+
+    .topo h1{
+
+        font-size:1.5rem;
+
+        text-align:center;
+
+    }
+
+    .container{
+
+        width:94%;
+
+    }
+
+    .acoes{
+
+        justify-content:center;
+
+    }
+
+    #btnLimparCarrinho{
+
+        width:100%;
+
+    }
+
+    .produto{
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:center;
+
+        text-align:center;
+
+    }
+
+    .produtoImagem{
+
+        width:140px;
+        height:140px;
+
+    }
+
+    .produtoInfo{
+
+        width:100%;
+
+    }
+
+    .produtoDescricao{
+
+        text-align:left;
+
+    }
+
+    .adicionais{
+
+        width:100%;
+
+        flex-direction:column;
+
+        gap:8px;
+
+    }
+
+    .controleQuantidade{
+
+        width:220px;
+
+    }
+
+    .resumo{
+
+        margin:60px auto;
+
+    }
+
+    .linha{
+
+        font-size:.95rem;
+
+    }
+
+    footer{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        align-items:center;
+
+    }
+
+    .local{
+
+        flex-direction:column;
+
+        align-items:center;
+
+    }
+
+}
+
+/* =======================================================
+   CELULARES PEQUENOS
+======================================================= */
+
+@media(max-width:480px){
+
+    .topo h1{
+
+        font-size:1.3rem;
+
+    }
+
+    .produtoNome{
+
+        font-size:1.1rem;
+
+    }
+
+    .produtoDescricao{
+
+        font-size:.80rem;
+
+    }
+
+    .botoes button{
+
+        height:55px;
+
+        font-size:1.2rem;
+
+    }
+
+    .icones{
+
+        justify-content:center;
+
+        flex-wrap:wrap;
+
+    }
+
+}
+
+/* =======================================================
+   ANIMAÇÕES
+======================================================= */
+
+.produto{
+
+    transition:.30s;
+
+}
+
+.produto:hover{
+
+    transform:translateY(-3px);
+
+}
+
+button:active{
+
+    transform:scale(.96);
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}

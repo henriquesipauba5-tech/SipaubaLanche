@@ -1,0 +1,790 @@
+/* ===========================================================
+   PAGAMENTO.CSS
+   PARTE 1
+   =========================================================== */
+
+/* RESET */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+    color:#333;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+/* ==========================
+HEADER
+========================== */
+
+.header{
+    width:100%;
+    height:80px;
+    background:#d7261f;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 50px;
+    position:sticky;
+    top:0;
+    z-index:999;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.logo button{
+    border:none;
+    background:none;
+    color:#fff;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.logo h1{
+    color:#fff;
+    font-size:30px;
+    font-weight:bold;
+}
+
+.header nav{
+    display:flex;
+    gap:15px;
+}
+
+.header nav button{
+    background:#fff;
+    color:#d7261f;
+    border:none;
+    padding:12px 24px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
+    font-weight:bold;
+}
+
+.header nav button:hover{
+    background:#222;
+    color:#fff;
+}
+
+/* ==========================
+CONTAINER
+========================== */
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+    flex:1;
+}
+
+.titulo{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.titulo h2{
+    font-size:40px;
+    color:#d7261f;
+    margin-bottom:10px;
+}
+
+.titulo p{
+    color:#777;
+    font-size:18px;
+}
+
+/* ==========================
+FORMAS DE PAGAMENTO
+========================== */
+
+.formasPagamento{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+    margin-bottom:40px;
+}
+
+.cardPagamento{
+
+    background:#fff;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    border:3px solid transparent;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+
+}
+
+.cardPagamento:hover{
+
+    transform:translateY(-6px);
+
+    border-color:#d7261f;
+
+}
+
+.cardPagamento img{
+
+    width:70px;
+
+    height:70px;
+
+    object-fit:contain;
+
+}
+
+.infoPagamento{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.infoPagamento h3{
+
+    font-size:22px;
+
+    color:#333;
+
+}
+
+.infoPagamento p{
+
+    color:#777;
+
+    font-size:15px;
+
+}
+
+/* ==========================
+RESUMO
+========================== */
+
+.resumoPedido{
+
+    background:#fff;
+
+    border-radius:15px;
+
+    padding:35px;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+
+}
+
+.linhaResumo{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin:18px 0;
+
+    font-size:20px;
+
+}
+
+.total{
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    color:#d7261f;
+
+}
+
+.resumoPedido hr{
+
+    margin:20px 0;
+
+    border:none;
+
+    border-top:2px solid #ececec;
+
+}
+/* ===========================================================
+   BOTÕES
+=========================================================== */
+
+.acoes{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    margin:40px 0;
+
+    flex-wrap:wrap;
+
+}
+
+.acoes button{
+
+    min-width:260px;
+
+    padding:18px 25px;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#btnConfirmarPedido{
+
+    background:#d7261f;
+
+    color:#fff;
+
+}
+
+#btnConfirmarPedido:hover{
+
+    background:#b61f1a;
+
+    transform:translateY(-4px);
+
+    box-shadow:0 10px 25px rgba(215,38,31,.3);
+
+}
+
+#btnVoltarCarrinho{
+
+    background:#fff;
+
+    color:#d7261f;
+
+    border:2px solid #d7261f;
+
+}
+
+#btnVoltarCarrinho:hover{
+
+    background:#d7261f;
+
+    color:#fff;
+
+}
+
+/* ===========================================================
+   FOOTER
+=========================================================== */
+
+.footer{
+
+    background:#222;
+
+    color:#fff;
+
+    margin-top:auto;
+
+}
+
+.footer-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:40px;
+
+    padding:40px 8%;
+
+    flex-wrap:wrap;
+
+}
+
+.footer h3{
+
+    margin-bottom:15px;
+
+    color:#fff;
+
+}
+
+.redes{
+
+    flex:1;
+
+}
+
+#redesSociais{
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+}
+
+#redesSociais a{
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:50%;
+
+    background:#d7261f;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:20px;
+
+    transition:.3s;
+
+}
+
+#redesSociais a:hover{
+
+    transform:scale(1.1);
+
+    background:#fff;
+
+    color:#d7261f;
+
+}
+
+.localizacao{
+
+    flex:1;
+
+}
+
+.localizacao p{
+
+    color:#d6d6d6;
+
+    line-height:1.8;
+
+    font-size:16px;
+
+}
+
+.footer-bottom{
+
+    border-top:1px solid rgba(255,255,255,.15);
+
+    padding:25px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+#btnAjuda{
+
+    background:#d7261f;
+
+    color:#fff;
+
+    border:none;
+
+    border-radius:40px;
+
+    padding:15px 40px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#btnAjuda:hover{
+
+    background:#fff;
+
+    color:#d7261f;
+
+    transform:translateY(-3px);
+
+}
+
+/* ===========================================================
+   ANIMAÇÕES
+=========================================================== */
+
+.cardPagamento,
+.resumoPedido,
+.acoes button{
+
+    animation:fadeUp .6s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+/* ===========================================================
+   RESPONSIVIDADE
+=========================================================== */
+
+/* ---------- Notebook ---------- */
+
+@media (max-width: 1200px){
+
+    .container{
+
+        width:95%;
+
+    }
+
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 992px){
+
+    .header{
+
+        padding:0 30px;
+
+    }
+
+    .logo h1{
+
+        font-size:26px;
+
+    }
+
+    .formasPagamento{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .titulo h2{
+
+        font-size:34px;
+
+    }
+
+    .resumoPedido{
+
+        padding:30px;
+
+    }
+
+    .linhaResumo{
+
+        font-size:18px;
+
+    }
+
+    .total{
+
+        font-size:24px;
+
+    }
+
+}
+
+/* ---------- Celulares ---------- */
+
+@media (max-width:768px){
+
+    .header{
+
+        height:auto;
+
+        flex-direction:column;
+
+        gap:15px;
+
+        padding:20px;
+
+    }
+
+    .logo{
+
+        width:100%;
+
+        justify-content:space-between;
+
+    }
+
+    .header nav{
+
+        width:100%;
+
+        display:flex;
+
+        justify-content:center;
+
+        gap:10px;
+
+        flex-wrap:wrap;
+
+    }
+
+    .header nav button{
+
+        flex:1;
+
+        min-width:140px;
+
+    }
+
+    .container{
+
+        width:95%;
+
+        margin:30px auto;
+
+    }
+
+    .titulo h2{
+
+        font-size:28px;
+
+    }
+
+    .titulo p{
+
+        font-size:16px;
+
+    }
+
+    .cardPagamento{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        padding:25px;
+
+    }
+
+    .cardPagamento img{
+
+        width:80px;
+
+        height:80px;
+
+    }
+
+    .infoPagamento{
+
+        align-items:center;
+
+    }
+
+    .linhaResumo{
+
+        font-size:17px;
+
+    }
+
+    .total{
+
+        font-size:22px;
+
+    }
+
+    .acoes{
+
+        flex-direction:column;
+
+    }
+
+    .acoes button{
+
+        width:100%;
+
+        min-width:100%;
+
+    }
+
+    .footer-top{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    #redesSociais{
+
+        justify-content:center;
+
+    }
+
+}
+
+/* ---------- Celulares Pequenos ---------- */
+
+@media (max-width:480px){
+
+    .logo h1{
+
+        font-size:22px;
+
+    }
+
+    .titulo h2{
+
+        font-size:24px;
+
+    }
+
+    .titulo p{
+
+        font-size:15px;
+
+    }
+
+    .cardPagamento{
+
+        padding:20px;
+
+    }
+
+    .cardPagamento img{
+
+        width:65px;
+
+        height:65px;
+
+    }
+
+    .infoPagamento h3{
+
+        font-size:18px;
+
+    }
+
+    .infoPagamento p{
+
+        font-size:14px;
+
+    }
+
+    .resumoPedido{
+
+        padding:20px;
+
+    }
+
+    .linhaResumo{
+
+        font-size:16px;
+
+    }
+
+    .total{
+
+        font-size:20px;
+
+    }
+
+    #btnConfirmarPedido,
+    #btnVoltarCarrinho{
+
+        font-size:16px;
+
+        padding:15px;
+
+    }
+
+    #btnAjuda{
+
+        width:100%;
+
+    }
+
+}
+
+/* ===========================================================
+   CLASSE UTILIZADA PELO JAVASCRIPT
+=========================================================== */
+
+.cardPagamento.ativo{
+
+    border:3px solid #d7261f;
+
+    background:#fff4f3;
+
+    transform:scale(1.02);
+
+    box-shadow:0 12px 30px rgba(215,38,31,.25);
+
+}
+
+.oculto{
+
+    display:none !important;
+
+}
