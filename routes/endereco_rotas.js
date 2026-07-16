@@ -1,12 +1,12 @@
 // =====================================================
-// ROTAS DE CLIENTE
+// ROTAS DE FRETE
 // =====================================================
 //
-// POST    /clientes       -> Cadastrar cliente
-// GET     /clientes       -> Listar clientes
-// GET     /clientes/:id   -> Buscar cliente por ID
-// PUT     /clientes/:id   -> Atualizar cliente
-// DELETE  /clientes/:id   -> Excluir cliente
+// POST    /fretes       -> Cadastrar frete
+// GET     /fretes       -> Listar fretes
+// GET     /fretes/:id   -> Buscar frete por ID
+// PUT     /fretes/:id   -> Atualizar frete
+// DELETE  /fretes/:id   -> Excluir frete
 //
 // =====================================================
 
@@ -17,57 +17,57 @@ const express = require("express");
 const router = express.Router();
 
 
-// Importando Controller de Cliente
-const ClienteController = require("../controller/cliente_controller.js");
+// Importando Controller de Frete
+const FreteController = require("../controller/frete_controller.js");
 
 
 // =========================
-// CADASTRAR CLIENTE
+// CADASTRAR FRETE
 // =========================
 
 router.post(
     "/",
-    ClienteController.cadastrar
+    FreteController.cadastrar
 );
 
 
 // =========================
-// LISTAR CLIENTES
+// LISTAR FRETES
 // =========================
 
 router.get(
     "/",
-    ClienteController.listar
+    FreteController.listar
 );
 
 
 // =========================
-// BUSCAR CLIENTE POR ID
+// BUSCAR FRETE POR ID
 // =========================
 
 router.get(
     "/:id",
-    ClienteController.buscarPorId
+    FreteController.buscarPorId
 );
 
 
 // =========================
-// ATUALIZAR CLIENTE
+// ATUALIZAR FRETE
 // =========================
 
 router.put(
     "/:id",
-    ClienteController.atualizar
+    FreteController.atualizar
 );
 
 
 // =========================
-// EXCLUIR CLIENTE
+// EXCLUIR FRETE
 // =========================
 
 router.delete(
     "/:id",
-    ClienteController.excluir
+    FreteController.excluir
 );
 
 

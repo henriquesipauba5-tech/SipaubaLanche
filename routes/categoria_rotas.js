@@ -1,12 +1,12 @@
 // =====================================================
-// ROTAS DE CLIENTE
+// ROTAS DE CATEGORIA
 // =====================================================
 //
-// POST    /clientes       -> Cadastrar cliente
-// GET     /clientes       -> Listar clientes
-// GET     /clientes/:id   -> Buscar cliente por ID
-// PUT     /clientes/:id   -> Atualizar cliente
-// DELETE  /clientes/:id   -> Excluir cliente
+// POST    /categorias       -> Cadastrar categoria
+// GET     /categorias       -> Listar categorias
+// GET     /categorias/:id   -> Buscar categoria por ID
+// PUT     /categorias/:id   -> Atualizar categoria
+// DELETE  /categorias/:id   -> Excluir categoria
 //
 // =====================================================
 
@@ -17,57 +17,57 @@ const express = require("express");
 const router = express.Router();
 
 
-// Importando Controller de Cliente
-const ClienteController = require("../controller/cliente_controller.js");
+// Importando Controller de Categoria
+const CategoriaController = require("../controller/categoria_controller.js");
 
 
 // =========================
-// CADASTRAR CLIENTE
+// CADASTRAR CATEGORIA
 // =========================
 
 router.post(
     "/",
-    ClienteController.cadastrar
+    CategoriaController.cadastrar
 );
 
 
 // =========================
-// LISTAR CLIENTES
+// LISTAR CATEGORIAS
 // =========================
 
 router.get(
     "/",
-    ClienteController.listar
+    CategoriaController.listar
 );
 
 
 // =========================
-// BUSCAR CLIENTE POR ID
+// BUSCAR CATEGORIA POR ID
 // =========================
 
 router.get(
     "/:id",
-    ClienteController.buscarPorId
+    CategoriaController.buscarPorId
 );
 
 
 // =========================
-// ATUALIZAR CLIENTE
+// ATUALIZAR CATEGORIA
 // =========================
 
 router.put(
     "/:id",
-    ClienteController.atualizar
+    CategoriaController.atualizar
 );
 
 
 // =========================
-// EXCLUIR CLIENTE
+// EXCLUIR CATEGORIA
 // =========================
 
 router.delete(
     "/:id",
-    ClienteController.excluir
+    CategoriaController.excluir
 );
 
 

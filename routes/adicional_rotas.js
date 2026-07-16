@@ -1,12 +1,12 @@
 // =====================================================
-// ROTAS DE CLIENTE
+// ROTAS DE ADICIONAL
 // =====================================================
 //
-// POST    /clientes       -> Cadastrar cliente
-// GET     /clientes       -> Listar clientes
-// GET     /clientes/:id   -> Buscar cliente por ID
-// PUT     /clientes/:id   -> Atualizar cliente
-// DELETE  /clientes/:id   -> Excluir cliente
+// POST    /adicionais       -> Cadastrar adicional
+// GET     /adicionais       -> Listar adicionais
+// GET     /adicionais/:id   -> Buscar adicional por ID
+// PUT     /adicionais/:id   -> Atualizar adicional
+// DELETE  /adicionais/:id   -> Excluir adicional
 //
 // =====================================================
 
@@ -17,57 +17,57 @@ const express = require("express");
 const router = express.Router();
 
 
-// Importando Controller de Cliente
-const ClienteController = require("../controller/cliente_controller.js");
+// Importando Controller de Adicional
+const AdicionalController = require("../controller/adicional_controller.js");
 
 
 // =========================
-// CADASTRAR CLIENTE
+// CADASTRAR ADICIONAL
 // =========================
 
 router.post(
     "/",
-    ClienteController.cadastrar
+    AdicionalController.cadastrar
 );
 
 
 // =========================
-// LISTAR CLIENTES
+// LISTAR ADICIONAIS
 // =========================
 
 router.get(
     "/",
-    ClienteController.listar
+    AdicionalController.listar
 );
 
 
 // =========================
-// BUSCAR CLIENTE POR ID
+// BUSCAR ADICIONAL POR ID
 // =========================
 
 router.get(
     "/:id",
-    ClienteController.buscarPorId
+    AdicionalController.buscarPorId
 );
 
 
 // =========================
-// ATUALIZAR CLIENTE
+// ATUALIZAR ADICIONAL
 // =========================
 
 router.put(
     "/:id",
-    ClienteController.atualizar
+    AdicionalController.atualizar
 );
 
 
 // =========================
-// EXCLUIR CLIENTE
+// EXCLUIR ADICIONAL
 // =========================
 
 router.delete(
     "/:id",
-    ClienteController.excluir
+    AdicionalController.excluir
 );
 
 

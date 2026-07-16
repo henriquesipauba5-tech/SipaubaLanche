@@ -1,12 +1,12 @@
 // =====================================================
-// ROTAS DE CLIENTE
+// ROTAS DE BANNER
 // =====================================================
 //
-// POST    /clientes       -> Cadastrar cliente
-// GET     /clientes       -> Listar clientes
-// GET     /clientes/:id   -> Buscar cliente por ID
-// PUT     /clientes/:id   -> Atualizar cliente
-// DELETE  /clientes/:id   -> Excluir cliente
+// POST    /banners       -> Cadastrar banner
+// GET     /banners       -> Listar banners
+// GET     /banners/:id   -> Buscar banner por ID
+// PUT     /banners/:id   -> Atualizar banner
+// DELETE  /banners/:id   -> Excluir banner
 //
 // =====================================================
 
@@ -17,57 +17,57 @@ const express = require("express");
 const router = express.Router();
 
 
-// Importando Controller de Cliente
-const ClienteController = require("../controller/cliente_controller.js");
+// Importando Controller de Banner
+const BannerController = require("../controller/banner_controller.js");
 
 
 // =========================
-// CADASTRAR CLIENTE
+// CADASTRAR BANNER
 // =========================
 
 router.post(
     "/",
-    ClienteController.cadastrar
+    BannerController.cadastrar
 );
 
 
 // =========================
-// LISTAR CLIENTES
+// LISTAR BANNERS
 // =========================
 
 router.get(
     "/",
-    ClienteController.listar
+    BannerController.listar
 );
 
 
 // =========================
-// BUSCAR CLIENTE POR ID
+// BUSCAR BANNER POR ID
 // =========================
 
 router.get(
     "/:id",
-    ClienteController.buscarPorId
+    BannerController.buscarPorId
 );
 
 
 // =========================
-// ATUALIZAR CLIENTE
+// ATUALIZAR BANNER
 // =========================
 
 router.put(
     "/:id",
-    ClienteController.atualizar
+    BannerController.atualizar
 );
 
 
 // =========================
-// EXCLUIR CLIENTE
+// EXCLUIR BANNER
 // =========================
 
 router.delete(
     "/:id",
-    ClienteController.excluir
+    BannerController.excluir
 );
 
 

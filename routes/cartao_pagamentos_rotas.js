@@ -1,12 +1,12 @@
 // =====================================================
-// ROTAS DE CLIENTE
+// ROTAS DE CARTÃO DE PAGAMENTO
 // =====================================================
 //
-// POST    /clientes       -> Cadastrar cliente
-// GET     /clientes       -> Listar clientes
-// GET     /clientes/:id   -> Buscar cliente por ID
-// PUT     /clientes/:id   -> Atualizar cliente
-// DELETE  /clientes/:id   -> Excluir cliente
+// POST    /cartoes-pagamento       -> Cadastrar cartão
+// GET     /cartoes-pagamento       -> Listar cartões
+// GET     /cartoes-pagamento/:id   -> Buscar cartão por ID
+// PUT     /cartoes-pagamento/:id   -> Atualizar cartão
+// DELETE  /cartoes-pagamento/:id   -> Excluir cartão
 //
 // =====================================================
 
@@ -17,57 +17,57 @@ const express = require("express");
 const router = express.Router();
 
 
-// Importando Controller de Cliente
-const ClienteController = require("../controller/cliente_controller.js");
+// Importando Controller de Cartão de Pagamento
+const CartaoPagamentoController = require("../controller/cartaoPagamento_controller.js");
 
 
 // =========================
-// CADASTRAR CLIENTE
+// CADASTRAR CARTÃO
 // =========================
 
 router.post(
     "/",
-    ClienteController.cadastrar
+    CartaoPagamentoController.cadastrar
 );
 
 
 // =========================
-// LISTAR CLIENTES
+// LISTAR CARTÕES
 // =========================
 
 router.get(
     "/",
-    ClienteController.listar
+    CartaoPagamentoController.listar
 );
 
 
 // =========================
-// BUSCAR CLIENTE POR ID
+// BUSCAR CARTÃO POR ID
 // =========================
 
 router.get(
     "/:id",
-    ClienteController.buscarPorId
+    CartaoPagamentoController.buscarPorId
 );
 
 
 // =========================
-// ATUALIZAR CLIENTE
+// ATUALIZAR CARTÃO
 // =========================
 
 router.put(
     "/:id",
-    ClienteController.atualizar
+    CartaoPagamentoController.atualizar
 );
 
 
 // =========================
-// EXCLUIR CLIENTE
+// EXCLUIR CARTÃO
 // =========================
 
 router.delete(
     "/:id",
-    ClienteController.excluir
+    CartaoPagamentoController.excluir
 );
 
 
