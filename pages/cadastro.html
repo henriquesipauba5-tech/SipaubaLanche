@@ -1,115 +1,249 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Cadastro</title>
-<link rel="stylesheet" href="/style/cadastro.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Criar Conta | Sipaúba Lanches</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style/cadastro.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 </head>
+
 <body>
 
-<header>
-    <div class="logo-area">
-        <img src="/assets/logo.png" alt="">
-        <h2>Sipaúba Lanches</h2>
-    </div>
+    <!--================ HEADER ================-->
 
-    <div class="menu">
-        <a href="/pages/login.html">Entrar</a>
-        <a href="#" class="active">Criar Conta</a>
-    </div>
-</header>
+    <header class="header">
 
-<section class="container">
+        <div class="logo-container">
 
-<div class="cadastro-box">
+            <img
+                id="logoEmpresa"
+                src="../assets/logo.png"
+                alt="Logo Sipaúba">
 
-    <div class="left">
+            <h2 id="empresaNome"></h2>
 
-        <h1>Crie sua conta</h1>
+        </div>
 
-        <p>
-            Junte-se à família Sipaúba Lanches
-            e aproveite ofertas exclusivas.
-        </p>
+        <nav class="menu">
 
-        
+            <button id="btnEntrarTopo"></button>
 
-    </div>
+            <button id="btnCadastroTopo"></button>
 
-    <div class="right">
+        </nav>
 
-        <form id="cadastroForm">
+    </header>
 
-            <label>Nome Completo</label>
-            <input type="text" name="nome" placeholder="Seu nome completo">
+    <!--================ CADASTRO ================-->
 
-            <div class="grid">
+    <main class="cadastro">
 
-                <div>
-                    <label>E-mail</label>
-                    <input type="email" name="email" placeholder="email@exemplo.com">
+        <section class="cadastro-info">
+
+            <h1 id="tituloCadastro"></h1>
+
+            <p id="subtituloCadastro"></p>
+
+            <img
+                id="imagemCadastro"
+                src="../assets/logo.png"
+                alt="Logo">
+
+        </section>
+
+        <section class="cadastro-formulario">
+
+            <form id="formCadastro">
+
+                <!-- Nome -->
+
+                <div class="campo largura-total">
+
+                    <label for="nome">
+                        Nome Completo
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nome">
+
                 </div>
 
-                <div>
-                    <label>Telefone</label>
-                    <input type="text" name="telefone" placeholder="(00) 00000-0000">
+                <!-- CPF -->
+
+                <div class="campo">
+
+                    <label for="cpf">
+                        CPF
+                    </label>
+
+                    <input
+                        type="text"
+                        id="cpf">
+
                 </div>
 
-            </div>
+                <!-- Data -->
 
-            <div class="grid">
+                <div class="campo">
 
-                <div>
-                    <label>Senha</label>
-                    <input type="password" name="senha">
+                    <label for="dataNascimento">
+                        Data de Nascimento
+                    </label>
+
+                    <input
+                        type="text"
+                        id="dataNascimento">
+
                 </div>
 
-                <div>
-                    <label>Confirmar Senha</label>
-                    <input type="password" name="confirmarSenha">
+                <!-- Email -->
+
+                <div class="campo">
+
+                    <label for="email">
+                        E-mail
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email">
+
                 </div>
 
-            </div>
+                <!-- Telefone -->
 
-            <button type="submit">
-                Criar minha conta
-            </button>
+                <div class="campo">
 
-        </form>
+                    <label for="telefone">
+                        Telefone (WhatsApp)
+                    </label>
 
-    </div>
+                    <input
+                        type="text"
+                        id="telefone">
 
-</div>
+                </div>
 
-<div class="termos">
+                <!-- Senha -->
 
-    Ao criar sua conta, você declara que leu e concorda
-    com nossos <strong>termos de uso</strong> e nossa
-    <strong>política de privacidade</strong>.
+                <div class="campo">
 
-</div>
+                    <label for="senha">
+                        Senha
+                    </label>
 
-</section>
+                    <div class="senha-box">
 
-<footer>
+                        <input
+                            type="password"
+                            id="senha">
 
-<p>© 2026 Sipaúba Lanches</p>
+                        <button
+                            type="button"
+                            id="mostrarSenha">
 
-<div>
-<a href="#">Suporte</a>
-<a href="#">Privacidade</a>
-<a href="#">Termos de uso</a>
-</div>
+                            <i class="fa-solid fa-eye"></i>
 
-</footer>
+                        </button>
 
-<script src="/js/cadastro.js"></script>
+                    </div>
+
+                </div>
+
+                <!-- Confirmar -->
+
+                <div class="campo">
+
+                    <label for="confirmarSenha">
+                        Confirmar Senha
+                    </label>
+
+                    <div class="senha-box">
+
+                        <input
+                            type="password"
+                            id="confirmarSenha">
+
+                        <button
+                            type="button"
+                            id="mostrarConfirmarSenha">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- Termos -->
+
+                <div class="termos">
+
+                    <input
+                        type="checkbox"
+                        id="aceite">
+
+                    <label for="aceite">
+
+                        Li e concordo com os
+
+                        <a href="#" id="linkTermos"></a>
+
+                        e com a
+
+                        <a href="#" id="linkPrivacidade"></a>
+
+                    </label>
+
+                </div>
+
+                <!-- Botão -->
+
+                <button
+                    type="submit"
+                    id="btnCriarConta">
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <!--================ RODAPÉ ================-->
+
+    <footer>
+
+        <span id="copyright"></span>
+
+        <div class="footer-links">
+
+            <a href="#" id="suporte"></a>
+
+            <a href="#" id="privacidade"></a>
+
+            <a href="#" id="termosRodape"></a>
+
+        </div>
+
+    </footer>
+
+    <!--================ JAVASCRIPT ================-->
+
+    <script src="../js/cadastro.js"></script>
 
 </body>
+
 </html>
