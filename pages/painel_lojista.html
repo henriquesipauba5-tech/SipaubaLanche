@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Painel do Lojista</title>
+
+    <link rel="stylesheet" href="../style/painel_lojista.css">
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- ==========================================
+                    MENU LATERAL
+    =========================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+                      <img src="/assets/logo.png" alt="Logo da Loja">
+
+
+            <h2 id="nomeLojaSidebar">
+
+                Painel do Lojista
+
+            </h2>
+
+        </div>
+
+        <nav>
+
+            <ul>
+
+                <li class="ativo">
+
+                    <a href="#">
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                        <span>Dashboard</span>
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="#">
+
+                        <i class="fa-solid fa-box"></i>
+
+                        <span>Produtos</span>
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="#">
+
+                        <i class="fa-solid fa-cart-shopping"></i>
+
+                        <span>Pedidos</span>
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="#">
+
+                        <i class="fa-solid fa-tags"></i>
+
+                        <span>Promoções</span>
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="#">
+
+                        <i class="fa-solid fa-wallet"></i>
+
+                        <span>Financeiro</span>
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="#">
+
+                        <i class="fa-solid fa-comments"></i>
+
+                        <span>Mensagens</span>
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="#">
+
+                        <i class="fa-solid fa-star"></i>
+
+                        <span>Avaliações</span>
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="#">
+
+                        <i class="fa-solid fa-gear"></i>
+
+                        <span>Configurações</span>
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </aside>
+
+    <!-- ==========================================
+                    CONTEÚDO
+    =========================================== -->
+
+    <main class="conteudo">
+
+        <!-- ==========================================
+                        TOPO
+        =========================================== -->
+
+        <header class="topbar">
+
+            <div class="pesquisa">
+
+                <input
+                    id="campoPesquisa"
+                    type="text"
+                    placeholder="Pesquisar produtos, pedidos...">
+
+                <button id="btnPesquisar">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                </button>
+
+            </div>
+
+            <div class="usuarioTopo">
+
+                <img
+                    id="fotoTopo"
+                    src=""
+                    alt="Usuário">
+
+                <span id="nomeTopo">
+
+                    Lojista
+
+                </span>
+
+            </div>
+
+        </header>
+
+        <!-- ==========================================
+                    PERFIL DA LOJA
+        =========================================== -->
+
+        <section class="perfilLoja">
+
+            <div class="perfilEsquerda">
+
+                <img
+                    id="fotoPerfil"
+                 src="/assets/logo.png" alt="Logo da Loja">
+
+                    
+
+                <div class="dadosPerfil">
+
+                    <h1 id="nomeLoja">
+
+                       Sipaúba Lanche
+
+                    </h1>
+
+                    <p id="cnpjLoja">
+
+                        CNPJ
+
+                    </p>
+
+                    <p id="enderecoLoja">
+
+                        Endereço
+
+                    </p>
+
+                    <p id="telefoneLoja">
+
+                        Telefone
+
+                    </p>
+
+                    <p id="emailLoja">
+
+                        Email
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="perfilDireita">
+
+                <button id="btnPerfil">
+
+                    Ver Perfil
+
+                </button>
+
+                <button id="btnEditarPerfil">
+
+                    Editar Dados
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+                RESUMO DA LOJA
+        =========================================== -->
+
+        <section class="dashboard">
+
+            <div class="tituloSecao">
+
+                <h2>
+
+                    Resumo da Loja
+
+                </h2>
+
+                <p>
+
+                    Dados atualizados em tempo real
+
+                </p>
+
+            </div>
+
+            <div class="dashboardResumo">
+
+                <!-- ==================== -->
+
+                <div class="graficoContainer">
+
+                    <div class="graficoHeader">
+
+                        <h3>
+
+                            Tendência de Vendas
+
+                        </h3>
+
+                    </div>
+
+                    <canvas id="graficoVendas"></canvas>
+
+                </div>
+
+                <!-- ==================== -->
+
+                <div class="resumoRapido">
+
+                    <div id="cardsIndicadores">
+
+                        <!-- JavaScript -->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+                <!-- ==========================================
+                STATUS OPERACIONAL
+        =========================================== -->
+
+        <section class="statusOperacional">
+
+            <div class="tituloSecao">
+
+                <h2>
+
+                    Status Operacional
+
+                </h2>
+
+                <p>
+
+                    Acompanhe o desempenho da sua loja.
+
+                </p>
+
+            </div>
+
+            <div id="cardsStatus" class="cardsStatus">
+
+                <!-- JavaScript -->
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+                PRODUTOS EM DESTAQUE
+        =========================================== -->
+
+        <section class="produtosDestaque">
+
+            <div class="tituloSecao">
+
+                <h2>
+
+                    Produtos em Destaque
+
+                </h2>
+
+                <p>
+
+                    Produtos com maior potencial de vendas.
+
+                </p>
+
+            </div>
+
+            <div id="listaProdutos"
+                 class="listaProdutos">
+
+                <!-- JavaScript -->
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+                DADOS DA EMPRESA
+        =========================================== -->
+
+        <section class="dadosEmpresa">
+
+            <div class="tituloSecao">
+
+                <h2>
+
+                    Dados da Empresa
+
+                </h2>
+
+                <p>
+
+                    Informações da empresa cadastrada.
+
+                </p>
+
+            </div>
+
+            <div class="empresaGrid">
+
+                <div class="empresaCard">
+
+                    <i class="fa-solid fa-building"></i>
+
+                    <div>
+
+                        <h3>
+
+                            Empresa
+
+                        </h3>
+
+                        <p id="empresaNome"></p>
+
+                    </div>
+
+                </div>
+
+                <div class="empresaCard">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <div>
+
+                        <h3>
+
+                            Endereço
+
+                        </h3>
+
+                        <p id="empresaEndereco"></p>
+
+                    </div>
+
+                </div>
+
+                <div class="empresaCard">
+
+                    <i class="fa-solid fa-phone"></i>
+
+                    <div>
+
+                        <h3>
+
+                            Contato
+
+                        </h3>
+
+                        <p id="empresaContato"></p>
+
+                    </div>
+
+                </div>
+
+                <div class="empresaCard">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <div>
+
+                        <h3>
+
+                            Email
+
+                        </h3>
+
+                        <p id="empresaEmail"></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+                AVALIAÇÕES
+        =========================================== -->
+
+        <section class="avaliacoes">
+
+            <div class="tituloSecao">
+
+                <h2>
+
+                    Avaliações Recentes
+
+                </h2>
+
+                <p>
+
+                    Últimos comentários dos clientes.
+
+                </p>
+
+            </div>
+
+            <div id="listaAvaliacoes"
+                 class="listaAvaliacoes">
+
+                <!-- JavaScript -->
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+                RODAPÉ
+        =========================================== -->
+
+        <footer class="rodape">
+
+            <div>
+
+                © 2026 Painel do Lojista
+
+            </div>
+
+            <div>
+
+                Sistema de Gerenciamento
+
+            </div>
+
+            <div>
+
+                <span id="statusSistema">
+
+                    ● Operacional
+
+                </span>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+    <!-- ==========================================
+                TEMPLATES
+    =========================================== -->
+
+    <template id="templateIndicador">
+
+        <div class="cardIndicador">
+
+            <span class="tituloIndicador"></span>
+
+            <h2 class="valorIndicador"></h2>
+
+            <small class="variacaoIndicador"></small>
+
+        </div>
+
+    </template>
+
+    <template id="templateStatus">
+
+        <div class="cardStatus">
+
+            <div class="iconeStatus">
+
+                <i></i>
+
+            </div>
+
+            <h3 class="tituloStatus"></h3>
+
+            <h2 class="valorStatus"></h2>
+
+            <small class="descricaoStatus"></small>
+
+        </div>
+
+    </template>
+
+    <template id="templateProduto">
+
+        <div class="cardProduto">
+
+            <img class="imagemProduto"
+                 src=""
+                 alt="Produto">
+
+            <h3 class="nomeProduto"></h3>
+
+            <p class="precoProduto"></p>
+
+            <p class="estoqueProduto"></p>
+
+            <div class="acoesProduto">
+
+                <button class="btnEditar">
+
+                    Editar
+
+                </button>
+
+                <button class="btnPromover">
+
+                    Promover
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </template>
+
+    <template id="templateAvaliacao">
+
+        <div class="cardAvaliacao">
+
+            <div class="cliente">
+
+                <img class="fotoCliente"
+                     src=""
+                     alt="Cliente">
+
+                <div>
+
+                    <h3 class="nomeCliente"></h3>
+
+                    <div class="estrelas"></div>
+
+                </div>
+
+            </div>
+
+            <p class="comentarioCliente"></p>
+
+        </div>
+
+    </template>
+
+    <!-- Chart.js -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- JavaScript -->
+
+    <script src="/js/painel_lojista.js"></script>
+
+</body>
+
+</html>

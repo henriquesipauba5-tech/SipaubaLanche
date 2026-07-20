@@ -1,0 +1,1213 @@
+/* ===========================
+   RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#f6f6f6;
+
+    color:#111;
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+/* ===========================
+   SIDEBAR
+=========================== */
+
+.sidebar{
+
+    width:250px;
+
+    background:#ffffff;
+
+    border-right:1px solid #e6e6e6;
+
+    display:flex;
+
+    flex-direction:column;
+
+    position:fixed;
+
+    left:0;
+
+    top:0;
+
+    bottom:0;
+
+    overflow:auto;
+
+}
+
+.logo{
+
+    height:75px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:20px;
+
+    border-bottom:1px solid #ececec;
+
+}
+
+.logo img{
+
+    width:40px;
+
+    height:40px;
+
+    object-fit:cover;
+
+}
+
+.logo h2{
+
+    font-size:26px;
+
+    font-weight:600;
+
+}
+
+.sidebar nav{
+
+    flex:1;
+
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+    margin-top:10px;
+
+}
+
+.sidebar li{
+
+    margin:5px 0;
+
+}
+
+.sidebar li a{
+
+    text-decoration:none;
+
+    color:#222;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:15px 22px;
+
+    transition:.3s;
+
+    font-size:15px;
+
+}
+
+.sidebar li a:hover{
+
+    background:#f4f4f4;
+
+}
+
+.sidebar li.ativo{
+
+    border-left:4px solid #111;
+
+    background:#fafafa;
+
+}
+
+.sidebar li i{
+
+    width:22px;
+
+    text-align:center;
+
+}
+
+/* ===========================
+   CONTEÚDO
+=========================== */
+
+.conteudo{
+
+    margin-left:250px;
+
+    width:calc(100% - 250px);
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+/* ===========================
+   TOPO
+=========================== */
+
+.topbar{
+
+    height:75px;
+
+    background:#ffffff;
+
+    border-bottom:1px solid #e8e8e8;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 40px;
+
+}
+
+.menuSuperior{
+
+    display:flex;
+
+    gap:45px;
+
+    list-style:none;
+
+}
+
+.menuSuperior a{
+
+    text-decoration:none;
+
+    color:#333;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+.menuSuperior a:hover{
+
+    color:#000;
+
+}
+
+.pesquisa{
+
+    display:flex;
+
+    align-items:center;
+
+    border:1px solid #ddd;
+
+    border-radius:8px;
+
+    overflow:hidden;
+
+    background:#fff;
+
+}
+
+.pesquisa input{
+
+    border:none;
+
+    outline:none;
+
+    padding:10px 15px;
+
+    width:230px;
+
+    font-size:14px;
+
+}
+
+.pesquisa button{
+
+    width:45px;
+
+    border:none;
+
+    background:#fff;
+
+    cursor:pointer;
+
+}
+
+/* ===========================
+   TÍTULO
+=========================== */
+
+.tituloPagina{
+
+    padding:45px;
+
+    background:#fff;
+
+}
+
+.tituloPagina h1{
+
+    font-size:40px;
+
+    margin-bottom:10px;
+
+    font-weight:700;
+
+}
+
+.tituloPagina p{
+
+    color:#777;
+
+    font-size:15px;
+
+}
+
+.tituloPagina::after{
+
+    content:"";
+
+    display:block;
+
+    height:1px;
+
+    background:#ececec;
+
+    margin-top:35px;
+
+}
+/* ===================================
+   FORMULÁRIO
+=================================== */
+
+.formulario{
+
+    background:#fff;
+
+    padding:40px 45px 50px;
+
+}
+
+#formProduto{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:40px;
+
+    align-items:flex-start;
+
+}
+
+.colunaEsquerda{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:22px;
+
+}
+
+.campo{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.campo label{
+
+    font-size:14px;
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+    color:#222;
+
+}
+
+.campo input,
+
+.campo select,
+
+.campo textarea{
+
+    width:100%;
+
+    border:1px solid #dcdcdc;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    outline:none;
+
+    transition:.3s;
+
+    font-size:15px;
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+.campo input,
+
+.campo select{
+
+    height:48px;
+
+    padding:0 15px;
+
+}
+
+.campo textarea{
+
+    min-height:150px;
+
+    resize:none;
+
+    padding:15px;
+
+}
+
+.campo input:focus,
+
+.campo select:focus,
+
+.campo textarea:focus{
+
+    border-color:#111;
+
+}
+
+/* ===================================
+   DESCRIÇÃO
+=================================== */
+
+.descricao{
+
+    grid-column:1 / 3;
+
+}
+
+/* ===================================
+   PREÇO
+=================================== */
+
+.inputPreco{
+
+    display:flex;
+
+    align-items:center;
+
+    border:1px solid #dcdcdc;
+
+    border-radius:8px;
+
+    overflow:hidden;
+
+    height:48px;
+
+}
+
+.inputPreco span{
+
+    width:55px;
+
+    height:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#f7f7f7;
+
+    border-right:1px solid #ddd;
+
+    font-weight:600;
+
+}
+
+.inputPreco input{
+
+    border:none;
+
+    flex:1;
+
+    height:100%;
+
+    padding:0 15px;
+
+    outline:none;
+
+}
+
+/* ===================================
+   STATUS PRODUTO
+=================================== */
+
+.statusProduto{
+
+    grid-column:1 / 3;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    border:1px solid #e5e5e5;
+
+    border-radius:10px;
+
+    padding:20px;
+
+    margin-top:10px;
+
+}
+
+.statusProduto h3{
+
+    font-size:17px;
+
+    margin-bottom:5px;
+
+}
+
+.statusProduto p{
+
+    color:#777;
+
+    font-size:14px;
+
+}
+
+/* ===================================
+   SWITCH
+=================================== */
+
+.switch{
+
+    position:relative;
+
+    width:60px;
+
+    height:30px;
+
+}
+
+.switch input{
+
+    display:none;
+
+}
+
+.slider{
+
+    position:absolute;
+
+    inset:0;
+
+    cursor:pointer;
+
+    background:#d7d7d7;
+
+    border-radius:30px;
+
+    transition:.4s;
+
+}
+
+.slider::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:24px;
+
+    height:24px;
+
+    background:#fff;
+
+    border-radius:50%;
+
+    left:3px;
+
+    top:3px;
+
+    transition:.4s;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.2);
+
+}
+
+.switch input:checked + .slider{
+
+    background:#111;
+
+}
+
+.switch input:checked + .slider::before{
+
+    transform:translateX(30px);
+
+}
+
+/* ===================================
+   COLUNA DIREITA
+=================================== */
+
+.colunaDireita{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.colunaDireita label{
+
+    font-size:15px;
+
+    font-weight:600;
+
+    margin-bottom:12px;
+
+}
+
+/* ===================================
+   ÁREA DE UPLOAD
+=================================== */
+
+.uploadArea{
+
+    width:100%;
+
+    height:280px;
+
+    border:2px dashed #d7d7d7;
+
+    border-radius:14px;
+
+    background:#fafafa;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    transition:.3s;
+
+    cursor:pointer;
+
+}
+
+.uploadArea:hover{
+
+    border-color:#000;
+
+    background:#f2f2f2;
+
+}
+
+.uploadArea i{
+
+    font-size:45px;
+
+    color:#9a9a9a;
+
+    margin-bottom:18px;
+
+}
+
+.uploadArea h3{
+
+    font-size:18px;
+
+    margin-bottom:8px;
+
+}
+
+.uploadArea p{
+
+    font-size:14px;
+
+    color:#777;
+
+    margin-bottom:20px;
+
+}
+
+.uploadArea button{
+
+    width:170px;
+
+    height:45px;
+
+    border:1px solid #111;
+
+    background:#fff;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-family:'Poppins',sans-serif;
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+.uploadArea button:hover{
+
+    background:#111;
+
+    color:#fff;
+
+}
+/* ===================================
+   MINIATURAS DAS IMAGENS
+=================================== */
+
+.miniaturas{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:15px;
+
+    margin-top:18px;
+
+    margin-bottom:25px;
+
+}
+
+.miniaturas div{
+
+    height:90px;
+
+    border:1px solid #dcdcdc;
+
+    border-radius:10px;
+
+    background:#f7f7f7;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.miniaturas div:hover{
+
+    border-color:#111;
+
+    background:#efefef;
+
+}
+
+.miniaturas div i{
+
+    font-size:24px;
+
+    color:#b0b0b0;
+
+}
+
+.miniaturas img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+}
+
+/* ===================================
+   BOTÕES
+=================================== */
+
+#btnSalvar{
+
+    width:100%;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#111;
+
+    color:#fff;
+
+    font-size:15px;
+
+    font-family:'Poppins',sans-serif;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    margin-bottom:12px;
+
+}
+
+#btnSalvar:hover{
+
+    background:#000;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+}
+
+#btnCancelar{
+
+    width:100%;
+
+    height:52px;
+
+    border:1px solid #222;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    color:#222;
+
+    font-size:15px;
+
+    font-family:'Poppins',sans-serif;
+
+    font-weight:500;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#btnCancelar:hover{
+
+    background:#f5f5f5;
+
+}
+
+/* ===================================
+   RODAPÉ
+=================================== */
+
+footer{
+
+    margin-top:60px;
+
+    border-top:1px solid #ececec;
+
+    background:#fff;
+
+    padding:25px 45px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    font-size:14px;
+
+    color:#666;
+
+}
+
+footer div{
+
+    text-align:center;
+
+}
+
+#statusSistema{
+
+    color:#00994d;
+
+    font-weight:600;
+
+}
+
+/* ===================================
+   ANIMAÇÕES
+=================================== */
+
+button{
+
+    transition:all .3s ease;
+
+}
+
+input,
+
+textarea,
+
+select{
+
+    transition:all .3s ease;
+
+}
+
+input:hover,
+
+textarea:hover,
+
+select:hover{
+
+    border-color:#999;
+
+}
+
+.uploadArea{
+
+    transition:.35s;
+
+}
+
+.sidebar li{
+
+    transition:.3s;
+
+}
+
+.sidebar li:hover{
+
+    padding-left:5px;
+
+}
+
+/* ===================================
+   RESPONSIVIDADE
+=================================== */
+
+@media(max-width:1200px){
+
+    #formProduto{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .colunaEsquerda{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .descricao{
+
+        grid-column:auto;
+
+    }
+
+    .statusProduto{
+
+        grid-column:auto;
+
+    }
+
+}
+
+@media(max-width:900px){
+
+    .sidebar{
+
+        width:80px;
+
+    }
+
+    .sidebar .logo h2{
+
+        display:none;
+
+    }
+
+    .sidebar span{
+
+        display:none;
+
+    }
+
+    .sidebar li{
+
+        display:flex;
+
+        justify-content:center;
+
+    }
+
+    .sidebar li a{
+
+        justify-content:center;
+
+        padding:18px;
+
+    }
+
+    .conteudo{
+
+        margin-left:80px;
+
+        width:calc(100% - 80px);
+
+    }
+
+    .topbar{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:15px;
+
+        height:auto;
+
+        padding:20px;
+
+    }
+
+    .menuSuperior{
+
+        gap:20px;
+
+        flex-wrap:wrap;
+
+    }
+
+    .pesquisa{
+
+        width:100%;
+
+    }
+
+    .pesquisa input{
+
+        width:100%;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .tituloPagina{
+
+        padding:25px;
+
+    }
+
+    .tituloPagina h1{
+
+        font-size:30px;
+
+    }
+
+    .formulario{
+
+        padding:25px;
+
+    }
+
+    .miniaturas{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+    footer{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    body{
+
+        display:block;
+
+    }
+
+    .sidebar{
+
+        position:relative;
+
+        width:100%;
+
+        height:auto;
+
+        border-right:none;
+
+        border-bottom:1px solid #e5e5e5;
+
+    }
+
+    .sidebar nav ul{
+
+        display:flex;
+
+        overflow-x:auto;
+
+    }
+
+    .sidebar li{
+
+        flex:1;
+
+    }
+
+    .sidebar span{
+
+        display:block;
+
+        font-size:12px;
+
+    }
+
+    .sidebar .logo{
+
+        justify-content:center;
+
+    }
+
+    .sidebar .logo h2{
+
+        display:block;
+
+        font-size:20px;
+
+    }
+
+    .conteudo{
+
+        margin-left:0;
+
+        width:100%;
+
+    }
+
+    .menuSuperior{
+
+        justify-content:center;
+
+    }
+
+    .campo input,
+
+    .campo textarea,
+
+    .campo select{
+
+        font-size:14px;
+
+    }
+
+    .uploadArea{
+
+        height:220px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .tituloPagina h1{
+
+        font-size:25px;
+
+    }
+
+    .tituloPagina p{
+
+        font-size:13px;
+
+    }
+
+    .miniaturas{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    #btnSalvar,
+
+    #btnCancelar{
+
+        height:48px;
+
+        font-size:14px;
+
+    }
+
+    footer{
+
+        font-size:12px;
+
+    }
+
+}

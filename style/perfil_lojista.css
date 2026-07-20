@@ -1,0 +1,1037 @@
+/* ==========================================
+   RESET
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#f5f5f5;
+
+    color:#111;
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+/* ==========================================
+   MENU LATERAL
+========================================== */
+
+.sidebar{
+
+    width:250px;
+
+    background:#ffffff;
+
+    border-right:1px solid #e5e5e5;
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    bottom:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow-y:auto;
+
+    z-index:1000;
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:20px;
+
+    border-bottom:1px solid #ececec;
+
+}
+
+.logo img{
+
+    width:42px;
+
+    height:42px;
+
+    object-fit:cover;
+
+}
+
+.logo h2{
+
+    font-size:28px;
+
+    font-weight:600;
+
+}
+
+.sidebar nav{
+
+    flex:1;
+
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+    margin-top:15px;
+
+}
+
+.sidebar li{
+
+    margin:6px 0;
+
+    transition:.3s;
+
+}
+
+.sidebar li a{
+
+    text-decoration:none;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:16px 24px;
+
+    color:#222;
+
+    transition:.3s;
+
+}
+
+.sidebar li a:hover{
+
+    background:#f6f6f6;
+
+}
+
+.sidebar li.ativo{
+
+    border-left:4px solid #111;
+
+    background:#fafafa;
+
+}
+
+.sidebar li i{
+
+    width:22px;
+
+    text-align:center;
+
+}
+
+/* ==========================================
+   CONTEÚDO
+========================================== */
+
+.conteudo{
+
+    margin-left:250px;
+
+    width:calc(100% - 250px);
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+/* ==========================================
+   MENU SUPERIOR
+========================================== */
+
+.topbar{
+
+    height:75px;
+
+    background:#ffffff;
+
+    border-bottom:1px solid #e8e8e8;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 40px;
+
+}
+
+.menuSuperior{
+
+    display:flex;
+
+    list-style:none;
+
+    gap:40px;
+
+}
+
+.menuSuperior li{
+
+    list-style:none;
+
+}
+
+.menuSuperior a{
+
+    text-decoration:none;
+
+    color:#333;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+.menuSuperior a:hover{
+
+    color:#000;
+
+}
+
+/* ==========================================
+   PESQUISA
+========================================== */
+
+.pesquisa{
+
+    display:flex;
+
+    align-items:center;
+
+    background:#fff;
+
+    border:1px solid #dddddd;
+
+    border-radius:8px;
+
+    overflow:hidden;
+
+}
+
+.pesquisa input{
+
+    width:230px;
+
+    padding:10px 15px;
+
+    border:none;
+
+    outline:none;
+
+    font-size:14px;
+
+}
+
+.pesquisa button{
+
+    width:45px;
+
+    height:40px;
+
+    border:none;
+
+    background:#fff;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.pesquisa button:hover{
+
+    background:#f5f5f5;
+
+}
+
+/* ==========================================
+   TÍTULO DA PÁGINA
+========================================== */
+
+.tituloPagina{
+
+    background:#fff;
+
+    padding:45px;
+
+}
+
+.tituloPagina h1{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+.tituloPagina p{
+
+    color:#777;
+
+    font-size:15px;
+
+}
+
+.tituloPagina::after{
+
+    content:"";
+
+    display:block;
+
+    height:1px;
+
+    background:#ececec;
+
+    margin-top:35px;
+
+}
+/* ==========================================
+   FORMULÁRIO
+========================================== */
+
+.formulario{
+
+    background:#ffffff;
+
+    padding:40px 45px 50px;
+
+}
+
+#formPerfil{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:45px;
+
+    align-items:flex-start;
+
+}
+
+/* ==========================================
+   COLUNA ESQUERDA
+========================================== */
+
+.colunaEsquerda{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+.colunaEsquerda h2{
+
+    font-size:30px;
+
+    font-weight:600;
+
+    color:#111;
+
+    margin-top:5px;
+
+}
+
+/* ==========================================
+   CAMPOS
+========================================== */
+
+.campo{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.campo label{
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#222;
+
+    margin-bottom:8px;
+
+}
+
+.campo input{
+
+    width:100%;
+
+    height:48px;
+
+    border:1px solid #dddddd;
+
+    border-radius:8px;
+
+    padding:0 15px;
+
+    font-size:15px;
+
+    font-family:'Poppins',sans-serif;
+
+    background:#ffffff;
+
+    transition:.3s;
+
+    outline:none;
+
+}
+
+.campo input:focus{
+
+    border-color:#111;
+
+    box-shadow:0 0 0 3px rgba(0,0,0,.08);
+
+}
+
+.campo input::placeholder{
+
+    color:#aaaaaa;
+
+}
+
+/* ==========================================
+   DUAS COLUNAS
+========================================== */
+
+.duasColunas{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:18px;
+
+}
+
+/* ==========================================
+   COLUNA DIREITA
+========================================== */
+
+.colunaDireita{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.colunaDireita h2{
+
+    font-size:30px;
+
+    font-weight:600;
+
+}
+
+/* ==========================================
+   ÁREA DE UPLOAD
+========================================== */
+
+.uploadArea{
+
+    width:100%;
+
+    min-height:340px;
+
+    border:2px dashed #d9d9d9;
+
+    border-radius:12px;
+
+    background:#fafafa;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:30px;
+
+    transition:.3s;
+
+}
+
+.uploadArea:hover{
+
+    border-color:#111;
+
+    background:#f3f3f3;
+
+}
+
+#previewFoto{
+
+    width:160px;
+
+    height:160px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:5px solid #ffffff;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.15);
+
+    margin-bottom:20px;
+
+}
+
+.uploadArea p{
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:#222;
+
+    margin-bottom:6px;
+
+}
+
+.uploadArea small{
+
+    color:#888;
+
+    font-size:13px;
+
+    margin-bottom:25px;
+
+}
+
+#btnSelecionarImagem{
+
+    width:220px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#111;
+
+    color:#ffffff;
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:14px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#btnSelecionarImagem i{
+
+    margin-right:8px;
+
+}
+
+#btnSelecionarImagem:hover{
+
+    background:#000;
+
+    transform:translateY(-2px);
+
+}
+/* ==========================================
+   BOTÕES
+========================================== */
+
+#btnSalvar{
+
+    width:100%;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#111;
+
+    color:#fff;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    font-family:'Poppins',sans-serif;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    margin-top:10px;
+
+}
+
+#btnSalvar:hover{
+
+    background:#000;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 12px 25px rgba(0,0,0,.18);
+
+}
+
+#btnCancelar{
+
+    width:100%;
+
+    height:55px;
+
+    border:1px solid #111;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    color:#111;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    font-family:'Poppins',sans-serif;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#btnCancelar:hover{
+
+    background:#f4f4f4;
+
+}
+
+/* ==========================================
+   RODAPÉ
+========================================== */
+
+footer{
+
+    margin-top:60px;
+
+    padding:30px 45px;
+
+    border-top:1px solid #ececec;
+
+    background:#fff;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    font-size:14px;
+
+    color:#666;
+
+}
+
+footer div{
+
+    text-align:center;
+
+}
+
+#statusSistema{
+
+    color:#0a9b41;
+
+    font-weight:600;
+
+}
+
+/* ==========================================
+   ANIMAÇÕES
+========================================== */
+
+button{
+
+    transition:.3s;
+
+}
+
+input{
+
+    transition:.3s;
+
+}
+
+input:hover{
+
+    border-color:#999;
+
+}
+
+.sidebar li{
+
+    transition:.3s;
+
+}
+
+.sidebar li:hover{
+
+    padding-left:6px;
+
+}
+
+.uploadArea{
+
+    transition:.35s;
+
+}
+
+.uploadArea:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================
+   RESPONSIVIDADE
+========================================== */
+
+@media(max-width:1200px){
+
+    #formPerfil{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .colunaDireita{
+
+        margin-top:10px;
+
+    }
+
+}
+
+@media(max-width:992px){
+
+    .sidebar{
+
+        width:80px;
+
+    }
+
+    .sidebar .logo h2{
+
+        display:none;
+
+    }
+
+    .sidebar span{
+
+        display:none;
+
+    }
+
+    .sidebar li{
+
+        display:flex;
+
+        justify-content:center;
+
+    }
+
+    .sidebar li a{
+
+        justify-content:center;
+
+        padding:18px;
+
+    }
+
+    .conteudo{
+
+        margin-left:80px;
+
+        width:calc(100% - 80px);
+
+    }
+
+    .topbar{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        height:auto;
+
+        padding:20px;
+
+        gap:15px;
+
+    }
+
+    .menuSuperior{
+
+        flex-wrap:wrap;
+
+        gap:25px;
+
+    }
+
+    .pesquisa{
+
+        width:100%;
+
+    }
+
+    .pesquisa input{
+
+        width:100%;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .tituloPagina{
+
+        padding:25px;
+
+    }
+
+    .tituloPagina h1{
+
+        font-size:30px;
+
+    }
+
+    .tituloPagina p{
+
+        font-size:14px;
+
+    }
+
+    .formulario{
+
+        padding:25px;
+
+    }
+
+    .duasColunas{
+
+        grid-template-columns:1fr;
+
+    }
+
+    #previewFoto{
+
+        width:140px;
+
+        height:140px;
+
+    }
+
+    footer{
+
+        flex-direction:column;
+
+        text-align:center;
+
+        gap:15px;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    body{
+
+        display:block;
+
+    }
+
+    .sidebar{
+
+        position:relative;
+
+        width:100%;
+
+        height:auto;
+
+        border-right:none;
+
+        border-bottom:1px solid #ececec;
+
+    }
+
+    .sidebar .logo{
+
+        justify-content:center;
+
+    }
+
+    .sidebar .logo h2{
+
+        display:block;
+
+        font-size:22px;
+
+    }
+
+    .sidebar nav ul{
+
+        display:flex;
+
+        overflow-x:auto;
+
+    }
+
+    .sidebar li{
+
+        flex:1;
+
+    }
+
+    .sidebar span{
+
+        display:block;
+
+        font-size:12px;
+
+    }
+
+    .conteudo{
+
+        width:100%;
+
+        margin-left:0;
+
+    }
+
+    .menuSuperior{
+
+        width:100%;
+
+        justify-content:center;
+
+    }
+
+    .uploadArea{
+
+        min-height:280px;
+
+    }
+
+    #previewFoto{
+
+        width:120px;
+
+        height:120px;
+
+    }
+
+    #btnSelecionarImagem{
+
+        width:100%;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .tituloPagina h1{
+
+        font-size:24px;
+
+    }
+
+    .tituloPagina p{
+
+        font-size:13px;
+
+    }
+
+    .campo input{
+
+        font-size:14px;
+
+    }
+
+    #btnSalvar,
+
+    #btnCancelar{
+
+        height:48px;
+
+        font-size:14px;
+
+    }
+
+    footer{
+
+        font-size:12px;
+
+    }
+
+}

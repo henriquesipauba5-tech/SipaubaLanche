@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro de Promoções e Banners</title>
+
+    <link rel="stylesheet" href="../style/promocao_lojista.css">
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- ================= MENU LATERAL ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <img id="logoLoja" src="" alt="Logo">
+
+            <h2 id="nomePainel">Painel do Lojista</h2>
+
+        </div>
+
+        <nav>
+
+            <ul id="menuLateral">
+
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Visão Geral</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-box"></i>
+                        <span>Estoque</span>
+                    </a>
+                </li>
+
+                <li class="ativo">
+                    <a href="#">
+                        <i class="fa-solid fa-bullhorn"></i>
+                        <span>Marketing</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span>Pedidos</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-wallet"></i>
+                        <span>Financeiro</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <span>Categorias</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-comments"></i>
+                        <span>Chat</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-star"></i>
+                        <span>Avaliações</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-gear"></i>
+                        <span>Configurações</span>
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </aside>
+
+    <!-- ================= CONTEÚDO ================= -->
+
+    <main class="conteudo">
+
+        <!-- TOPO -->
+
+        <header class="topbar">
+
+            <ul class="menuSuperior">
+
+                <li><a href="#">Pedidos</a></li>
+
+                <li><a class="ativoMenu" href="#">Marketing</a></li>
+
+                <li><a href="#">Estoque</a></li>
+
+                <li><a href="#">Financeiro</a></li>
+
+            </ul>
+
+            <div class="pesquisa">
+
+                <input
+                    type="text"
+                    id="campoPesquisa"
+                    placeholder="Pesquisar">
+
+                <button id="btnPesquisar">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                </button>
+
+            </div>
+
+        </header>
+
+        <!-- ================= TÍTULO ================= -->
+
+        <section class="tituloPagina">
+
+            <h1 id="tituloPagina">
+
+                Cadastro de Promoções e Banners
+
+            </h1>
+
+            <p>
+
+                Configure suas campanhas de marketing e banners de destaque para sua loja.
+
+            </p>
+
+        </section>
+
+        <!-- ================= FORMULÁRIO ================= -->
+
+        <section class="formulario">
+
+            <form id="formPromocao">
+
+                <!-- ESQUERDA -->
+
+                <div class="colunaEsquerda">
+
+                    <h2>Configuração da Promoção</h2>
+
+                    <div class="campo">
+
+                        <label>Nome da Promoção</label>
+
+                        <input
+                            type="text"
+                            id="nomePromocao"
+                            placeholder="Ex: Black Friday Verão 2024">
+
+                    </div>
+
+                    <div class="duasColunas">
+
+                        <div class="campo">
+
+                            <label>Tipo de Desconto</label>
+
+                            <select id="tipoDesconto">
+
+                            </select>
+
+                        </div>
+
+                        <div class="campo">
+
+                            <label>Valor do Desconto</label>
+
+                            <div class="inputDesconto">
+
+                                <span>%</span>
+
+                                <input
+                                    type="number"
+                                    id="valorDesconto"
+                                    placeholder="0">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="duasColunas">
+
+                        <div class="campo">
+
+                            <label>Data de Início</label>
+
+                            <input
+                                type="date"
+                                id="dataInicio">
+
+                        </div>
+
+                        <div class="campo">
+
+                            <label>Data de Término</label>
+
+                            <input
+                                type="date"
+                                id="dataFim">
+
+                        </div>
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label>Produtos Aplicáveis</label>
+
+                        <input
+                            type="text"
+                            id="buscarProdutos"
+                            placeholder="Buscar produtos ou coleções...">
+
+                    </div>
+
+                    <div class="statusProduto">
+
+                        <div>
+
+                            <h3>Status da Promoção</h3>
+
+                            <p>
+
+                                A promoção será ativada automaticamente.
+
+                            </p>
+
+                        </div>
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="statusPromocao"
+                                checked>
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <!-- DIREITA -->
+
+                <div class="colunaDireita">
+
+                    <h2>Configuração de Banners</h2>
+
+                    <div class="campo">
+
+                        <label>Banner Principal (Desktop)</label>
+
+                        <div class="uploadArea" id="uploadDesktop">
+
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                            <h3>Banner Desktop (1920x600)</h3>
+
+                            <p>PNG ou JPG até 10MB</p>
+
+                            <button
+                                type="button"
+                                id="btnDesktop">
+
+                                Selecionar Banner
+
+                            </button>
+
+                            <input
+                                type="file"
+                                id="bannerDesktop"
+                                hidden>
+
+                        </div>
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label>Banner Mobile</label>
+
+                        <div class="uploadArea pequeno" id="uploadMobile">
+
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                            <h3>Banner Mobile (800x800)</h3>
+
+                            <button
+                                type="button"
+                                id="btnMobile">
+
+                                Selecionar Banner
+
+                            </button>
+
+                            <input
+                                type="file"
+                                id="bannerMobile"
+                                hidden>
+
+                        </div>
+
+                    </div>
+
+                    <div class="campo">
+
+                        <label>Link de Destino</label>
+
+                        <input
+                            type="text"
+                            id="linkDestino"
+                            placeholder="/categoria/promocoes">
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        id="btnSalvar">
+
+                        Salvar Campanha
+
+                    </button>
+
+                    <button
+                        type="button"
+                        id="btnCancelar">
+
+                        Cancelar
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+        <!-- ================= RODAPÉ ================= -->
+
+        <footer>
+
+            <div>
+
+                Loja Aurora Moda • Todos os direitos reservados
+
+            </div>
+
+            <div>
+
+                Ajuda • Privacidade • Termos de uso
+
+            </div>
+
+            <div>
+
+                Status do sistema:
+                <span id="statusSistema">
+
+                    Operacional
+
+                </span>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+    <script src="/js/promocao_lojista.js"></script>s
+
+</body>
+
+</html>

@@ -1,12 +1,12 @@
 // =====================================================
-// ROTAS DE BANNER
+// ROTAS DE CUPOM
 // =====================================================
 //
-// POST    /banners       -> Cadastrar banner
-// GET     /banners       -> Listar banners
-// GET     /banners/:id   -> Buscar banner por ID
-// PUT     /banners/:id   -> Atualizar banner
-// DELETE  /banners/:id   -> Excluir banner
+// POST    /cupons       -> Cadastrar cupom
+// GET     /cupons       -> Listar cupons
+// GET     /cupons/:id   -> Buscar cupom por ID
+// PUT     /cupons/:id   -> Atualizar cupom
+// DELETE  /cupons/:id   -> Excluir cupom
 //
 // =====================================================
 
@@ -17,57 +17,57 @@ const express = require("express");
 const router = express.Router();
 
 
-// Importando Controller de Banner
-const BannerController = require("../controller/banner_controller.js");
+// Importando Controller de Cupom
+const CupomController = require("../controller/cupom_controller.js");
 
 
 // =========================
-// CADASTRAR BANNER
+// CADASTRAR CUPOM
 // =========================
 
 router.post(
     "/",
-    BannerController.cadastrar
+    CupomController.cadastrar
 );
 
 
 // =========================
-// LISTAR BANNERS
+// LISTAR CUPONS
 // =========================
 
 router.get(
     "/",
-    BannerController.listar
+    CupomController.listar
 );
 
 
 // =========================
-// BUSCAR BANNER POR ID
+// BUSCAR CUPOM POR ID
 // =========================
 
 router.get(
     "/:id",
-    BannerController.buscarPorId
+    CupomController.buscarPorId
 );
 
 
 // =========================
-// ATUALIZAR BANNER
+// ATUALIZAR CUPOM
 // =========================
 
 router.put(
     "/:id",
-    BannerController.atualizar
+    CupomController.atualizar
 );
 
 
 // =========================
-// EXCLUIR BANNER
+// EXCLUIR CUPOM
 // =========================
 
 router.delete(
     "/:id",
-    BannerController.excluir
+    CupomController.excluir
 );
 
 

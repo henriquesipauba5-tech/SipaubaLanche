@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastrar Lojista</title>
+
+<link rel="stylesheet" href="../style/cadastro_lojista.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- ================= MENU LATERAL ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+    
+            <img src="/assets/logo.png" alt="Logo da Loja">
+
+            <h2 id="nomePainel">
+                Painel do Lojista
+            </h2>
+
+        </div>
+
+        <nav>
+
+            <ul id="menuLateral">
+
+                <li class="ativo">
+
+                    <a href="#">
+                        <i class="fa-solid fa-chart-pie"></i>
+
+                        <span>Visão Geral</span>
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="#">
+                        <i class="fa-solid fa-box"></i>
+
+                        <span>Estoque</span>
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="#">
+                        <i class="fa-solid fa-cart-shopping"></i>
+
+                        <span>Pedidos</span>
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="#">
+                        <i class="fa-solid fa-wallet"></i>
+
+                        <span>Financeiro</span>
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="#">
+                        <i class="fa-solid fa-layer-group"></i>
+
+                        <span>Categorias</span>
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="#">
+                        <i class="fa-solid fa-comments"></i>
+
+                        <span>Chat</span>
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="#">
+                        <i class="fa-solid fa-star"></i>
+
+                        <span>Avaliações</span>
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="#">
+                        <i class="fa-solid fa-gear"></i>
+
+                        <span>Configurações</span>
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </aside>
+
+    <!-- ================= CONTEÚDO ================= -->
+
+    <main class="conteudo">
+
+        <!-- TOPO -->
+
+        <header class="topbar">
+
+            <nav>
+
+                <ul class="menuSuperior">
+
+                    <li><a href="#">Pedidos</a></li>
+
+                    <li><a href="#">Estoque</a></li>
+
+                    <li><a href="#">Financeiro</a></li>
+
+                    <li><a href="#">Marketing</a></li>
+
+                </ul>
+
+            </nav>
+
+            <div class="pesquisa">
+
+                <input
+                    type="text"
+                    id="campoPesquisa"
+                    placeholder="Pesquisar">
+
+                <button id="btnPesquisar">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                </button>
+
+            </div>
+
+        </header>
+
+        <!-- TÍTULO -->
+
+        <section class="tituloPagina">
+
+            <h1 id="tituloPagina">
+
+                Cadastrar Novo Produto
+
+            </h1>
+
+            <p id="descricaoPagina">
+
+                Preencha as informações abaixo para disponibilizar o produto em sua vitrine.
+
+            </p>
+
+        </section>
+
+        <!-- FORMULÁRIO -->
+
+        <section class="formulario">
+
+            <form id="formProduto">
+
+                <div class="colunaEsquerda">
+
+                    <!-- Nome -->
+
+                    <div class="campo">
+
+                        <label>
+
+                            Nome do Produto
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nomeProduto"
+                            placeholder="Ex: Camiseta Básica Premium">
+
+                    </div>
+
+                    <!-- Categoria -->
+
+                    <div class="campo">
+
+                        <label>
+
+                            Categoria
+
+                        </label>
+
+                        <select id="categoriaProduto">
+
+                        </select>
+
+                    </div>
+
+                    <!-- Descrição -->
+
+                    <div class="campo descricao">
+
+                        <label>
+
+                            Descrição do Produto
+
+                        </label>
+
+                        <textarea
+                            id="descricaoProduto"
+                            placeholder="Descreva as características do produto..."></textarea>
+
+                    </div>
+
+                    <!-- Preço -->
+
+                    <div class="campo">
+
+                        <label>
+
+                            Preço de Venda
+
+                        </label>
+
+                        <div class="inputPreco">
+
+                            <span>R$</span>
+
+                            <input
+                                type="number"
+                                id="precoProduto">
+
+                        </div>
+
+                    </div>
+
+                    <!-- Estoque -->
+
+                    <div class="campo">
+
+                        <label>
+
+                            Quantidade em Estoque
+
+                        </label>
+
+                        <input
+                            type="number"
+                            id="quantidadeProduto">
+
+                    </div>
+
+                    <!-- Status -->
+
+                    <div class="statusProduto">
+
+                        <div>
+
+                            <h3>Status do Produto</h3>
+
+                            <p>
+
+                                Defina se o produto estará visível imediatamente.
+
+                            </p>
+
+                        </div>
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="statusProduto"
+                                checked>
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <!-- COLUNA DIREITA -->
+
+                <div class="colunaDireita">
+
+                    <label>
+
+                        Fotos do Produto
+
+                    </label>
+
+                    <div class="uploadArea" id="uploadArea">
+
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                        <h3>
+
+                            Clique para enviar ou arraste
+
+                        </h3>
+
+                        <p>
+
+                            PNG, JPG até 10MB
+
+                        </p>
+
+                        <button
+                            type="button"
+                            id="btnSelecionarImagem">
+
+                            Selecionar arquivo
+
+                        </button>
+
+                        <input
+                            type="file"
+                            id="imagemProduto"
+                            multiple
+                            hidden>
+
+                    </div>
+
+                    <!-- Miniaturas -->
+
+                    <div class="miniaturas" id="miniaturas">
+
+                    </div>
+
+                    <!-- Botões -->
+
+                    <button
+                        type="submit"
+                        id="btnSalvar">
+
+                        Salvar Produto
+
+                    </button>
+
+                    <button
+                        type="button"
+                        id="btnCancelar">
+
+                        Cancelar
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+        <!-- RODAPÉ -->
+
+        <footer>
+
+            <div>
+
+                Loja Aurora Moda • Todos os direitos reservados
+
+            </div>
+
+            <div>
+
+                Ajuda • Privacidade • Termos de uso
+
+            </div>
+
+            <div>
+
+                Status do sistema:
+                <span id="statusSistema">
+                    Operacional
+                </span>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+    <script src="/js/cadastro-lojista.js"></script>
+
+</body>
+
+</html>

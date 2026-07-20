@@ -1,0 +1,1544 @@
+/*====================================================
+                    RESET
+====================================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#f5f6fa;
+
+    color:#2f3542;
+
+    display:flex;
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+}
+
+/*====================================================
+                SIDEBAR
+====================================================*/
+
+.sidebar{
+
+    width:260px;
+
+    background:#ffffff;
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    bottom:0;
+
+    border-right:1px solid #ececec;
+
+    display:flex;
+
+    flex-direction:column;
+
+    z-index:1000;
+
+    box-shadow:3px 0 12px rgba(0,0,0,.04);
+
+}
+
+.logo{
+
+    height:90px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:15px;
+
+    border-bottom:1px solid #ececec;
+
+}
+
+.logo img{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+.logo h2{
+
+    font-size:21px;
+
+    color:#222;
+
+    font-weight:600;
+
+}
+
+.sidebar nav{
+
+    flex:1;
+
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+    padding:20px;
+
+}
+
+.sidebar li{
+
+    margin-bottom:8px;
+
+}
+
+.sidebar a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    text-decoration:none;
+
+    color:#555;
+
+    padding:15px 18px;
+
+    border-radius:12px;
+
+    transition:.3s;
+
+    font-size:15px;
+
+}
+
+.sidebar a:hover{
+
+    background:#111;
+
+    color:#fff;
+
+    transform:translateX(5px);
+
+}
+
+.sidebar li.ativo a{
+
+    background:#111;
+
+    color:#fff;
+
+}
+
+.sidebar i{
+
+    width:22px;
+
+    text-align:center;
+
+}
+
+/*====================================================
+                CONTEÚDO
+====================================================*/
+
+.conteudo{
+
+    margin-left:260px;
+
+    width:calc(100% - 260px);
+
+    min-height:100vh;
+
+}
+
+/*====================================================
+                TOPBAR
+====================================================*/
+
+.topbar{
+
+    height:80px;
+
+    background:#ffffff;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 35px;
+
+    border-bottom:1px solid #ececec;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:500;
+
+}
+
+/*====================================================
+                PESQUISA
+====================================================*/
+
+.pesquisa{
+
+    display:flex;
+
+    align-items:center;
+
+    background:#f4f5f7;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+}
+
+.pesquisa input{
+
+    width:300px;
+
+    height:46px;
+
+    border:none;
+
+    background:transparent;
+
+    outline:none;
+
+    padding:0 18px;
+
+    font-size:14px;
+
+}
+
+.pesquisa button{
+
+    width:50px;
+
+    height:46px;
+
+    border:none;
+
+    cursor:pointer;
+
+    background:transparent;
+
+    font-size:15px;
+
+}
+
+/*====================================================
+                USUÁRIO
+====================================================*/
+
+.usuarioTopo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+#fotoTopo{
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+#nomeTopo{
+
+    font-weight:600;
+
+    color:#333;
+
+}
+
+/*====================================================
+                PERFIL DA LOJA
+====================================================*/
+
+.perfilLoja{
+
+    background:#ffffff;
+
+    margin:30px;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.05);
+
+}
+
+.perfilEsquerda{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+}
+
+#fotoPerfil{
+
+    width:120px;
+
+    height:120px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:5px solid #f1f2f6;
+
+}
+
+.dadosPerfil h1{
+
+    font-size:30px;
+
+    margin-bottom:10px;
+
+    color:#222;
+
+}
+
+.dadosPerfil p{
+
+    color:#777;
+
+    margin-bottom:5px;
+
+    font-size:14px;
+
+}
+
+.perfilDireita{
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+#btnPerfil,
+#btnEditarPerfil{
+
+    width:170px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:14px;
+
+    transition:.3s;
+
+}
+
+#btnPerfil{
+
+    background:#ececec;
+
+    color:#111;
+
+}
+
+#btnPerfil:hover{
+
+    background:#dcdcdc;
+
+}
+
+#btnEditarPerfil{
+
+    background:#111;
+
+    color:#fff;
+
+}
+
+#btnEditarPerfil:hover{
+
+    background:#000;
+
+}
+/*====================================================
+            DASHBOARD
+====================================================*/
+
+.dashboard{
+
+    padding:0 30px 30px;
+
+}
+
+/*====================================================
+            TÍTULO DAS SEÇÕES
+====================================================*/
+
+.tituloSecao{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.tituloSecao h2{
+
+    font-size:26px;
+
+    font-weight:600;
+
+    color:#222;
+
+}
+
+.tituloSecao p{
+
+    font-size:14px;
+
+    color:#7d7d7d;
+
+}
+
+/*====================================================
+            ÁREA DO GRÁFICO + INDICADORES
+====================================================*/
+
+.dashboardResumo{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:25px;
+
+    align-items:start;
+
+}
+
+/*====================================================
+            CARD DO GRÁFICO
+====================================================*/
+
+.graficoContainer{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:20px;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.05);
+
+}
+
+/*====================================================
+            CABEÇALHO DO GRÁFICO
+====================================================*/
+
+.graficoHeader{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+}
+
+.graficoHeader h3{
+
+    font-size:18px;
+
+    font-weight:600;
+
+    color:#222;
+
+}
+
+.graficoHeader span{
+
+    color:#777;
+
+    font-size:13px;
+
+}
+
+/*====================================================
+            GRÁFICO
+====================================================*/
+
+#graficoVendas{
+
+    width:100% !important;
+
+    height:190px !important;
+
+    max-height:190px !important;
+
+    min-height:190px;
+
+}
+
+/*====================================================
+            INDICADORES
+====================================================*/
+
+.resumoRapido{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+#cardsIndicadores{
+
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    gap:18px;
+
+}
+
+/*====================================================
+            CARD INDICADOR
+====================================================*/
+
+.cardIndicador{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.05);
+
+    transition:.3s;
+
+}
+
+.cardIndicador:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.08);
+
+}
+
+.tituloIndicador{
+
+    display:block;
+
+    font-size:14px;
+
+    color:#777;
+
+    margin-bottom:10px;
+
+}
+
+.valorIndicador{
+
+    font-size:32px;
+
+    font-weight:700;
+
+    color:#111;
+
+    margin-bottom:10px;
+
+}
+
+.variacaoIndicador{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    color:#16a34a;
+
+    font-weight:600;
+
+    font-size:13px;
+
+}
+
+.variacaoIndicador::before{
+
+    content:"▲";
+
+    font-size:11px;
+
+}
+
+/*====================================================
+            ANIMAÇÕES
+====================================================*/
+
+.cardIndicador,
+.graficoContainer{
+
+    transition:.3s;
+
+}
+
+.graficoContainer:hover{
+
+    box-shadow:0 15px 30px rgba(0,0,0,.08);
+
+}
+
+/*====================================================
+            RESPONSIVIDADE
+====================================================*/
+
+@media(max-width:1100px){
+
+    .dashboardResumo{
+
+        grid-template-columns:1fr;
+
+    }
+
+    #cardsIndicadores{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:700px){
+
+    #cardsIndicadores{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .dashboard{
+
+        padding:20px;
+
+    }
+
+    .tituloSecao{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:8px;
+
+    }
+
+    .tituloSecao h2{
+
+        font-size:22px;
+
+    }
+
+    .graficoContainer{
+
+        padding:18px;
+
+    }
+
+    #graficoVendas{
+
+        height:180px !important;
+
+        min-height:180px;
+
+    }
+
+}
+/*====================================================
+            STATUS OPERACIONAL
+====================================================*/
+
+.statusOperacional{
+
+    padding:0 30px 30px;
+
+}
+
+.cardsStatus{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+.cardStatus{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.05);
+
+    text-align:center;
+
+    transition:.3s;
+
+}
+
+.cardStatus:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.08);
+
+}
+
+.iconeStatus{
+
+    width:65px;
+
+    height:65px;
+
+    border-radius:50%;
+
+    margin:0 auto 18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#111;
+
+}
+
+.iconeStatus i{
+
+    color:#ffffff;
+
+    font-size:24px;
+
+}
+
+.tituloStatus{
+
+    font-size:16px;
+
+    color:#555;
+
+    margin-bottom:10px;
+
+}
+
+.valorStatus{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    color:#111;
+
+    margin-bottom:8px;
+
+}
+
+.descricaoStatus{
+
+    font-size:13px;
+
+    color:#888;
+
+}
+
+/*====================================================
+            PRODUTOS EM DESTAQUE
+====================================================*/
+
+.produtosDestaque{
+
+    padding:0 30px 30px;
+
+}
+
+.listaProdutos{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:25px;
+
+}
+
+/*====================================================
+            CARD PRODUTO
+====================================================*/
+
+.cardProduto{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.05);
+
+    transition:.3s;
+
+}
+
+.cardProduto:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 18px 35px rgba(0,0,0,.08);
+
+}
+
+.imagemProduto{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.nomeProduto{
+
+    font-size:20px;
+
+    color:#222;
+
+    padding:20px 20px 10px;
+
+}
+
+.precoProduto{
+
+    padding:0 20px;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#16a34a;
+
+}
+
+.estoqueProduto{
+
+    padding:10px 20px 20px;
+
+    color:#666;
+
+    font-size:14px;
+
+}
+
+/*====================================================
+            BOTÕES PRODUTO
+====================================================*/
+
+.acoesProduto{
+
+    display:flex;
+
+    gap:12px;
+
+    padding:0 20px 20px;
+
+}
+
+.btnEditar,
+
+.btnPromover{
+
+    flex:1;
+
+    height:46px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:14px;
+
+    transition:.3s;
+
+}
+
+.btnEditar{
+
+    background:#ececec;
+
+    color:#222;
+
+}
+
+.btnEditar:hover{
+
+    background:#dadada;
+
+}
+
+.btnPromover{
+
+    background:#111;
+
+    color:#fff;
+
+}
+
+.btnPromover:hover{
+
+    background:#000;
+
+}
+
+/*====================================================
+            RESPONSIVIDADE
+====================================================*/
+
+@media(max-width:1100px){
+
+    .cardsStatus{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:700px){
+
+    .cardsStatus{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .listaProdutos{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .statusOperacional,
+
+    .produtosDestaque{
+
+        padding:20px;
+
+    }
+
+}
+/*====================================================
+                DADOS DA EMPRESA
+====================================================*/
+
+.dadosEmpresa{
+
+    padding:0 30px 30px;
+
+}
+
+.empresaGrid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:20px;
+
+}
+
+.empresaCard{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:18px;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.05);
+
+    transition:.3s;
+
+}
+
+.empresaCard:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 18px 35px rgba(0,0,0,.08);
+
+}
+
+.empresaCard i{
+
+    width:55px;
+
+    height:55px;
+
+    background:#111;
+
+    color:#fff;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:20px;
+
+    flex-shrink:0;
+
+}
+
+.empresaCard h3{
+
+    font-size:18px;
+
+    margin-bottom:8px;
+
+    color:#222;
+
+}
+
+.empresaCard p{
+
+    color:#666;
+
+    line-height:1.6;
+
+    font-size:14px;
+
+}
+
+/*====================================================
+                AVALIAÇÕES
+====================================================*/
+
+.avaliacoes{
+
+    padding:0 30px 30px;
+
+}
+
+.listaAvaliacoes{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+    gap:20px;
+
+}
+
+.cardAvaliacao{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.05);
+
+    transition:.3s;
+
+}
+
+.cardAvaliacao:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 18px 35px rgba(0,0,0,.08);
+
+}
+
+.cliente{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:18px;
+
+}
+
+.fotoCliente{
+
+    width:65px;
+
+    height:65px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+.nomeCliente{
+
+    font-size:18px;
+
+    color:#222;
+
+    margin-bottom:5px;
+
+}
+
+.estrelas{
+
+    color:#f4b400;
+
+    font-size:15px;
+
+}
+
+.comentarioCliente{
+
+    color:#666;
+
+    line-height:1.7;
+
+    font-size:14px;
+
+}
+
+/*====================================================
+                RODAPÉ
+====================================================*/
+
+.rodape{
+
+    margin-top:20px;
+
+    padding:25px 35px;
+
+    background:#ffffff;
+
+    border-top:1px solid #ececec;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    color:#777;
+
+    font-size:14px;
+
+}
+
+#statusSistema{
+
+    color:#16a34a;
+
+    font-weight:600;
+
+}
+
+/*====================================================
+                SCROLLBAR
+====================================================*/
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#ececec;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#bdbdbd;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#8f8f8f;
+
+}
+
+/*====================================================
+                SELEÇÃO
+====================================================*/
+
+::selection{
+
+    background:#111;
+
+    color:#ffffff;
+
+}
+
+/*====================================================
+                RESPONSIVIDADE
+====================================================*/
+
+@media(max-width:1200px){
+
+    .empresaGrid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:992px){
+
+    .sidebar{
+
+        width:90px;
+
+    }
+
+    .sidebar .logo h2{
+
+        display:none;
+
+    }
+
+    .sidebar span{
+
+        display:none;
+
+    }
+
+    .sidebar a{
+
+        justify-content:center;
+
+    }
+
+    .conteudo{
+
+        margin-left:90px;
+
+        width:calc(100% - 90px);
+
+    }
+
+    .perfilLoja{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:25px;
+
+    }
+
+    .perfilDireita{
+
+        width:100%;
+
+        justify-content:flex-start;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .topbar{
+
+        flex-direction:column;
+
+        gap:15px;
+
+        height:auto;
+
+        padding:20px;
+
+    }
+
+    .pesquisa{
+
+        width:100%;
+
+    }
+
+    .pesquisa input{
+
+        width:100%;
+
+    }
+
+    .perfilLoja{
+
+        margin:20px;
+
+        padding:25px;
+
+    }
+
+    .perfilEsquerda{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .perfilDireita{
+
+        width:100%;
+
+        flex-direction:column;
+
+    }
+
+    #btnPerfil,
+
+    #btnEditarPerfil{
+
+        width:100%;
+
+    }
+
+    .empresaGrid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .listaAvaliacoes{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .rodape{
+
+        flex-direction:column;
+
+        gap:10px;
+
+        text-align:center;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .sidebar{
+
+        position:relative;
+
+        width:100%;
+
+        height:auto;
+
+        border-right:none;
+
+        border-bottom:1px solid #ececec;
+
+    }
+
+    .sidebar .logo h2{
+
+        display:block;
+
+        font-size:20px;
+
+    }
+
+    .sidebar nav ul{
+
+        display:flex;
+
+        overflow-x:auto;
+
+        padding:10px;
+
+    }
+
+    .sidebar li{
+
+        flex:1;
+
+        margin:0;
+
+    }
+
+    .sidebar span{
+
+        display:block;
+
+        font-size:12px;
+
+    }
+
+    .conteudo{
+
+        margin-left:0;
+
+        width:100%;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .dadosPerfil h1{
+
+        font-size:24px;
+
+    }
+
+    .tituloSecao h2{
+
+        font-size:22px;
+
+    }
+
+    #fotoPerfil{
+
+        width:90px;
+
+        height:90px;
+
+    }
+
+    .cardIndicador h2,
+
+    .valorStatus{
+
+        font-size:24px;
+
+    }
+
+    .imagemProduto{
+
+        height:180px;
+
+    }
+
+}
+
+/*====================================================
+                TRANSIÇÕES
+====================================================*/
+
+button,
+a,
+.cardProduto,
+.cardStatus,
+.cardIndicador,
+.cardAvaliacao,
+.empresaCard{
+
+    transition:all .3s ease;
+
+}
