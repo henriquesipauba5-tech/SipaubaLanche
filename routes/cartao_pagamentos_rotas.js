@@ -18,7 +18,7 @@ const router = express.Router();
 
 
 // Importando Controller de Cartão de Pagamento
-const CartaoPagamentoController = require("../controller/cartaoPagamento_controller.js");
+const CartaoPagamentoController = require("../controller//cartao_pagamento_controller");
 
 
 // =========================

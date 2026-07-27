@@ -18,7 +18,7 @@ const router = express.Router();
 
 
 // Importando Controller de Imagem Produto
-const ImagemProdutoController = require("../controller/imagemProduto_controller.js");
+const ImagemProdutoController = require("../controller//imagem_produto_controller");
 
 
 // =========================

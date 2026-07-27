@@ -1,4 +1,4 @@
-const enderecoClienteModel = require("../models/enderecoClienteModel");
+const enderecoClienteModel = require("../model/endereco_has_cliente_model");
 
 // =========================
 // Listar Relacionamentos

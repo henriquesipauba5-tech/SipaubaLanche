@@ -16,7 +16,7 @@ const router = express.Router();
 
 
 // Importando Controller
-const CategoriaHasPromocaoController = require("../controller/categoria_has_promocao_controller.js");
+const CategoriaHasPromocaoController = require("../controller/categoria_has_promocoes_controller.js");
 
 
 // =========================
@@ -45,7 +45,7 @@ router.get(
 
 router.get(
     "/:categoria/:promocao",
-    CategoriaHasPromocaoController.buscarPorId
+    CategoriaHasPromocaoController.buscar
 );
 
 

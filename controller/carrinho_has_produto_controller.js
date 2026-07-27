@@ -1,4 +1,4 @@
-const carrinhoProdutoModel = require("../models/carrinhoProdutoModel");
+const carrinhoProdutoModel = require("../model/carrinho_has_produto_model");
 
 // =========================
 // Listar Relacionamentos

@@ -44,8 +44,8 @@ router.get(
 // =========================
 
 router.get(
-    "/:carrinho/:produto",
-    CarrinhoHasProdutoController.buscarPorId
+    "/:carrinhoId/:produtoId",
+    CarrinhoHasProdutoController.buscar
 );
 
 
@@ -54,7 +54,7 @@ router.get(
 // =========================
 
 router.delete(
-    "/:carrinho/:produto",
+    "/:carrinhoId/:produtoId",
     CarrinhoHasProdutoController.excluir
 );
 

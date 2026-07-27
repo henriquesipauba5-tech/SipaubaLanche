@@ -1,4 +1,4 @@
-const cartaoPagamentoModel = require("../models/cartaoPagamentoModel");
+const cartaoPagamentoModel = require("../model/cartao_pagamento_model");
 
 // =========================
 // Cadastrar Cartão

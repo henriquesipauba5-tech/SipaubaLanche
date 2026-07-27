@@ -1,4 +1,4 @@
-const categoriaModel = require("../models/categoriaModel");
+const categoriaModel = require("../model/categoria_model");
 
 // =========================
 // Cadastrar Categoria

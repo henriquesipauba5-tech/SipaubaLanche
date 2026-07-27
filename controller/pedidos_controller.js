@@ -1,4 +1,4 @@
-const pedidosModel = require("../models/pedidosModel");
+const pedidosModel = require("../model/pedidos_model");
 
 // =========================
 // Cadastrar Pedido

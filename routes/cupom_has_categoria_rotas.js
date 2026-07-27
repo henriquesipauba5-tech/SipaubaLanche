@@ -44,8 +44,8 @@ router.get(
 // =========================
 
 router.get(
-    "/:cupom/:categoria",
-    CupomHasCategoriaController.buscarPorId
+    "/:cupomId/:categoriaId",
+    CupomHasCategoriaController.buscar
 );
 
 

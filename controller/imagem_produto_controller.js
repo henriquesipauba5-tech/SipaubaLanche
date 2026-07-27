@@ -1,4 +1,4 @@
-const imagemProdutoModel = require("../models/imagemProdutoModel");
+const imagemProdutoModel = require("../model/imagem_produto_model");
 
 // =========================
 // Cadastrar Imagem do Produto

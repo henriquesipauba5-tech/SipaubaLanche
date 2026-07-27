@@ -1,4 +1,4 @@
-const bannerModel = require("../models/bannerModel");
+const bannerModel = require("../model/banner_model");
 
 // =========================
 // Cadastrar Banner

@@ -44,8 +44,8 @@ router.get(
 // =========================
 
 router.get(
-    "/:banner/:produto",
-    BannerHasProdutoController.buscarPorId
+    "/:bannerId/:produtoId",
+    BannerHasProdutoController.buscar
 );
 
 
@@ -54,7 +54,7 @@ router.get(
 // =========================
 
 router.delete(
-    "/:banner/:produto",
+    "/:bannerId/:produtoId",
     BannerHasProdutoController.excluir
 );
 

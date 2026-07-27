@@ -44,8 +44,8 @@ router.get(
 // =========================
 
 router.get(
-    "/:endereco/:cliente",
-    EnderecoHasClienteController.buscarPorId
+    "/:enderecoId/:clienteId",
+    EnderecoHasClienteController.buscar
 );
 
 

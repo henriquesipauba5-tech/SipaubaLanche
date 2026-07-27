@@ -1,4 +1,4 @@
-const cupomModel = require("../models/cupomModel");
+const cupomModel = require("../model/cupom_model");
 
 // =========================
 // Cadastrar Cupom

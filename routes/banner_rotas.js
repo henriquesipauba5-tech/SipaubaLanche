@@ -18,7 +18,7 @@ const router = express.Router();
 
 
 // Importando Controller de Banner
-const BannerController = require("../controller/banner_controller.js");
+const BannerController = require("../controller//banner-controller");
 
 
 // =========================

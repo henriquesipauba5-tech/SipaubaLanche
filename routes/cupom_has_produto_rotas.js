@@ -44,8 +44,8 @@ router.get(
 // =========================
 
 router.get(
-    "/:cupom/:produto",
-    CupomHasProdutoController.buscarPorId
+    "/:cupomId/:produtoId",
+    CupomHasProdutoController.buscar
 );
 
 
@@ -54,7 +54,7 @@ router.get(
 // =========================
 
 router.delete(
-    "/:cupom/:produto",
+    "/:cupomId/:produtoId",
     CupomHasProdutoController.excluir
 );
 

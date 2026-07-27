@@ -18,7 +18,7 @@ const router = express.Router();
 
 
 // Importando Controller de Cliente
-const ClienteController = require("../controller/cliente_controller.js");
+const ClienteController = require("../controller/usuario_controller");
 
 
 // =========================

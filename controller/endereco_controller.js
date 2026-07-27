@@ -1,4 +1,4 @@
-const enderecoModel = require("../models/enderecoModel");
+const enderecoModel = require("../model/endereco_model");
 
 // =========================
 // Cadastrar Endereço

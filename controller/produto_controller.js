@@ -1,4 +1,4 @@
-const produtoModel = require("../models/produtoModel");
+const produtoModel = require("../model/produto_model");
 
 // =========================
 // Cadastrar Produto

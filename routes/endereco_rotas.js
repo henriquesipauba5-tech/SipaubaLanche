@@ -18,7 +18,7 @@ const router = express.Router();
 
 
 // Importando Controller de Frete
-const FreteController = require("../controller/frete_controller.js");
+const FreteController = require("../controller/endereco_controller");
 
 
 // =========================

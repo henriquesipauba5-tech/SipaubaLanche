@@ -1,4 +1,4 @@
-const categoriaPromocaoModel = require("../models/categoriaPromocaoModel");
+const categoriaPromocaoModel = require("../model/categoria_has_promocoes_model");
 
 // =========================
 // Listar Relacionamentos

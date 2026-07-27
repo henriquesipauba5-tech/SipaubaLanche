@@ -18,7 +18,7 @@ const router = express.Router();
 
 
 // Importando Controller de Cupom
-const CupomController = require("../controller/cupom_controller.js");
+const CupomController = require("../controller//cupom-controller");
 
 
 // =========================

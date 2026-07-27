@@ -1,4 +1,4 @@
-const cupomProdutoModel = require("../models/cupomProdutoModel");
+const cupomProdutoModel = require("../model/cupom_has_produto_model");
 
 // =========================
 // Listar Relacionamentos

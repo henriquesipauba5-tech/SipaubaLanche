@@ -1,4 +1,4 @@
-const adicionalModel = require("../models/adicionalModel");
+const adicionalModel = require("../model/adicional_model");
 
 // =========================
 // Cadastrar Adicional

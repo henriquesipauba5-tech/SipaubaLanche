@@ -1,4 +1,4 @@
-const formasPagamentoModel = require("../models/formasPagamentoModel");
+const formasPagamentoModel = require("../model/formas_pagamentos_model");
 
 // =========================
 // Cadastrar Forma de Pagamento

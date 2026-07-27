@@ -1,4 +1,4 @@
-const bannerProdutoModel = require("../models/bannerProdutoModel");
+const bannerProdutoModel = require("../model/banner_has_produto_model");
 
 // =========================
 // Listar Relacionamentos

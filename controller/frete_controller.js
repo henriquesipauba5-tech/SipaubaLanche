@@ -1,4 +1,4 @@
-const freteModel = require("../models/freteModel");
+const freteModel = require("../model/frete_model");
 
 // =========================
 // Cadastrar Frete

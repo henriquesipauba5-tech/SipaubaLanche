@@ -1,4 +1,4 @@
-const promocaoModel = require("../models/promocaoModel");
+const promocaoModel = require("../model/promocao_model");
 
 // =========================
 // Cadastrar Promoção

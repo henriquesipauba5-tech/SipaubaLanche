@@ -3,7 +3,7 @@
 // passe aqui o caminho correto do seu arquivo model
 //==========================================
 
-const clienteModel = require("../model/cliente_model");
+const clienteModel = require("../model/usuario_model");
 
 //==========================================
 // CADASTRAR CLIENTE

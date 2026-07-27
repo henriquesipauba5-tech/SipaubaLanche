@@ -16,7 +16,7 @@ const router = express.Router();
 
 
 // Importando Controller
-const PedidosHasProdutoController = require("../controller/pedidos_has_produto_controller.js");
+const PedidosHasProdutoController = require("../controller/pedidos_has_produtos");
 
 
 // =========================
@@ -45,10 +45,10 @@ router.get(
 
 router.get(
     "/:pedido/:produto",
-    PedidosHasProdutoController.buscarPorId
+    PedidosHasProdutoController.buscar
 );
 
-
+    
 // =========================
 // EXCLUIR RELACIONAMENTO
 // =========================

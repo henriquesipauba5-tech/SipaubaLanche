@@ -18,7 +18,7 @@ const router = express.Router();
 
 
 // Importando Controller de Formas de Pagamento
-const FormasPagamentoController = require("../controller/formasPagamento_controller.js");
+const FormasPagamentoController = require("../controller//formas_pagamento");
 
 
 // =========================

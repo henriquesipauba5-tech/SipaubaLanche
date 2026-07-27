@@ -1,4 +1,4 @@
-const promocaoProdutoModel = require("../models/promocaoProdutoModel");
+const promocaoProdutoModel = require("../model/promocao_has_porduto_model");
 
 // =========================
 // Listar Relacionamentos
