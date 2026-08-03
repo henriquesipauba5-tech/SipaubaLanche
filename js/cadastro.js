@@ -327,7 +327,7 @@ document.getElementById("btnCriarConta").addEventListener("click", () => {
     console.log(cliente);
  
  
-    fetch("http://localhost:3000/clientes", {
+    fetch("http://localhost:3000/clientes/", {
  
         method: "POST",
  
