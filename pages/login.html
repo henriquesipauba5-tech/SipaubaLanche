@@ -1,95 +1,86 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Sipaúba Lanches</title>
 
-<link rel="stylesheet" href="/style/login.css">
+    <link rel="stylesheet" href="/style/login.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
 
-<header>
-    <div class="logo-area">
-        <img src="/assets/logo.png" alt="Logo">
-        <h2>Sipaúba Lanches</h2>
-    </div>
+    <header>
+        <div class="logo-area">
+            <img src="/assets/logo.png" alt="Logo">
+            <h2>Sipaúba Lanches</h2>
+        </div>
 
-    <div class="menu">
-        <a href="login.html" class="active">Entrar</a>
-        <a href="/pages/cadastro.html">Criar Conta</a>
-    </div>
-</header>
+        <div class="menu">
+            <a href="login.html" class="active">Entrar</a>
+            <a href="/pages/cadastro.html">Criar Conta</a>
+        </div>
+    </header>
 
-<section class="container">
+    <section class="container">
 
-    <div class="card-login">
+        <div class="card-login">
 
-        <h1>Bem-vindo(a)</h1>
-        <p>Acesse sua conta para fazer seu pedido</p>
+            <h1>Bem-vindo(a)</h1>
+            <p>Acesse sua conta para fazer seu pedido</p>
 
-        <form id="loginForm">
+            <form id="loginForm">
 
-            <label>E-mail ou Usuário</label>
-            <input
-                type="text"
-                name="usuario"
-                placeholder="Digite seu e-mail ou usuário"
-                required
-            >
+                <label>E-mail ou Usuário</label>
+                <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
 
-            <div class="senha-header">
-                <label>Senha</label>
-                <a href="#">Esqueci minha senha</a>
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+
+                <button type="button" id="btnEntrar">
+                    Entrar
+                </button>
+
+                <p id="mensagem"></p>
+
+            </form>
+
+            <div class="divider">
+                <span>OU ENTRAR COM</span>
             </div>
 
-            <input
-                type="password"
-                name="senha"
-                placeholder="Digite sua senha"
-                required
-            >
+            <div class="social-login">
 
-            <button type="submit">
-                Entrar
-            </button>
+                <button class="social-btn">
+                    Google
+                </button>
 
-        </form>
+                <button class="social-btn">
+                    Facebook
+                </button>
 
-        <div class="divider">
-            <span>OU ENTRAR COM</span>
-        </div>
-
-        <div class="social-login">
-
-            <button class="social-btn">
-                Google
-            </button>
-
-            <button class="social-btn">
-                Facebook
-            </button>
+            </div>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
+    <footer>
+        <p>© 2026 Sipaúba Lanches</p>
 
-<footer>
-    <p>© 2026 Sipaúba Lanches</p>
+        <div>
+            <a href="#">Suporte</a>
+            <a href="#">Privacidade</a>
+            <a href="#">Termos de uso</a>
+        </div>
+    </footer>
 
-    <div>
-        <a href="#">Suporte</a>
-        <a href="#">Privacidade</a>
-        <a href="#">Termos de uso</a>
-    </div>
-</footer>
-
-<script src="/js/login.js"></script>
+    <script src="/js/login.js"></script>
 
 </body>
+
 </html>

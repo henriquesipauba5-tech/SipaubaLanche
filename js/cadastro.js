@@ -242,6 +242,10 @@ telefone.addEventListener("input",()=>{
     telefone.value = valor;
 
 });
+
+
+
+
 document.getElementById("btnCriarConta").addEventListener("click", () => {
  
     const nome = document.getElementById("nome").value.trim();
@@ -256,6 +260,8 @@ document.getElementById("btnCriarConta").addEventListener("click", () => {
  
     const dataNascimento =
         document.getElementById("dataNascimento").value;
+
+        const mensagem = document.getElementById("mensagem");
  
  
     if (
@@ -274,11 +280,11 @@ document.getElementById("btnCriarConta").addEventListener("click", () => {
  
     }
  
-    if (senha.length > 13) {
+    if (senha.length < 6 || senha.length > 13) {
  
         mensagem.style.color = "red";
         mensagem.innerHTML =
-            "A senha deve possuir no máximo 13 caracteres.";
+            "A senha deve possuir entre 6 e 13 caracteres.";
  
         return;
  
@@ -348,6 +354,12 @@ document.getElementById("btnCriarConta").addEventListener("click", () => {
                 document.getElementById("email").value = "";
                 document.getElementById("senha").value = "";
                 document.getElementById("dataNascimento").value = "";
+
+                setTimeout(() => {
+
+                    window.location.href = "../pages/login.html";
+
+                }, 2000);
  
             } else {
  

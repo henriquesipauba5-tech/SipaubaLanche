@@ -12,12 +12,10 @@
 
 
 const express = require("express");
-
-// Criando o roteador do Express
 const router = express.Router();
 
+console.log("Rotas de cliente carregadas!");
 
-// Importando Controller de Cliente
 const ClienteController = require("../controller/usuario_controller");
 
 
@@ -68,6 +66,16 @@ router.put(
 router.delete(
     "/:id",
     ClienteController.excluir
+);
+
+
+// =========================
+// LOGIN
+// =========================
+
+router.post(
+    "/login",
+    ClienteController.login
 );
 
 

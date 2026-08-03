@@ -1,6 +1,5 @@
 //==========================================
 // IMPORTA O MODEL
-// passe aqui o caminho correto do seu arquivo model
 //==========================================
 
 const clienteModel = require("../model/usuario_model");
@@ -13,6 +12,13 @@ function cadastrar(req, res) {
 
     const cliente = req.body;
 
+    // Caso não seja enviada a loja,
+    // define a loja padrão como 1
+
+    if (!cliente.Loja_idLoja) {
+        cliente.Loja_idLoja = 1;
+    }
+
     // Validação dos campos obrigatórios
 
     if (
@@ -21,8 +27,7 @@ function cadastrar(req, res) {
         !cliente.telefone ||
         !cliente.email ||
         !cliente.senha ||
-        !cliente.data_nascimento ||
-        !cliente.Loja_idLoja
+        !cliente.data_nascimento
     ) {
 
         return res.status(400).json({
@@ -32,14 +37,7 @@ function cadastrar(req, res) {
 
     }
 
-    // Caso não seja enviado o código da loja
-    if (!cliente.Loja_idLoja) {
-
-        cliente.Loja_idLoja = 1;
-
-    }
-
-    // Verifica se já existe um usuário com o mesmo e-mail
+    // Verifica se o e-mail já existe
 
     clienteModel.buscarPorEmail(cliente.email, (erro, resultado) => {
 
@@ -66,6 +64,8 @@ function cadastrar(req, res) {
         clienteModel.cadastrar(cliente, (erro, resultado) => {
 
             if (erro) {
+
+                console.error(erro);
 
                 return res.status(500).json({
                     sucesso: false,
@@ -98,14 +98,16 @@ function listar(req, res) {
 
         if (erro) {
 
+            console.error(erro);
+
             return res.status(500).json({
                 sucesso: false,
                 mensagem: "Erro ao listar clientes."
             });
 
         }
-        // Retorna a lista de clientes em formato JSON
-        res.json(resultado);
+
+        res.status(200).json(resultado);
 
     });
 
@@ -123,6 +125,8 @@ function buscarPorId(req, res) {
 
         if (erro) {
 
+            console.error(erro);
+
             return res.status(500).json({
                 sucesso: false,
                 mensagem: "Erro ao buscar cliente."
@@ -138,37 +142,65 @@ function buscarPorId(req, res) {
             });
 
         }
-        // Retorna o cliente encontrado em formato JSON
-        res.json(resultado[0]);
+
+        res.status(200).json(resultado[0]);
 
     });
 
 }
-
 //==========================================
 // ATUALIZAR CLIENTE
 //==========================================
 
 function atualizar(req, res) {
-    // Obtém o ID do cliente a ser atualizado a partir dos parâmetros da URL
+
     const id = req.params.id;
-    // Obtém os dados atualizados do cliente a partir do corpo da requisição
     const cliente = req.body;
 
-    clienteModel.atualizar(id, cliente, (erro, resultado) => {
+    if (!cliente.Loja_idLoja) {
+        cliente.Loja_idLoja = 1;
+    }
+
+    clienteModel.buscarPorId(id, (erro, resultado) => {
 
         if (erro) {
 
+            console.error(erro);
+
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao atualizar cliente."
+                mensagem: "Erro ao consultar cliente."
             });
 
         }
 
-        res.json({
-            sucesso: true,
-            mensagem: "Cliente atualizado com sucesso."
+        if (resultado.length === 0) {
+
+            return res.status(404).json({
+                sucesso: false,
+                mensagem: "Cliente não encontrado."
+            });
+
+        }
+
+        clienteModel.atualizar(id, cliente, (erro) => {
+
+            if (erro) {
+
+                console.error(erro);
+
+                return res.status(500).json({
+                    sucesso: false,
+                    mensagem: "Erro ao atualizar cliente."
+                });
+
+            }
+
+            return res.status(200).json({
+                sucesso: true,
+                mensagem: "Cliente atualizado com sucesso."
+            });
+
         });
 
     });
@@ -180,23 +212,122 @@ function atualizar(req, res) {
 //==========================================
 
 function excluir(req, res) {
-    // Obtém o ID do cliente a ser excluído a partir dos parâmetros da URL
+
     const id = req.params.id;
 
-    clienteModel.excluir(id, (erro, resultado) => {
+    clienteModel.buscarPorId(id, (erro, resultado) => {
 
         if (erro) {
 
+            console.error(erro);
+
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao excluir cliente."
+                mensagem: "Erro ao consultar cliente."
             });
 
         }
 
-        res.json({
+        if (resultado.length === 0) {
+
+            return res.status(404).json({
+                sucesso: false,
+                mensagem: "Cliente não encontrado."
+            });
+
+        }
+
+        clienteModel.excluir(id, (erro) => {
+
+            if (erro) {
+
+                console.error(erro);
+
+                return res.status(500).json({
+                    sucesso: false,
+                    mensagem: "Erro ao excluir cliente."
+                });
+
+            }
+
+            return res.status(200).json({
+                sucesso: true,
+                mensagem: "Cliente excluído com sucesso."
+            });
+
+        });
+
+    });
+
+}
+
+//==========================================
+// LOGIN
+//==========================================
+
+function login(req, res) {
+
+    const { email, senha } = req.body;
+
+    if (!email || !senha) {
+
+        return res.status(400).json({
+            sucesso: false,
+            mensagem: "Informe o e-mail e a senha."
+        });
+
+    }
+
+    clienteModel.buscarPorEmail(email, (erro, resultado) => {
+
+        if (erro) {
+
+            console.error(erro);
+
+            return res.status(500).json({
+                sucesso: false,
+                mensagem: "Erro interno."
+            });
+
+        }
+
+        if (resultado.length === 0) {
+
+            return res.status(401).json({
+                sucesso: false,
+                mensagem: "E-mail ou senha inválidos."
+            });
+
+        }
+
+        const cliente = resultado[0];
+
+        if (cliente.senha !== senha) {
+
+            return res.status(401).json({
+                sucesso: false,
+                mensagem: "E-mail ou senha inválidos."
+            });
+
+        }
+
+        return res.status(200).json({
+
             sucesso: true,
-            mensagem: "Cliente excluído com sucesso."
+            mensagem: "Login realizado com sucesso.",
+
+            cliente: {
+
+                idCliente: cliente.idCliente,
+                nome: cliente.nome,
+                cpf: cliente.cpf,
+                telefone: cliente.telefone,
+                email: cliente.email,
+                data_nascimento: cliente.data_nascimento,
+                Loja_idLoja: cliente.Loja_idLoja
+
+            }
+
         });
 
     });
@@ -213,6 +344,7 @@ module.exports = {
     listar,
     buscarPorId,
     atualizar,
-    excluir
+    excluir,
+    login
 
 };
