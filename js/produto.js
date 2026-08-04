@@ -1,80 +1,274 @@
-// CRIADO VÁRIAVEIS
-/* nome des váriaveis não pode ter:
--acentos
--espaços
--simbolos
-não pode começar com números 
--não deve ser escrito com a primeira letra do nome em maiusculo
-*/
-
-// variaveis que alteram de valor
-let preco_promocional = 32.00;
-let preco_antigo = 36.90
-let desconto = "-13%";
-let favoritar = false;
-
-//variaveis que são contantes/ não alteram de valor
-const nomeProduto = "EXPLOSIVO QUEIJO";
-const img_principal = "/assets/produto1.png";
-const descricao = "Pão brioche, hambúrguer 160g, mussarela, bacon, 150g de mussarela empanada, e nosso delicioso molho especial";
-let adicional;
-let frente;
-const complemento = ["Hamburguer", "Presunto","Mussarela","Alface","Tomate","Batata-Palha","Bacon","Calabresa","Ovo","Milho","Frango","Salsicha","Catupiry"];
-// botoes e arquivos
-let btn_add_carrinho;
-let btn_comprar;
-let btn_add_quantidade;
-let btn_remover_quantidade;
-let btn_calcular_frete
-
-//CÓDIGO PARA PREENCHER AS IMAGEM PRINCIPAL
-document.getElementById("imagem-maior").src = img_principal;
+/*==================================================
+                PRODUTO.JS
+        Projeto: Sipaúba Lanches
+==================================================*/
 
 
-//----------------------------- PREENCHER DADOS DO PRODUTO -----------------------------------//
-document.getElementById("nome-produto").textContent = nomeProduto;
-document.getElementById("preco-antigo").textContent = preco_antigo;
-document.getElementById("preco-promocional").textContent = preco_promocional;
-document.getElementById("desconto").textContent = desconto;
+/*==================================================
+                TEXTOS DA TELA
+==================================================*/
 
-//----------------------------- COMPLEMENTOS DO PRODUTO -----------------------------------------//
-// ELE VAI LER QUANTOS COMPLEMENTOS O PRODUTO E 
-//VAI CRIAR BOTOES PARA AS CORES 
-const listaComplemento = document.getElementById("complementos");
+const textos = {
 
-complemento.forEach(complemento => { // percorrer os complementos cadastrados
-    const botao = document.createElement("button");
-    // CRIAR UM BOTAO PARA CADA COMPLEMENTO QUE ELE ENCONTRAR
-    botao.textContent = complemento;
-    listaComplemento.appendChild(botao);
+    titulo: "Nossos Lanches",
 
-});
+    subtitulo:
+    "Escolha seu lanche favorito e clique em Escolher para personalizar seu pedido."
 
-//----------------------- QUANTIDADE DE PRODUTO-------------------------------//
-/* O LIMITE DE QUANTIDADE VAI SER IGUAL A QUANTIDADE DE PRODUTOS QUE O LOJISTA CAASTROU NO ESTOQUE.
-QUANDO O CLIENTE CLICAR NO BOTÃO = A QUANTIDADE COMPRADAD AUMENTA DE 1 EM 1.
-QUANDO ELE CLICAR NO BOTAO DE - A QUANTIDADE COMPRADA DIMINIUI DE 1 EM 1 
-INICIALMENTE O VALOR DA QUANTIDADE APARECE COMO 1. */
-
-let quantidade_inicial = 1; // CRIAR A QUANTIDADE INICIAL.
-// CHAMAR OS BOTÕES E PASSAR O ID DO HTML DENTRO DELES
-btn_add_quantidade = document.getElementById("aumentar");
-btn_remover_quantidade = document.getElementById("diminuir");
-const numero = document.getElementById("numero-quantidade");
-numero.textContent = quantidade_inicial;
+};
 
 
-// CRIANDO O CÓDIGO DE AUMENTAR A QUANTIDADE DE 1 EM 1
-btn_add_quantidade.addEventListener("click", () => {
-    quantidade_inicial++;//aumentar de 1 em 1
-    numero.textContent = quantidade_inicial;
-});
+/*==================================================
+                PRODUTOS
+==================================================*/
 
+const produtos = [
 
-// CRIANDO O CÓDIGO DE DIMINUIR A QUANTIDADE DE 1 EM 1
-btn_remover_quantidade.addEventListener("click", () => {
-    if (quantidade_inicial > 1) {
-        quantidade_inicial--;//diminuir de 1 em 1
-        numero.textContent = quantidade_inicial;
+    {
+
+        id:1,
+
+        nome:"ONION SUPREMO",
+
+        descricao:
+        "Pão brioche, hambúrguer 160g, mussarela,Barbecue, Bacon, Anel de cebola empanado, cebola roxa, é nosso delicioso molho especial.",
+
+        preco:32.00,
+
+        imagem:"../assets/produto1.png"
+
+    },
+
+    {
+
+        id:2,
+
+        nome:"LOUKÃO CAMPEÃO DE VENDAS🏆",
+
+        descricao:
+        "Pão brioche, hambúrguer 160g, mussarela, Bacon, alface, cebola, tomate, barbecue, e nosso delicioso molho especial.",
+
+        preco:29.90,
+
+        imagem:"../assets/produto 2.png"
+
+    },
+
+    {
+
+        id:3,
+
+        nome:"EXPLOSIVO QUEIJO",
+
+        descricao:
+        "Pão brioche, hambúrguer 160g, mussarela, bacon, 150g de mussarela empanada, e nosso delicioso molho especial.",
+
+        preco:31.90,
+
+        imagem:"../assets/produto 4.png"
+
+    },
+
+    {
+
+        id:4,
+
+        nome:"Duplo Cheddar",
+
+        descricao:
+        "Dois hambúrgueres, muito cheddar e bacon.",
+
+        preco:35.90,
+
+        imagem:"../assets/produto4.png"
+
+    },
+
+    {
+
+        id:5,
+
+        nome:"Mega Burguer",
+
+        descricao:
+        "Dois hambúrgueres, mussarela e molho da casa.",
+
+        preco:37.90,
+
+        imagem:"../assets/produto5.png"
+
+    },
+
+    {
+
+        id:6,
+
+        nome:"Explosivo Bacon",
+
+        descricao:
+        "Hambúrguer artesanal, bacon extra e catupiry.",
+
+        preco:34.90,
+
+        imagem:"../assets/produto6.png"
+
     }
+
+];
+
+
+/*==================================================
+            PREENCHER TÍTULO
+==================================================*/
+
+document.getElementById("tituloProdutos").textContent =
+textos.titulo;
+
+document.getElementById("subtituloProdutos").textContent =
+textos.subtitulo;
+
+
+/*==================================================
+            ÁREA DOS PRODUTOS
+==================================================*/
+
+const listaProdutos =
+document.getElementById("listaProdutos");
+/*==================================================
+            CRIAR OS CARDS DOS PRODUTOS
+==================================================*/
+
+produtos.forEach((produto)=>{
+
+    //==========================================
+    // CARD
+    //==========================================
+
+    const card =
+    document.createElement("div");
+
+    card.className =
+    "card-produto";
+
+
+    //==========================================
+    // IMAGEM
+    //==========================================
+
+    const imagem =
+    document.createElement("img");
+
+    imagem.src =
+    produto.imagem;
+
+    imagem.alt =
+    produto.nome;
+
+
+    //==========================================
+    // ÁREA DAS INFORMAÇÕES
+    //==========================================
+
+    const info =
+    document.createElement("div");
+
+    info.className =
+    "info-produto";
+
+
+    //==========================================
+    // NOME
+    //==========================================
+
+    const nome =
+    document.createElement("h2");
+
+    nome.textContent =
+    produto.nome;
+
+
+    //==========================================
+    // DESCRIÇÃO
+    //==========================================
+
+    const descricao =
+    document.createElement("p");
+
+    descricao.textContent =
+    produto.descricao;
+
+
+    //==========================================
+    // PREÇO
+    //==========================================
+
+    const preco =
+    document.createElement("div");
+
+    preco.className =
+    "preco";
+
+    preco.textContent =
+    "R$ " + produto.preco.toFixed(2);
+
+
+    //==========================================
+    // BOTÃO
+    //==========================================
+
+    const botao =
+    document.createElement("button");
+
+    botao.className =
+    "btn-ver-produto";
+
+    botao.textContent =
+    "Escolher";
+
+
+    //==========================================
+    // EVENTO DO BOTÃO
+    //==========================================
+
+    botao.addEventListener("click",()=>{
+
+        /*
+            Futuramente aqui será aberta
+            a tela de detalhes do produto.
+
+            Exemplo:
+
+            window.location.href =
+            "detalhes.html?id=" + produto.id;
+        */
+
+        alert(
+
+            "Você escolheu:\n\n" +
+
+            produto.nome
+
+        );
+
+    });
+
+
+    //==========================================
+    // MONTANDO O CARD
+    //==========================================
+
+    info.appendChild(nome);
+
+    info.appendChild(descricao);
+
+    info.appendChild(preco);
+
+    info.appendChild(botao);
+
+    card.appendChild(imagem);
+
+    card.appendChild(info);
+
+    listaProdutos.appendChild(card);
+
 });

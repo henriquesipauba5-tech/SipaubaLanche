@@ -1,133 +1,390 @@
+/*==================================================
+                PRODUTO.CSS
+            Projeto: Sipaúba Lanches
+==================================================*/
 
-/*PREENCHENDO TODA A TELA*/
+
+/*==================================================
+                    RESET
+==================================================*/
+
 *{
-    margin: 0;
-    padding: 0%;
-    box-sizing: border-box;
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
 }
 
 body{
-    overflow-x: hidden; /* REMOVE A BARRA DE ROLAGEM HORIZONTAL */
-    width: 100%; /* PREENCHER SEMPRE 100% A TELA */
+
+    width:100%;
+
+    overflow-x:hidden;
+
+    font-family:Poppins,sans-serif;
+
+    background:#f4f4f4;
+
+    color:#222;
+
 }
 
-/*CONFIGURANDO O CABEÇALHO*/
-header {
-    background-color: #ff0000;
-    font-family: poppins, sans-serif;
-    /* FONTE DO CABEÇALHO */
-    color: white;
-    width: 100vw;
-    height: 80px;
 
-    /* COR DO TEXTO DO CABEÇALHO */
+/*==================================================
+                CABEÇALHO
+==================================================*/
+
+header{
+
+    width:100%;
+
+    background:#ff0000;
+
 }
 
-nav a {
-    color: white;
-    /* COR DO TEXTO DO MENU */
-    text-decoration: none;
-    /* REMOVE O SUBLINHADO DOS LINKS */
-    margin: 0 10px;
-    /* ESPAÇAMENTO ENTRE OS LINKS */
-    text-align: center;
-    /* ALINHAMENTO DO TEXTO DOS LINKS */
+nav{
+
+    max-width:1400px;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:25px;
+
+    padding:18px;
+
+    flex-wrap:wrap;
+
 }
 
-nav {
-    text-align: center;
-    /* ALINHAMENTO DO TEXTO DOS LINKS */
-    border-color: aliceblue;
-    /* COR DA BORDA DO MENU DE NAVEGAÇÃO */
-    border-width: 1px;
-    /* LARGURA DA BORDA DO MENU DE NAVEGAÇÃO */
-    border-style: solid;
-    /* ESTILO DA BORDA DO MENU DE NAVEGAÇÃO */
-    padding: 15px;
-    /* PADDING DO MENU DE NAVEGAÇÃO */
+nav button{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    border:none;
+
+    background:transparent;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    transition:.3s;
+
 }
 
-/*ALINHAR AS DIVS DO CABEÇALHO*/
-.topo {
-    display: flex;
-    /* EXIBE AS DIVS COMO FLEXÍVEIS */
-    align-items: center;
-    /* ALINHA OS ITENS AO CENTRO VERTICALMENTE */
-    justify-content: space-between;
-    /*DISRIBUIÇÃO DO ESPAÇO ENTRE AS DIVS DO CABEÇALHO*/
-    padding: 10px;
-    /* DISTANCIA ENTRE AS BORDAS DO CABEÇALHO E O CONTEÚDO DAS DIVS */
+nav button:hover{
+
+    transform:scale(1.05);
+
 }
 
-nav img {
-    height: 25px;
-    /* ALTURA DAS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
-    width: 25px;
-    /* LARGURA DAS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
-    margin-right: 10px;
-    /* MARGEM ENTRE AS IMAGENS DOS ÍCONES DE REDES SOCIAIS */
-    left: 30px;
-    /* DISTÂNCIA DOS ÍCONES DE REDES SOCIAIS PARA A ESQUERDA */
+nav img{
+
+    width:22px;
+
+    height:22px;
+
 }
 
-nav button {
-    background-color: transparent;
-    /* COR DE FUNDO TRANSPARENTE PARA O BOTÃO */
-    border: none;
-    /* REMOVE A BORDA DO BOTÃO */
-    color: white;
-    /* COR DO TEXTO DO BOTÃO */
-    font-size: 16px;
-    /* TAMANHO DA FONTE DO BOTÃO */
-    cursor: pointer;
-    /* CURSOR DE MÃO AO PASSAR O MOUSE SOBRE O BOTÃO */
-    margin: 0 20px;
-    /* MARGEM ENTRE OS BOTÕES */
-    border-radius: 5px;
-    /* ARREDONDAMENTO DOS CANTOS DO BOTÃO */
+
+/*==================================================
+                    BANNER
+==================================================*/
+
+.banner{
+
+    width:100%;
+
+    background:#d9d9d9;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:35px;
+
 }
 
-nav button:hover {
-    border: 1px solid white;
-    /* ADICIONA UMA BORDA BRANCA AO PASSAR O MOUSE SOBRE O BOTÃO */
+.banner img{
+
+    width:260px;
+
+    max-width:90%;
+
 }
 
-/*CONFIGURAR AS IMAGENS */
 
-/*GALERIA*/
+/*==================================================
+                    TÍTULO
+==================================================*/
 
-.area-detalhes {
+.titulo-produtos{
 
-    max-width: 1200px; /* TAMNHO MAXIMO DE LARGURA DA ÁREA */
-    margin: 50 px; /* MARGEM DE ESPAÇAMENTO, DISTANCIAR AS IMAGENS DA BORDA DA TELA */
-    padding: 20px; /*SERVE  PARA SEPARAR OS ELEMEMTOS DE PERTO DAS BORDAS DA TELA */
+    width:100%;
 
-    display: flex; /* PERMITIR QUE AS IMAGENS FIQUEM UMA ABAIXO DA OUTRA OU UMA DO LADO DA OUTRA */
-    gap: 50px; 
+    text-align:center;
+
+    margin-top:50px;
+
+    margin-bottom:40px;
+
+    padding:0 20px;
+
 }
 
-.area-imagens {
-    display: flex; 
-    gap: 20px; /* E A DISTANCIA AS TAGS DENTRO DA DIV */
+#tituloProdutos{
+
+    font-size:42px;
+
+    color:#222;
+
+    margin-bottom:15px;
+
 }
 
-.area-detalhes {
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 20px;
-    
-    display: flex;
-    gap: 50px;
+#subtituloProdutos{
+
+    color:#666;
+
+    font-size:18px;
+
 }
 
-.area-imagens {
-    display: flex;
-    gap: 20px;
+
+/*==================================================
+                ÁREA DOS PRODUTOS
+==================================================*/
+
+.area-produtos{
+
+    width:100%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:20px;
+
 }
 
-.img-principal img {
-    width: 600px;
-    border-radius: 15px;
-    border:#000000 solid 2px;
+
+/*==================================================
+                GRID DOS PRODUTOS
+==================================================*/
+
+.lista-produtos{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:35px;
+
+}
+/*==================================================
+                CARD DO PRODUTO
+==================================================*/
+
+.card-produto{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.10);
+
+    transition:.3s;
+
+    cursor:pointer;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.card-produto:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.18);
+
+}
+
+
+/*==================================================
+                IMAGEM DO PRODUTO
+==================================================*/
+
+.card-produto img{
+
+    width:100%;
+
+    height:240px;
+
+    object-fit:cover;
+
+    background:#f8f8f8;
+
+}
+
+
+/*==================================================
+                INFORMAÇÕES
+==================================================*/
+
+.info-produto{
+
+    padding:20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.info-produto h2{
+
+    font-size:24px;
+
+    color:#222;
+
+    text-align:center;
+
+}
+
+.info-produto p{
+
+    font-size:15px;
+
+    color:#666;
+
+    text-align:center;
+
+    line-height:24px;
+
+}
+
+
+/*==================================================
+                    PREÇO
+==================================================*/
+
+.preco{
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    color:#ff0000;
+
+    text-align:center;
+
+}
+
+
+/*==================================================
+                BOTÃO
+==================================================*/
+
+.btn-ver-produto{
+
+    margin-top:10px;
+
+    width:100%;
+
+    height:50px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#ff0000;
+
+    color:#ffffff;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.btn-ver-produto:hover{
+
+    background:#d60000;
+
+}
+
+
+/*==================================================
+            EFEITO AO CLICAR
+==================================================*/
+
+.btn-ver-produto:active{
+
+    transform:scale(.98);
+
+}
+
+
+/*==================================================
+                CARD EM PROMOÇÃO
+==================================================*/
+
+.card-promocao{
+
+    position:absolute;
+
+    top:15px;
+
+    left:15px;
+
+    background:#ff0000;
+
+    color:#fff;
+
+    padding:8px 15px;
+
+    border-radius:30px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+}
+
+
+/*==================================================
+            ÁREA DA IMAGEM
+==================================================*/
+
+.imagem-produto{
+
+    position:relative;
 
 }
