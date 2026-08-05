@@ -8,267 +8,924 @@
                 TEXTOS DA TELA
 ==================================================*/
 
+
 const textos = {
 
-    titulo: "Nossos Lanches",
+
+    titulo:
+
+    "Nosso Cardápio",
+
+
 
     subtitulo:
-    "Escolha seu lanche favorito e clique em Escolher para personalizar seu pedido."
+
+    "Escolha seu lanche ou bebida favorita e monte seu pedido."
+
 
 };
+
+
+
+
 
 
 /*==================================================
                 PRODUTOS
 ==================================================*/
 
+
 const produtos = [
+
+
+
+    //==============================================
+    // LANCHES
+    //==============================================
+
 
     {
 
         id:1,
 
+        categoria:"lanches",
+
         nome:"ONION SUPREMO",
 
         descricao:
-        "Pão brioche, hambúrguer 160g, mussarela,Barbecue, Bacon, Anel de cebola empanado, cebola roxa, é nosso delicioso molho especial.",
+
+        "Pão brioche, hambúrguer 160g, mussarela, barbecue, bacon, anel de cebola empanado e molho especial.",
 
         preco:32.00,
 
         imagem:"../assets/produto1.png"
 
+
     },
+
+
 
     {
 
         id:2,
 
-        nome:"LOUKÃO CAMPEÃO DE VENDAS🏆",
+        categoria:"lanches",
+
+        nome:"LOUKÃO CAMPEÃO DE VENDAS 🏆",
 
         descricao:
-        "Pão brioche, hambúrguer 160g, mussarela, Bacon, alface, cebola, tomate, barbecue, e nosso delicioso molho especial.",
+
+        "Pão brioche, hambúrguer 160g, mussarela, bacon, alface, tomate, cebola e molho especial.",
 
         preco:29.90,
 
-        imagem:"../assets/produto 2.png"
+        imagem:"../assets/produto2.png"
+
 
     },
+
+
 
     {
 
         id:3,
 
+        categoria:"lanches",
+
         nome:"EXPLOSIVO QUEIJO",
 
         descricao:
-        "Pão brioche, hambúrguer 160g, mussarela, bacon, 150g de mussarela empanada, e nosso delicioso molho especial.",
+
+        "Pão brioche, hambúrguer 160g, bacon, mussarela empanada e molho especial.",
 
         preco:31.90,
 
-        imagem:"../assets/produto 4.png"
+        imagem:"../assets/produto4.png"
+
 
     },
+
+
 
     {
 
         id:4,
 
-        nome:"Duplo Cheddar",
+        categoria:"lanches",
+
+        nome:"COMBO SOLTEIRÃO",
 
         descricao:
-        "Dois hambúrgueres, muito cheddar e bacon.",
 
-        preco:35.90,
+        "Dois hambúrgueres artesanais, cheddar cremoso e bacon crocante.",
 
-        imagem:"../assets/produto4.png"
+        preco:30.90,
+
+        imagem:"../assets/produto5.jpeg"
+
 
     },
+
+
 
     {
 
         id:5,
 
-        nome:"Mega Burguer",
+        categoria:"lanches",
+
+        nome:"TRIO DE OURO",
 
         descricao:
-        "Dois hambúrgueres, mussarela e molho da casa.",
 
-        preco:37.90,
+        "Três hambúrgueres artesanais, cheddar cremoso e bacon crocante.",
 
-        imagem:"../assets/produto5.png"
+        preco:87.90,
+
+        imagem:"../assets/produto6.jpeg"
+
 
     },
+
+
 
     {
 
         id:6,
 
-        nome:"Explosivo Bacon",
+        categoria:"lanches",
+
+        nome:"MEGA BACON",
 
         descricao:
-        "Hambúrguer artesanal, bacon extra e catupiry.",
+
+        "Hambúrguer artesanal, bacon extra, catupiry e molho especial.",
 
         preco:34.90,
 
-        imagem:"../assets/produto6.png"
+        imagem:"../assets/produto7.jpeg"
+
+
+    },
+
+
+
+    {
+
+        id:7,
+
+        categoria:"lanches",
+
+        nome:"GLORIOSO",
+
+        descricao:
+
+        "Pão brioche, 3 hambúrgueres 160g, 3 mussarelas, cebola roxa, triplo bacon, tomate, barbecue e molho especial.",
+
+        preco:35.90,
+
+        imagem:"../assets/produto9.jpeg"
+
+
+    },
+
+
+
+    {
+
+        id:8,
+
+        categoria:"lanches",
+
+        nome:"BATATA TURBINADA",
+
+        descricao:
+
+        "Batata frita crocante, cheddar e bacon crocante.",
+
+        preco:41.90,
+
+        imagem:"../assets/produto8.jpeg"
+
+
+    },
+
+
+
+    //==============================================
+    // BEBIDAS
+    //==============================================
+
+
+    {
+
+        id:9,
+
+        categoria:"bebidas",
+
+        nome:"COCA COLA LATA",
+
+        descricao:
+
+        "Coca Cola 350ml bem gelada.",
+
+        preco:6.00,
+
+        imagem:"../assets/coca.png"
+
+
+    },
+
+
+
+    {
+
+        id:10,
+
+        categoria:"bebidas",
+
+        nome:"GUARANÁ LATA",
+
+        descricao:
+
+        "Guaraná Antarctica 350ml gelado.",
+
+        preco:6.00,
+
+        imagem:"../assets/guarana.png"
+
+
+    },
+
+
+
+    {
+
+        id:11,
+
+        categoria:"bebidas",
+
+        nome:"SUCO NATURAL",
+
+        descricao:
+
+        "Suco natural de laranja preparado na hora.",
+
+        preco:8.00,
+
+        imagem:"../assets/suco.png"
+
+
+    },
+
+
+
+    {
+
+        id:12,
+
+        categoria:"bebidas",
+
+        nome:"ÁGUA MINERAL",
+
+        descricao:
+
+        "Água mineral 500ml.",
+
+        preco:3.00,
+
+        imagem:"../assets/agua.png"
+
 
     }
 
+
 ];
+/*==================================================
+            ELEMENTOS DA TELA
+==================================================*/
+
+
+const tituloProdutos =
+
+document.getElementById("tituloProdutos");
+
+
+
+const subtituloProdutos =
+
+document.getElementById("subtituloProdutos");
+
+
+
+const listaProdutos =
+
+document.getElementById("listaProdutos");
+
+
+
+const botoesCategoria =
+
+document.querySelectorAll(".btnCategoria");
+
+
+
+
 
 
 /*==================================================
-            PREENCHER TÍTULO
+            INSERIR TEXTOS
 ==================================================*/
 
-document.getElementById("tituloProdutos").textContent =
+
+tituloProdutos.textContent =
+
 textos.titulo;
 
-document.getElementById("subtituloProdutos").textContent =
+
+
+subtituloProdutos.textContent =
+
 textos.subtitulo;
 
 
+
+
+
+
+
 /*==================================================
-            ÁREA DOS PRODUTOS
+            FUNÇÃO MOSTRAR PRODUTOS
 ==================================================*/
 
-const listaProdutos =
-document.getElementById("listaProdutos");
-/*==================================================
-            CRIAR OS CARDS DOS PRODUTOS
-==================================================*/
 
-produtos.forEach((produto)=>{
-
-    //==========================================
-    // CARD
-    //==========================================
-
-    const card =
-    document.createElement("div");
-
-    card.className =
-    "card-produto";
+function mostrarProdutos(lista){
 
 
-    //==========================================
-    // IMAGEM
-    //==========================================
 
-    const imagem =
-    document.createElement("img");
+    // Limpa produtos antigos
 
-    imagem.src =
-    produto.imagem;
-
-    imagem.alt =
-    produto.nome;
+    listaProdutos.innerHTML = "";
 
 
-    //==========================================
-    // ÁREA DAS INFORMAÇÕES
-    //==========================================
-
-    const info =
-    document.createElement("div");
-
-    info.className =
-    "info-produto";
 
 
-    //==========================================
-    // NOME
-    //==========================================
 
-    const nome =
-    document.createElement("h2");
-
-    nome.textContent =
-    produto.nome;
+    lista.forEach((produto)=>{
 
 
-    //==========================================
-    // DESCRIÇÃO
-    //==========================================
 
-    const descricao =
-    document.createElement("p");
-
-    descricao.textContent =
-    produto.descricao;
+        //==========================================
+        // CRIANDO CARD
+        //==========================================
 
 
-    //==========================================
-    // PREÇO
-    //==========================================
+        const card =
 
-    const preco =
-    document.createElement("div");
-
-    preco.className =
-    "preco";
-
-    preco.textContent =
-    "R$ " + produto.preco.toFixed(2);
+        document.createElement("div");
 
 
-    //==========================================
-    // BOTÃO
-    //==========================================
 
-    const botao =
-    document.createElement("button");
+        card.className =
 
-    botao.className =
-    "btn-ver-produto";
-
-    botao.textContent =
-    "Escolher";
+        "cardProduto";
 
 
-    //==========================================
-    // EVENTO DO BOTÃO
-    //==========================================
 
-    botao.addEventListener("click",()=>{
 
-        /*
-            Futuramente aqui será aberta
-            a tela de detalhes do produto.
 
-            Exemplo:
 
-            window.location.href =
-            "detalhes.html?id=" + produto.id;
-        */
+        //==========================================
+        // IMAGEM
+        //==========================================
 
-        alert(
 
-            "Você escolheu:\n\n" +
+        const imagem =
 
-            produto.nome
+        document.createElement("img");
 
-        );
+
+
+        imagem.src =
+
+        produto.imagem;
+
+
+
+        imagem.alt =
+
+        produto.nome;
+
+
+
+
+
+
+
+        //==========================================
+        // ÁREA DE INFORMAÇÕES
+        //==========================================
+
+
+        const info =
+
+        document.createElement("div");
+
+
+
+        info.className =
+
+        "infoProduto";
+
+
+
+
+
+
+
+        //==========================================
+        // NOME
+        //==========================================
+
+
+        const nome =
+
+        document.createElement("h2");
+
+
+
+        nome.textContent =
+
+        produto.nome;
+
+
+
+
+
+
+
+        //==========================================
+        // DESCRIÇÃO
+        //==========================================
+
+
+        const descricao =
+
+        document.createElement("p");
+
+
+
+        descricao.textContent =
+
+        produto.descricao;
+
+
+
+
+
+
+
+        //==========================================
+        // PREÇO
+        //==========================================
+
+
+        const preco =
+
+        document.createElement("div");
+
+
+
+        preco.className =
+
+        "preco";
+
+
+
+        preco.textContent =
+
+        "R$ " + produto.preco.toFixed(2);
+
+
+
+
+
+
+
+        //==========================================
+        // BOTÃO ESCOLHER
+        //==========================================
+
+
+        const btnEscolher =
+
+        document.createElement("button");
+
+
+
+        btnEscolher.className =
+
+        "btnEscolher";
+
+
+
+        btnEscolher.textContent =
+
+        "Escolher";
+
+
+
+
+
+
+
+        btnEscolher.addEventListener("click",()=>{
+
+
+
+            alert(
+
+                "Você escolheu:\n\n"
+
+                + produto.nome
+
+            );
+
+
+
+        });
+
+
+
+
+
+
+
+        //==========================================
+        // MONTAGEM DO CARD
+        //==========================================
+
+
+        info.appendChild(nome);
+
+        info.appendChild(descricao);
+
+        info.appendChild(preco);
+
+        info.appendChild(btnEscolher);
+
+
+
+        card.appendChild(imagem);
+
+        card.appendChild(info);
+
+
+
+        listaProdutos.appendChild(card);
+
+
 
     });
 
 
-    //==========================================
-    // MONTANDO O CARD
-    //==========================================
 
-    info.appendChild(nome);
+}
 
-    info.appendChild(descricao);
 
-    info.appendChild(preco);
 
-    info.appendChild(botao);
 
-    card.appendChild(imagem);
 
-    card.appendChild(info);
 
-    listaProdutos.appendChild(card);
+
+/*==================================================
+        CARREGAR CATEGORIA INICIAL
+            MOSTRA LANCHES
+==================================================*/
+
+
+const listaLanches =
+
+
+produtos.filter((produto)=>{
+
+
+    return produto.categoria === "lanches";
+
 
 });
+
+
+
+mostrarProdutos(listaLanches);
+/*==================================================
+            FILTRO DE CATEGORIAS
+==================================================*/
+
+
+botoesCategoria.forEach((botao)=>{
+
+
+
+    botao.addEventListener("click",()=>{
+
+
+
+        //==========================================
+        // REMOVE BOTÃO ATIVO
+        //==========================================
+
+
+        const categoriaAtiva =
+
+        document.querySelector(".btnCategoria.ativo");
+
+
+
+        if(categoriaAtiva){
+
+            categoriaAtiva.classList.remove("ativo");
+
+        }
+
+
+
+
+
+
+        //==========================================
+        // ADICIONA ATIVO NO BOTÃO CLICADO
+        //==========================================
+
+
+        botao.classList.add("ativo");
+
+
+
+
+
+
+
+        //==========================================
+        // PEGA CATEGORIA ESCOLHIDA
+        //==========================================
+
+
+        const categoriaSelecionada =
+
+        botao.dataset.categoria;
+
+
+
+
+
+
+
+        //==========================================
+        // FILTRA PRODUTOS
+        //==========================================
+
+
+        const produtosFiltrados =
+
+
+        produtos.filter((produto)=>{
+
+
+            return produto.categoria === categoriaSelecionada;
+
+
+        });
+
+
+
+
+
+
+
+        //==========================================
+        // MOSTRA PRODUTOS
+        //==========================================
+
+
+        mostrarProdutos(produtosFiltrados);
+
+
+
+    });
+
+
+
+});
+
+
+
+
+
+
+
+/*==================================================
+            BOTÕES DO MENU
+==================================================*/
+
+
+const btnHome =
+
+document.getElementById("btnHome");
+
+
+
+const btnPromocoes =
+
+document.getElementById("btnPromocoes");
+
+
+
+const btnPedidos =
+
+document.getElementById("btnPedidos");
+
+
+
+const btnEntrar =
+
+document.getElementById("btnEntrar");
+
+
+
+
+
+
+
+
+/*==================================================
+            EVENTOS DO MENU
+==================================================*/
+
+
+if(btnHome){
+
+
+    btnHome.addEventListener("click",()=>{
+
+
+        alert("Página Inicial");
+
+
+    });
+
+
+}
+
+
+
+
+
+if(btnPromocoes){
+
+
+    btnPromocoes.addEventListener("click",()=>{
+
+
+        alert("Promoções");
+
+
+    });
+
+
+}
+
+
+
+
+
+if(btnPedidos){
+
+
+    btnPedidos.addEventListener("click",()=>{
+
+
+        alert("Meus Pedidos");
+
+
+    });
+
+
+}
+
+
+
+
+
+if(btnEntrar){
+
+
+    btnEntrar.addEventListener("click",()=>{
+
+
+        alert("Entrar / Cadastrar");
+
+
+    });
+
+
+}
+
+
+
+
+
+
+
+/*==================================================
+                RODAPÉ
+==================================================*/
+
+
+const textoRodape =
+
+document.getElementById("textoRodape");
+
+
+
+if(textoRodape){
+
+
+    textoRodape.textContent =
+
+
+    "Os melhores hambúrgueres artesanais da região.";
+
+
+}
+
+
+
+
+
+
+
+const enderecoEmpresa =
+
+document.getElementById("enderecoEmpresa");
+
+
+
+if(enderecoEmpresa){
+
+
+    enderecoEmpresa.textContent =
+
+
+    "Rua Exemplo, 123 - Centro";
+
+
+}
+
+
+
+
+
+
+
+const listaRedes =
+
+document.getElementById("listaRedes");
+
+
+
+if(listaRedes){
+
+
+
+    listaRedes.innerHTML =
+
+
+
+    `
+
+    <a href="#" title="Instagram">
+
+        <i class="fa-brands fa-instagram"></i>
+
+    </a>
+
+
+    <a href="#" title="Facebook">
+
+        <i class="fa-brands fa-facebook"></i>
+
+    </a>
+
+
+    <a href="#" title="WhatsApp">
+
+        <i class="fa-brands fa-whatsapp"></i>
+
+    </a>
+
+    `;
+
+
+
+}

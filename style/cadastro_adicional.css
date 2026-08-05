@@ -1,0 +1,1573 @@
+/*==================================================
+            CADASTRO_ADICIONAL.CSS
+        Projeto: Sipaúba Lanches
+==================================================*/
+
+
+/*==================================================
+                    RESET
+==================================================*/
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#f5f5f5;
+
+    color:#222;
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+
+
+
+
+/*==================================================
+                SIDEBAR
+==================================================*/
+
+
+.sidebar{
+
+    position:fixed;
+
+    left:0;
+
+    top:0;
+
+    width:260px;
+
+    height:100vh;
+
+    background:#ffffff;
+
+    border-right:1px solid #e6e6e6;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+
+
+
+
+.logo{
+
+    height:80px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:20px;
+
+    border-bottom:1px solid #eeeeee;
+
+}
+
+
+
+.logo img{
+
+    width:45px;
+
+    height:45px;
+
+    object-fit:contain;
+
+}
+
+
+
+.logo h2{
+
+    font-size:20px;
+
+    font-weight:700;
+
+}
+
+
+
+
+
+/*==================================================
+                MENU
+==================================================*/
+
+
+.sidebar nav{
+
+    flex:1;
+
+}
+
+
+
+.sidebar ul{
+
+    list-style:none;
+
+    padding-top:15px;
+
+}
+
+
+
+.sidebar li{
+
+    margin:5px 0;
+
+}
+
+
+
+.sidebar li a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:15px 25px;
+
+    text-decoration:none;
+
+    color:#333;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+
+
+.sidebar li a i{
+
+    width:22px;
+
+    text-align:center;
+
+    font-size:18px;
+
+}
+
+
+
+.sidebar li:hover{
+
+    background:#fafafa;
+
+}
+
+
+
+.sidebar li:hover a{
+
+    color:#ff0000;
+
+}
+
+
+
+.sidebar li.ativo{
+
+    background:#fff2f2;
+
+    border-left:5px solid #ff0000;
+
+}
+
+
+
+.sidebar li.ativo a{
+
+    color:#ff0000;
+
+    font-weight:600;
+
+}
+
+
+
+
+
+/*==================================================
+                CONTEÚDO
+==================================================*/
+
+
+.conteudo{
+
+    margin-left:260px;
+
+    width:calc(100% - 260px);
+
+    min-height:100vh;
+
+}
+
+
+
+
+
+
+/*==================================================
+                TOPO
+==================================================*/
+
+
+.topbar{
+
+    height:80px;
+
+    background:#fff;
+
+    border-bottom:1px solid #eeeeee;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 40px;
+
+}
+
+
+
+.tituloTopo{
+
+    font-size:28px;
+
+    font-weight:700;
+
+}
+
+
+
+
+
+/*==================================================
+                PESQUISA
+==================================================*/
+
+
+.pesquisa{
+
+    display:flex;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+}
+
+
+
+.pesquisa input{
+
+    width:250px;
+
+    height:45px;
+
+    border:none;
+
+    outline:none;
+
+    padding:0 15px;
+
+    font-family:'Poppins';
+
+}
+
+
+
+.pesquisa button{
+
+    width:45px;
+
+    border:none;
+
+    background:#ff0000;
+
+    color:white;
+
+    cursor:pointer;
+
+}
+
+
+.pesquisa button:hover{
+
+    background:#d60000;
+
+}
+/*==================================================
+                TÍTULO DA PÁGINA
+==================================================*/
+
+
+.tituloPagina{
+
+    background:#ffffff;
+
+    padding:40px;
+
+    border-bottom:1px solid #eeeeee;
+
+}
+
+
+
+.tituloPagina h1{
+
+    font-size:38px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.tituloPagina p{
+
+    color:#777;
+
+    font-size:15px;
+
+}
+
+
+
+
+
+/*==================================================
+                ÁREA CADASTRO
+==================================================*/
+
+
+.areaCadastro{
+
+    padding:40px;
+
+}
+
+
+
+
+
+#formAdicional{
+
+    width:100%;
+
+}
+
+
+
+
+
+/*==================================================
+                CARD FORMULÁRIO
+==================================================*/
+
+
+.cardFormulario{
+
+    background:#ffffff;
+
+    border-radius:15px;
+
+    padding:35px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+
+}
+
+
+
+.cardFormulario h2{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:22px;
+
+    margin-bottom:30px;
+
+}
+
+
+
+.cardFormulario h2 i{
+
+    color:#ff0000;
+
+}
+
+
+
+
+
+/*==================================================
+                CAMPOS
+==================================================*/
+
+
+.campo{
+
+    display:flex;
+
+    flex-direction:column;
+
+    margin-bottom:22px;
+
+}
+
+
+
+.campo label{
+
+    font-size:14px;
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+}
+
+
+
+.campo input,
+
+.campo textarea{
+
+    width:100%;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    outline:none;
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+
+
+.campo input{
+
+    height:50px;
+
+    padding:0 15px;
+
+}
+
+
+
+.campo textarea{
+
+    min-height:130px;
+
+    resize:none;
+
+    padding:15px;
+
+}
+
+
+
+.campo input:focus,
+
+.campo textarea:focus{
+
+    border-color:#ff0000;
+
+    box-shadow:0 0 0 3px rgba(255,0,0,.10);
+
+}
+
+
+
+
+
+/*==================================================
+                PREÇO
+==================================================*/
+
+
+.inputPreco{
+
+    display:flex;
+
+    height:50px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+}
+
+
+
+.inputPreco span{
+
+    width:60px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#f5f5f5;
+
+    font-weight:600;
+
+    border-right:1px solid #ddd;
+
+}
+
+
+
+.inputPreco input{
+
+    flex:1;
+
+    border:none;
+
+    padding:0 15px;
+
+}
+
+
+
+
+
+/*==================================================
+                UPLOAD
+==================================================*/
+
+
+.uploadArea{
+
+    height:260px;
+
+    border:2px dashed #ddd;
+
+    border-radius:15px;
+
+    background:#fafafa;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.uploadArea:hover{
+
+    border-color:#ff0000;
+
+    background:#fff5f5;
+
+}
+
+
+
+.uploadArea i{
+
+    font-size:50px;
+
+    color:#ff0000;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.uploadArea h3{
+
+    font-size:18px;
+
+    margin-bottom:8px;
+
+}
+
+
+
+.uploadArea p{
+
+    color:#777;
+
+    font-size:14px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+#btnSelecionarImagem{
+
+    background:#ff0000;
+
+    color:#fff;
+
+    border:none;
+
+    padding:12px 25px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+}
+
+
+
+#btnSelecionarImagem:hover{
+
+    background:#d60000;
+
+}
+
+
+
+
+
+/*==================================================
+                PREVIEW IMAGEM
+==================================================*/
+
+
+.previewImagem{
+
+    margin-top:20px;
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+}
+
+
+
+.previewImagem img{
+
+    width:120px;
+
+    height:120px;
+
+    object-fit:cover;
+
+    border-radius:12px;
+
+    border:1px solid #ddd;
+
+}
+
+
+
+
+
+
+/*==================================================
+                STATUS
+==================================================*/
+
+
+.statusAdicional{
+
+    margin-top:25px;
+
+    border:1px solid #e5e5e5;
+
+    border-radius:12px;
+
+    padding:20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+
+
+.statusAdicional h3{
+
+    font-size:17px;
+
+    margin-bottom:5px;
+
+}
+
+
+
+.statusAdicional p{
+
+    font-size:14px;
+
+    color:#777;
+
+}
+
+
+
+
+
+/*==================================================
+                SWITCH
+==================================================*/
+
+
+.switch{
+
+    width:60px;
+
+    height:30px;
+
+    position:relative;
+
+}
+
+
+
+.switch input{
+
+    display:none;
+
+}
+
+
+
+.slider{
+
+    position:absolute;
+
+    inset:0;
+
+    background:#ccc;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.slider::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:24px;
+
+    height:24px;
+
+    background:#fff;
+
+    border-radius:50%;
+
+    top:3px;
+
+    left:3px;
+
+    transition:.3s;
+
+}
+
+
+
+.switch input:checked + .slider{
+
+    background:#ff0000;
+
+}
+
+
+
+.switch input:checked + .slider::before{
+
+    transform:translateX(30px);
+
+}
+
+
+
+
+
+/*==================================================
+                BOTÕES
+==================================================*/
+
+
+.botoesFormulario{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:30px;
+
+}
+
+
+
+.botoesFormulario button{
+
+    height:50px;
+
+    border-radius:10px;
+
+    padding:0 30px;
+
+    cursor:pointer;
+
+    font-family:'Poppins';
+
+    font-weight:600;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+}
+
+
+
+#btnSalvar{
+
+    background:#ff0000;
+
+    color:#fff;
+
+    border:none;
+
+}
+
+
+
+#btnSalvar:hover{
+
+    background:#d60000;
+
+}
+
+
+
+#btnCancelar{
+
+    background:#fff;
+
+    border:1px solid #ddd;
+
+}
+
+
+
+#btnCancelar:hover{
+
+    background:#f5f5f5;
+
+}/*==================================================
+            LISTA DE ADICIONAIS
+==================================================*/
+
+
+.listaArea{
+
+    padding:0 40px 40px;
+
+}
+
+
+
+
+.cabecalhoLista{
+
+    background:#ffffff;
+
+    border-radius:15px;
+
+    padding:25px 30px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.cabecalhoLista h2{
+
+    font-size:24px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+
+
+.cabecalhoLista h2 i{
+
+    color:#ff0000;
+
+}
+
+
+
+.cabecalhoLista p{
+
+    color:#777;
+
+    font-size:14px;
+
+    margin-top:5px;
+
+}
+
+
+
+
+/*==================================================
+            CONTADOR
+==================================================*/
+
+
+.contador{
+
+    background:#fff2f2;
+
+    color:#ff0000;
+
+    padding:12px 20px;
+
+    border-radius:10px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+
+
+.contador span{
+
+    font-size:22px;
+
+    margin-right:5px;
+
+}
+
+
+
+
+
+/*==================================================
+            GRID DOS CARDS
+==================================================*/
+
+
+.listaAdicionaisCadastrados{
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(3,1fr);
+
+    gap:25px;
+
+}
+
+
+
+
+
+/*==================================================
+            CARD ADICIONAL
+==================================================*/
+
+
+.cardAdicionalCadastrado{
+
+    background:#ffffff;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    box-shadow:
+
+    0 5px 18px rgba(0,0,0,.06);
+
+    transition:.3s;
+
+}
+
+
+
+.cardAdicionalCadastrado:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+
+    0 10px 25px rgba(0,0,0,.12);
+
+}
+
+
+
+
+
+.cardAdicionalCadastrado img{
+
+    width:75px;
+
+    height:75px;
+
+    border-radius:12px;
+
+    object-fit:cover;
+
+    border:1px solid #eee;
+
+}
+
+
+
+
+
+/*==================================================
+            DADOS DO ADICIONAL
+==================================================*/
+
+
+.dadosAdicional{
+
+    flex:1;
+
+}
+
+
+
+.dadosAdicional h3{
+
+    font-size:17px;
+
+    margin-bottom:5px;
+
+}
+
+
+
+.dadosAdicional p{
+
+    color:#ff0000;
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+}
+
+
+
+
+.dadosAdicional span{
+
+    font-size:12px;
+
+    background:#e9fff1;
+
+    color:#00994d;
+
+    padding:5px 12px;
+
+    border-radius:20px;
+
+    font-weight:600;
+
+}
+
+
+
+
+
+/*==================================================
+            AÇÕES
+==================================================*/
+
+
+.acoes{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+
+
+.acoes button{
+
+    width:35px;
+
+    height:35px;
+
+    border-radius:8px;
+
+    border:none;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+
+
+.acoes button:first-child{
+
+    background:#f2f2f2;
+
+}
+
+
+
+.acoes button:first-child:hover{
+
+    background:#111;
+
+    color:#fff;
+
+}
+
+
+
+.acoes button:last-child{
+
+    background:#fff0f0;
+
+    color:#ff0000;
+
+}
+
+
+
+.acoes button:last-child:hover{
+
+    background:#ff0000;
+
+    color:#fff;
+
+}
+
+
+
+
+
+
+
+/*==================================================
+                    FOOTER
+==================================================*/
+
+
+footer{
+
+    margin-top:40px;
+
+    background:#ffffff;
+
+    border-top:1px solid #eeeeee;
+
+    padding:25px 40px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    color:#777;
+
+    font-size:14px;
+
+}
+
+
+
+footer h3{
+
+    color:#222;
+
+    margin-bottom:5px;
+
+}
+
+
+
+#statusSistema{
+
+    color:#00994d;
+
+    font-weight:600;
+
+}
+
+
+
+
+
+/*==================================================
+                TABLET
+==================================================*/
+
+
+@media(max-width:1200px){
+
+
+    .listaAdicionaisCadastrados{
+
+        grid-template-columns:
+
+        repeat(2,1fr);
+
+    }
+
+
+}
+
+
+
+
+
+
+
+/*==================================================
+                MENU MOBILE
+==================================================*/
+
+
+@media(max-width:900px){
+
+
+    .sidebar{
+
+        width:80px;
+
+    }
+
+
+
+    .logo h2,
+
+    .sidebar span{
+
+        display:none;
+
+    }
+
+
+
+    .logo{
+
+        justify-content:center;
+
+    }
+
+
+
+    .sidebar li a{
+
+        justify-content:center;
+
+        padding:18px;
+
+    }
+
+
+
+    .conteudo{
+
+        margin-left:80px;
+
+        width:calc(100% - 80px);
+
+    }
+
+
+
+    .topbar{
+
+        padding:20px;
+
+        height:auto;
+
+        gap:20px;
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+
+
+}
+
+
+
+
+
+
+/*==================================================
+                CELULAR
+==================================================*/
+
+
+@media(max-width:700px){
+
+
+    body{
+
+        display:block;
+
+    }
+
+
+
+    .sidebar{
+
+        position:relative;
+
+        width:100%;
+
+        height:auto;
+
+    }
+
+
+
+    .sidebar ul{
+
+        display:flex;
+
+        overflow-x:auto;
+
+    }
+
+
+
+    .sidebar li{
+
+        min-width:120px;
+
+    }
+
+
+
+    .sidebar span{
+
+        display:block;
+
+    }
+
+
+
+    .conteudo{
+
+        margin-left:0;
+
+        width:100%;
+
+    }
+
+
+
+
+    .tituloPagina{
+
+        padding:25px;
+
+    }
+
+
+
+
+    .tituloPagina h1{
+
+        font-size:28px;
+
+    }
+
+
+
+
+    .areaCadastro,
+
+    .listaArea{
+
+        padding:20px;
+
+    }
+
+
+
+
+    .cardFormulario{
+
+        padding:20px;
+
+    }
+
+
+
+
+
+    .cabecalhoLista{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:15px;
+
+    }
+
+
+
+
+    .listaAdicionaisCadastrados{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+
+
+    .botoesFormulario{
+
+        flex-direction:column;
+
+    }
+
+
+
+    .botoesFormulario button{
+
+        width:100%;
+
+    }
+
+
+
+
+    footer{
+
+        flex-direction:column;
+
+        gap:15px;
+
+        text-align:center;
+
+    }
+
+
+
+}

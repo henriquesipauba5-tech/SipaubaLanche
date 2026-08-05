@@ -1,55 +1,12 @@
 /*==================================================
-                PRODUTO.CSS
-            Projeto: Sipaúba Lanches
+            CATEGORIAS DOS PRODUTOS
+        Sipaúba Lanches
 ==================================================*/
 
 
-/*==================================================
-                    RESET
-==================================================*/
-
-*{
-
-    margin:0;
-
-    padding:0;
-
-    box-sizing:border-box;
-
-}
-
-body{
+.categoriasProdutos{
 
     width:100%;
-
-    overflow-x:hidden;
-
-    font-family:Poppins,sans-serif;
-
-    background:#f4f4f4;
-
-    color:#222;
-
-}
-
-
-/*==================================================
-                CABEÇALHO
-==================================================*/
-
-header{
-
-    width:100%;
-
-    background:#ff0000;
-
-}
-
-nav{
-
-    max-width:1400px;
-
-    margin:auto;
 
     display:flex;
 
@@ -57,334 +14,214 @@ nav{
 
     align-items:center;
 
-    gap:25px;
+    gap:20px;
 
-    padding:18px;
-
-    flex-wrap:wrap;
+    margin:35px 0 40px;
 
 }
 
-nav button{
+
+
+/*==================================================
+            BOTÕES DE CATEGORIA
+==================================================*/
+
+
+.btnCategoria{
 
     display:flex;
 
     align-items:center;
-
-    gap:8px;
-
-    border:none;
-
-    background:transparent;
-
-    color:#fff;
-
-    cursor:pointer;
-
-    font-size:16px;
-
-    transition:.3s;
-
-}
-
-nav button:hover{
-
-    transform:scale(1.05);
-
-}
-
-nav img{
-
-    width:22px;
-
-    height:22px;
-
-}
-
-
-/*==================================================
-                    BANNER
-==================================================*/
-
-.banner{
-
-    width:100%;
-
-    background:#d9d9d9;
-
-    display:flex;
 
     justify-content:center;
 
-    align-items:center;
+    gap:10px;
 
-    padding:35px;
 
-}
-
-.banner img{
-
-    width:260px;
-
-    max-width:90%;
-
-}
-
-
-/*==================================================
-                    TÍTULO
-==================================================*/
-
-.titulo-produtos{
-
-    width:100%;
-
-    text-align:center;
-
-    margin-top:50px;
-
-    margin-bottom:40px;
-
-    padding:0 20px;
-
-}
-
-#tituloProdutos{
-
-    font-size:42px;
-
-    color:#222;
-
-    margin-bottom:15px;
-
-}
-
-#subtituloProdutos{
-
-    color:#666;
-
-    font-size:18px;
-
-}
-
-
-/*==================================================
-                ÁREA DOS PRODUTOS
-==================================================*/
-
-.area-produtos{
-
-    width:100%;
-
-    max-width:1400px;
-
-    margin:auto;
-
-    padding:20px;
-
-}
-
-
-/*==================================================
-                GRID DOS PRODUTOS
-==================================================*/
-
-.lista-produtos{
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-
-    gap:35px;
-
-}
-/*==================================================
-                CARD DO PRODUTO
-==================================================*/
-
-.card-produto{
-
-    background:#ffffff;
-
-    border-radius:18px;
-
-    overflow:hidden;
-
-    box-shadow:0 5px 18px rgba(0,0,0,.10);
-
-    transition:.3s;
-
-    cursor:pointer;
-
-    display:flex;
-
-    flex-direction:column;
-
-}
-
-.card-produto:hover{
-
-    transform:translateY(-8px);
-
-    box-shadow:0 10px 25px rgba(0,0,0,.18);
-
-}
-
-
-/*==================================================
-                IMAGEM DO PRODUTO
-==================================================*/
-
-.card-produto img{
-
-    width:100%;
-
-    height:240px;
-
-    object-fit:cover;
-
-    background:#f8f8f8;
-
-}
-
-
-/*==================================================
-                INFORMAÇÕES
-==================================================*/
-
-.info-produto{
-
-    padding:20px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:12px;
-
-}
-
-.info-produto h2{
-
-    font-size:24px;
-
-    color:#222;
-
-    text-align:center;
-
-}
-
-.info-produto p{
-
-    font-size:15px;
-
-    color:#666;
-
-    text-align:center;
-
-    line-height:24px;
-
-}
-
-
-/*==================================================
-                    PREÇO
-==================================================*/
-
-.preco{
-
-    font-size:28px;
-
-    font-weight:bold;
-
-    color:#ff0000;
-
-    text-align:center;
-
-}
-
-
-/*==================================================
-                BOTÃO
-==================================================*/
-
-.btn-ver-produto{
-
-    margin-top:10px;
-
-    width:100%;
+    min-width:170px;
 
     height:50px;
 
+
     border:none;
 
-    border-radius:12px;
+    border-radius:30px;
 
-    background:#ff0000;
 
-    color:#ffffff;
+    background:#f1f1f1;
 
-    font-size:17px;
+    color:#333;
+
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:16px;
 
     font-weight:600;
 
+
     cursor:pointer;
+
 
     transition:.3s;
 
 }
 
-.btn-ver-produto:hover{
-
-    background:#d60000;
-
-}
 
 
-/*==================================================
-            EFEITO AO CLICAR
-==================================================*/
+/* ÍCONES */
 
-.btn-ver-produto:active{
+.btnCategoria i{
 
-    transform:scale(.98);
+    font-size:20px;
 
 }
 
 
+
+/* HOVER */
+
+.btnCategoria:hover{
+
+    transform:translateY(-3px);
+
+    background:#ddd;
+
+}
+
+
+
 /*==================================================
-                CARD EM PROMOÇÃO
+            CATEGORIA ATIVA
 ==================================================*/
 
-.card-promocao{
 
-    position:absolute;
+.btnCategoria.ativo{
 
-    top:15px;
 
-    left:15px;
-
-    background:#ff0000;
+    background:#111;
 
     color:#fff;
 
-    padding:8px 15px;
 
-    border-radius:30px;
+    box-shadow:
 
-    font-size:14px;
+    0 8px 20px rgba(0,0,0,.15);
 
-    font-weight:bold;
 
 }
 
 
+
 /*==================================================
-            ÁREA DA IMAGEM
+            ANIMAÇÃO AO TROCAR
 ==================================================*/
 
-.imagem-produto{
 
-    position:relative;
+.listaProdutos{
+
+    animation:
+
+    aparecerProdutos .4s ease;
+
+
+}
+
+
+
+@keyframes aparecerProdutos{
+
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(15px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+
+}
+
+
+
+/*==================================================
+            RESPONSIVIDADE
+==================================================*/
+
+
+@media(max-width:600px){
+
+
+    .categoriasProdutos{
+
+
+        gap:12px;
+
+        margin:25px 0 30px;
+
+
+    }
+
+
+
+    .btnCategoria{
+
+
+        min-width:140px;
+
+        height:45px;
+
+
+        font-size:14px;
+
+
+    }
+
+
+
+    .btnCategoria i{
+
+
+        font-size:17px;
+
+
+    }
+
+
+}
+
+
+
+@media(max-width:400px){
+
+
+    .categoriasProdutos{
+
+
+        flex-direction:column;
+
+
+    }
+
+
+
+    .btnCategoria{
+
+
+        width:100%;
+
+
+    }
+
 
 }

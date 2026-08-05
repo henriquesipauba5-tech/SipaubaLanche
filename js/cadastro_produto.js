@@ -242,14 +242,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-        if (produto.categoria === "Selecione") {
-
-            alert("Selecione uma categoria.");
-
-            return;
-
-        }
-
         if (produto.preco === "") {
 
             alert("Informe o preço.");
