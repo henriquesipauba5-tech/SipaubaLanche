@@ -8,8 +8,8 @@ function cadastrar(adicional, callback) {
 
     const sql = `
         INSERT INTO Adicional
-        (nome, preco, imagem, quantidade)
-        VALUES (?, ?, ?, ?)
+        (nome, preco, imagem, quantidade,descricao)
+        VALUES (?, ?, ?, ?, ?)
     `;
 
     conexao.query(
@@ -18,7 +18,8 @@ function cadastrar(adicional, callback) {
             adicional.nome,
             adicional.preco,
             adicional.imagem,
-            adicional.quantidade
+            adicional.quantidade,
+            adicional.descricao
         ],
         callback
     );
@@ -84,7 +85,8 @@ function atualizar(id, adicional, callback) {
             nome = ?,
             preco = ?,
             imagem = ?,
-            quantidade = ?
+            quantidade = ?,
+            descricao = ?
         WHERE idAdicional = ?
     `;
 
@@ -95,6 +97,7 @@ function atualizar(id, adicional, callback) {
             adicional.preco,
             adicional.imagem,
             adicional.quantidade,
+            adicional.descricao,
             id
         ],
         callback

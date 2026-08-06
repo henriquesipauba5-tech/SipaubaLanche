@@ -8,9 +8,7 @@
     <meta charset="UTF-8">
 
 
-    <meta 
-    name="viewport" 
-    content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
     <title>
@@ -20,34 +18,24 @@
 
     <!-- CSS -->
 
-    <link 
-    rel="stylesheet" 
-    href="../style/cadastro_adicional.css">
+    <link rel="stylesheet" href="../style/cadastro_adicional.css">
 
 
     <!-- GOOGLE FONT -->
 
-    <link 
-    rel="preconnect" 
-    href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
 
-    <link 
-    rel="preconnect" 
-    href="https://fonts.gstatic.com" 
-    crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 
-    <link 
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" 
-    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
 
     <!-- FONT AWESOME -->
 
-    <link 
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
 
 </head>
@@ -58,680 +46,572 @@
 
 
 
-<!--==================================================
+    <!--==================================================
                     MENU LATERAL
 ==================================================-->
 
 
-<aside class="sidebar">
+    <aside class="sidebar">
 
 
-    <div class="logo">
+        <div class="logo">
 
 
-        <img 
-        id="logoLoja"
-        src="../assets/logo.png"
-        alt="Logo Loja">
+            <img id="logoLoja" src="../assets/logo.png" alt="Logo Loja">
 
 
-        <h2 id="nomePainel">
+            <h2 id="nomePainel">
 
-            Painel do Lojista
+                Painel do Lojista
 
-        </h2>
+            </h2>
 
 
-    </div>
+        </div>
 
 
 
-    <nav>
+        <nav>
 
 
-        <ul id="menuLateral">
+            <ul id="menuLateral">
 
 
-            <li>
+                <li>
 
 
-                <a href="#">
+                    <a href="#">
 
 
-                    <i class="fa-solid fa-chart-pie"></i>
+                        <i class="fa-solid fa-chart-pie"></i>
 
 
-                    <span>
-                        Visão Geral
-                    </span>
+                        <span>
+                            Visão Geral
+                        </span>
 
 
-                </a>
+                    </a>
 
 
-            </li>
+                </li>
 
 
 
 
-            <li>
+                <li>
 
 
-                <a href="#">
+                    <a href="#">
 
 
-                    <i class="fa-solid fa-box"></i>
+                        <i class="fa-solid fa-box"></i>
 
 
-                    <span>
-                        Produtos
-                    </span>
+                        <span>
+                            Produtos
+                        </span>
 
 
-                </a>
+                    </a>
 
 
-            </li>
+                </li>
 
 
 
 
-            <li>
+                <li>
 
 
-                <a href="#">
+                    <a href="#">
 
 
-                    <i class="fa-solid fa-layer-group"></i>
+                        <i class="fa-solid fa-layer-group"></i>
 
 
-                    <span>
-                        Categorias
-                    </span>
+                        <span>
+                            Categorias
+                        </span>
 
 
-                </a>
+                    </a>
 
 
-            </li>
+                </li>
 
 
 
 
-            <li class="ativo">
+                <li class="ativo">
 
 
-                <a href="#">
+                    <a href="#">
 
 
-                    <i class="fa-solid fa-plus"></i>
+                        <i class="fa-solid fa-plus"></i>
 
 
-                    <span>
-                        Adicionais
-                    </span>
+                        <span>
+                            Adicionais
+                        </span>
 
 
-                </a>
+                    </a>
 
 
-            </li>
+                </li>
 
 
 
 
-            <li>
+                <li>
 
 
-                <a href="#">
+                    <a href="#">
 
 
-                    <i class="fa-solid fa-cart-shopping"></i>
+                        <i class="fa-solid fa-cart-shopping"></i>
 
 
-                    <span>
-                        Pedidos
-                    </span>
+                        <span>
+                            Pedidos
+                        </span>
 
 
-                </a>
+                    </a>
 
 
-            </li>
+                </li>
 
 
 
 
-            <li>
+                <li>
 
 
-                <a href="#">
+                    <a href="#">
 
 
-                    <i class="fa-solid fa-gear"></i>
+                        <i class="fa-solid fa-gear"></i>
 
 
-                    <span>
-                        Configurações
-                    </span>
+                        <span>
+                            Configurações
+                        </span>
 
 
-                </a>
+                    </a>
 
 
-            </li>
+                </li>
 
 
-        </ul>
+            </ul>
 
 
-    </nav>
+        </nav>
 
 
-</aside>
+    </aside>
 
 
 
 
 
-<!--==================================================
+    <!--==================================================
                     CONTEÚDO
 ==================================================-->
 
 
-<main class="conteudo">
+    <main class="conteudo">
 
 
 
-<header class="topbar">
+        <header class="topbar">
 
 
-    <div class="tituloTopo">
+            <div class="tituloTopo">
 
 
-        Cadastro de Adicionais
+                Cadastro de Adicionais
 
 
-    </div>
+            </div>
 
 
 
-    <div class="pesquisa">
+            <div class="pesquisa">
 
 
-        <input
-
-        type="text"
-
-        id="campoPesquisa"
-
-        placeholder="Pesquisar adicional">
+                <input type="text" id="campoPesquisa" placeholder="Pesquisar adicional">
 
 
-        <button id="btnPesquisar">
+                <button id="btnPesquisar">
 
 
-            <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
 
 
-        </button>
+                </button>
 
 
-    </div>
+            </div>
 
 
-</header>
-<!--==================================================
+        </header>
+        <!--==================================================
                 TÍTULO DA PÁGINA
 ==================================================-->
 
 
-<section class="tituloPagina">
+        <section class="tituloPagina">
 
 
-    <h1>
+            <h1>
 
-        Cadastrar Novo Adicional
+                Cadastrar Novo Adicional
 
-    </h1>
-
-
-    <p>
-
-        Cadastre ingredientes e complementos que poderão ser adicionados aos produtos.
-
-    </p>
+            </h1>
 
 
-</section>
+            <p>
+
+                Cadastre ingredientes e complementos que poderão ser adicionados aos produtos.
+
+            </p>
 
 
+        </section>
 
 
 
-<!--==================================================
+
+
+        <!--==================================================
                 ÁREA PRINCIPAL
 ==================================================-->
 
 
-<section class="areaCadastro">
+        <section class="areaCadastro">
 
 
 
-<form id="formAdicional">
+            <form id="formAdicional">
 
 
 
-<!--==================================================
+                <!--==================================================
                 FORMULÁRIO
 ==================================================-->
 
 
-<div class="cardFormulario">
+                <div class="cardFormulario">
 
 
 
-<h2>
+                    <h2>
 
-<i class="fa-solid fa-plus-circle"></i>
+                        <i class="fa-solid fa-plus-circle"></i>
 
-Novo Adicional
+                        Novo Adicional
 
-</h2>
-
-
+                    </h2>
 
 
-<!-- NOME -->
 
 
-<div class="campo">
+                    <!-- NOME -->
 
 
-<label>
-
-Nome do Adicional
-
-</label>
+                    <div class="campo">
 
 
-<input
+                        <label>
 
-type="text"
+                            Nome do Adicional
 
-id="nomeAdicional"
-
-placeholder="Ex: Bacon Extra">
+                        </label>
 
 
-</div>
+                        <input type="text" id="nomeAdicional" placeholder="Ex: Bacon Extra">
+
+
+                    </div>
 
 
 
 
 
 
-<!-- DESCRIÇÃO -->
+                    <!-- DESCRIÇÃO -->
 
 
-<div class="campo">
+                    <div class="campo">
 
 
-<label>
+                        <label>
 
-Descrição
+                            Descrição
 
-</label>
+                        </label>
 
 
-<textarea
-
-id="descricaoAdicional"
-
-placeholder="Ex: Bacon artesanal crocante 50g">
+                        <textarea id="descricaoAdicional" placeholder="Ex: Bacon artesanal crocante 50g">
 
 </textarea>
 
 
-</div>
+                    </div>
 
 
 
 
 
 
-<!-- PREÇO -->
+                    <!-- PREÇO -->
 
 
-<div class="campo">
+                    <div class="campo">
 
 
-<label>
+                        <label>
 
-Preço adicional
+                            Preço adicional
 
-</label>
+                        </label>
 
 
-<div class="inputPreco">
+                        <div class="inputPreco">
 
 
-<span>
+                            <span>
 
-R$
+                                R$
 
-</span>
+                            </span>
 
 
-<input
+                            <input type="number" step="0.01" id="precoAdicional" placeholder="0,00">
 
-type="number"
 
-step="0.01"
+                        </div>
 
-id="precoAdicional"
 
-placeholder="0,00">
+                    </div>
 
 
-</div>
 
 
-</div>
 
 
 
+                    <!-- IMAGEM -->
 
 
+                    <div class="campo">
 
 
-<!-- IMAGEM -->
+                        <label>
 
+                            Imagem do adicional
 
-<div class="campo">
+                        </label>
 
 
-<label>
 
-Imagem do adicional
 
-</label>
+                        <div class="uploadArea" id="uploadArea">
 
 
 
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
 
-<div 
-class="uploadArea"
-id="uploadArea">
 
 
+                            <h3>
 
-<i class="fa-solid fa-cloud-arrow-up"></i>
+                                Enviar imagem
 
+                            </h3>
 
 
-<h3>
 
-Enviar imagem
+                            <p>
 
-</h3>
+                                PNG ou JPG até 10MB
 
+                            </p>
 
 
-<p>
 
-PNG ou JPG até 10MB
 
-</p>
+                            <button type="button" id="btnSelecionarImagem">
 
 
+                                Selecionar arquivo
 
 
-<button
+                            </button>
 
-type="button"
 
-id="btnSelecionarImagem">
 
 
-Selecionar arquivo
+                            <input type="file" id="imagemAdicional" accept="image/*" hidden>
 
 
-</button>
 
+                        </div>
 
 
 
-<input
 
-type="file"
+                    </div>
 
-id="imagemAdicional"
 
-accept="image/*"
 
-hidden>
 
 
+                    <!-- PREVIEW -->
 
-</div>
 
+                    <div class="previewImagem" id="previewImagem">
 
 
 
-</div>
+                    </div>
 
 
 
 
 
-<!-- PREVIEW -->
 
 
-<div 
 
-class="previewImagem"
+                
 
-id="previewImagem">
 
 
 
-</div>
 
 
 
+                    <!-- BOTÕES -->
 
 
+                    <div class="botoesFormulario">
 
 
 
-<!-- STATUS -->
+                        <button type="submit" id="btnSalvar">
 
 
-<div class="statusAdicional">
+                            <i class="fa-solid fa-floppy-disk"></i>
 
 
+                            Salvar Adicional
 
-<div>
 
+                        </button>
 
-<h3>
 
-Status do adicional
 
-</h3>
 
+                        <button type="button" id="btnCancelar">
 
-<p>
 
-Defina se ele ficará disponível para os produtos.
+                            <i class="fa-solid fa-xmark"></i>
 
-</p>
 
+                            Cancelar
 
-</div>
 
+                        </button>
 
 
 
-<label class="switch">
+                    </div>
 
 
 
-<input
 
-type="checkbox"
 
-id="statusAdicional"
+                </div>
 
-checked>
 
 
+            </form>
 
-<span class="slider"></span>
 
 
-
-</label>
-
-
-
-</div>
-
-
-
-
-
-
-
-<!-- BOTÕES -->
-
-
-<div class="botoesFormulario">
-
-
-
-<button
-
-type="submit"
-
-id="btnSalvar">
-
-
-<i class="fa-solid fa-floppy-disk"></i>
-
-
-Salvar Adicional
-
-
-</button>
-
-
-
-
-<button
-
-type="button"
-
-id="btnCancelar">
-
-
-<i class="fa-solid fa-xmark"></i>
-
-
-Cancelar
-
-
-</button>
-
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-
-</form>
-
-
-
-</section>
-<!--==================================================
+        </section>
+        <!--==================================================
             LISTA DE ADICIONAIS CADASTRADOS
 ==================================================-->
 
 
-<section class="listaArea">
+        <section class="listaArea">
 
 
-<div class="cabecalhoLista">
+            <div class="cabecalhoLista">
 
 
-<div>
+                <div>
 
 
-<h2>
+                    <h2>
 
-<i class="fa-solid fa-list"></i>
+                        <i class="fa-solid fa-list"></i>
 
-Adicionais cadastrados
+                        Adicionais cadastrados
 
-</h2>
-
-
-<p>
-
-Gerencie os adicionais disponíveis para seus produtos.
-
-</p>
+                    </h2>
 
 
-</div>
+                    <p>
+
+                        Gerencie os adicionais disponíveis para seus produtos.
+
+                    </p>
 
 
-
-<div class="contador">
-
-
-<span id="quantidadeAdicionais">
-
-0
-
-</span>
-
-
-Adicionais cadastrados
-
-
-</div>
+                </div>
 
 
 
-</div>
+                <div class="contador">
+
+
+                    <span id="quantidadeAdicionais">
+
+                        0
+
+                    </span>
+
+
+                    Adicionais cadastrados
+
+
+                </div>
+
+
+
+            </div>
 
 
 
 
 
-<!--==================================================
+            <!--==================================================
             CARDS GERADOS PELO JAVASCRIPT
 ==================================================-->
 
 
-<div
-
-class="listaAdicionaisCadastrados"
-
-id="listaAdicionaisCadastrados">
+            <div class="listaAdicionaisCadastrados" id="listaAdicionaisCadastrados">
 
 
 
-<!--
+                <!--
 
 EXEMPLO:
 
@@ -798,103 +678,103 @@ Ativo
 
 
 
-</div>
+            </div>
 
 
 
-</section>
+        </section>
 
 
 
 
 
 
-<!--==================================================
+        <!--==================================================
                     RODAPÉ
 ==================================================-->
 
 
 
-<footer>
+        <footer>
 
 
 
-<div>
+            <div>
 
 
-<h3>
+                <h3>
 
-Sipaúba Lanches
+                    Sipaúba Lanches
 
-</h3>
-
-
-<p>
-
-Sistema de gerenciamento da loja
-
-</p>
+                </h3>
 
 
-</div>
+                <p>
+
+                    Sistema de gerenciamento da loja
+
+                </p>
 
 
-
-
-
-<div>
-
-
-<p>
-
-Ajuda • Privacidade • Termos
-
-</p>
-
-
-</div>
+            </div>
 
 
 
 
 
-<div>
+            <div>
 
 
-<p>
+                <p>
 
-Status:
+                    Ajuda • Privacidade • Termos
 
-<span id="statusSistema">
-
-Operacional
-
-</span>
+                </p>
 
 
-</p>
-
-
-</div>
-
-
-
-</footer>
+            </div>
 
 
 
 
 
-<!--==================================================
+            <div>
+
+
+                <p>
+
+                    Status:
+
+                    <span id="statusSistema">
+
+                        Operacional
+
+                    </span>
+
+
+                </p>
+
+
+            </div>
+
+
+
+        </footer>
+
+
+
+
+
+        <!--==================================================
                     JAVASCRIPT
 ==================================================-->
 
 
-<script src="../js/cadastro_adicional.js"></script>
+        <script src="../js/cadastro_adicional.js"></script>
 
 
 
-</main>
+    </main>
 
 
 </body>

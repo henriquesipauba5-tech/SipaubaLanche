@@ -231,7 +231,7 @@ const produtos = [
 
         preco:6.00,
 
-        imagem:"../assets/coca.png"
+        imagem:"../assets/coca.jpg"
 
 
     },
@@ -252,7 +252,7 @@ const produtos = [
 
         preco:6.00,
 
-        imagem:"../assets/guarana.png"
+        imagem:"../assets/guarana.jpg"
 
 
     },
@@ -273,7 +273,7 @@ const produtos = [
 
         preco:8.00,
 
-        imagem:"../assets/suco.png"
+        imagem:"../assets/suco.jpg"
 
 
     },
@@ -294,7 +294,7 @@ const produtos = [
 
         preco:3.00,
 
-        imagem:"../assets/agua.png"
+        imagem:"../assets/agua.jpg"
 
 
     }
@@ -854,7 +854,7 @@ if(textoRodape){
     textoRodape.textContent =
 
 
-    "Os melhores hambúrgueres artesanais da região.";
+    "ARAGUAÍNA - TO | Sipaúba Lanches © 2026";
 
 
 }
@@ -877,7 +877,7 @@ if(enderecoEmpresa){
     enderecoEmpresa.textContent =
 
 
-    "Rua Exemplo, 123 - Centro";
+    "Rua 20 com  Rua 01 - Setor Coimbra, Praças Imigrantes";
 
 
 }
@@ -929,3 +929,4 @@ if(listaRedes){
 
 
 }
+

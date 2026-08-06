@@ -1066,3 +1066,110 @@ statusSistema.style.color =
 
 
 });
+//--------------------------------------------------------------
+// CADASTRO DE ADICIONAIS
+//--------------------------------------------------------------
+//--------------------------------------------------------------
+// CADASTRO DE ADICIONAIS
+//--------------------------------------------------------------
+
+document.getElementById("btnSalvar").addEventListener("click", function (e) {
+
+    e.preventDefault();
+
+    //--------------------------------------------------------------
+    // CAPTURAR DADOS DOS INPUTS
+    //--------------------------------------------------------------
+
+    const nome = document.getElementById("nomeAdicional").value.trim();
+
+    const descricao = document.getElementById("descricaoAdicional").value.trim();
+
+    const preco = document.getElementById("precoAdicional").value;
+
+   
+
+    const imagem = document.getElementById("imagemAdicional").files[0];
+
+
+
+    //--------------------------------------------------------------
+    // VALIDAÇÕES
+    //--------------------------------------------------------------
+
+    if (nome === "") {
+
+        alert("Por favor, informe o nome do adicional.");
+
+        return;
+
+    }
+
+    if (preco === "" || Number(preco) <= 0) {
+
+        alert("Informe um preço válido.");
+
+        return;
+
+    }
+
+
+
+    //--------------------------------------------------------------
+    // CRIAR FORMDATA
+    //--------------------------------------------------------------
+
+    const dados = new FormData();
+
+    dados.append("nome", nome);
+
+    dados.append("descricao", descricao);
+
+    dados.append("preco", preco);
+
+
+    if (imagem) {
+
+        dados.append("imagem", imagem);
+
+    }
+
+
+
+    //--------------------------------------------------------------
+    // ENVIAR PARA O NODE
+    //--------------------------------------------------------------
+
+    fetch("http://localhost:3000/adicionais", {
+
+        method: "POST",
+
+        body: dados
+
+    })
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        alert(data.mensagem);
+
+        carregarAdicionais();
+
+        formAdicional.reset();
+
+        previewImagem.innerHTML = "";
+
+        imagemSelecionada = null;
+
+    })
+
+    .catch(error => {
+
+        console.error(error);
+
+        alert("Erro ao cadastrar adicional.");
+
+    });
+
+});
