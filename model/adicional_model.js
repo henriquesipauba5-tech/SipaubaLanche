@@ -1,4 +1,4 @@
-const conexao = require("../conexao/servidor");
+const conexao = require("../conexao/conexao.js");
 
 // =========================
 // Cadastrar Adicional
@@ -8,23 +8,27 @@ function cadastrar(adicional, callback) {
 
     const sql = `
         INSERT INTO Adicional
-        (nome, preco, imagem, quantidade,descricao)
-        VALUES (?, ?, ?, ?, ?)
+        (
+            nome,
+            descricao,
+            preco,
+            imagem
+        )
+        VALUES (?, ?, ?, ?)
     `;
 
     conexao.query(
         sql,
         [
             adicional.nome,
+            adicional.descricao,
             adicional.preco,
-            adicional.imagem,
-            adicional.quantidade,
-            adicional.descricao
+            adicional.imagem
         ],
         callback
     );
-
 }
+
 
 // =========================
 // Listar Adicionais
@@ -38,8 +42,8 @@ function listar(callback) {
     `;
 
     conexao.query(sql, callback);
-
 }
+
 
 // =========================
 // Buscar por ID
@@ -53,9 +57,13 @@ function buscarPorId(id, callback) {
         WHERE idAdicional = ?
     `;
 
-    conexao.query(sql, [id], callback);
-
+    conexao.query(
+        sql,
+        [id],
+        callback
+    );
 }
+
 
 // =========================
 // Buscar por Nome
@@ -69,9 +77,13 @@ function buscarPorNome(nome, callback) {
         WHERE nome = ?
     `;
 
-    conexao.query(sql, [nome], callback);
-
+    conexao.query(
+        sql,
+        [nome],
+        callback
+    );
 }
+
 
 // =========================
 // Atualizar Adicional
@@ -82,11 +94,12 @@ function atualizar(id, adicional, callback) {
     const sql = `
         UPDATE Adicional
         SET
+
             nome = ?,
+            descricao = ?,
             preco = ?,
-            imagem = ?,
-            quantidade = ?,
-            descricao = ?
+            imagem = ?
+
         WHERE idAdicional = ?
     `;
 
@@ -94,16 +107,15 @@ function atualizar(id, adicional, callback) {
         sql,
         [
             adicional.nome,
+            adicional.descricao,
             adicional.preco,
             adicional.imagem,
-            adicional.quantidade,
-            adicional.descricao,
             id
         ],
         callback
     );
-
 }
+
 
 // =========================
 // Excluir Adicional
@@ -116,9 +128,17 @@ function excluir(id, callback) {
         WHERE idAdicional = ?
     `;
 
-    conexao.query(sql, [id], callback);
-
+    conexao.query(
+        sql,
+        [id],
+        callback
+    );
 }
+
+
+// =========================
+// Exportar Funções
+// =========================
 
 module.exports = {
 

@@ -1,1175 +1,416 @@
+
 //==================================================
 //      cadastro_adicional.js
 //      Sipaúba Lanches
 //==================================================
 
 
-
-document.addEventListener("DOMContentLoaded",()=>{
-
-
-
-//==================================================
-//                  ELEMENTOS
-//==================================================
-
-
-
-const formAdicional = 
-document.getElementById("formAdicional");
-
-
-
-const nomeAdicional = 
-document.getElementById("nomeAdicional");
-
-
-
-const descricaoAdicional = 
-document.getElementById("descricaoAdicional");
-
-
-
-const precoAdicional = 
-document.getElementById("precoAdicional");
-
-
-
-const imagemAdicional = 
-document.getElementById("imagemAdicional");
-
-
-
-const uploadArea = 
-document.getElementById("uploadArea");
-
-
-
-const btnSelecionarImagem =
-document.getElementById("btnSelecionarImagem");
-
-
-
-const previewImagem =
-document.getElementById("previewImagem");
-
-
-
-const statusAdicional =
-document.getElementById("statusAdicional");
-
-
-
-const btnCancelar =
-document.getElementById("btnCancelar");
-
-
-
-const listaAdicionaisCadastrados =
-document.getElementById("listaAdicionaisCadastrados");
-
-
-
-const quantidadeAdicionais =
-document.getElementById("quantidadeAdicionais");
-
-
-
-const campoPesquisa =
-document.getElementById("campoPesquisa");
-
-
-
-const statusSistema =
-document.getElementById("statusSistema");
-
-
-
-
-//==================================================
-//                  VARIÁVEIS
-//==================================================
-
-
-
-let imagemSelecionada = null;
-
-
-
-let adicionais = [];
-
-
-
-
-
-//==================================================
-//              CARREGAR ADICIONAIS
-//==================================================
-
-
-carregarAdicionais();
-
-
-
-
-
-async function carregarAdicionais(){
-
-
-    /*
-    
-    Futuramente virá do banco:
-
-    fetch("http://localhost:3000/adicionais")
-
-    */
-
-
-    adicionais = [
-
-        {
-
-            id:1,
-
-            nome:"Hambúrguer",
-
-            descricao:"Carne artesanal",
-
-            preco:8,
-
-            imagem:"../assets/hamburguer.png",
-
-            status:true
-
-        },
-
-
-        {
-
-            id:2,
-
-            nome:"Bacon",
-
-            descricao:"Bacon crocante",
-
-            preco:4,
-
-            imagem:"../assets/bacon.png",
-
-            status:true
-
-        },
-
-
-        {
-
-            id:3,
-
-            nome:"Cheddar Cremoso",
-
-            descricao:"Molho cheddar",
-
-            preco:3.5,
-
-            imagem:"../assets/cheddar.png",
-
-            status:true
-
-        }
-
-
-    ];
-
-
-
-    mostrarAdicionais();
-
-
-}
-
-
-
-
-
-
-//==================================================
-//              MOSTRAR ADICIONAIS
-//==================================================
-
-
-function mostrarAdicionais(){
-
-
-    listaAdicionaisCadastrados.innerHTML="";
-
-
-
-    quantidadeAdicionais.textContent =
-
-    adicionais.length;
-
-
-
-
-
-    adicionais.forEach((adicional)=>{
-
-
-
-        const card = 
-        document.createElement("div");
-
-
-
-        card.className =
-        "cardAdicionalCadastrado";
-
-
-
-
-
-        card.innerHTML = `
-
-
-        <img 
-        src="${adicional.imagem}"
-        alt="${adicional.nome}">
-
-
-
-        <div class="dadosAdicional">
-
-
-            <h3>
-
-            ${adicional.nome}
-
-            </h3>
-
-
-            <p>
-
-            R$ ${adicional.preco.toFixed(2)}
-
-            </p>
-
-
-            <span>
-
-            ${adicional.status ? "Ativo":"Inativo"}
-
-            </span>
-
-
-        </div>
-
-
-
-        <div class="acoes">
-
-
-            <button>
-
-            <i class="fa-solid fa-pen"></i>
-
-            </button>
-
-
-
-            <button>
-
-            <i class="fa-solid fa-trash"></i>
-
-            </button>
-
-
-        </div>
-
-
-
-        `;
-
-
-
-        listaAdicionaisCadastrados.appendChild(card);
-
-
-
-    });
-
-
-
-}
-
 //==================================================
 //              SELECIONAR IMAGEM
 //==================================================
 
+document.getElementById("btnSelecionarImagem").
+addEventListener("click", function () {
 
+    //==================================================
+    //              ABRIR SELEÇÃO
+    //==================================================
 
-btnSelecionarImagem.addEventListener("click",()=>{
-
-
-    imagemAdicional.click();
-
-
-});
-
-
-
-
-
-uploadArea.addEventListener("click",(e)=>{
-
-
-    if(e.target !== btnSelecionarImagem){
-
-
-        imagemAdicional.click();
-
-
-    }
-
+    document.getElementById("imagemAdicional").click();
 
 });
 
 
+//==================================================
+//              PREVIEW DA IMAGEM
+//==================================================
+
+document.getElementById("imagemAdicional").
+addEventListener("change", function () {
+
+    //==================================================
+    //              PEGAR IMAGEM
+    //==================================================
+
+    const arquivo =
+        document.getElementById("imagemAdicional").files[0];
 
 
+    //==================================================
+    //              PEGAR PREVIEW
+    //==================================================
 
-imagemAdicional.addEventListener("change",()=>{
+    const preview =
+        document.getElementById("previewImagem");
 
 
-    const arquivo = 
-    imagemAdicional.files[0];
+    //==================================================
+    //              LIMPAR PREVIEW
+    //==================================================
+
+    preview.innerHTML = "";
 
 
+    //==================================================
+    //              VERIFICAR IMAGEM
+    //==================================================
 
-    if(!arquivo){
+    if (!arquivo) {
 
         return;
 
     }
 
 
+    //==================================================
+    //              CRIAR IMAGEM
+    //==================================================
 
-    imagemSelecionada = arquivo;
-
-
-
-    mostrarPreview(arquivo);
-
-
-
-});
-
-
-
-
-
-
-//==================================================
-//              MOSTRAR PREVIEW
-//==================================================
-
-
-
-function mostrarPreview(arquivo){
-
-
-
-    previewImagem.innerHTML="";
-
-
-
-    const leitor = 
-    new FileReader();
-
-
-
-
-    leitor.onload = (evento)=>{
-
-
-
-        const imagem =
+    const imagem =
         document.createElement("img");
 
 
-
-        imagem.src =
-        evento.target.result;
-
+    imagem.src =
+        URL.createObjectURL(arquivo);
 
 
-        previewImagem.appendChild(imagem);
+    imagem.alt =
+        "Preview do adicional";
 
 
+    //==================================================
+    //              ADICIONAR NO PREVIEW
+    //==================================================
 
-    };
-
-
-
-    leitor.readAsDataURL(arquivo);
-
-
-
-}
-
-
-
-
-
-
-
-
-//==================================================
-//              DRAG AND DROP
-//==================================================
-
-
-
-uploadArea.addEventListener("dragover",(e)=>{
-
-
-    e.preventDefault();
-
-
-    uploadArea.style.borderColor="#ff0000";
-
+    preview.appendChild(imagem);
 
 });
 
 
+//======================================================
+//              CADASTRO ADICIONAL
+//======================================================
+
+document.getElementById("btnSalvar").
+addEventListener("click", function () {
 
 
+    //==================================================
+    //              PEGAR DADOS DO INPUT
+    //==================================================
 
-uploadArea.addEventListener("dragleave",()=>{
-
-
-    uploadArea.style.borderColor="#ddd";
-
-
-});
+    const nomeAdicional =
+        document.getElementById("nomeAdicional").value;
 
 
+    const descricaoAdicional =
+        document.getElementById("descricaoAdicional").value;
 
 
+    const precoAdicional =
+        document.getElementById("precoAdicional").value;
 
 
-uploadArea.addEventListener("drop",(e)=>{
+    const imagemAdicional =
+        document.getElementById("imagemAdicional").files[0];
 
 
-    e.preventDefault();
+    //==================================================
+    //              VALIDAR NOME
+    //==================================================
 
+    if (
+        nomeAdicional.trim() === ""
+    ) {
 
-
-    const arquivo =
-    e.dataTransfer.files[0];
-
-
-
-    if(!arquivo){
+        alert(
+            "Por favor, preencha o nome do adicional."
+        );
 
         return;
 
     }
 
 
+    //==================================================
+    //              VALIDAR DESCRIÇÃO
+    //==================================================
 
+    if (
+        descricaoAdicional.trim() === ""
+    ) {
 
-    imagemSelecionada = arquivo;
-
-
-
-    mostrarPreview(arquivo);
-
-
-
-});
-
-
-
-
-
-
-
-
-//==================================================
-//              CANCELAR CADASTRO
-//==================================================
-
-
-
-btnCancelar.addEventListener("click",()=>{
-
-
-
-    const confirmar = 
-
-    confirm("Deseja limpar o cadastro do adicional?");
-
-
-
-    if(!confirmar){
+        alert(
+            "Por favor, preencha a descrição."
+        );
 
         return;
 
     }
 
 
-
-
-    formAdicional.reset();
-
-
-
-    previewImagem.innerHTML="";
-
-
-
-    imagemSelecionada=null;
-
-
-
-});
-
-
-
-
-
-
-
-
-//==================================================
-//              PESQUISAR ADICIONAIS
-//==================================================
-
-
-
-campoPesquisa.addEventListener("keyup",()=>{
-
-
-
-    const texto =
-
-    campoPesquisa.value.toLowerCase();
-
-
-
-
-    const filtrados =
-
-    adicionais.filter((item)=>{
-
-
-        return item.nome
-
-        .toLowerCase()
-
-        .includes(texto);
-
-
-    });
-
-
-
-
-
-    mostrarListaPesquisa(filtrados);
-
-
-
-});
-
-
-
-
-
-
-
-//==================================================
-//          MOSTRAR RESULTADO PESQUISA
-//==================================================
-
-
-
-function mostrarListaPesquisa(lista){
-
-
-
-    listaAdicionaisCadastrados.innerHTML="";
-
-
-
-    quantidadeAdicionais.textContent =
-
-    lista.length;
-
-
-
-
-
-    lista.forEach((adicional)=>{
-
-
-
-        const card =
-
-        document.createElement("div");
-
-
-
-        card.className =
-
-        "cardAdicionalCadastrado";
-
-
-
-
-        card.innerHTML = `
-
-
-
-        <img 
-
-        src="${adicional.imagem}"
-
-        alt="${adicional.nome}">
-
-
-
-
-
-        <div class="dadosAdicional">
-
-
-            <h3>
-
-            ${adicional.nome}
-
-            </h3>
-
-
-
-            <p>
-
-            R$ ${adicional.preco.toFixed(2)}
-
-            </p>
-
-
-
-            <span>
-
-            ${adicional.status ? "Ativo":"Inativo"}
-
-            </span>
-
-
-
-        </div>
-
-
-
-        <div class="acoes">
-
-
-            <button>
-
-            <i class="fa-solid fa-pen"></i>
-
-            </button>
-
-
-
-            <button>
-
-            <i class="fa-solid fa-trash"></i>
-
-            </button>
-
-
-        </div>
-
-
-
-        `;
-
-
-
-        listaAdicionaisCadastrados.appendChild(card);
-
-
-
-    });
-
-
-
-}
-//==================================================
-//              SALVAR ADICIONAL
-//==================================================
-
-
-
-formAdicional.addEventListener("submit",(e)=>{
-
-
-    e.preventDefault();
-
-
-
-
-
     //==================================================
-    //              PEGAR DADOS DO FORMULÁRIO
+    //              VALIDAR PREÇO
     //==================================================
 
+    if (
+        precoAdicional === "" ||
+        isNaN(Number(precoAdicional)) ||
+        Number(precoAdicional) <= 0
+    ) {
 
-
-    const adicional = {
-
-
-        nome:
-
-        nomeAdicional.value.trim(),
-
-
-
-        descricao:
-
-        descricaoAdicional.value.trim(),
-
-
-
-        preco:
-
-        Number(precoAdicional.value),
-
-
-
-        status:
-
-        statusAdicional.checked,
-
-
-
-        imagem:
-
-        imagemSelecionada
-
-
-
-    };
-
-
-
-
-
-
-
-
-    //==================================================
-    //              VALIDAÇÕES
-    //==================================================
-
-
-
-    if(adicional.nome===""){
-
-
-        alert("Informe o nome do adicional.");
-
+        alert(
+            "Por favor, informe um preço válido."
+        );
 
         return;
-
 
     }
 
 
+    //==================================================
+    //              VALIDAR IMAGEM
+    //==================================================
 
+    if (!imagemAdicional) {
 
-
-    if(adicional.preco <= 0 || isNaN(adicional.preco)){
-
-
-        alert("Informe um preço válido.");
-
+        alert(
+            "Por favor, selecione uma imagem."
+        );
 
         return;
-
 
     }
 
 
+    //==================================================
+    //              VALIDAR TAMANHO
+    //==================================================
 
+    if (
+        imagemAdicional.size >
+        10 * 1024 * 1024
+    ) {
 
+        alert(
+            "A imagem deve ter no máximo 10MB."
+        );
 
+        return;
 
+    }
 
 
     //==================================================
-    //              FORM DATA
+    //              VALIDAR TIPO
     //==================================================
 
+    if (
+        !imagemAdicional.type.startsWith("image/")
+    ) {
+
+        alert(
+            "Selecione uma imagem válida."
+        );
+
+        return;
+
+    }
 
 
-    const dados = new FormData();
+    //==================================================
+    //              CRIAR FORMDATA
+    //==================================================
+
+    const adicional =
+        new FormData();
 
 
+    //==================================================
+    //              ADICIONAR DADOS
+    //==================================================
 
-    dados.append(
-
+    adicional.append(
         "nome",
-
-        adicional.nome
-
+        nomeAdicional.trim()
     );
 
 
-
-    dados.append(
-
+    adicional.append(
         "descricao",
-
-        adicional.descricao
-
+        descricaoAdicional.trim()
     );
 
 
-
-    dados.append(
-
+    adicional.append(
         "preco",
-
-        adicional.preco
-
+        precoAdicional
     );
 
 
-
-    dados.append(
-
-        "status",
-
-        adicional.status
-
+    adicional.append(
+        "imagem",
+        imagemAdicional
     );
 
 
+    //==================================================
+    //              ENVIAR PARA O SERVIDOR
+    //==================================================
+
+    fetch(
+        "http://localhost:3000/adicionais",
+        {
+
+            method: "POST",
+
+            body: adicional
+
+        }
+    )
 
 
+    //==================================================
+    //              CONVERTER RESPOSTA
+    //==================================================
+
+    .then(response => {
+
+        return response.json();
+
+    })
 
 
-    if(adicional.imagem){
+    //==================================================
+    //              RECEBER RESPOSTA
+    //==================================================
 
+    .then(data => {
 
-        dados.append(
-
-            "imagem",
-
-            adicional.imagem
-
+        console.log(
+            "Resposta do servidor:",
+            data
         );
 
 
-    }
+        //==================================================
+        //              VERIFICAR ERRO
+        //==================================================
+
+        if (data.erro) {
+
+            alert(
+                data.erro
+            );
+
+            return;
+
+        }
 
 
+        //==================================================
+        //              SUCESSO
+        //==================================================
+
+        alert(
+            "Adicional cadastrado com sucesso!"
+        );
 
 
+        //==================================================
+        //              LIMPAR FORMULÁRIO
+        //==================================================
+
+        document.getElementById(
+            "formAdicional"
+        ).reset();
 
 
+        //==================================================
+        //              LIMPAR PREVIEW
+        //==================================================
 
-
-    //==================================================
-    //              ENVIO PARA NODE.JS
-    //==================================================
-
-
-
-    /*
-
-
-    fetch("http://localhost:3000/adicionais",{
-
-
-        method:"POST",
-
-
-        body:dados
-
-
-    })
-
-
-    .then(res=>res.json())
-
-
-    .then(resposta=>{
-
-
-        alert(resposta.mensagem);
-
-
-
-        carregarAdicionais();
-
-
+        document.getElementById(
+            "previewImagem"
+        ).innerHTML = "";
 
     })
 
 
-    .catch(()=>{
+    //==================================================
+    //              TRATAR ERRO
+    //==================================================
 
+    .catch(error => {
 
-        alert("Erro ao cadastrar adicional.");
+        console.error(
+            "Erro ao cadastrar adicional:",
+            error
+        );
 
+        alert(
+            "Erro ao cadastrar adicional."
+        );
 
     });
 
+});
 
 
-    */
+//==================================================
+//              BOTÃO CANCELAR
+//==================================================
 
-
-
-
-
-
-
-    //==================================================
-    //              TESTE LOCAL
-    //==================================================
-
-
-
-    const novoAdicional = {
-
-
-        id:
-
-        adicionais.length + 1,
-
-
-
-        nome:
-
-        adicional.nome,
-
-
-
-        descricao:
-
-        adicional.descricao,
-
-
-
-        preco:
-
-        adicional.preco,
-
-
-
-        imagem:
-
-        adicional.imagem ?
-
-        URL.createObjectURL(adicional.imagem)
-
-        :
-
-        "../assets/produto-sem-imagem.png",
-
-
-
-        status:
-
-        adicional.status
-
-
-    };
-
-
-
-
-
-    adicionais.push(novoAdicional);
-
-
-
-
-
-    mostrarAdicionais();
-
-
-
-
-
-
-    alert(
-
-        "Adicional cadastrado com sucesso!"
-
-    );
-
-
-
-
-
+document.getElementById("btnCancelar").
+addEventListener("click", function () {
 
 
     //==================================================
     //              LIMPAR FORMULÁRIO
     //==================================================
 
+    document.getElementById(
+        "formAdicional"
+    ).reset();
 
 
-    formAdicional.reset();
+    //==================================================
+    //              LIMPAR PREVIEW
+    //==================================================
 
-
-
-    previewImagem.innerHTML="";
-
-
-
-    imagemSelecionada=null;
-
-
+    document.getElementById(
+        "previewImagem"
+    ).innerHTML = "";
 
 });
-
-
-
-
-
-
 
 
 //==================================================
-//              STATUS DO SISTEMA
+//              BOTÃO PESQUISAR
 //==================================================
 
+document.getElementById("btnPesquisar").
+addEventListener("click", function () {
 
 
-statusSistema.textContent =
+    //==================================================
+    //              PEGAR PESQUISA
+    //==================================================
 
-"Operacional";
-
-
-
-statusSistema.style.color =
-
-"#00994d";
-
+    const pesquisa =
+        document.getElementById(
+            "campoPesquisa"
+        ).value.trim();
 
 
-});
-//--------------------------------------------------------------
-// CADASTRO DE ADICIONAIS
-//--------------------------------------------------------------
-//--------------------------------------------------------------
-// CADASTRO DE ADICIONAIS
-//--------------------------------------------------------------
+    //==================================================
+    //              MOSTRAR NO CONSOLE
+    //==================================================
 
-document.getElementById("btnSalvar").addEventListener("click", function (e) {
-
-    e.preventDefault();
-
-    //--------------------------------------------------------------
-    // CAPTURAR DADOS DOS INPUTS
-    //--------------------------------------------------------------
-
-    const nome = document.getElementById("nomeAdicional").value.trim();
-
-    const descricao = document.getElementById("descricaoAdicional").value.trim();
-
-    const preco = document.getElementById("precoAdicional").value;
-
-   
-
-    const imagem = document.getElementById("imagemAdicional").files[0];
-
-
-
-    //--------------------------------------------------------------
-    // VALIDAÇÕES
-    //--------------------------------------------------------------
-
-    if (nome === "") {
-
-        alert("Por favor, informe o nome do adicional.");
-
-        return;
-
-    }
-
-    if (preco === "" || Number(preco) <= 0) {
-
-        alert("Informe um preço válido.");
-
-        return;
-
-    }
-
-
-
-    //--------------------------------------------------------------
-    // CRIAR FORMDATA
-    //--------------------------------------------------------------
-
-    const dados = new FormData();
-
-    dados.append("nome", nome);
-
-    dados.append("descricao", descricao);
-
-    dados.append("preco", preco);
-
-
-    if (imagem) {
-
-        dados.append("imagem", imagem);
-
-    }
-
-
-
-    //--------------------------------------------------------------
-    // ENVIAR PARA O NODE
-    //--------------------------------------------------------------
-
-    fetch("http://localhost:3000/adicionais", {
-
-        method: "POST",
-
-        body: dados
-
-    })
-
-    .then(response => response.json())
-
-    .then(data => {
-
-        alert(data.mensagem);
-
-        carregarAdicionais();
-
-        formAdicional.reset();
-
-        previewImagem.innerHTML = "";
-
-        imagemSelecionada = null;
-
-    })
-
-    .catch(error => {
-
-        console.error(error);
-
-        alert("Erro ao cadastrar adicional.");
-
-    });
+    console.log(
+        "Pesquisa:",
+        pesquisa
+    );
 
 });
+

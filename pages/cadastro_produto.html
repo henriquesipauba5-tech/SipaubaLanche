@@ -3,179 +3,374 @@
 
 <head>
 
+    <!--==================================================
+                        CONFIGURAÇÕES
+    ==================================================-->
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Cadastrar Produto</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<link rel="stylesheet" href="../style/cadastro_produto.css">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>
+        Cadastrar Produto | Sipaúba Lanches
+    </title>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <!--==================================================
+                            CSS
+    ==================================================-->
 
-    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="../style/cadastro_produto.css"
+    >
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <!--==================================================
+                        GOOGLE FONTS
+    ==================================================-->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!--==================================================
+                        FONT AWESOME
+    ==================================================-->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    >
 
 </head>
 
+
 <body>
 
-    <!-- ================= MENU LATERAL ================= -->
+
+    <!--==================================================
+                        MENU LATERAL
+    ==================================================-->
 
     <aside class="sidebar">
 
+
+        <!--==================================================
+                            LOGO
+        ==================================================-->
+
         <div class="logo">
 
-    
-            <img src="/assets/logo.png" alt="Logo da Loja">
+
+            <img
+                src="../assets/logo.png"
+                alt="Logo da Loja"
+                id="logoLoja"
+            >
+
 
             <h2 id="nomePainel">
+
                 Painel do Lojista
+
             </h2>
 
+
         </div>
+
+
+
+        <!--==================================================
+                            MENU
+        ==================================================-->
 
         <nav>
 
             <ul id="menuLateral">
 
+
+                <!-- VISÃO GERAL -->
+
                 <li class="ativo">
 
                     <a href="#">
+
                         <i class="fa-solid fa-chart-pie"></i>
 
-                        <span>Visão Geral</span>
+                        <span>
+                            Visão Geral
+                        </span>
+
                     </a>
 
                 </li>
 
+
+
+                <!-- ESTOQUE -->
+
                 <li>
 
                     <a href="#">
+
                         <i class="fa-solid fa-box"></i>
 
-                        <span>Estoque</span>
+                        <span>
+                            Estoque
+                        </span>
+
                     </a>
 
                 </li>
 
+
+
+                <!-- PEDIDOS -->
+
                 <li>
 
                     <a href="#">
+
                         <i class="fa-solid fa-cart-shopping"></i>
 
-                        <span>Pedidos</span>
+                        <span>
+                            Pedidos
+                        </span>
+
                     </a>
 
                 </li>
 
+
+
+                <!-- FINANCEIRO -->
+
                 <li>
 
                     <a href="#">
+
                         <i class="fa-solid fa-wallet"></i>
 
-                        <span>Financeiro</span>
+                        <span>
+                            Financeiro
+                        </span>
+
                     </a>
 
                 </li>
 
+
+
+                <!-- ADICIONAL -->
+
                 <li>
 
                     <a href="#">
+
                         <i class="fa-solid fa-layer-group"></i>
 
-                        <span>Adicional</span>
+                        <span>
+                            Adicional
+                        </span>
+
                     </a>
 
                 </li>
 
+
+
+                <!-- CHAT -->
+
                 <li>
 
                     <a href="#">
+
                         <i class="fa-solid fa-comments"></i>
 
-                        <span>Chat</span>
+                        <span>
+                            Chat
+                        </span>
+
                     </a>
 
                 </li>
 
+
+
+                <!-- AVALIAÇÕES -->
+
                 <li>
 
                     <a href="#">
+
                         <i class="fa-solid fa-star"></i>
 
-                        <span>Avaliações</span>
+                        <span>
+                            Avaliações
+                        </span>
+
                     </a>
 
                 </li>
+
+
+
+                <!-- CONFIGURAÇÕES -->
 
                 <li>
 
                     <a href="#">
+
                         <i class="fa-solid fa-gear"></i>
 
-                        <span>Configurações</span>
+                        <span>
+                            Configurações
+                        </span>
+
                     </a>
 
                 </li>
+
 
             </ul>
 
         </nav>
 
+
     </aside>
 
-    <!-- ================= CONTEÚDO ================= -->
+
+
+    <!--==================================================
+                            CONTEÚDO
+    ==================================================-->
 
     <main class="conteudo">
 
-        <!-- TOPO -->
+
+        <!--==================================================
+                            TOPO
+        ==================================================-->
 
         <header class="topbar">
+
+
+            <!--==================================================
+                            MENU SUPERIOR
+            ==================================================-->
 
             <nav>
 
                 <ul class="menuSuperior">
 
-                    <li><a href="#">Pedidos</a></li>
 
-                    <li><a href="#">Estoque</a></li>
+                    <li>
 
-                    <li><a href="#">Financeiro</a></li>
+                        <a href="#">
 
-                    <li><a href="#">Adicional</a></li>
+                            Pedidos
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="#">
+
+                            Estoque
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="#">
+
+                            Financeiro
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+
+                        <a href="#">
+
+                            Adicional
+
+                        </a>
+
+                    </li>
+
 
                 </ul>
 
             </nav>
 
+
+
+            <!--==================================================
+                            PESQUISA
+            ==================================================-->
+
             <div class="pesquisa">
+
 
                 <input
                     type="text"
                     id="campoPesquisa"
-                    placeholder="Pesquisar">
+                    placeholder="Pesquisar"
+                >
 
-                <button id="btnPesquisar">
+
+                <button
+                    type="button"
+                    id="btnPesquisar"
+                >
 
                     <i class="fa-solid fa-magnifying-glass"></i>
 
                 </button>
 
+
             </div>
+
 
         </header>
 
-        <!-- TÍTULO -->
+
+
+        <!--==================================================
+                        TÍTULO DA PÁGINA
+        ==================================================-->
 
         <section class="tituloPagina">
+
 
             <h1 id="tituloPagina">
 
@@ -183,123 +378,207 @@
 
             </h1>
 
+
             <p id="descricaoPagina">
 
                 Preencha as informações abaixo para disponibilizar o produto em sua vitrine.
 
             </p>
 
+
         </section>
 
-        <!-- FORMULÁRIO -->
+
+
+        <!--==================================================
+                        FORMULÁRIO
+        ==================================================-->
 
         <section class="formulario">
 
-            <form id="formProduto">
+
+            <form
+                id="formProduto"
+                enctype="multipart/form-data"
+            >
+
+
+                <!--==================================================
+                        COLUNA ESQUERDA
+                ==================================================-->
 
                 <div class="colunaEsquerda">
 
-                    <!-- Nome -->
+
+                    <!--==================================================
+                                NOME
+                    ==================================================-->
 
                     <div class="campo">
 
-                        <label>
+
+                        <label for="nomeProduto">
 
                             Nome do Produto
 
                         </label>
 
+
                         <input
                             type="text"
                             id="nomeProduto"
-                            placeholder="Ex: Lanche de Frango com Catupiry">
+                            placeholder="Ex: Lanche de Frango com Catupiry"
+                        >
+
 
                     </div>
 
-                    <!-- Categoria -->
+
+
+                    <!--==================================================
+                            CATEGORIA
+                    ==================================================-->
 
                     <div class="campo">
 
-                        <label>
+
+                        <label for="categoriaProduto">
 
                             Categoria
 
                         </label>
 
+
                         <select id="categoriaProduto">
 
-                            <option value="Selecione">Selecione</option>
 
-                            <option value="Lanches">Lanches</option>
+                            <!--
+                                O JavaScript irá carregar
+                                as categorias vindas do banco.
+                            -->
 
-                            <option value="Bebidas">Bebidas</option>
+
+                            <option value="">
+
+                                Carregando categorias...
+
+                            </option>
 
 
                         </select>
 
+
                     </div>
 
-                    <!-- Descrição -->
+
+
+                    <!--==================================================
+                            DESCRIÇÃO
+                    ==================================================-->
 
                     <div class="campo descricao">
 
-                        <label>
+
+                        <label for="descricaoProduto">
 
                             Descrição do Produto
 
                         </label>
 
+
                         <textarea
                             id="descricaoProduto"
-                            placeholder="Descreva as características do produto..."></textarea>
+                            placeholder="Descreva as características do produto..."
+                        ></textarea>
+
 
                     </div>
 
-                    <!-- Preço -->
+
+
+                    <!--==================================================
+                            PREÇO
+                    ==================================================-->
 
                     <div class="campo">
 
-                        <label>
+
+                        <label for="precoProduto">
 
                             Preço de Venda
 
                         </label>
 
+
                         <div class="inputPreco">
 
-                            <span>R$</span>
+
+                            <span>
+
+                                R$
+
+                            </span>
+
 
                             <input
                                 type="number"
-                                id="precoProduto">
+                                id="precoProduto"
+                                placeholder="0,00"
+                                min="0"
+                                step="0.01"
+                            >
+
 
                         </div>
 
+
                     </div>
 
-                    <!-- Estoque -->
+
+
+                    <!--==================================================
+                            ESTOQUE
+                    ==================================================-->
 
                     <div class="campo">
 
-                        <label>
+
+                        <label for="quantidadeProduto">
 
                             Quantidade em Estoque
 
                         </label>
 
+
                         <input
                             type="number"
-                            id="quantidadeProduto">
+                            id="quantidadeProduto"
+                            placeholder="Ex: 50"
+                            min="0"
+                            step="1"
+                        >
+
 
                     </div>
 
-                    <!-- Status -->
+
+
+                    <!--==================================================
+                            STATUS
+                    ==================================================-->
 
                     <div class="statusProduto">
 
+
                         <div>
 
-                            <h3>Status do Produto</h3>
+
+                            <h3>
+
+                                Status do Produto
+
+                            </h3>
+
 
                             <p>
 
@@ -307,26 +586,44 @@
 
                             </p>
 
+
                         </div>
 
+
+
                         <label class="switch">
+
 
                             <input
                                 type="checkbox"
                                 id="statusProduto"
-                                checked>
+                                checked
+                            >
+
 
                             <span class="slider"></span>
 
+
                         </label>
+
 
                     </div>
 
+
                 </div>
 
-                <!-- COLUNA DIREITA -->
+
+
+                <!--==================================================
+                        COLUNA DIREITA
+                ==================================================-->
 
                 <div class="colunaDireita">
+
+
+                    <!--==================================================
+                            TÍTULO DAS FOTOS
+                    ==================================================-->
 
                     <label>
 
@@ -334,9 +631,20 @@
 
                     </label>
 
-                    <div class="uploadArea" id="uploadArea">
+
+
+                    <!--==================================================
+                            ÁREA DE UPLOAD
+                    ==================================================-->
+
+                    <div
+                        class="uploadArea"
+                        id="uploadArea"
+                    >
+
 
                         <i class="fa-solid fa-cloud-arrow-up"></i>
+
 
                         <h3>
 
@@ -344,90 +652,191 @@
 
                         </h3>
 
+
                         <p>
 
                             PNG, JPG até 10MB
 
                         </p>
 
+
+                        <!--==================================================
+                                BOTÃO SELECIONAR
+                        ==================================================-->
+
                         <button
                             type="button"
-                            id="btnSelecionarImagem">
+                            id="btnSelecionarImagem"
+                        >
 
                             Selecionar arquivo
 
                         </button>
 
+
+                        <!--==================================================
+                                INPUT DE IMAGEM
+                        ==================================================-->
+
                         <input
                             type="file"
                             id="imagemProduto"
+                            name="imagens"
+                            accept="image/png,image/jpeg,image/jpg"
                             multiple
-                            hidden>
+                            hidden
+                        >
+
 
                     </div>
 
-                    <!-- Miniaturas -->
 
-                    <div class="miniaturas" id="miniaturas">
+
+                    <!--==================================================
+                            MINIATURAS
+                    ==================================================-->
+
+                    <div
+                        class="miniaturas"
+                        id="miniaturas"
+                    >
 
                     </div>
 
-                    <!-- Botões -->
+
+
+                    <!--==================================================
+                            BOTÃO SALVAR
+                    ==================================================-->
 
                     <button
                         type="submit"
-                        id="btnSalvar">
+                        id="btnSalvar"
+                    >
+
+                        <i class="fa-solid fa-floppy-disk"></i>
 
                         Salvar Produto
 
                     </button>
 
+
+
+                    <!--==================================================
+                            BOTÃO CANCELAR
+                    ==================================================-->
+
                     <button
                         type="button"
-                        id="btnCancelar">
+                        id="btnCancelar"
+                    >
+
+                        <i class="fa-solid fa-xmark"></i>
 
                         Cancelar
 
                     </button>
 
+
                 </div>
+
 
             </form>
 
+
         </section>
 
-        <!-- RODAPÉ -->
+
+
+        <!--==================================================
+                            RODAPÉ
+        ==================================================-->
 
         <footer>
 
-            <div>
 
-                Lanche Sipauba • Todos os direitos reservados
-
-            </div>
-
-            <div>
-
-                Ajuda • Privacidade • Termos de uso
-
-            </div>
+            <!--==================================================
+                            EMPRESA
+            ==================================================-->
 
             <div>
 
-                Status do sistema:
-                <span id="statusSistema">
-                    Operacional
-                </span>
+
+                <h3>
+
+                    Sipaúba Lanches
+
+                </h3>
+
+
+                <p>
+
+                    Todos os direitos reservados
+
+                </p>
+
 
             </div>
+
+
+
+            <!--==================================================
+                            LINKS
+            ==================================================-->
+
+            <div>
+
+
+                <p>
+
+                    Ajuda • Privacidade • Termos de uso
+
+                </p>
+
+
+            </div>
+
+
+
+            <!--==================================================
+                            STATUS
+            ==================================================-->
+
+            <div>
+
+
+                <p>
+
+                    Status do sistema:
+
+                    <span id="statusSistema">
+
+                        Operacionald
+
+                    </span>
+
+                </p>
+
+
+            </div>
+
 
         </footer>
 
+
     </main>
 
-    <script src="../js/cadastro-produto.js"></script>
+
+
+    <!--==================================================
+                        JAVASCRIPT
+    ==================================================-->
+
+    <script
+        src="../js/cadastro_produto.js"
+    ></script>
+
 
 </body>
-
 
 </html>

@@ -1,291 +1,1206 @@
-// ===============================
-// cadastro-lojista.js
-// ===============================
+//==================================================
+//      cadastro-produto.js
+//      Sipaúba Lanches
+//==================================================
 
-document.addEventListener("DOMContentLoaded", () => {
 
-    // ===============================
-    // ELEMENTOS
-    // ===============================
+//==================================================
+//              CARREGAR CATEGORIAS
+//==================================================
 
-    const logoLoja = document.getElementById("logoLoja");
-    const nomePainel = document.getElementById("nomePainel");
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-    const categoriaProduto = document.getElementById("categoriaProduto");
+        carregarCategorias();
 
-    const uploadArea = document.getElementById("uploadArea");
-    const imagemProduto = document.getElementById("imagemProduto");
-    const miniaturas = document.getElementById("miniaturas");
-    const btnSelecionarImagem = document.getElementById("btnSelecionarImagem");
+    }
+);
 
-    const btnSalvar = document.getElementById("btnSalvar");
-    const btnCancelar = document.getElementById("btnCancelar");
 
-    const formProduto = document.getElementById("formProduto");
+//==================================================
+//              FUNÇÃO CARREGAR CATEGORIAS
+//==================================================
 
-    const campoPesquisa = document.getElementById("campoPesquisa");
-    const statusSistema = document.getElementById("statusSistema");
+function carregarCategorias() {
 
-    // ===============================
-    // DADOS DA LOJA
-    // (Depois poderão vir da API)
-    // ===============================
 
-    const loja = {
+    //==================================================
+    //              PEGAR SELECT
+    //==================================================
 
-        nome: "Painel do Lojista",
+    const categoriaProduto =
+        document.getElementById(
+            "categoriaProduto"
+        );
 
-        logo: "../assets/logo.png"
 
-    };
+    //==================================================
+    //              VERIFICAR SELECT
+    //==================================================
 
-    nomePainel.textContent = loja.nome;
+    if (!categoriaProduto) {
 
-    logoLoja.src = loja.logo;
+        console.error(
+            "Campo de categoria não encontrado."
+        );
 
-    logoLoja.alt = loja.nome;
-
-    // ===============================
-    // CATEGORIAS
-    // (Depois virão do banco)
-    // ===============================
-
-    const categorias = [
-
-        "Selecione",
-
-        "Roupas",
-
-        "Calçados",
-
-        "Acessórios",
-
-        "Eletrônicos",
-
-        "Esportes",
-
-        "Informática",
-
-        "Casa",
-
-        "Beleza"
-
-    ];
-
-    categorias.forEach(categoria => {
-
-        const option = document.createElement("option");
-
-        option.value = categoria;
-
-        option.textContent = categoria;
-
-        categoriaProduto.appendChild(option);
-
-    });
-
-    // ===============================
-    // UPLOAD
-    // ===============================
-
-    btnSelecionarImagem.addEventListener("click", () => {
-
-        imagemProduto.click();
-
-    });
-
-    uploadArea.addEventListener("click", () => {
-
-        imagemProduto.click();
-
-    });
-
-    imagemProduto.addEventListener("change", carregarImagens);
-
-    // ===============================
-    // DRAG AND DROP
-    // ===============================
-
-    uploadArea.addEventListener("dragover", (e) => {
-
-        e.preventDefault();
-
-        uploadArea.style.borderColor = "#000";
-
-    });
-
-    uploadArea.addEventListener("dragleave", () => {
-
-        uploadArea.style.borderColor = "#d7d7d7";
-
-    });
-
-    uploadArea.addEventListener("drop", (e) => {
-
-        e.preventDefault();
-
-        imagemProduto.files = e.dataTransfer.files;
-
-        carregarImagens();
-
-    });
-
-    // ===============================
-    // MINIATURAS
-    // ===============================
-
-    function carregarImagens() {
-
-        miniaturas.innerHTML = "";
-
-        const arquivos = imagemProduto.files;
-
-        for (let arquivo of arquivos) {
-
-            const reader = new FileReader();
-
-            reader.onload = function (e) {
-
-                const div = document.createElement("div");
-
-                const img = document.createElement("img");
-
-                img.src = e.target.result;
-
-                div.appendChild(img);
-
-                miniaturas.appendChild(div);
-
-            };
-
-            reader.readAsDataURL(arquivo);
-
-        }
+        return;
 
     }
 
-    // ===============================
-    // PESQUISA
-    // ===============================
 
-    campoPesquisa.addEventListener("keyup", () => {
+    //==================================================
+    //              BUSCAR CATEGORIAS
+    //==================================================
 
-        console.log("Pesquisar:", campoPesquisa.value);
+    fetch(
+        "http://localhost:3000/categorias"
+    )
 
-    });
 
-    // ===============================
-    // CANCELAR
-    // ===============================
+    //==================================================
+    //              CONVERTER RESPOSTA
+    //==================================================
 
-    btnCancelar.addEventListener("click", () => {
+    .then(
+        response => {
 
-        if (confirm("Deseja cancelar o cadastro?")) {
+            if (!response.ok) {
 
-            formProduto.reset();
+                throw new Error(
+                    "Erro ao buscar categorias."
+                );
 
-            miniaturas.innerHTML = "";
+            }
+
+            return response.json();
+
+        }
+    )
+
+
+    //==================================================
+    //              PREENCHER SELECT
+    //==================================================
+
+    .then(
+        categorias => {
+
+
+            //==================================================
+            //              LIMPAR SELECT
+            //==================================================
+
+            categoriaProduto.innerHTML = "";
+
+
+            //==================================================
+            //              OPÇÃO PADRÃO
+            //==================================================
+
+            const opcaoInicial =
+                document.createElement(
+                    "option"
+                );
+
+
+            opcaoInicial.value = "";
+
+            opcaoInicial.textContent =
+                "Selecione";
+
+
+            categoriaProduto.appendChild(
+                opcaoInicial
+            );
+
+
+            //==================================================
+            //              VERIFICAR CATEGORIAS
+            //==================================================
+
+            if (
+                !categorias ||
+                categorias.length === 0
+            ) {
+
+                console.log(
+                    "Nenhuma categoria cadastrada."
+                );
+
+                return;
+
+            }
+
+
+            //==================================================
+            //              PERCORRER CATEGORIAS
+            //==================================================
+
+            categorias.forEach(
+                function (categoria) {
+
+
+                    //==================================================
+                    //              CRIAR OPTION
+                    //==================================================
+
+                    const opcao =
+                        document.createElement(
+                            "option"
+                        );
+
+
+                    //==================================================
+                    //              ID DA CATEGORIA
+                    //==================================================
+
+                    opcao.value =
+                        categoria.idCategoria;
+
+
+                    //==================================================
+                    //              NOME DA CATEGORIA
+                    //==================================================
+
+                    opcao.textContent =
+                        categoria.nome;
+
+
+                    //==================================================
+                    //              ADICIONAR OPTION
+                    //==================================================
+
+                    categoriaProduto.appendChild(
+                        opcao
+                    );
+
+                }
+            );
+
+        }
+    )
+
+
+    //==================================================
+    //              ERRO
+    //==================================================
+
+    .catch(
+        error => {
+
+            console.error(
+                "Erro ao carregar categorias:",
+                error
+            );
+
+
+            categoriaProduto.innerHTML = "";
+
+
+            const opcaoErro =
+                document.createElement(
+                    "option"
+                );
+
+
+            opcaoErro.value = "";
+
+            opcaoErro.textContent =
+                "Erro ao carregar categorias";
+
+
+            categoriaProduto.appendChild(
+                opcaoErro
+            );
+
+        }
+    );
+
+}
+
+
+//==================================================
+//              SELECIONAR IMAGEM
+//==================================================
+
+document.getElementById(
+    "btnSelecionarImagem"
+).
+addEventListener(
+    "click",
+    function () {
+
+
+        //==================================================
+        //              PEGAR INPUT
+        //==================================================
+
+        const imagemProduto =
+            document.getElementById(
+                "imagemProduto"
+            );
+
+
+        //==================================================
+        //              ABRIR SELEÇÃO
+        //==================================================
+
+        imagemProduto.click();
+
+    }
+);
+
+
+//==================================================
+//              SELECIONAR IMAGENS
+//==================================================
+
+document.getElementById(
+    "imagemProduto"
+).
+addEventListener(
+    "change",
+    function () {
+
+
+        //==================================================
+        //              PEGAR ARQUIVOS
+        //==================================================
+
+        const arquivos =
+            this.files;
+
+
+        //==================================================
+        //              MOSTRAR MINIATURAS
+        //==================================================
+
+        mostrarMiniaturas(
+            arquivos
+        );
+
+    }
+);
+
+
+//==================================================
+//              MOSTRAR MINIATURAS
+//==================================================
+
+function mostrarMiniaturas(
+    arquivos
+) {
+
+
+    //==================================================
+    //              PEGAR ÁREA
+    //==================================================
+
+    const miniaturas =
+        document.getElementById(
+            "miniaturas"
+        );
+
+
+    //==================================================
+    //              LIMPAR
+    //==================================================
+
+    miniaturas.innerHTML = "";
+
+
+    //==================================================
+    //              VERIFICAR ARQUIVOS
+    //==================================================
+
+    if (
+        !arquivos ||
+        arquivos.length === 0
+    ) {
+
+        return;
+
+    }
+
+
+    //==================================================
+    //              PERCORRER ARQUIVOS
+    //==================================================
+
+    for (
+        let i = 0;
+        i < arquivos.length;
+        i++
+    ) {
+
+
+        //==================================================
+        //              PEGAR ARQUIVO
+        //==================================================
+
+        const arquivo =
+            arquivos[i];
+
+
+        //==================================================
+        //              VALIDAR TIPO
+        //==================================================
+
+        if (
+            !arquivo.type.startsWith(
+                "image/"
+            )
+        ) {
+
+            continue;
 
         }
 
-    });
 
-    // ===============================
-    // SALVAR
-    // ===============================
+        //==================================================
+        //              CRIAR CONTAINER
+        //==================================================
 
-    formProduto.addEventListener("submit", (e) => {
+        const container =
+            document.createElement(
+                "div"
+            );
 
-        e.preventDefault();
 
-        const produto = {
+        container.className =
+            "miniaturaItem";
 
-            nome:
 
-                document.getElementById("nomeProduto").value,
+        //==================================================
+        //              CRIAR IMAGEM
+        //==================================================
 
-            categoria:
+        const imagem =
+            document.createElement(
+                "img"
+            );
 
-                categoriaProduto.value,
 
-            descricao:
+        imagem.src =
+            URL.createObjectURL(
+                arquivo
+            );
 
-                document.getElementById("descricaoProduto").value,
 
-            preco:
+        imagem.alt =
+            arquivo.name;
 
-                document.getElementById("precoProduto").value,
 
-            quantidade:
+        //==================================================
+        //              ADICIONAR IMAGEM
+        //==================================================
 
-                document.getElementById("quantidadeProduto").value,
+        container.appendChild(
+            imagem
+        );
 
-            status:
 
-                document.getElementById("statusProduto").checked,
+        //==================================================
+        //              ADICIONAR CONTAINER
+        //==================================================
 
-            imagens:
+        miniaturas.appendChild(
+            container
+        );
 
-                imagemProduto.files
+    }
 
-        };
+}
 
-        // ===============================
-        // VALIDAÇÕES
-        // ===============================
 
-        if (produto.nome.trim() === "") {
+//==================================================
+//              ARRASTAR IMAGEM
+//==================================================
 
-            alert("Informe o nome do produto.");
+document.getElementById(
+    "uploadArea"
+).
+addEventListener(
+    "dragover",
+    function (event) {
+
+
+        //==================================================
+        //              IMPEDIR COMPORTAMENTO
+        //==================================================
+
+        event.preventDefault();
+
+
+        //==================================================
+        //              CLASSE VISUAL
+        //==================================================
+
+        this.classList.add(
+            "arrastando"
+        );
+
+    }
+);
+
+
+//==================================================
+//              SAIR DA ÁREA
+//==================================================
+
+document.getElementById(
+    "uploadArea"
+).
+addEventListener(
+    "dragleave",
+    function () {
+
+
+        //==================================================
+        //              REMOVER CLASSE
+        //==================================================
+
+        this.classList.remove(
+            "arrastando"
+        );
+
+    }
+);
+
+
+//==================================================
+//              SOLTAR IMAGEM
+//==================================================
+
+document.getElementById(
+    "uploadArea"
+).
+addEventListener(
+    "drop",
+    function (event) {
+
+
+        //==================================================
+        //              IMPEDIR COMPORTAMENTO
+        //==================================================
+
+        event.preventDefault();
+
+
+        //==================================================
+        //              REMOVER CLASSE
+        //==================================================
+
+        this.classList.remove(
+            "arrastando"
+        );
+
+
+        //==================================================
+        //              PEGAR ARQUIVOS
+        //==================================================
+
+        const arquivos =
+            event.dataTransfer.files;
+
+
+        //==================================================
+        //              VERIFICAR ARQUIVOS
+        //==================================================
+
+        if (
+            !arquivos ||
+            arquivos.length === 0
+        ) {
 
             return;
 
         }
 
-        if (produto.preco === "") {
 
-            alert("Informe o preço.");
+        //==================================================
+        //              MOSTRAR MINIATURAS
+        //==================================================
+
+        mostrarMiniaturas(
+            arquivos
+        );
+
+
+        //==================================================
+        //              COLOCAR ARQUIVOS NO INPUT
+        //==================================================
+
+        const imagemProduto =
+            document.getElementById(
+                "imagemProduto"
+            );
+
+
+        imagemProduto.files =
+            arquivos;
+
+    }
+);
+
+
+//==================================================
+//              CADASTRO PRODUTO
+//==================================================
+
+document.getElementById(
+    "btnSalvar"
+).
+addEventListener(
+    "click",
+    function (event) {
+
+
+        //==================================================
+        //              IMPEDIR FORMULÁRIO
+        //==================================================
+
+        event.preventDefault();
+
+
+        //==================================================
+        //              CAPTURAR NOME
+        //==================================================
+
+        const nomeProduto =
+            document.getElementById(
+                "nomeProduto"
+            ).value.trim();
+
+
+        //==================================================
+        //              CAPTURAR CATEGORIA
+        //==================================================
+
+        const categoriaProduto =
+            document.getElementById(
+                "categoriaProduto"
+            ).value;
+
+
+        //==================================================
+        //              CAPTURAR DESCRIÇÃO
+        //==================================================
+
+        const descricaoProduto =
+            document.getElementById(
+                "descricaoProduto"
+            ).value.trim();
+
+
+        //==================================================
+        //              CAPTURAR PREÇO
+        //==================================================
+
+        const precoProduto =
+            document.getElementById(
+                "precoProduto"
+            ).value;
+
+
+        //==================================================
+        //              CAPTURAR ESTOQUE
+        //==================================================
+
+        const quantidadeProduto =
+            document.getElementById(
+                "quantidadeProduto"
+            ).value;
+
+
+        //==================================================
+        //              CAPTURAR STATUS
+        //==================================================
+
+        const statusProduto =
+            document.getElementById(
+                "statusProduto"
+            ).checked;
+
+
+        //==================================================
+        //              CAPTURAR IMAGENS
+        //==================================================
+
+        const imagemProduto =
+            document.getElementById(
+                "imagemProduto"
+            );
+
+
+        const imagens =
+            imagemProduto.files;
+
+
+        //==================================================
+        //              VALIDAR NOME
+        //==================================================
+
+        if (
+            nomeProduto === ""
+        ) {
+
+            alert(
+                "Por favor, preencha o nome do produto."
+            );
 
             return;
 
         }
 
-        if (produto.quantidade === "") {
 
-            alert("Informe a quantidade.");
+        //==================================================
+        //              VALIDAR CATEGORIA
+        //==================================================
+
+        if (
+            categoriaProduto === ""
+        ) {
+
+            alert(
+                "Por favor, selecione uma categoria."
+            );
 
             return;
 
         }
 
-        console.table(produto);
 
-        alert("Produto cadastrado com sucesso!");
+        //==================================================
+        //              VALIDAR DESCRIÇÃO
+        //==================================================
 
-        // Aqui futuramente será enviado para a API
+        if (
+            descricaoProduto === ""
+        ) {
+
+            alert(
+                "Por favor, preencha a descrição do produto."
+            );
+
+            return;
+
+        }
+
+
+        //==================================================
+        //              VALIDAR PREÇO
+        //==================================================
+
+        if (
+            precoProduto === "" ||
+            isNaN(
+                Number(precoProduto)
+            ) ||
+            Number(precoProduto) <= 0
+        ) {
+
+            alert(
+                "Por favor, informe um preço válido."
+            );
+
+            return;
+
+        }
+
+
+        //==================================================
+        //              VALIDAR ESTOQUE
+        //==================================================
+
+        if (
+            quantidadeProduto === "" ||
+            isNaN(
+                Number(
+                    quantidadeProduto
+                )
+            ) ||
+            Number(
+                quantidadeProduto
+            ) < 0
+        ) {
+
+            alert(
+                "Por favor, informe uma quantidade válida para o estoque."
+            );
+
+            return;
+
+        }
+
+
+        //==================================================
+        //              VALIDAR IMAGEM
+        //==================================================
+
+        if (
+            imagens.length === 0
+        ) {
+
+            alert(
+                "Por favor, selecione pelo menos uma imagem."
+            );
+
+            return;
+
+        }
+
+
+        //==================================================
+        //              VALIDAR TAMANHO DAS IMAGENS
+        //==================================================
+
+        for (
+            let i = 0;
+            i < imagens.length;
+            i++
+        ) {
+
+
+            const arquivo =
+                imagens[i];
+
+
+            //==================================================
+            //              VALIDAR TIPO
+            //==================================================
+
+            if (
+                !arquivo.type.startsWith(
+                    "image/"
+                )
+            ) {
+
+                alert(
+                    "Selecione somente arquivos de imagem."
+                );
+
+                return;
+
+            }
+
+
+            //==================================================
+            //              VALIDAR TAMANHO
+            //==================================================
+
+            const tamanhoMaximo =
+                10 * 1024 * 1024;
+
+
+            if (
+                arquivo.size >
+                tamanhoMaximo
+            ) {
+
+                alert(
+                    "Cada imagem deve ter no máximo 10MB."
+                );
+
+                return;
+
+            }
+
+        }
+
+
+        //==================================================
+        //              GERAR CÓDIGO
+        //==================================================
+
+        const codigo =
+            "PROD-" +
+            Date.now();
+
+
+        //==================================================
+        //              CRIAR FORMDATA
+        //==================================================
+
+        const produto =
+            new FormData();
+
+
+        //==================================================
+        //              ADICIONAR NOME
+        //==================================================
+
+        produto.append(
+            "nome",
+            nomeProduto
+        );
+
+
+        //==================================================
+        //              ADICIONAR DESCRIÇÃO
+        //==================================================
+
+        produto.append(
+            "descricao",
+            descricaoProduto
+        );
+
+
+        //==================================================
+        //              ADICIONAR CÓDIGO
+        //==================================================
+
+        produto.append(
+            "codigo",
+            codigo
+        );
+
+
+        //==================================================
+        //              ADICIONAR PREÇO
+        //==================================================
+
+        produto.append(
+            "preco",
+            Number(precoProduto)
+        );
+
+
+        //==================================================
+        //              ADICIONAR ESTOQUE
+        //==================================================
+
+        produto.append(
+            "quantidade_estoque",
+            Number(
+                quantidadeProduto
+            )
+        );
+
+
+        //==================================================
+        //              ADICIONAR STATUS
+        //==================================================
+
+        produto.append(
+            "ativo",
+            statusProduto ? 1 : 0
+        );
+
+
+        //==================================================
+        //              ID DA LOJA
+        //==================================================
 
         /*
-        fetch("http://localhost:3000/produtos", {
+            ATENÇÃO:
 
-            method:"POST",
+            Por enquanto estamos usando
+            Loja_idLoja = 1.
 
-            headers:{
-                "Content-Type":"application/json"
-            },
-
-            body:JSON.stringify(produto)
-
-        });
+            Depois podemos pegar o ID da loja
+            do login do lojista.
         */
 
-    });
+        produto.append(
+            "Loja_idLoja",
+            1
+        );
 
-    // ===============================
-    // STATUS DO SISTEMA
-    // ===============================
 
-    statusSistema.textContent = "Operacional";
+        //==================================================
+        //              ID DA CATEGORIA
+        //==================================================
 
-    statusSistema.style.color = "green";
+        produto.append(
+            "Categoria_idCategoria",
+            Number(
+                categoriaProduto
+            )
+        );
 
-});
+
+        //==================================================
+        //              ADICIONAR IMAGENS
+        //==================================================
+
+        for (
+            let i = 0;
+            i < imagens.length;
+            i++
+        ) {
+
+            produto.append(
+                "imagens",
+                imagens[i]
+            );
+
+        }
+
+
+        //==================================================
+        //              MOSTRAR NO CONSOLE
+        //==================================================
+
+        console.log(
+            "Dados enviados:"
+        );
+
+
+        console.log(
+            "Nome:",
+            nomeProduto
+        );
+
+
+        console.log(
+            "Categoria:",
+            categoriaProduto
+        );
+
+
+        console.log(
+            "Descrição:",
+            descricaoProduto
+        );
+
+
+        console.log(
+            "Preço:",
+            precoProduto
+        );
+
+
+        console.log(
+            "Estoque:",
+            quantidadeProduto
+        );
+
+
+        console.log(
+            "Ativo:",
+            statusProduto
+        );
+
+
+        console.log(
+            "Quantidade de imagens:",
+            imagens.length
+        );
+
+
+        //==================================================
+        //              ENVIAR PARA SERVIDOR
+        //==================================================
+
+        fetch(
+            "http://localhost:3000/produtos",
+            {
+
+                method: "POST",
+
+                body: produto
+
+            }
+        )
+
+
+        //==================================================
+        //              RECEBER RESPOSTA
+        //==================================================
+
+        .then(
+            response => {
+
+
+                //==================================================
+                //              VERIFICAR RESPOSTA
+                //==================================================
+
+                if (!response.ok) {
+
+                    return response.json()
+                    .then(
+                        data => {
+
+                            throw new Error(
+                                data.erro ||
+                                "Erro ao cadastrar produto."
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                return response.json();
+
+            }
+        )
+
+
+        //==================================================
+        //              RESULTADO
+        //==================================================
+
+        .then(
+            data => {
+
+
+                console.log(
+                    "Produto cadastrado:",
+                    data
+                );
+
+
+                //==================================================
+                //              MENSAGEM
+                //==================================================
+
+                alert(
+                    "Produto cadastrado com sucesso!"
+                );
+
+
+                //==================================================
+                //              LIMPAR FORMULÁRIO
+                //==================================================
+
+                document.getElementById(
+                    "formProduto"
+                ).reset();
+
+
+                //==================================================
+                //              LIMPAR MINIATURAS
+                //==================================================
+
+                document.getElementById(
+                    "miniaturas"
+                ).innerHTML = "";
+
+
+                //==================================================
+                //              RECARREGAR CATEGORIAS
+                //==================================================
+
+                carregarCategorias();
+
+            }
+        )
+
+
+        //==================================================
+        //              TRATAR ERRO
+        //==================================================
+
+        .catch(
+            error => {
+
+
+                console.error(
+                    "Erro ao cadastrar produto:",
+                    error
+                );
+
+
+                alert(
+                    error.message ||
+                    "Erro ao cadastrar produto."
+                );
+
+            }
+        );
+
+    }
+);
+
+
+//==================================================
+//              BOTÃO CANCELAR
+//==================================================
+
+document.getElementById(
+    "btnCancelar"
+).
+addEventListener(
+    "click",
+    function () {
+
+
+        //==================================================
+        //              LIMPAR FORMULÁRIO
+        //==================================================
+
+        document.getElementById(
+            "formProduto"
+        ).reset();
+
+
+        //==================================================
+        //              LIMPAR MINIATURAS
+        //==================================================
+
+        document.getElementById(
+            "miniaturas"
+        ).innerHTML = "";
+
+
+        //==================================================
+        //              RECARREGAR CATEGORIAS
+        //==================================================
+
+        carregarCategorias();
+
+
+    }
+);
+
+
+//==================================================
+//              ÁREA DE UPLOAD
+//==================================================
+
+document.getElementById(
+    "uploadArea"
+).
+addEventListener(
+    "click",
+    function (event) {
+
+
+        //==================================================
+        //              NÃO ABRIR DUAS VEZES
+        //==================================================
+
+        if (
+            event.target.id ===
+            "btnSelecionarImagem"
+        ) {
+
+            return;
+
+        }
+
+
+        //==================================================
+        //              PEGAR INPUT
+        //==================================================
+
+        const imagemProduto =
+            document.getElementById(
+                "imagemProduto"
+            );
+
+
+        //==================================================
+        //              ABRIR ARQUIVO
+        //==================================================
+
+        imagemProduto.click();
+
+    }
+);

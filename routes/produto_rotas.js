@@ -1,75 +1,122 @@
-// =====================================================
-// ROTAS DE PRODUTO
-// =====================================================
-//
-// POST    /produtos       -> Cadastrar produto
-// GET     /produtos       -> Listar produtos
-// GET     /produtos/:id   -> Buscar produto por ID
-// PUT     /produtos/:id   -> Atualizar produto
-// DELETE  /produtos/:id   -> Excluir produto
-//
-// =====================================================
+//==================================================
+//      produto_rotas.js
+//      Sipaúba Lanches
+//==================================================
 
 
-const express = require("express");
-
-// Criando o roteador do Express
-const router = express.Router();
+const express =
+    require("express");
 
 
-// Importando Controller de Produto
-const ProdutoController = require("../controller/produto_controller.js");
+const router =
+    express.Router();
 
 
-// =========================
-// CADASTRAR PRODUTO
-// =========================
+//==================================================
+//              CONTROLLER
+//==================================================
+
+const ProdutoController =
+    require(
+        "../controller/produto_controller.js"
+    );
+
+
+//==================================================
+//              MULTER
+//==================================================
+
+const upload =
+    require(
+        "../multer/upload.js"
+    );
+
+
+//==================================================
+//              CADASTRAR PRODUTO
+//==================================================
 
 router.post(
+
     "/",
+
+    upload.array(
+        "imagens",
+        10
+    ),
+
     ProdutoController.cadastrar
+
 );
 
 
-// =========================
-// LISTAR PRODUTOS
-// =========================
+//==================================================
+//              LISTAR PRODUTOS
+//==================================================
 
 router.get(
+
     "/",
+
     ProdutoController.listar
+
 );
 
 
-// =========================
-// BUSCAR PRODUTO POR ID
-// =========================
+//==================================================
+//              BUSCAR POR ID
+//==================================================
 
 router.get(
+
     "/:id",
+
     ProdutoController.buscarPorId
+
 );
 
 
-// =========================
-// ATUALIZAR PRODUTO
-// =========================
+//==================================================
+//              BUSCAR POR CÓDIGO
+//==================================================
+
+router.get(
+
+    "/codigo/:codigo",
+
+    ProdutoController.buscarPorCodigo
+
+);
+
+
+//==================================================
+//              ATUALIZAR PRODUTO
+//==================================================
 
 router.put(
+
     "/:id",
+
     ProdutoController.atualizar
+
 );
 
 
-// =========================
-// EXCLUIR PRODUTO
-// =========================
+//==================================================
+//              EXCLUIR PRODUTO
+//==================================================
 
 router.delete(
+
     "/:id",
+
     ProdutoController.excluir
+
 );
 
 
-// Exportando as rotas
+//==================================================
+//              EXPORTAR
+//==================================================
+
 module.exports = router;

@@ -1,62 +1,54 @@
-const conexao = require("../conexao/conexao.js");
+//==================================================
+//      imagem_produto_model.js
+//      Sipaúba Lanches
+//==================================================
 
-// =========================
-// Cadastrar Imagem do Produto
-// =========================
 
-function cadastrar(imagemProduto, callback) {
+const conexao = require(
+    "../conexao/conexao.js"
+);
 
-    const sql = `INSERT INTO Imagem_Produto
-        (arquivo, Produto_idProduto)
-        VALUES (?, ?)`;
+
+//==================================================
+//              CADASTRAR IMAGEM
+//==================================================
+
+function cadastrar(imagem, callback) {
+
+    const sql = `
+        INSERT INTO Imagem_Produto
+        (
+            imagem,
+            Produto_idProduto
+        )
+        VALUES (?, ?)
+    `;
+
 
     conexao.query(
+
         sql,
+
         [
-            imagemProduto.arquivo,
-            imagemProduto.Produto_idProduto
+            imagem.imagem,
+            imagem.Produto_idProduto
         ],
+
         callback
+
     );
 
 }
 
-// =========================
-// Listar Imagens
-// =========================
 
-function listar(callback) {
+//==================================================
+//              LISTAR IMAGENS DO PRODUTO
+//==================================================
 
-    const sql = `
-        SELECT *
-        FROM Imagem_Produto
-    `;
-
-    conexao.query(sql, callback);
-
-}
-
-// =========================
-// Buscar por ID
-// =========================
-
-function buscarPorId(id, callback) {
-
-    const sql = `
-        SELECT *
-        FROM Imagem_Produto
-        WHERE idImagem_Produto = ?
-    `;
-
-    conexao.query(sql, [id], callback);
-
-}
-
-// =========================
-// Buscar por Produto
-// =========================
-
-function buscarPorProduto(idProduto, callback) {
+function listarPorProduto(
+    idProduto,
+    callback
+) {
 
     const sql = `
         SELECT *
@@ -64,58 +56,58 @@ function buscarPorProduto(idProduto, callback) {
         WHERE Produto_idProduto = ?
     `;
 
-    conexao.query(sql, [idProduto], callback);
-
-}
-
-// =========================
-// Atualizar Imagem
-// =========================
-
-function atualizar(id, imagemProduto, callback) {
-
-    const sql = `
-        UPDATE Imagem_Produto
-        SET
-            arquivo = ?,
-            Produto_idProduto = ?
-        WHERE idImagem_Produto = ?
-    `;
 
     conexao.query(
+
         sql,
-        [
-            imagemProduto.arquivo,
-            imagemProduto.Produto_idProduto,
-            id
-        ],
+
+        [idProduto],
+
         callback
+
     );
 
 }
 
-// =========================
-// Excluir Imagem
-// =========================
 
-function excluir(id, callback) {
+//==================================================
+//              EXCLUIR IMAGENS DO PRODUTO
+//==================================================
+
+function excluirPorProduto(
+    idProduto,
+    callback
+) {
 
     const sql = `
         DELETE FROM Imagem_Produto
-        WHERE idImagem_Produto = ?
+        WHERE Produto_idProduto = ?
     `;
 
-    conexao.query(sql, [id], callback);
+
+    conexao.query(
+
+        sql,
+
+        [idProduto],
+
+        callback
+
+    );
 
 }
+
+
+//==================================================
+//              EXPORTAR
+//==================================================
 
 module.exports = {
 
     cadastrar,
-    listar,
-    buscarPorId,
-    buscarPorProduto,
-    atualizar,
-    excluir
+
+    listarPorProduto,
+
+    excluirPorProduto
 
 };

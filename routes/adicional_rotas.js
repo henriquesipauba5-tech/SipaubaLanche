@@ -1,75 +1,121 @@
-// =====================================================
-// ROTAS DE ADICIONAL
-// =====================================================
-//
-// POST    /adicionais       -> Cadastrar adicional
-// GET     /adicionais       -> Listar adicionais
-// GET     /adicionais/:id   -> Buscar adicional por ID
-// PUT     /adicionais/:id   -> Atualizar adicional
-// DELETE  /adicionais/:id   -> Excluir adicional
-//
-// =====================================================
+//==================================================
+//      adicional_rotas.js
+//      Sipaúba Lanches
+//==================================================
 
+
+//==================================================
+//                  IMPORTAÇÕES
+//==================================================
 
 const express = require("express");
 
-// Criando o roteador do Express
+const multer = require("multer");
+
+const AdicionalController = require(
+    "../controller/adicional_controller.js"
+);
+
+
+//==================================================
+//                  ROTEADOR
+//==================================================
+
 const router = express.Router();
 
 
-// Importando Controller de Adicional
-const AdicionalController = require("../controller/adicional_controller.js");
+//==================================================
+//                  MULTER
+//==================================================
+
+const storage = multer.memoryStorage();
 
 
-// =========================
-// CADASTRAR ADICIONAL
-// =========================
+const upload = multer({
+
+    storage: storage,
+
+    limits: {
+
+        // Máximo de 5 MB
+        fileSize: 5 * 1024 * 1024
+
+    }
+
+});
+
+
+//==================================================
+//              CADASTRAR ADICIONAL
+//==================================================
 
 router.post(
+
     "/",
+
+    upload.single("imagem"),
+
     AdicionalController.cadastrar
+
 );
 
 
-// =========================
-// LISTAR ADICIONAIS
-// =========================
+//==================================================
+//              LISTAR ADICIONAIS
+//==================================================
 
 router.get(
+
     "/",
+
     AdicionalController.listar
+
 );
 
 
-// =========================
-// BUSCAR ADICIONAL POR ID
-// =========================
+//==================================================
+//          BUSCAR ADICIONAL POR ID
+//==================================================
 
 router.get(
+
     "/:id",
+
     AdicionalController.buscarPorId
+
 );
 
 
-// =========================
-// ATUALIZAR ADICIONAL
-// =========================
+//==================================================
+//          ATUALIZAR ADICIONAL
+//==================================================
 
 router.put(
+
     "/:id",
+
+    upload.single("imagem"),
+
     AdicionalController.atualizar
+
 );
 
 
-// =========================
-// EXCLUIR ADICIONAL
-// =========================
+//==================================================
+//              EXCLUIR ADICIONAL
+//==================================================
 
 router.delete(
+
     "/:id",
+
     AdicionalController.excluir
+
 );
 
 
-// Exportando as rotas
+//==================================================
+//                  EXPORTAR
+//==================================================
+
 module.exports = router;

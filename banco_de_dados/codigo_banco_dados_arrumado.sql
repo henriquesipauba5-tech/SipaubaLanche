@@ -1,0 +1,665 @@
+/*==========================================================
+    SIPAÚBA LANCHES
+    BANCO DE DADOS
+==========================================================*/
+
+
+/*==========================================================
+    1. CRIAÇÃO DO BANCO
+==========================================================*/
+
+DROP DATABASE IF EXISTS SipaubaLanche;
+
+CREATE DATABASE SipaubaLanche;
+
+USE SipaubaLanche;
+
+
+/*==========================================================
+    2. TABELA LOJISTA
+    Não depende de nenhuma outra tabela
+==========================================================*/
+
+CREATE TABLE Lojista (
+
+    idLojista INT AUTO_INCREMENT PRIMARY KEY,
+
+    nome VARCHAR(200) NOT NULL,
+
+    cpf VARCHAR(14) NOT NULL UNIQUE,
+
+    cnpj VARCHAR(18) UNIQUE,
+
+    email VARCHAR(120) NOT NULL UNIQUE,
+
+    senha VARCHAR(255) NOT NULL,
+
+    telefone VARCHAR(20)
+
+);
+
+
+/*==========================================================
+    3. TABELA ENDERECO
+    Não depende de nenhuma outra tabela
+==========================================================*/
+
+CREATE TABLE Endereco (
+
+    idEndereco INT AUTO_INCREMENT PRIMARY KEY,
+
+    rua VARCHAR(100) NOT NULL,
+
+    cep VARCHAR(9) NOT NULL,
+
+    bairro VARCHAR(100) NOT NULL,
+
+    numero VARCHAR(10),
+
+    complemento VARCHAR(200),
+
+    tipo VARCHAR(45)
+
+);
+
+
+/*==========================================================
+    4. TABELA CATEGORIA
+    Não depende de nenhuma outra tabela
+==========================================================*/
+
+CREATE TABLE Categoria (
+
+    idCategoria INT AUTO_INCREMENT PRIMARY KEY,
+
+    nome VARCHAR(100) NOT NULL UNIQUE
+
+);
+
+
+/*==========================================================
+    5. TABELA MARCA
+    Necessária para Produto
+==========================================================*/
+
+CREATE TABLE Marca (
+
+    idMarca INT AUTO_INCREMENT PRIMARY KEY,
+
+    nome VARCHAR(100) NOT NULL UNIQUE
+
+);
+
+
+/*==========================================================
+    6. TABELA FORMA DE PAGAMENTO
+    Não depende de outras tabelas
+==========================================================*/
+
+CREATE TABLE Forma_Pagamento (
+
+    idForma_Pagamento INT AUTO_INCREMENT PRIMARY KEY,
+
+    nome VARCHAR(45) NOT NULL,
+
+    link VARCHAR(200),
+
+    ativo BOOLEAN DEFAULT TRUE
+
+);
+
+
+/*==========================================================
+    7. TABELA ADICIONAL
+    Não depende de outras tabelas
+==========================================================*/
+
+CREATE TABLE Adicional (
+
+    idAdicional INT AUTO_INCREMENT PRIMARY KEY,
+
+    nome VARCHAR(100) NOT NULL,
+
+    descricao VARCHAR(255) NOT NULL,
+
+    preco DECIMAL(10,2) NOT NULL,
+
+    imagem LONGBLOB
+
+   
+
+);
+
+
+/*==========================================================
+    8. TABELA LOJA
+    Depende de:
+        - Lojista
+        - Endereco
+==========================================================*/
+
+CREATE TABLE Loja (
+
+    idLoja INT AUTO_INCREMENT PRIMARY KEY,
+
+    nome VARCHAR(100) NOT NULL,
+
+    whatsapp VARCHAR(20),
+
+    instagram VARCHAR(100),
+
+    facebook VARCHAR(100),
+
+    linkedin VARCHAR(100),
+
+    telefone VARCHAR(20) NOT NULL,
+
+    email VARCHAR(120) NOT NULL,
+
+    Endereco_idEndereco INT NOT NULL,
+
+    Lojista_idLojista INT NOT NULL,
+
+    FOREIGN KEY (Endereco_idEndereco)
+        REFERENCES Endereco(idEndereco),
+
+    FOREIGN KEY (Lojista_idLojista)
+        REFERENCES Lojista(idLojista)
+
+);
+
+
+/*==========================================================
+    9. TABELA CLIENTE
+    Depende de:
+        - Loja
+==========================================================*/
+
+CREATE TABLE Cliente (
+
+    idCliente INT AUTO_INCREMENT PRIMARY KEY,
+
+    nome VARCHAR(200) NOT NULL,
+
+    cpf VARCHAR(14) NOT NULL UNIQUE,
+
+    telefone VARCHAR(20) NOT NULL,
+
+    email VARCHAR(120) NOT NULL UNIQUE,
+
+    senha VARCHAR(255) NOT NULL,
+
+    data_nascimento DATE NOT NULL,
+
+    Loja_idLoja INT,
+
+    FOREIGN KEY (Loja_idLoja)
+        REFERENCES Loja(idLoja)
+
+);
+
+
+/*==========================================================
+    10. TABELA CUPOM
+    Depende de:
+        - Loja
+==========================================================*/
+
+CREATE TABLE Cupom (
+
+    idCupom INT AUTO_INCREMENT PRIMARY KEY,
+
+    codigo VARCHAR(50) NOT NULL UNIQUE,
+
+    descricao VARCHAR(255),
+
+    desconto DECIMAL(10,2) NOT NULL,
+
+    data_inicio DATE,
+
+    data_final DATE,
+
+    ativo BOOLEAN DEFAULT TRUE,
+
+    Loja_idLoja INT,
+
+    FOREIGN KEY (Loja_idLoja)
+        REFERENCES Loja(idLoja)
+
+);
+
+
+/*==========================================================
+    11. TABELA PRODUTO
+    Depende de:
+        - Loja
+        - Marca
+        - Categoria
+==========================================================*/
+
+CREATE TABLE Produto (
+
+    idProduto INT AUTO_INCREMENT PRIMARY KEY,
+
+    nome VARCHAR(100) NOT NULL,
+
+    descricao TEXT NOT NULL,
+
+    codigo VARCHAR(45),
+
+    preco_antigo DECIMAL(10,2) DEFAULT 0.00,
+
+    preco_promocional DECIMAL(10,2) NOT NULL,
+
+    quantidade_estoque INT DEFAULT 0,
+
+    ativo BOOLEAN DEFAULT TRUE,
+
+    Loja_idLoja INT,
+
+    Marca_idMarca INT,
+
+    Categoria_idCategoria INT,
+
+    FOREIGN KEY (Loja_idLoja)
+        REFERENCES Loja(idLoja),
+
+    FOREIGN KEY (Marca_idMarca)
+        REFERENCES Marca(idMarca),
+
+    FOREIGN KEY (Categoria_idCategoria)
+        REFERENCES Categoria(idCategoria)
+
+);
+
+
+/*==========================================================
+    12. TABELA BANNER
+    Depende de:
+        - Loja
+==========================================================*/
+
+CREATE TABLE Banner (
+
+    idBanner INT AUTO_INCREMENT PRIMARY KEY,
+
+    imagem LONGBLOB NOT NULL,
+
+    data_inicio DATE NOT NULL,
+
+    data_final DATE NOT NULL,
+
+    status_visibilidade BOOLEAN DEFAULT TRUE,
+
+    Loja_idLoja INT,
+
+    FOREIGN KEY (Loja_idLoja)
+        REFERENCES Loja(idLoja)
+
+);
+
+
+/*==========================================================
+    13. TABELA CARRINHO
+    Depende de:
+        - Cliente
+==========================================================*/
+
+CREATE TABLE Carrinho (
+
+    idCarrinho INT AUTO_INCREMENT PRIMARY KEY,
+
+    quantidade_produto INT DEFAULT 0,
+
+    preco_total DECIMAL(10,2) DEFAULT 0.00,
+
+    Cliente_idCliente INT NOT NULL,
+
+    FOREIGN KEY (Cliente_idCliente)
+        REFERENCES Cliente(idCliente)
+
+);
+
+
+/*==========================================================
+    14. TABELA CATEGORIA_HAS_CUPOM
+    Depende de:
+        - Categoria
+        - Cupom
+==========================================================*/
+
+CREATE TABLE Categoria_has_Cupom (
+
+    Categoria_idCategoria INT,
+
+    Cupom_idCupom INT,
+
+    PRIMARY KEY (
+        Categoria_idCategoria,
+        Cupom_idCupom
+    ),
+
+    FOREIGN KEY (Categoria_idCategoria)
+        REFERENCES Categoria(idCategoria),
+
+    FOREIGN KEY (Cupom_idCupom)
+        REFERENCES Cupom(idCupom)
+
+);
+
+
+/*==========================================================
+    15. TABELA CUPOM_HAS_PRODUTO
+    Depende de:
+        - Cupom
+        - Produto
+==========================================================*/
+
+CREATE TABLE Cupom_has_Produto (
+
+    Cupom_idCupom INT,
+
+    Produto_idProduto INT,
+
+    PRIMARY KEY (
+        Cupom_idCupom,
+        Produto_idProduto
+    ),
+
+    FOREIGN KEY (Cupom_idCupom)
+        REFERENCES Cupom(idCupom),
+
+    FOREIGN KEY (Produto_idProduto)
+        REFERENCES Produto(idProduto)
+
+);
+
+
+/*==========================================================
+    16. TABELA BANNER_HAS_PRODUTO
+    Depende de:
+        - Banner
+        - Produto
+==========================================================*/
+
+CREATE TABLE Banner_has_Produto (
+
+    Produto_idProduto INT,
+
+    Banner_idBanner INT,
+
+    PRIMARY KEY (
+        Produto_idProduto,
+        Banner_idBanner
+    ),
+
+    FOREIGN KEY (Produto_idProduto)
+        REFERENCES Produto(idProduto),
+
+    FOREIGN KEY (Banner_idBanner)
+        REFERENCES Banner(idBanner)
+
+);
+
+
+/*==========================================================
+    17. TABELA PRODUTO_HAS_CARRINHO
+    Depende de:
+        - Produto
+        - Carrinho
+==========================================================*/
+
+CREATE TABLE Produto_has_Carrinho (
+
+    Carrinho_idCarrinho INT,
+
+    Produto_idProduto INT,
+
+    quantidade INT DEFAULT 1,
+
+    preco_unitario DECIMAL(10,2),
+
+    PRIMARY KEY (
+        Carrinho_idCarrinho,
+        Produto_idProduto
+    ),
+
+    FOREIGN KEY (Carrinho_idCarrinho)
+        REFERENCES Carrinho(idCarrinho),
+
+    FOREIGN KEY (Produto_idProduto)
+        REFERENCES Produto(idProduto)
+
+);
+
+/*==========================================================
+    INSERT - LOJISTA
+==========================================================*/
+
+INSERT INTO Lojista
+(nome, cpf, cnpj, email, senha, telefone)
+VALUES
+(
+    'Henrique Sipaúba',
+    '123.456.789-00',
+    '12.345.678/0001-99',
+    'lojista@sipaubalanches.com',
+    '123456',
+    '(85) 99999-9999'
+);
+
+/*==========================================================
+    INSERT - ENDERECO
+==========================================================*/
+
+INSERT INTO Endereco
+(rua, cep, bairro, numero, complemento, tipo)
+VALUES
+(
+    'Rua Principal',
+    '60000-000',
+    'Centro',
+    '100',
+    'Próximo à praça',
+    'Comercial'
+);
+
+/*==========================================================
+    INSERT - LOJA
+==========================================================*/
+
+INSERT INTO Loja
+(
+    nome,
+    whatsapp,
+    instagram,
+    facebook,
+    linkedin,
+    telefone,
+    email,
+    Endereco_idEndereco,
+    Lojista_idLojista
+)
+VALUES
+(
+    'Sipaúba Lanches',
+    '(85) 99999-9999',
+    '@sipaubalanches',
+    'Sipaúba Lanches',
+    'Sipaúba Lanches',
+    '(85) 99999-9999',
+    'contato@sipaubalanches.com',
+    1,
+    1
+);
+
+/*==========================================================
+    INSERT - CLIENTE
+==========================================================*/
+
+INSERT INTO Cliente
+(
+    nome,
+    cpf,
+    telefone,
+    email,
+    senha,
+    data_nascimento,
+    Loja_idLoja
+)
+VALUES
+(
+    'João da Silva',
+    '987.654.321-00',
+    '(85) 98888-8888',
+    'joao@email.com',
+    '123456',
+    '2000-05-15',
+    1
+);
+
+/*==========================================================
+    INSERT - CATEGORIA
+==========================================================*/
+
+INSERT INTO Categoria
+(nome)
+VALUES
+('Hambúrguer'),
+('Combos'),
+('Bebidas'),
+('Porções'),
+('Sobremesas');
+
+/*==========================================================
+    INSERT - MARCA
+==========================================================*/
+
+INSERT INTO Marca
+(nome)
+VALUES
+('Sipaúba Lanches'),
+('Coca-Cola'),
+('Fanta'),
+('Guaraná');
+
+/*==========================================================
+    INSERT - FORMA DE PAGAMENTO
+==========================================================*/
+
+INSERT INTO Forma_Pagamento
+(nome, link, ativo)
+VALUES
+('Pix', NULL, TRUE),
+('Cartão de Crédito', NULL, TRUE),
+('Cartão de Débito', NULL, TRUE),
+('Dinheiro', NULL, TRUE);
+
+/*==========================================================
+    INSERT - ADICIONAIS
+==========================================================*/
+
+INSERT INTO Adicional
+(nome, descricao, preco)
+VALUES
+('Hambúrguer Extra', 'Carne artesanal adicional', 8.00),
+('Bacon', 'Bacon crocante', 4.00),
+('Cheddar', 'Cheddar cremoso', 3.50),
+('Ovo', 'Ovo frito adicional', 2.50);
+
+/*==========================================================
+    INSERT - PRODUTOS
+==========================================================*/
+
+INSERT INTO Produto
+(
+    nome,
+    descricao,
+    codigo,
+    preco_antigo,
+    preco_promocional,
+    quantidade_estoque,
+    ativo,
+    Loja_idLoja,
+    Marca_idMarca,
+    Categoria_idCategoria
+)
+VALUES
+(
+    'X-Bacon',
+    'Pão, carne artesanal, queijo, bacon e molho especial.',
+    'XB001',
+    25.00,
+    20.00,
+    50,
+    TRUE,
+    1,
+    1,
+    1
+),
+(
+    'X-Salada',
+    'Pão, carne artesanal, queijo, alface, tomate e molho especial.',
+    'XS001',
+    22.00,
+    18.00,
+    50,
+    TRUE,
+    1,
+    1,
+    1
+),
+(
+    'Combo X-Bacon',
+    'X-Bacon acompanhado de batata e refrigerante.',
+    'CB001',
+    35.00,
+    29.90,
+    30,
+    TRUE,
+    1,
+    1,
+    2
+);
+
+/*==========================================================
+    INSERT - CUPOM
+==========================================================*/
+
+INSERT INTO Cupom
+(
+    codigo,
+    descricao,
+    desconto,
+    data_inicio,
+    data_final,
+    ativo,
+    Loja_idLoja
+)
+VALUES
+(
+    'BEMVINDO10',
+    '10 reais de desconto no primeiro pedido',
+    10.00,
+    '2026-08-01',
+    '2026-12-31',
+    TRUE,
+    1
+);
+
+
+SELECT * FROM Lojista;
+SELECT * FROM Endereco;
+SELECT * FROM Loja;
+SELECT * FROM Cliente;
+SELECT * FROM Categoria;
+SELECT * FROM Marca;
+SELECT * FROM Forma_Pagamento;
+SELECT * FROM Adicional;
+SELECT * FROM Produto;
+SELECT * FROM Cupom;
+SELECT * FROM Banner;
+SELECT * FROM Carrinho;
+SELECT * FROM Produto_has_Carrinho;
+SELECT * FROM Cupom_has_Produto;
+SELECT * FROM Banner_has_Produto;
