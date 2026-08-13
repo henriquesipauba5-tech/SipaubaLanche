@@ -1,15 +1,15 @@
 // ============================================================
 // CONTROLLER INDISPONÍVEL COM O BANCO ATUAL
 // ============================================================
-// Recurso: Promoção e Produto
-// Motivo: As tabelas Promocao e Promocao_has_Produto não existem no banco enviado.
+// Recurso: Pedidos e Produtos
+// Motivo: As tabelas Pedidos e Pedidos_has_Produto não existem no banco enviado.
 // O banco SipaubaLanche não será alterado.
 // ============================================================
 
 function indisponivel(req, res) {
     return res.status(501).json({
         erro: "Recurso não disponível no banco de dados atual.",
-        recurso: "Promoção e Produto"
+        recurso: "Pedidos e Produtos"
     });
 }
 

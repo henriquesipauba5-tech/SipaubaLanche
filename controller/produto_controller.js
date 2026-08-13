@@ -1,21 +1,5 @@
-//==================================================
-//      produto_controller.js
-//      Sipaúba Lanches
-//==================================================
-
-
-//==================================================
-//                  MODELS
-//==================================================
-
-const produtoModel = require(
-    "../model/produto_model.js"
-);
-
-
-const imagemProdutoModel = require(
-    "../model/imagem_produto_model.js"
-);
+const produtoModel =
+    require("../model/produto_model.js");
 
 
 //==================================================
@@ -24,13 +8,20 @@ const imagemProdutoModel = require(
 
 function cadastrar(req, res) {
 
-
-    //==================================================
-    //              PEGAR DADOS
-    //==================================================
-
     const produto =
         req.body || {};
+
+
+    //==================================================
+    //              PEGAR IMAGEM
+    //==================================================
+
+    if (req.file) {
+
+        produto.imagem =
+            req.file.buffer;
+
+    }
 
 
     //==================================================
@@ -76,10 +67,16 @@ function cadastrar(req, res) {
     //==================================================
 
     if (
-        produto.preco === undefined ||
-        produto.preco === "" ||
-        isNaN(Number(produto.preco)) ||
-        Number(produto.preco) <= 0
+        produto.preco_promocional === undefined ||
+        produto.preco_promocional === "" ||
+        isNaN(
+            Number(
+                produto.preco_promocional
+            )
+        ) ||
+        Number(
+            produto.preco_promocional
+        ) <= 0
     ) {
 
         return res.status(400).json({
@@ -112,7 +109,7 @@ function cadastrar(req, res) {
         return res.status(400).json({
 
             erro:
-                "Informe uma quantidade válida para o estoque."
+                "Informe uma quantidade válida."
 
         });
 
@@ -120,7 +117,100 @@ function cadastrar(req, res) {
 
 
     //==================================================
-    //              CADASTRAR PRODUTO
+    //              VALIDAR CATEGORIA
+    //==================================================
+
+    if (
+        !produto.Categoria_idCategoria
+    ) {
+
+        return res.status(400).json({
+
+            erro:
+                "Selecione uma categoria."
+
+        });
+
+    }
+
+
+    //==================================================
+    //              VALIDAR IMAGEM
+    //==================================================
+
+    if (!produto.imagem) {
+
+        return res.status(400).json({
+
+            erro:
+                "Selecione uma imagem do produto."
+
+        });
+
+    }
+
+
+    //==================================================
+    //              CONVERTER DADOS
+    //==================================================
+
+    produto.nome =
+        produto.nome.trim();
+
+
+    produto.descricao =
+        produto.descricao.trim();
+
+
+    produto.preco_antigo =
+        produto.preco_antigo === "" ||
+            produto.preco_antigo === undefined
+
+            ? 0
+
+            : Number(
+                produto.preco_antigo
+            );
+
+
+    produto.preco_promocional =
+        Number(
+            produto.preco_promocional
+        );
+
+
+    produto.quantidade_estoque =
+        Number(
+            produto.quantidade_estoque
+        );
+
+
+    produto.Categoria_idCategoria =
+        Number(
+            produto.Categoria_idCategoria
+        );
+
+
+    produto.Loja_idLoja =
+        produto.Loja_idLoja
+
+            ? Number(
+                produto.Loja_idLoja
+            )
+
+            : 1;
+
+
+    // FormData envia boolean como texto.
+
+    produto.ativo =
+        produto.ativo === "true" ||
+        produto.ativo === true ||
+        produto.ativo === "1";
+
+
+    //==================================================
+    //              CADASTRAR
     //==================================================
 
     produtoModel.cadastrar(
@@ -139,9 +229,11 @@ function cadastrar(req, res) {
                     erro
                 );
 
+
                 return res.status(500).json({
 
                     erro:
+                        erro.sqlMessage ||
                         erro.message
 
                 });
@@ -149,134 +241,15 @@ function cadastrar(req, res) {
             }
 
 
-            //==================================================
-            //              PEGAR ID
-            //==================================================
+            return res.status(201).json({
 
-            const idProduto =
-                resultado.insertId;
+                mensagem:
+                    "Produto cadastrado com sucesso!",
 
+                idProduto:
+                    resultado.insertId
 
-            //==================================================
-            //              PEGAR IMAGENS
-            //==================================================
-
-            const imagens =
-                req.files || [];
-
-
-            //==================================================
-            //              SEM IMAGEM
-            //==================================================
-
-            if (
-                imagens.length === 0
-            ) {
-
-                return res.status(201).json({
-
-                    mensagem:
-                        "Produto cadastrado com sucesso!",
-
-                    id:
-                        idProduto
-
-                });
-
-            }
-
-
-            //==================================================
-            //              CONTADOR
-            //==================================================
-
-            let quantidadeSalva = 0;
-
-
-            //==================================================
-            //              SALVAR IMAGENS
-            //==================================================
-
-            imagens.forEach(
-
-                function (arquivo) {
-
-                    const imagem = {
-
-                        imagem:
-                            arquivo.buffer,
-
-                        Produto_idProduto:
-                            idProduto
-
-                    };
-
-
-                    imagemProdutoModel.cadastrar(
-
-                        imagem,
-
-                        function (
-                            erroImagem
-                        ) {
-
-                            if (
-                                erroImagem
-                            ) {
-
-                                console.error(
-                                    "Erro ao cadastrar imagem:",
-                                    erroImagem
-                                );
-
-                                return res.status(
-                                    500
-                                ).json({
-
-                                    erro:
-                                        erroImagem.message
-
-                                });
-
-                            }
-
-
-                            quantidadeSalva++;
-
-
-                            //==================================================
-                            //              TODAS SALVAS
-                            //==================================================
-
-                            if (
-                                quantidadeSalva ===
-                                imagens.length
-                            ) {
-
-                                return res.status(
-                                    201
-                                ).json({
-
-                                    mensagem:
-                                        "Produto e imagens cadastrados com sucesso!",
-
-                                    id:
-                                        idProduto,
-
-                                    imagens:
-                                        quantidadeSalva
-
-                                });
-
-                            }
-
-                        }
-
-                    );
-
-                }
-
-            );
+            });
 
         }
 
@@ -305,6 +278,7 @@ function listar(req, res) {
                     erro
                 );
 
+
                 return res.status(500).json({
 
                     erro:
@@ -327,25 +301,13 @@ function listar(req, res) {
 
 
 //==================================================
-//              BUSCAR PRODUTO POR ID
+//              BUSCAR POR ID
 //==================================================
 
 function buscarPorId(req, res) {
 
     const id =
         req.params.id;
-
-
-    if (!id) {
-
-        return res.status(400).json({
-
-            erro:
-                "ID do produto não informado."
-
-        });
-
-    }
 
 
     produtoModel.buscarPorId(
@@ -358,11 +320,6 @@ function buscarPorId(req, res) {
         ) {
 
             if (erro) {
-
-                console.error(
-                    "Erro ao buscar produto:",
-                    erro
-                );
 
                 return res.status(500).json({
 
@@ -380,7 +337,7 @@ function buscarPorId(req, res) {
 
                 return res.status(404).json({
 
-                    mensagem:
+                    erro:
                         "Produto não encontrado."
 
                 });
@@ -400,30 +357,21 @@ function buscarPorId(req, res) {
 
 
 //==================================================
-//              BUSCAR POR CÓDIGO
+//          BUSCAR POR CATEGORIA
 //==================================================
 
-function buscarPorCodigo(req, res) {
+function buscarPorCategoria(
+    req,
+    res
+) {
 
-    const codigo =
-        req.params.codigo;
-
-
-    if (!codigo) {
-
-        return res.status(400).json({
-
-            erro:
-                "Código do produto não informado."
-
-        });
-
-    }
+    const categoriaId =
+        req.params.categoriaId;
 
 
-    produtoModel.buscarPorCodigo(
+    produtoModel.buscarPorCategoria(
 
-        codigo,
+        categoriaId,
 
         function (
             erro,
@@ -431,11 +379,6 @@ function buscarPorCodigo(req, res) {
         ) {
 
             if (erro) {
-
-                console.error(
-                    "Erro ao buscar produto:",
-                    erro
-                );
 
                 return res.status(500).json({
 
@@ -447,22 +390,8 @@ function buscarPorCodigo(req, res) {
             }
 
 
-            if (
-                resultados.length === 0
-            ) {
-
-                return res.status(404).json({
-
-                    mensagem:
-                        "Produto não encontrado."
-
-                });
-
-            }
-
-
             return res.status(200).json(
-                resultados[0]
+                resultados
             );
 
         }
@@ -486,17 +415,121 @@ function atualizar(req, res) {
         req.body || {};
 
 
-    if (!id) {
+    //==================================================
+    //      NOVA IMAGEM, SE HOUVER
+    //==================================================
+
+    if (req.file) {
+
+        produto.imagem =
+            req.file.buffer;
+
+    }
+
+
+    //==================================================
+    //              VALIDAÇÕES
+    //==================================================
+
+    if (
+        !produto.nome ||
+        produto.nome.trim() === ""
+    ) {
 
         return res.status(400).json({
 
             erro:
-                "ID do produto não informado."
+                "Informe o nome do produto."
 
         });
 
     }
 
+
+    if (
+        !produto.descricao ||
+        produto.descricao.trim() === ""
+    ) {
+
+        return res.status(400).json({
+
+            erro:
+                "Informe a descrição."
+
+        });
+
+    }
+
+
+    if (
+        produto.preco_promocional === "" ||
+        isNaN(
+            Number(
+                produto.preco_promocional
+            )
+        ) ||
+        Number(
+            produto.preco_promocional
+        ) <= 0
+    ) {
+
+        return res.status(400).json({
+
+            erro:
+                "Informe um preço válido."
+
+        });
+
+    }
+
+
+    //==================================================
+    //              CONVERTER
+    //==================================================
+
+    produto.preco_antigo =
+        produto.preco_antigo === ""
+
+            ? 0
+
+            : Number(
+                produto.preco_antigo
+            );
+
+
+    produto.preco_promocional =
+        Number(
+            produto.preco_promocional
+        );
+
+
+    produto.quantidade_estoque =
+        Number(
+            produto.quantidade_estoque
+        );
+
+
+    produto.Loja_idLoja =
+        Number(
+            produto.Loja_idLoja || 1
+        );
+
+
+    produto.Categoria_idCategoria =
+        Number(
+            produto.Categoria_idCategoria
+        );
+
+
+    produto.ativo =
+        produto.ativo === "true" ||
+        produto.ativo === true ||
+        produto.ativo === "1";
+
+
+    //==================================================
+    //              ATUALIZAR
+    //==================================================
 
     produtoModel.atualizar(
 
@@ -516,9 +549,11 @@ function atualizar(req, res) {
                     erro
                 );
 
+
                 return res.status(500).json({
 
                     erro:
+                        erro.sqlMessage ||
                         erro.message
 
                 });
@@ -532,7 +567,7 @@ function atualizar(req, res) {
 
                 return res.status(404).json({
 
-                    mensagem:
+                    erro:
                         "Produto não encontrado."
 
                 });
@@ -564,18 +599,6 @@ function excluir(req, res) {
         req.params.id;
 
 
-    if (!id) {
-
-        return res.status(400).json({
-
-            erro:
-                "ID do produto não informado."
-
-        });
-
-    }
-
-
     produtoModel.excluir(
 
         id,
@@ -592,9 +615,11 @@ function excluir(req, res) {
                     erro
                 );
 
+
                 return res.status(500).json({
 
                     erro:
+                        erro.sqlMessage ||
                         erro.message
 
                 });
@@ -608,7 +633,7 @@ function excluir(req, res) {
 
                 return res.status(404).json({
 
-                    mensagem:
+                    erro:
                         "Produto não encontrado."
 
                 });
@@ -642,7 +667,7 @@ module.exports = {
 
     buscarPorId,
 
-    buscarPorCodigo,
+    buscarPorCategoria,
 
     atualizar,
 

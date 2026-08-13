@@ -1,158 +1,35 @@
-const conexao = require("../conexao/conexao.js");
+// ============================================================
+// MODEL NÃO UTILIZÁVEL COM O BANCO ATUAL
+// ============================================================
+//
+// Este arquivo existia no projeto do aluno, porém o banco
+// SipaubaLanche enviado como referência NÃO possui a tabela:
+// Cartao_Pagamento
+//
+// Como o banco não deve ser alterado, este model não pode
+// executar INSERT, SELECT, UPDATE ou DELETE nessa tabela.
+//
+// Mantenha este arquivo fora das rotas do servidor enquanto
+// a estrutura oficial do banco continuar sem essa tabela.
+// ============================================================
 
-// =========================
-// Cadastrar Cartão de Pagamento
-// =========================
-
-function cadastrar(cartao, callback) {
-
-    const sql = `INSERT INTO Cartao_Pagamento
-        (
-            numero,
-            data_vencimento,
-            cvc,
-            nome_propietario,
-            nome_indentificacao,
-            bandeira,
-            cpf,
-            tipo,
-            ativo,
-            Cliente_idCliente
-        )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-
-    conexao.query(
-        sql,
-        [
-            cartao.numero,
-            cartao.data_vencimento,
-            cartao.cvc,
-            cartao.nome_propietario,
-            cartao.nome_indentificacao,
-            cartao.bandeira,
-            cartao.cpf,
-            cartao.tipo,
-            cartao.ativo,
-            cartao.Cliente_idCliente
-        ],
-        callback
+function tabelaNaoExiste(callback) {
+    const erro = new Error(
+        "Este recurso não existe no banco de dados SipaubaLanche atual."
     );
 
-}
+    if (typeof callback === "function") {
+        return callback(erro);
+    }
 
-// =========================
-// Listar Cartões
-// =========================
-
-function listar(callback) {
-
-    const sql = `
-        SELECT *
-        FROM Cartao_Pagamento
-    `;
-
-    conexao.query(sql, callback);
-
-}
-
-// =========================
-// Buscar por ID
-// =========================
-
-function buscarPorId(id, callback) {
-
-    const sql = `
-        SELECT *
-        FROM Cartao_Pagamento
-        WHERE idCartao_Pagamento = ?
-    `;
-
-    conexao.query(sql, [id], callback);
-
-}
-
-// =========================
-// Buscar por Cliente
-// =========================
-
-function buscarPorCliente(idCliente, callback) {
-
-    const sql = `
-        SELECT *
-        FROM Cartao_Pagamento
-        WHERE Cliente_idCliente = ?
-    `;
-
-    conexao.query(sql, [idCliente], callback);
-
-}
-
-// =========================
-// Atualizar Cartão
-// =========================
-
-function atualizar(id, cartao, callback) {
-
-    const sql = `
-        UPDATE Cartao_Pagamento
-        SET
-
-            numero = ?,
-            data_vencimento = ?,
-            cvc = ?,
-            nome_propietario = ?,
-            nome_indentificacao = ?,
-            bandeira = ?,
-            cpf = ?,
-            tipo = ?,
-            ativo = ?,
-            Cliente_idCliente = ?
-
-        WHERE idCartao_Pagamento = ?
-    `;
-
-    conexao.query(
-        sql,
-        [
-            cartao.numero,
-            cartao.data_vencimento,
-            cartao.cvc,
-            cartao.nome_propietario,
-            cartao.nome_indentificacao,
-            cartao.bandeira,
-            cartao.cpf,
-            cartao.tipo,
-            cartao.ativo,
-            cartao.Cliente_idCliente,
-            id
-        ],
-        callback
-    );
-
-}
-
-// =========================
-// Excluir Cartão
-// =========================
-
-function excluir(id, callback) {
-
-    const sql = `
-        DELETE FROM Cartao_Pagamento
-        WHERE idCartao_Pagamento = ?
-    `;
-
-    conexao.query(sql, [id], callback);
-
+    throw erro;
 }
 
 module.exports = {
-
-    cadastrar,
-    listar,
-    buscarPorId,
-    buscarPorCliente,
-    atualizar,
-    excluir
-
+    cadastrar: tabelaNaoExiste,
+    listar: tabelaNaoExiste,
+    buscarPorId: tabelaNaoExiste,
+    buscar: tabelaNaoExiste,
+    atualizar: tabelaNaoExiste,
+    excluir: tabelaNaoExiste
 };

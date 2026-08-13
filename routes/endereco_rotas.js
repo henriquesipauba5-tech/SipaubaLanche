@@ -1,75 +1,43 @@
-// =====================================================
-// ROTAS DE FRETE
-// =====================================================
-//
-// POST    /fretes       -> Cadastrar frete
-// GET     /fretes       -> Listar fretes
-// GET     /fretes/:id   -> Buscar frete por ID
-// PUT     /fretes/:id   -> Atualizar frete
-// DELETE  /fretes/:id   -> Excluir frete
-//
-// =====================================================
-
-
 const express = require("express");
 
-// Criando o roteador do Express
 const router = express.Router();
 
+const EnderecoController = require("../controller/endereco_controller.js");
 
-// Importando Controller de Frete
-const FreteController = require("../controller/endereco_controller");
-
-
-// =========================
-// CADASTRAR FRETE
-// =========================
-
+// CADASTRAR
 router.post(
     "/",
-    FreteController.cadastrar
+    EnderecoController.cadastrar
 );
 
-
-// =========================
-// LISTAR FRETES
-// =========================
-
+// LISTAR
 router.get(
     "/",
-    FreteController.listar
+    EnderecoController.listar
 );
 
+// BUSCAR POR CEP
+router.get(
+    "/cep/:cep",
+    EnderecoController.buscarPorCep
+);
 
-// =========================
-// BUSCAR FRETE POR ID
-// =========================
-
+// BUSCAR POR ID
 router.get(
     "/:id",
-    FreteController.buscarPorId
+    EnderecoController.buscarPorId
 );
 
-
-// =========================
-// ATUALIZAR FRETE
-// =========================
-
+// ATUALIZAR
 router.put(
     "/:id",
-    FreteController.atualizar
+    EnderecoController.atualizar
 );
 
-
-// =========================
-// EXCLUIR FRETE
-// =========================
-
+// EXCLUIR
 router.delete(
     "/:id",
-    FreteController.excluir
+    EnderecoController.excluir
 );
 
-
-// Exportando as rotas
 module.exports = router;

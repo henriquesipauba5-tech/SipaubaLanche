@@ -1,0 +1,45 @@
+CONTROLLERS CORRIGIDOS - SIPAÚBA LANCHES
+
+Referência:
+- banco SipaubaLanche enviado na conversa;
+- models corrigidos anteriormente.
+
+FUNCIONAIS COM O BANCO/MODELS CORRIGIDOS:
+- adicional_controller.js
+- banner_has_produto_controller.js
+- banner_controller.js
+- carrinho_controller.js
+- carrinho_has_produto_controller.js
+- categoria_controller.js
+- cupom_has_categoria_controller.js
+- cupom_has_produto_controller.js
+- cupom_controller.js
+- endereco_controller.js
+- formas_pagamento_controller.js
+- produto_controller.js
+- usuario_controller.js
+
+LOJISTA:
+- lojista_controller.js foi padronizado para ../model/lojista_model.js.
+- O model de Lojista não foi enviado junto com os models anteriores, portanto ele ainda precisa existir.
+
+CONTROLLERS BLOQUEADOS (HTTP 501) PORQUE AS TABELAS NÃO EXISTEM NO BANCO:
+- cartao_pagamento_controller.js
+- categoria_has_promocoes_controller.js
+- endereco_has_cliente_controller.js
+- frete_controller.js
+- imagem_produto_controller.js
+- pedidos_controller.js
+- pedidos_has_produtos_controller.js
+- promocao_controller.js
+- promocoes_has_produto_controller.js
+
+CORREÇÕES IMPORTANTES:
+- Produto usa preco_promocional, não preco.
+- Produto não tenta mais salvar imagens em Imagem_Produto.
+- Banner não possui busca por nome.
+- Cupom usa codigo, descricao, desconto, data_inicio, data_final, ativo e Loja_idLoja.
+- Endereco usa bairro, não setor.
+- Forma_Pagamento foi padronizada conforme o banco.
+- Relação do carrinho usa Produto_has_Carrinho.
+- Relação categoria/cupom usa Categoria_has_Cupom.

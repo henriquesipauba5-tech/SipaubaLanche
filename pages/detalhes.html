@@ -4,95 +4,157 @@
 <head>
 
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Detalhes do Produto</title>
+    <title>
+        Detalhes do Produto | Sipaúba Lanches
+    </title>
 
-<link rel="stylesheet" href="/style/detalhes.css">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <link rel="stylesheet" href="/style/detalhes.css">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
 </head>
 
+
 <body>
+
 
     <div class="container">
 
-        <!-- ================= HEADER ================= -->
+
+        <!--==================================================
+                        CABEÇALHO
+        ==================================================-->
 
         <header class="header">
 
-            <h1>DETALHES DO PRODUTO</h1>
+            <h1>
+                DETALHES DO PRODUTO
+            </h1>
 
         </header>
 
-        <!-- ================= PRODUTO ================= -->
+
+
+        <!--==================================================
+                        PRODUTO
+        ==================================================-->
 
         <section class="produto">
 
-            <!-- Imagem -->
+
+            <!--==================================================
+                        IMAGEM
+            ==================================================-->
 
             <div class="produto-imagem">
 
-                <img
-                    id="imagemProduto"
-                    src="/assets/produto1.png"
-                    alt="Produto">
+                <img id="imagemProduto" src="" alt="Imagem do produto">
 
             </div>
 
-            <!-- Informações -->
+
+
+            <!--==================================================
+                    INFORMAÇÕES DO PRODUTO
+            ==================================================-->
 
             <div class="produto-info">
 
+
+                <span id="categoriaProduto" class="categoriaProduto">
+                </span>
+
+
                 <h2 id="nomeProduto">
-                    ONION SUPREMO
+
+                    Carregando...
+
                 </h2>
+
 
                 <div class="descricao">
 
+
                     <p id="descricaoProduto">
 
-                        Pão brioche, hambúrguer 160g,
-                        mussarela, bacon,
-                        150g de mussarela empanada
-                        e nosso delicioso molho especial.
+                        Carregando informações do produto...
 
                     </p>
 
+
+                    <!-- PREÇO ANTIGO -->
+
+                    <span id="precoAntigoProduto" class="precoAntigo">
+                    </span>
+
+
+                    <!-- PREÇO ATUAL -->
+
                     <h3 id="precoProduto">
-                        R$ 25,00
+
+                        R$ 0,00
+
                     </h3>
+
+
+
+                    <!--==================================================
+                            QUANTIDADE DO PRODUTO
+                    ==================================================-->
 
                     <div class="controle-produto">
 
+
                         <div class="controle">
 
-                            <button id="menosProduto">
-                               <img src="/assets/negativo.png">
+
+                            <button type="button" id="menosProduto">
+
+                                <i class="fa-solid fa-circle-minus"></i>
+
                             </button>
+
 
                             <span id="quantidadeProduto">
+
                                 1
+
                             </span>
 
-                            <button id="maisProduto">
+
+                            <button type="button" id="maisProduto">
+
                                 <i class="fa-solid fa-circle-plus"></i>
+
                             </button>
+
 
                         </div>
 
-                        <button
-                            id="btnCarrinho"
-                            class="carrinho">
-
-                            <i class="fa-solid fa-cart-shopping"></i>
-
-                        </button>
 
                     </div>
+
+
+                    <!--==================================================
+                            ESTOQUE
+                    ==================================================-->
+
+                    <p id="estoqueProduto" class="estoqueProduto">
+                    </p>
+
 
                 </div>
 
@@ -100,453 +162,250 @@
 
         </section>
 
-        <!-- ================= ADICIONAIS ================= -->
+
+
+        <!--==================================================
+                        ADICIONAIS
+        ==================================================-->
 
         <section class="adicionais">
 
-            <h2>ADICIONAL</h2>
+
+            <h2>
+
+                ADICIONAIS
+
+            </h2>
+
+
+            <p class="textoAdicional">
+
+                Escolha os adicionais que deseja incluir no seu pedido.
+
+            </p>
+
 
             <div id="listaAdicionais">
 
-                <!-- Template -->
 
-                <div
-                    class="adicional"
-                    data-nome="Hamburguer"
-                    data-preco="5">
+                <p id="carregandoAdicionais">
 
-                    <div class="info">
+                    Carregando adicionais...
 
-                        <h4>Hamburguer</h4>
+                </p>
 
-                        <span>R$5,00</span>
-
-                    </div>
-
-                    <div class="controle-adicional">
-
-                        <button class="menosAdicional">
-                         <img src="/assets/negativo.png">
-                        </button>
-
-                        <span class="qtdAdicional">
-                            1
-                        </span>
-
-                        <button class="maisAdicional">
-                            <i class="fa-solid fa-circle-plus"></i>
-                        </button>
-
-                    </div>
-
-                </div>
-
-                <div class="adicional" data-nome="Presunto" data-preco="5">
-
-                    <div class="info">
-
-                        <h4>Presunto</h4>
-
-                        <span>R$5,00</span>
-
-                    </div>
-
-                    <div class="controle-adicional">
-
-                         <button class="menosAdicional">
-                         <img src="/assets/negativo.png">
-                        </button>
-
-                        <span class="qtdAdicional">
-                            1
-                        </span>
-
-                        <button class="maisAdicional">
-                            <i class="fa-solid fa-circle-plus"></i>
-                        </button>
-                    </div>
-
-                </div>
-
-                <div class="adicional" data-nome="Mussarela" data-preco="5">
-
-                    <div class="info">
-
-                        <h4>Mussarela</h4>
-
-                        <span>R$5,00</span>
-
-                    </div>
-
-                    <div class="controle-adicional">
-
-                         <button class="menosAdicional">
-                         <img src="/assets/negativo.png">
-                        </button>
-
-                        <span class="qtdAdicional">
-                            1
-                        </span>
-
-                        <button class="maisAdicional">
-                            <i class="fa-solid fa-circle-plus"></i>
-                        </button>
-
-                    </div>
-
-                </div>
-
-                <div class="adicional" data-nome="Alface" data-preco="5">
-
-                    <div class="info">
-
-                        <h4>Alface</h4>
-
-                        <span>R$5,00</span>
-
-                    </div>
-
-                    <div class="controle-adicional">
-
-                        <button class="menosAdicional">
-                         <img src="/assets/negativo.png">
-                        </button>
-
-                        <span class="qtdAdicional">
-                            1
-                        </span>
-
-                        <button class="maisAdicional">
-                            <i class="fa-solid fa-circle-plus"></i>
-                        </button>
-
-                    </div>
-
-                </div>
-
-                <div class="adicional" data-nome="Tomate" data-preco="5">
-
-                    <div class="info">
-
-                        <h4>Tomate</h4>
-
-                        <span>R$5,00</span>
-
-                    </div>
-
-                    <div class="controle-adicional">
-
-                         <button class="menosAdicional">
-                         <img src="/assets/negativo.png">
-                        </button>
-
-                        <span class="qtdAdicional">
-                            1
-                        </span>
-
-                        <button class="maisAdicional">
-                            <i class="fa-solid fa-circle-plus"></i>
-                        </button>
-
-                    </div>
-
-                </div>
-
-                <div class="adicional" data-nome="Ovo" data-preco="5">
-
-                    <div class="info">
-
-                        <h4>Ovo</h4>
-
-                        <span>R$5,00</span>
-
-                    </div>
-
-                    <div class="controle-adicional">
-
-                        <button class="menosAdicional">
-                         <img src="/assets/negativo.png">
-                        </button>
-
-                        <span class="qtdAdicional">
-                            1
-                        </span>
-
-                        <button class="maisAdicional">
-                            <i class="fa-solid fa-circle-plus"></i>
-                        </button>
-
-                    </div>
-
-                </div>
-
-                <div class="adicional" data-nome="Milho" data-preco="5">
-
-                    <div class="info">
-
-                        <h4>Milho</h4>
-
-                        <span>R$5,00</span>
-
-                    </div>
-
-                    <div class="controle-adicional">
-
-                        <button class="menosAdicional">
-                         <img src="/assets/negativo.png">
-                        </button>
-
-                        <span class="qtdAdicional">
-                            1
-                        </span>
-
-                        <button class="maisAdicional">
-                            <i class="fa-solid fa-circle-plus"></i>
-                        </button>
-
-                    </div>
-
-                </div>
-
-                <div class="adicional" data-nome="Batata" data-preco="5">
-
-                    <div class="info">
-
-                        <h4>Batata</h4>
-
-                        <span>R$5,00</span>
-
-                    </div>
-
-                    <div class="controle-adicional">
-
-                         <button class="menosAdicional">
-                         <img src="/assets/negativo.png">
-                        </button>
-
-                        <span class="qtdAdicional">
-                            1
-                        </span>
-
-                        <button class="maisAdicional">
-                            <i class="fa-solid fa-circle-plus"></i>
-                        </button>
-
-                    </div>
-
-                </div>
-
-                <div class="adicional" data-nome="Catupiry" data-preco="5">
-
-                    <div class="info">
-
-                        <h4>Catupiry</h4>
-
-                        <span>R$5,00</span>
-
-                    </div>
-
-                    <div class="controle-adicional">
-
-                        <button class="menosAdicional">
-                         <img src="/assets/negativo.png">
-                        </button>
-
-                        <span class="qtdAdicional">
-                            1
-                        </span>
-
-                        <button class="maisAdicional">
-                            <i class="fa-solid fa-circle-plus"></i>
-                        </button>
-
-                    </div>
-
-                </div>
-
-                <div class="adicional" data-nome="Frango" data-preco="5">
-
-                    <div class="info">
-
-                        <h4>Frango</h4>
-
-                        <span>R$5,00</span>
-
-                    </div>
-
-                    <div class="controle-adicional">
-
-                         <button class="menosAdicional">
-                         <img src="/assets/negativo.png">
-                        </button>
-
-                        <span class="qtdAdicional">
-                            1
-                        </span>
-
-                        <button class="maisAdicional">
-                            <i class="fa-solid fa-circle-plus"></i>
-                        </button>
-
-                    </div>
-
-                </div>
-
-                <div class="adicional" data-nome="Calabresa" data-preco="5">
-
-                    <div class="info">
-
-                        <h4>Calabresa</h4>
-
-                        <span>R$5,00</span>
-
-                    </div>
-
-                    <div class="controle-adicional">
-
-                         <button class="menosAdicional">
-                         <img src="/assets/negativo.png">
-                        </button>
-
-                        <span class="qtdAdicional">
-                            1
-                        </span>
-
-                        <button class="maisAdicional">
-                            <i class="fa-solid fa-circle-plus"></i>
-                        </button>
-
-                    </div>
-
-                </div>
-
-                <div class="adicional" data-nome="Bacon" data-preco="5">
-
-                    <div class="info">
-
-                        <h4>Bacon</h4>
-
-                        <span>R$5,00</span>
-
-                    </div>
-
-                    <div class="controle-adicional">
-
-                         <button class="menosAdicional">
-                         <img src="/assets/negativo.png">
-                        </button>
-
-                        <span class="qtdAdicional">
-                            1
-                        </span>
-
-                        <button class="maisAdicional">
-                            <i class="fa-solid fa-circle-plus"></i>
-                        </button>
-
-                    </div>
-
-                </div>
-
-                <div class="adicional" data-nome="Salsicha" data-preco="5">
-
-                    <div class="info">
-
-                        <h4>Salsicha</h4>
-
-                        <span>R$5,00</span>
-
-                    </div>
-
-                    <div class="controle-adicional">
-
-                        <button class="menosAdicional">
-                         <img src="/assets/negativo.png">
-                        </button>
-
-                        <span class="qtdAdicional">
-                            1
-                        </span>
-
-                        <button class="maisAdicional">
-                            <i class="fa-solid fa-circle-plus"></i>
-                        </button>
-
-                    </div>
-
-                </div>
 
             </div>
 
+
         </section>
 
-        <!-- ================= BOTÕES ================= -->
+
+
+        <!--==================================================
+                    OBSERVAÇÃO DO PEDIDO
+        ==================================================-->
+
+        <section class="observacaoPedido">
+
+
+            <label for="observacao">
+
+                Observação
+
+            </label>
+
+
+            <textarea id="observacao" placeholder="Ex: Sem cebola, molho separado..."></textarea>
+
+
+        </section>
+
+
+
+        <!--==================================================
+                        RESUMO
+        ==================================================-->
+
+        <section class="resumoPedido">
+
+
+            <div>
+
+                <span>
+                    Produto
+                </span>
+
+
+                <strong id="subtotalProduto">
+
+                    R$ 0,00
+
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Adicionais
+                </span>
+
+
+                <strong id="subtotalAdicionais">
+
+                    R$ 0,00
+
+                </strong>
+
+            </div>
+
+
+            <div class="totalPedido">
+
+                <span>
+                    Total
+                </span>
+
+
+                <strong id="valorTotal">
+
+                    R$ 0,00
+
+                </strong>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!--==================================================
+                        BOTÕES
+        ==================================================-->
 
         <section class="acoes">
 
-            <button id="btnVoltar">
+
+            <button type="button" id="btnVoltar">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
                 VOLTAR
+
             </button>
 
-            <button id="btnAdicionar">
 
-                <span>Adicionar</span>
 
-                <strong id="valorTotal">
-                    R$25,00
+            <button type="button" id="btnWhatsapp">
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+                <span>
+
+                    ENVIAR PEDIDO
+
+                </span>
+
+
+                <strong id="valorTotalBotao">
+
+                    R$ 0,00
+
                 </strong>
 
             </button>
 
+
         </section>
+
 
     </div>
 
-    <!-- ================= FOOTER ================= -->
+
+
+    <!--==================================================
+                        RODAPÉ
+    ==================================================-->
 
     <footer>
 
+
         <div class="redes">
 
-            <h3>REDES SOCIAIS</h3>
+
+            <h3>
+
+                REDES SOCIAIS
+
+            </h3>
+
 
             <div class="icones">
 
+
                 <a id="whatsapp" href="#">
+
                     <i class="fa-brands fa-whatsapp"></i>
+
                 </a>
+
 
                 <a id="instagram" href="#">
+
                     <i class="fa-brands fa-instagram"></i>
+
                 </a>
+
 
                 <a id="tiktok" href="#">
+
                     <i class="fa-brands fa-tiktok"></i>
+
                 </a>
 
-                <a id="playstore" href="#">
-                    <i class="fa-brands fa-google-play"></i>
-                </a>
 
             </div>
 
+
         </div>
+
+
 
         <div class="localizacao">
 
-            <h3>LOCALIZAÇÃO</h3>
 
-            <p id="rua">RUA 20</p>
+            <h3>
 
-            <p id="bairro">SETOR COIMBRA</p>
+                LOCALIZAÇÃO
 
-            <p id="cidade">PRAÇAS DOS IMIGRANTES</p>
+            </h3>
+
+
+            <p id="rua">
+                Sipaúba Lanches
+            </p>
+
+
+            <p id="bairro">
+            </p>
+
+
+            <p id="cidade">
+            </p>
+
 
         </div>
 
+
     </footer>
 
+
+
     <script src="/js/detalhes.js"></script>
+
 
 </body>
 

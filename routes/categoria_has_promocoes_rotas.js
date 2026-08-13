@@ -1,63 +1,16 @@
-// =====================================================
-// ROTAS DE CATEGORIA HAS PROMOCAO
-// =====================================================
-//
-// POST    /categorias-promocoes                         -> Cadastrar relacionamento
-// GET     /categorias-promocoes                         -> Listar relacionamentos
-// GET     /categorias-promocoes/:categoria/:promocao    -> Buscar relacionamento
-// DELETE  /categorias-promocoes/:categoria/:promocao    -> Excluir relacionamento
-//
-// =====================================================
-
-
 const express = require("express");
 
 const router = express.Router();
 
+const Controller = require("../controller/categoria_has_promocoes_controller.js");
 
-// Importando Controller
-const CategoriaHasPromocaoController = require("../controller/categoria_has_promocoes_controller.js");
+// Estas rotas permanecem disponíveis apenas para retornar HTTP 501,
+// pois o recurso correspondente não existe no banco atual.
 
+router.post("/", Controller.cadastrar);
+router.get("/", Controller.listar);
+router.get("/:id", Controller.buscarPorId);
+router.put("/:id", Controller.atualizar);
+router.delete("/:id", Controller.excluir);
 
-// =========================
-// CADASTRAR RELACIONAMENTO
-// =========================
-
-router.post(
-    "/",
-    CategoriaHasPromocaoController.cadastrar
-);
-
-
-// =========================
-// LISTAR RELACIONAMENTOS
-// =========================
-
-router.get(
-    "/",
-    CategoriaHasPromocaoController.listar
-);
-
-
-// =========================
-// BUSCAR RELACIONAMENTO
-// =========================
-
-router.get(
-    "/:categoria/:promocao",
-    CategoriaHasPromocaoController.buscar
-);
-
-
-// =========================
-// EXCLUIR RELACIONAMENTO
-// =========================
-
-router.delete(
-    "/:categoria/:promocao",
-    CategoriaHasPromocaoController.excluir
-);
-
-
-// Exportando rotas
 module.exports = router;

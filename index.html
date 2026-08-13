@@ -1,173 +1,352 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sipauba Lanche</title>
-    <link rel="stylesheet" href="style/index.css">
 
-    <!--IMAGEM DA LOGO DO NAVEGADOR-->
-    <link rel="icon" type="imagem/png" href="assets/logo 2.jpeg">
+
+    <!--==============================
+            CONFIGURAÇÕES
+    ==============================-->
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Sipaúba Lanches | Produtos</title>
+
+
+
+    <!--==============================
+                CSS
+    ==============================-->
+
+    <link rel="stylesheet" href="style/produto.css">
+
+
+
+    <!--==============================
+                FONTE
+    ==============================-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
+
+    <!--==============================
+            FONT AWESOME
+    ==============================-->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+
+    <!--==============================
+                ÍCONE
+    ==============================-->
+
+    <link rel="icon" href="../assets/logo-navegador.png">
+
+
 </head>
 
+
 <body>
-    <!--CABEÇALHO/MENU-->
-    <header>
 
 
-        <NAV>
-            <button class="btn-home~>">
-                <img src="assets/casa.png" alt="Logo do Sipauba Lanche">
-                Home
+
+    <!--==============================
+            CABEÇALHO
+    ==============================-->
+
+
+    <header class="cabecalho">
+
+
+        <nav class="menu">
+
+
+
+            <button id="btnHome">
+
+
+                <i class="fa-solid fa-house"></i>
+
+
+                <span>
+
+                    Home
+
+                </span>
+
+
             </button>
 
 
-            <button class="btn-home~>">
-                <img src="assets/descontos.png" alt="Logo do Sipauba Lanche">
-                Promoçoes
-            </button>
-            <button class="btn-home~>">
-                <img src="assets/sacola.png" alt="Logo do Sipauba Lanche">
-                Pedidos
+
+
+
+            <button id="btnPromocoes">
+
+
+                <i class="fa-solid fa-tags"></i>
+
+
+                <span>
+
+                    Promoções
+
+                </span>
+
+
             </button>
 
-            <button class="btn-home~>">
-                <img src="assets/usuario.png" alt="Logo do Sipauba Lanche">
-                Entrar/Cadastrar
+
+
+
+
+            <button id="btnPedidos">
+
+
+                <i class="fa-solid fa-bag-shopping"></i>
+
+
+                <span>
+
+                    Pedidos
+
+                </span>
+
 
             </button>
 
-        </NAV>
+
+
+
+
+            <button id="btnEntrar">
+
+
+                <i class="fa-solid fa-user"></i>
+
+
+                <span>
+
+                    Entrar
+
+                </span>
+
+
+            </button>
+
+
+
+        </nav>
+
+
     </header>
 
-    <!--BANNER-->
-    <div class="banner">
-        <div class="imagens-banner">
-            <div class="imagem1">
-                <img src="assets/cupom.png" alt="Imagem do Banner 1">
-            </div>
-        </div>
-        <div class="botoes-banner">
 
-            <button class="btn-anterior">ANTERIOR</button>
-            <button class="btn-proximo">PRÓXIMO</button>
-        </div>
 
-    </div>
-    <!--FINALIZAÇÃO DA ÁREA DO BANNER DA LOJA-->
 
-    <!--ÁREA DE OFERTAS -->
-    <section class="ofertas">
-        <div class="titulos-ofertas">
-            <div class="texto-promoções">
-                <h2> OFERTAS IMPERDÍVEIS</h2>
-                <p>Confira as melhores ofertas!</p>
-            </div>
-            <a href="#" class="ver-tudo">Ver Tudo</a>
-        </div>
 
-        <div class="lista de produtos">
-            <div class="card-produtos">
-                <div class="imagem-botao">
-                    <img src="assets/produto 1.png" alt="Produto 1">
-                    <button class="favorito">
-                        <img src="assets/coracao.png" alt="Ícone de favorito">
-                    </button>
-                </div>
-                <h3>Nome do Produto</h3>
-                <div class="precos">
-                    <p class="p-antigo"> R$ 199,99</p>
-                    <p class="p-promocional"> R$ 99,99</p>
-                </div>
-                <button class="btn-adicionar">
-                    <img src="assets/carrinho.png" alt="Ícone de carrinho">
+    <!--==============================
+                BANNER
+==============================-->
 
-                </button>
-            </div>
-        </div>
 
-    </section>
+    <section class="banner">
 
-    <!--ÁREA DE OFERTAS -->
-    <section class="ofertas">
-        <div class="titulos-ofertas">
-            <div class="texto-promoções">
-                <h2> OFERTAS IMPERDÍVEIS</h2>
-                <p>Confira as melhores ofertas!</p>
-            </div>
-            <a href="#" class="ver-tudo">Ver Tudo</a>
-        </div>
 
-        <div class="lista de produtos">
-            <div class="card-produtos">
-                <div class="imagem-botao">
-                    <img src="assets/produto 1.png" alt="Produto 1">
-                    <button class="favorito">
-                        <img src="assets/coracao.png" alt="Ícone de favorito">
-                    </button>
-                </div>
-                <h3>Nome do Produto</h3>
-                <div class="precos">
-                    <p class="p-antigo"> R$ 199,99</p>
-                    <p class="p-promocional"> R$ 99,99</p>
-                </div>
-                <button class="btn-adicionar">
-                    <img src="assets/carrinho.png" alt="Ícone de carrinho">
+        <img id="logoEmpresa" src="../assets/banner.png" alt="Sipaúba Lanches">
 
-                </button>
-            </div>
-        </div>
 
     </section>
 
 
-    <!--INICIO DO RODAPÉ-->
-    <footer >
-        <!--PARTE SUPERIOR-->
-        <div class="superior">
+
+
+    <!--==============================
+                TÍTULO
+==============================-->
+
+
+    <section class="titulo">
+
+
+        <h1 id="tituloProdutos"></h1>
+
+
+        <p id="subtituloProdutos"></p>
 
 
 
-            <div class="coluna1">
-                <h2>REDES SOCIAIS</h2>
-                <div class="redes-sociais">
-                    <a href="">
-                        <img src="assets/whatsapp.png">
-                    </a>
-                    <a href="">
-                        <img src="assets/instagram.png">
-                    </a>
-                    <a href="">
-                        <img src="assets/tiktok.png">
-                    </a>
+    </section>
+    <!--==============================
+        ÁREA DOS PRODUTOS
+==============================-->
+
+
+    <main class="container">
 
 
 
-                </div>
+        <!--==============================
+            CATEGORIAS
+    ==============================-->
 
-    </div>
 
-     <div class="coluna2">
-      <h2>ENDEREÇO</h2>
-      <a href="">
-      <img src="assets/localizaçao.png">
-      RUA 20
-      SETOR COIMBRA
-      PRAÇAS DOS IMIGRANTES
-      
-       </a>
-     </div>
-           
+        <!--==============================
+        CATEGORIAS
+==============================-->
 
-     </div>
-                
+        <div class="categoriasProdutos" id="categoriasProdutos">
+
+            <p>
+                Carregando categorias...
+            </p>
+
+        </div>
+
+
+
+
+        <!--==============================
+            LISTA DOS PRODUTOS
+    ==============================-->
+
+
+
+        <section id="listaProdutos" class="listaProdutos">
+
+
+
+            <!--
+
+            OS PRODUTOS SERÃO
+
+            INSERIDOS PELO JAVASCRIPT
+
+
+
+            Exemplo:
+
+
+            Card Produto
+
+
+            Imagem
+
+
+            Nome
+
+
+            Descrição
+
+
+            Preço
+
+
+            Botão Escolher
+
+
+
+        -->
+
+
+        </section>
+
+
+    </main>
+
+
+
+
+
+    <!--==============================
+                RODAPÉ
+==============================-->
+
+
+
+    <footer class="rodape">
+
+
+
+        <div class="empresa">
+
+
+            <h3>
+
+                Sipaúba Lanches
+
+            </h3>
+
+
+
+            <p id="textoRodape"></p>
+
+
+
+        </div>
+
+
+
+
+
+        <div class="redes">
+
+
+
+            <h3>
+
+                Redes Sociais
+
+            </h3>
+
+
+
+            <div id="listaRedes">
+
+
+                <!--
+
+                REDES SERÃO
+
+                INSERIDAS PELO JS
+
+
+            -->
+
 
             </div>
 
 
 
+        </div>
 
+
+
+
+
+        <div class="endereco">
+
+
+
+            <h3>
+
+                Endereço
+
+            </h3>
+
+            <p id="enderecoEmpresa"></p>
 
         </div>
 
@@ -178,6 +357,19 @@
 
 
 
+
+
+    <!--==============================
+            JAVASCRIPT
+==============================-->
+
+
+
+    <script src="js/produto.js"></script>
+
+
+
 </body>
+
 
 </html>

@@ -1,63 +1,16 @@
-// =====================================================
-// ROTAS DE ENDEREÇO HAS CLIENTE
-// =====================================================
-//
-// POST    /enderecos-clientes                 -> Cadastrar relacionamento
-// GET     /enderecos-clientes                 -> Listar relacionamentos
-// GET     /enderecos-clientes/:endereco/:cliente -> Buscar relacionamento
-// DELETE  /enderecos-clientes/:endereco/:cliente -> Excluir relacionamento
-//
-// =====================================================
-
-
 const express = require("express");
 
 const router = express.Router();
 
+const Controller = require("../controller/endereco_has_cliente_controller.js");
 
-// Importando Controller
-const EnderecoHasClienteController = require("../controller/endereco_has_cliente_controller.js");
+// Estas rotas permanecem disponíveis apenas para retornar HTTP 501,
+// pois o recurso correspondente não existe no banco atual.
 
+router.post("/", Controller.cadastrar);
+router.get("/", Controller.listar);
+router.get("/:id", Controller.buscarPorId);
+router.put("/:id", Controller.atualizar);
+router.delete("/:id", Controller.excluir);
 
-// =========================
-// CADASTRAR RELACIONAMENTO
-// =========================
-
-router.post(
-    "/",
-    EnderecoHasClienteController.cadastrar
-);
-
-
-// =========================
-// LISTAR RELACIONAMENTOS
-// =========================
-
-router.get(
-    "/",
-    EnderecoHasClienteController.listar
-);
-
-
-// =========================
-// BUSCAR RELACIONAMENTO
-// =========================
-
-router.get(
-    "/:enderecoId/:clienteId",
-    EnderecoHasClienteController.buscar
-);
-
-
-// =========================
-// EXCLUIR RELACIONAMENTO
-// =========================
-
-router.delete(
-    "/:endereco/:cliente",
-    EnderecoHasClienteController.excluir
-);
-
-
-// Exportando rotas
 module.exports = router;

@@ -1,75 +1,49 @@
-// =====================================================
-// ROTAS DE BANNER
-// =====================================================
-//
-// POST    /banners       -> Cadastrar banner
-// GET     /banners       -> Listar banners
-// GET     /banners/:id   -> Buscar banner por ID
-// PUT     /banners/:id   -> Atualizar banner
-// DELETE  /banners/:id   -> Excluir banner
-//
-// =====================================================
-
-
 const express = require("express");
+const multer = require("multer");
 
-// Criando o roteador do Express
 const router = express.Router();
 
+const BannerController = require("../controller/banner_controller.js");
 
-// Importando Controller de Banner
-const BannerController = require("../controller//banner-controller");
+const storage = multer.memoryStorage();
 
+const upload = multer({
+    storage,
+    limits: {
+        fileSize: 5 * 1024 * 1024
+    }
+});
 
-// =========================
-// CADASTRAR BANNER
-// =========================
-
+// CADASTRAR
 router.post(
     "/",
+    upload.single("imagem"),
     BannerController.cadastrar
 );
 
-
-// =========================
-// LISTAR BANNERS
-// =========================
-
+// LISTAR
 router.get(
     "/",
     BannerController.listar
 );
 
-
-// =========================
-// BUSCAR BANNER POR ID
-// =========================
-
+// BUSCAR POR ID
 router.get(
     "/:id",
     BannerController.buscarPorId
 );
 
-
-// =========================
-// ATUALIZAR BANNER
-// =========================
-
+// ATUALIZAR
 router.put(
     "/:id",
+    upload.single("imagem"),
     BannerController.atualizar
 );
 
-
-// =========================
-// EXCLUIR BANNER
-// =========================
-
+// EXCLUIR
 router.delete(
     "/:id",
     BannerController.excluir
 );
 
-
-// Exportando as rotas
 module.exports = router;

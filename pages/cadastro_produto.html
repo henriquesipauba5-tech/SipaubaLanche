@@ -3,64 +3,24 @@
 
 <head>
 
-    <!--==================================================
-                        CONFIGURAÇÕES
-    ==================================================-->
-
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
-        Cadastrar Produto | Sipaúba Lanches
+        Cadastro de Produtos | Sipaúba Lanches
     </title>
 
+    <link rel="stylesheet" href="../style/cadastro_produto.css">
 
-    <!--==================================================
-                            CSS
-    ==================================================-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <link
-        rel="stylesheet"
-        href="../style/cadastro_produto.css"
-    >
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
-    <!--==================================================
-                        GOOGLE FONTS
-    ==================================================-->
-
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet"
-    >
-
-
-    <!--==================================================
-                        FONT AWESOME
-    ==================================================-->
-
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
-    >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
 </head>
 
@@ -69,119 +29,51 @@
 
 
     <!--==================================================
-                        MENU LATERAL
+                    MENU LATERAL
     ==================================================-->
 
     <aside class="sidebar">
 
-
-        <!--==================================================
-                            LOGO
-        ==================================================-->
-
         <div class="logo">
 
+            <img src="../assets/logo.png" alt="Logo" id="logoLoja">
 
-            <img
-                src="../assets/logo.png"
-                alt="Logo da Loja"
-                id="logoLoja"
-            >
-
-
-            <h2 id="nomePainel">
-
+            <h2>
                 Painel do Lojista
-
             </h2>
-
 
         </div>
 
 
-
-        <!--==================================================
-                            MENU
-        ==================================================-->
-
         <nav>
 
-            <ul id="menuLateral">
+            <ul>
 
-
-                <!-- VISÃO GERAL -->
-
-                <li class="ativo">
+                <li>
 
                     <a href="#">
 
                         <i class="fa-solid fa-chart-pie"></i>
 
-                        <span>
-                            Visão Geral
-                        </span>
+                        Visão Geral
 
                     </a>
 
                 </li>
 
 
-
-                <!-- ESTOQUE -->
-
-                <li>
+                <li class="ativo">
 
                     <a href="#">
 
                         <i class="fa-solid fa-box"></i>
 
-                        <span>
-                            Estoque
-                        </span>
+                        Produtos
 
                     </a>
 
                 </li>
 
-
-
-                <!-- PEDIDOS -->
-
-                <li>
-
-                    <a href="#">
-
-                        <i class="fa-solid fa-cart-shopping"></i>
-
-                        <span>
-                            Pedidos
-                        </span>
-
-                    </a>
-
-                </li>
-
-
-
-                <!-- FINANCEIRO -->
-
-                <li>
-
-                    <a href="#">
-
-                        <i class="fa-solid fa-wallet"></i>
-
-                        <span>
-                            Financeiro
-                        </span>
-
-                    </a>
-
-                </li>
-
-
-
-                <!-- ADICIONAL -->
 
                 <li>
 
@@ -189,202 +81,98 @@
 
                         <i class="fa-solid fa-layer-group"></i>
 
-                        <span>
-                            Adicional
-                        </span>
+                        Adicionais
 
                     </a>
 
                 </li>
-
-
-
-                <!-- CHAT -->
-
-                <li>
-
-                    <a href="#">
-
-                        <i class="fa-solid fa-comments"></i>
-
-                        <span>
-                            Chat
-                        </span>
-
-                    </a>
-
-                </li>
-
-
-
-                <!-- AVALIAÇÕES -->
-
-                <li>
-
-                    <a href="#">
-
-                        <i class="fa-solid fa-star"></i>
-
-                        <span>
-                            Avaliações
-                        </span>
-
-                    </a>
-
-                </li>
-
-
-
-                <!-- CONFIGURAÇÕES -->
-
-                <li>
-
-                    <a href="#">
-
-                        <i class="fa-solid fa-gear"></i>
-
-                        <span>
-                            Configurações
-                        </span>
-
-                    </a>
-
-                </li>
-
 
             </ul>
 
         </nav>
-
 
     </aside>
 
 
 
     <!--==================================================
-                            CONTEÚDO
+                    CONTEÚDO
     ==================================================-->
 
     <main class="conteudo">
 
 
         <!--==================================================
-                            TOPO
+                        TOPO
         ==================================================-->
 
         <header class="topbar">
 
+            <h2>
+                Produtos
+            </h2>
 
-            <!--==================================================
-                            MENU SUPERIOR
-            ==================================================-->
-
-            <nav>
-
-                <ul class="menuSuperior">
-
-
-                    <li>
-
-                        <a href="#">
-
-                            Pedidos
-
-                        </a>
-
-                    </li>
-
-
-                    <li>
-
-                        <a href="#">
-
-                            Estoque
-
-                        </a>
-
-                    </li>
-
-
-                    <li>
-
-                        <a href="#">
-
-                            Financeiro
-
-                        </a>
-
-                    </li>
-
-
-                    <li>
-
-                        <a href="#">
-
-                            Adicional
-
-                        </a>
-
-                    </li>
-
-
-                </ul>
-
-            </nav>
-
-
-
-            <!--==================================================
-                            PESQUISA
-            ==================================================-->
 
             <div class="pesquisa">
 
+                <input type="text" id="campoPesquisa" placeholder="Pesquisar produto">
 
-                <input
-                    type="text"
-                    id="campoPesquisa"
-                    placeholder="Pesquisar"
-                >
-
-
-                <button
-                    type="button"
-                    id="btnPesquisar"
-                >
+                <button type="button" id="btnPesquisar">
 
                     <i class="fa-solid fa-magnifying-glass"></i>
 
                 </button>
 
-
             </div>
-
 
         </header>
 
 
 
         <!--==================================================
-                        TÍTULO DA PÁGINA
+                    TÍTULO DA PÁGINA
         ==================================================-->
 
         <section class="tituloPagina">
 
-
             <h1 id="tituloPagina">
-
                 Cadastrar Novo Produto
-
             </h1>
-
 
             <p id="descricaoPagina">
 
-                Preencha as informações abaixo para disponibilizar o produto em sua vitrine.
+                Preencha as informações abaixo para cadastrar um produto.
 
             </p>
 
+        </section>
+
+
+
+        <!--==================================================
+                    CADASTRAR CATEGORIA
+        ==================================================-->
+
+        <section class="cadastroCategoria">
+
+            <div class="campo">
+
+                <label for="novaCategoria">
+                    Nova Categoria
+                </label>
+
+                <input type="text" id="novaCategoria" placeholder="Ex: Hambúrguer">
+
+            </div>
+
+
+            <button type="button" id="btnCadastrarCategoria">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Cadastrar Categoria
+
+            </button>
 
         </section>
 
@@ -397,10 +185,7 @@
         <section class="formulario">
 
 
-            <form
-                id="formProduto"
-                enctype="multipart/form-data"
-            >
+            <form id="formProduto">
 
 
                 <!--==================================================
@@ -410,12 +195,9 @@
                 <div class="colunaEsquerda">
 
 
-                    <!--==================================================
-                                NOME
-                    ==================================================-->
+                    <!-- NOME -->
 
                     <div class="campo">
-
 
                         <label for="nomeProduto">
 
@@ -424,23 +206,32 @@
                         </label>
 
 
-                        <input
-                            type="text"
-                            id="nomeProduto"
-                            placeholder="Ex: Lanche de Frango com Catupiry"
-                        >
-
+                        <input type="text" id="nomeProduto" placeholder="Ex: X-Bacon">
 
                     </div>
 
 
 
-                    <!--==================================================
-                            CATEGORIA
-                    ==================================================-->
+                    <!-- CÓDIGO -->
 
                     <div class="campo">
 
+                        <label for="codigoProduto">
+
+                            Código
+
+                        </label>
+
+
+                        <input type="text" id="codigoProduto" placeholder="Ex: XB001">
+
+                    </div>
+
+
+
+                    <!-- CATEGORIA -->
+
+                    <div class="campo">
 
                         <label for="categoriaProduto">
 
@@ -451,164 +242,77 @@
 
                         <select id="categoriaProduto">
 
-
-                            <!--
-                                O JavaScript irá carregar
-                                as categorias vindas do banco.
-                            -->
-
-
                             <option value="">
 
                                 Carregando categorias...
 
                             </option>
 
-
                         </select>
-
 
                     </div>
 
 
 
-                    <!--==================================================
-                            DESCRIÇÃO
-                    ==================================================-->
+                    <!-- DESCRIÇÃO -->
 
                     <div class="campo descricao">
 
-
                         <label for="descricaoProduto">
 
-                            Descrição do Produto
+                            Descrição
 
                         </label>
 
 
-                        <textarea
-                            id="descricaoProduto"
-                            placeholder="Descreva as características do produto..."
-                        ></textarea>
-
+                        <textarea id="descricaoProduto" placeholder="Descrição do produto..."></textarea>
 
                     </div>
 
 
 
                     <!--==================================================
-                            PREÇO
+                            IMAGEM
                     ==================================================-->
 
                     <div class="campo">
 
-
-                        <label for="precoProduto">
-
-                            Preço de Venda
-
+                        <label>
+                            Imagem do Produto
                         </label>
 
 
-                        <div class="inputPreco">
+                        <div class="uploadArea" id="uploadArea">
 
-
-                            <span>
-
-                                R$
-
-                            </span>
-
-
-                            <input
-                                type="number"
-                                id="precoProduto"
-                                placeholder="0,00"
-                                min="0"
-                                step="0.01"
-                            >
-
-
-                        </div>
-
-
-                    </div>
-
-
-
-                    <!--==================================================
-                            ESTOQUE
-                    ==================================================-->
-
-                    <div class="campo">
-
-
-                        <label for="quantidadeProduto">
-
-                            Quantidade em Estoque
-
-                        </label>
-
-
-                        <input
-                            type="number"
-                            id="quantidadeProduto"
-                            placeholder="Ex: 50"
-                            min="0"
-                            step="1"
-                        >
-
-
-                    </div>
-
-
-
-                    <!--==================================================
-                            STATUS
-                    ==================================================-->
-
-                    <div class="statusProduto">
-
-
-                        <div>
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
 
 
                             <h3>
-
-                                Status do Produto
-
+                                Selecionar imagem
                             </h3>
 
 
                             <p>
-
-                                Defina se o produto estará visível imediatamente.
-
+                                PNG ou JPG até 5 MB
                             </p>
 
+
+                            <button type="button" id="btnSelecionarImagem">
+
+                                Selecionar Arquivo
+
+                            </button>
+
+
+                            <input type="file" id="imagemProduto" accept="image/png,image/jpeg,image/jpg" hidden>
 
                         </div>
 
 
-
-                        <label class="switch">
-
-
-                            <input
-                                type="checkbox"
-                                id="statusProduto"
-                                checked
-                            >
-
-
-                            <span class="slider"></span>
-
-
-                        </label>
-
+                        <div id="previewImagem" class="previewImagem">
+                        </div>
 
                     </div>
-
 
                 </div>
 
@@ -621,98 +325,107 @@
                 <div class="colunaDireita">
 
 
-                    <!--==================================================
-                            TÍTULO DAS FOTOS
-                    ==================================================-->
+                    <!-- PREÇO ANTIGO -->
 
-                    <label>
+                    <div class="campo">
 
-                        Fotos do Produto
+                        <label for="precoAntigoProduto">
 
-                    </label>
+                            Preço Antigo
 
-
-
-                    <!--==================================================
-                            ÁREA DE UPLOAD
-                    ==================================================-->
-
-                    <div
-                        class="uploadArea"
-                        id="uploadArea"
-                    >
+                        </label>
 
 
-                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <div class="inputPreco">
+
+                            <span>
+                                R$
+                            </span>
 
 
-                        <h3>
+                            <input type="number" id="precoAntigoProduto" min="0" step="0.01" placeholder="0,00">
 
-                            Clique para enviar ou arraste
-
-                        </h3>
-
-
-                        <p>
-
-                            PNG, JPG até 10MB
-
-                        </p>
-
-
-                        <!--==================================================
-                                BOTÃO SELECIONAR
-                        ==================================================-->
-
-                        <button
-                            type="button"
-                            id="btnSelecionarImagem"
-                        >
-
-                            Selecionar arquivo
-
-                        </button>
-
-
-                        <!--==================================================
-                                INPUT DE IMAGEM
-                        ==================================================-->
-
-                        <input
-                            type="file"
-                            id="imagemProduto"
-                            name="imagens"
-                            accept="image/png,image/jpeg,image/jpg"
-                            multiple
-                            hidden
-                        >
-
+                        </div>
 
                     </div>
 
 
 
-                    <!--==================================================
-                            MINIATURAS
-                    ==================================================-->
+                    <!-- PREÇO PROMOCIONAL -->
 
-                    <div
-                        class="miniaturas"
-                        id="miniaturas"
-                    >
+                    <div class="campo">
+
+                        <label for="precoPromocionalProduto">
+
+                            Preço de Venda
+
+                        </label>
+
+
+                        <div class="inputPreco">
+
+                            <span>
+                                R$
+                            </span>
+
+
+                            <input type="number" id="precoPromocionalProduto" min="0" step="0.01" placeholder="0,00">
+
+                        </div>
 
                     </div>
 
 
 
-                    <!--==================================================
-                            BOTÃO SALVAR
-                    ==================================================-->
+                    <!-- ESTOQUE -->
 
-                    <button
-                        type="submit"
-                        id="btnSalvar"
-                    >
+                    <div class="campo">
+
+                        <label for="quantidadeProduto">
+
+                            Quantidade em Estoque
+
+                        </label>
+
+
+                        <input type="number" id="quantidadeProduto" min="0" step="1" placeholder="Ex: 20">
+
+                    </div>
+
+
+
+                    <!-- STATUS -->
+
+                    <div class="statusProduto">
+
+                        <div>
+
+                            <h3>
+                                Status do Produto
+                            </h3>
+
+                            <p>
+                                Defina se o produto está ativo.
+                            </p>
+
+                        </div>
+
+
+                        <label class="switch">
+
+                            <input type="checkbox" id="statusProduto" checked>
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+
+                    <!-- SALVAR -->
+
+                    <button type="submit" id="btnSalvar">
 
                         <i class="fa-solid fa-floppy-disk"></i>
 
@@ -722,14 +435,9 @@
 
 
 
-                    <!--==================================================
-                            BOTÃO CANCELAR
-                    ==================================================-->
+                    <!-- CANCELAR -->
 
-                    <button
-                        type="button"
-                        id="btnCancelar"
-                    >
+                    <button type="button" id="btnCancelar">
 
                         <i class="fa-solid fa-xmark"></i>
 
@@ -737,11 +445,72 @@
 
                     </button>
 
+                </div>
+
+            </form>
+
+        </section>
+
+
+
+        <!--==================================================
+                    PRODUTOS CADASTRADOS
+        ==================================================-->
+
+        <section class="listaArea">
+
+
+            <div class="cabecalhoLista">
+
+
+                <div>
+
+                    <h2>
+
+                        <i class="fa-solid fa-list"></i>
+
+                        Produtos cadastrados
+
+                    </h2>
+
+
+                    <p>
+
+                        Gerencie os produtos cadastrados.
+
+                    </p>
 
                 </div>
 
 
-            </form>
+
+                <div class="contador">
+
+                    <span id="quantidadeProdutos">
+
+                        0
+
+                    </span>
+
+                    Produtos cadastrados
+
+                </div>
+
+            </div>
+
+
+
+            <!--==================================================
+                    PRODUTOS GERADOS PELO JS
+            ==================================================-->
+
+            <div class="listaProdutosCadastrados" id="listaProdutosCadastrados">
+
+                <p>
+                    Carregando produtos...
+                </p>
+
+            </div>
 
 
         </section>
@@ -749,61 +518,34 @@
 
 
         <!--==================================================
-                            RODAPÉ
+                        RODAPÉ
         ==================================================-->
 
         <footer>
 
-
-            <!--==================================================
-                            EMPRESA
-            ==================================================-->
-
             <div>
-
 
                 <h3>
-
                     Sipaúba Lanches
-
                 </h3>
 
-
                 <p>
-
                     Todos os direitos reservados
-
                 </p>
-
 
             </div>
 
 
-
-            <!--==================================================
-                            LINKS
-            ==================================================-->
-
             <div>
-
 
                 <p>
-
                     Ajuda • Privacidade • Termos de uso
-
                 </p>
-
 
             </div>
 
 
-
-            <!--==================================================
-                            STATUS
-            ==================================================-->
-
             <div>
-
 
                 <p>
 
@@ -811,15 +553,13 @@
 
                     <span id="statusSistema">
 
-                        Operacionald
+                        Operacional
 
                     </span>
 
                 </p>
 
-
             </div>
-
 
         </footer>
 
@@ -827,14 +567,7 @@
     </main>
 
 
-
-    <!--==================================================
-                        JAVASCRIPT
-    ==================================================-->
-
-    <script
-        src="../js/cadastro_produto.js"
-    ></script>
+    <script src="../js/cadastro_produto.js"></script>
 
 
 </body>

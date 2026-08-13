@@ -1,84 +1,20 @@
+const adicionalModel = require("../model/adicional_model.js");
 
-//==================================================
-//      adicional_controller.js
-//      Sipaúba Lanches
-//==================================================
-
-
-//==================================================
-//                  MODEL
-//==================================================
-
-const adicionalModel = require(
-    "../model/adicional_model.js"
-);
-
-
-//==================================================
-//              CADASTRAR ADICIONAL
-//==================================================
-
+// CADASTRAR ADICIONAL
 function cadastrar(req, res) {
-
-    //==================================================
-    //              PEGAR DADOS
-    //==================================================
-
     const adicional = req.body || {};
 
-
-    //==================================================
-    //              PEGAR IMAGEM
-    //==================================================
-
     if (req.file) {
-
         adicional.imagem = req.file.buffer;
-
     }
 
-
-    //==================================================
-    //              VALIDAR NOME
-    //==================================================
-
-    if (
-        !adicional.nome ||
-        adicional.nome.trim() === ""
-    ) {
-
-        return res.status(400).json({
-
-            erro:
-                "O nome do adicional é obrigatório."
-
-        });
-
+    if (!adicional.nome || adicional.nome.trim() === "") {
+        return res.status(400).json({ erro: "O nome do adicional é obrigatório." });
     }
 
-
-    //==================================================
-    //              VALIDAR DESCRIÇÃO
-    //==================================================
-
-    if (
-        !adicional.descricao ||
-        adicional.descricao.trim() === ""
-    ) {
-
-        return res.status(400).json({
-
-            erro:
-                "A descrição do adicional é obrigatória."
-
-        });
-
+    if (!adicional.descricao || adicional.descricao.trim() === "") {
+        return res.status(400).json({ erro: "A descrição do adicional é obrigatória." });
     }
-
-
-    //==================================================
-    //              VALIDAR PREÇO
-    //==================================================
 
     if (
         adicional.preco === undefined ||
@@ -87,566 +23,131 @@ function cadastrar(req, res) {
         isNaN(Number(adicional.preco)) ||
         Number(adicional.preco) <= 0
     ) {
-
-        return res.status(400).json({
-
-            erro:
-                "Informe um preço válido."
-
-        });
-
+        return res.status(400).json({ erro: "Informe um preço válido." });
     }
 
+    adicional.nome = adicional.nome.trim();
+    adicional.descricao = adicional.descricao.trim();
+    adicional.preco = Number(adicional.preco);
 
-    //==================================================
-    //              CONVERTER PREÇO
-    //==================================================
-
-    adicional.preco =
-        Number(adicional.preco);
-
-
-    //==================================================
-    //              CADASTRAR
-    //==================================================
-
-    adicionalModel.cadastrar(
-
-        adicional,
-
-        (erro, resultado) => {
-
-            if (erro) {
-
-                console.error(
-                    "Erro ao cadastrar adicional:",
-                    erro
-                );
-
-                return res.status(500).json({
-
-                    erro:
-                        erro.message
-
-                });
-
-            }
-
-
-            //==================================================
-            //              RESPOSTA
-            //==================================================
-
-            return res.status(201).json({
-
-                mensagem:
-                    "Adicional cadastrado com sucesso!",
-
-                id:
-                    resultado.insertId
-
-            });
-
+    adicionalModel.cadastrar(adicional, (erro, resultado) => {
+        if (erro) {
+            console.error("Erro ao cadastrar adicional:", erro);
+            return res.status(500).json({ erro: erro.message });
         }
 
-    );
-
+        return res.status(201).json({
+            mensagem: "Adicional cadastrado com sucesso!",
+            id: resultado.insertId
+        });
+    });
 }
 
-
-//==================================================
-//              LISTAR ADICIONAIS
-//==================================================
-
+// LISTAR
 function listar(req, res) {
-
-    adicionalModel.listar(
-
-        (erro, resultados) => {
-
-            if (erro) {
-
-                console.error(
-                    "Erro ao listar adicionais:",
-                    erro
-                );
-
-                return res.status(500).json({
-
-                    erro:
-                        erro.message
-
-                });
-
-            }
-
-
-            //==================================================
-            //              RESPOSTA
-            //==================================================
-
-            return res.status(200).json(
-                resultados
-            );
-
+    adicionalModel.listar((erro, resultados) => {
+        if (erro) {
+            console.error("Erro ao listar adicionais:", erro);
+            return res.status(500).json({ erro: erro.message });
         }
 
-    );
-
+        return res.status(200).json(resultados);
+    });
 }
 
-
-//==================================================
-//          BUSCAR ADICIONAL POR ID
-//==================================================
-
+// BUSCAR POR ID
 function buscarPorId(req, res) {
-
-    const id =
-        req.params.id;
-
-
-    //==================================================
-    //              VALIDAR ID
-    //==================================================
-
-    if (!id) {
-
-        return res.status(400).json({
-
-            erro:
-                "ID do adicional não informado."
-
-        });
-
-    }
-
-
-    //==================================================
-    //              BUSCAR
-    //==================================================
-
-    adicionalModel.buscarPorId(
-
-        id,
-
-        (erro, resultados) => {
-
-            if (erro) {
-
-                console.error(
-                    "Erro ao buscar adicional:",
-                    erro
-                );
-
-                return res.status(500).json({
-
-                    erro:
-                        erro.message
-
-                });
-
-            }
-
-
-            //==================================================
-            //              VERIFICAR RESULTADO
-            //==================================================
-
-            if (
-                resultados.length === 0
-            ) {
-
-                return res.status(404).json({
-
-                    mensagem:
-                        "Adicional não encontrado."
-
-                });
-
-            }
-
-
-            //==================================================
-            //              RESPOSTA
-            //==================================================
-
-            return res.status(200).json(
-                resultados[0]
-            );
-
+    adicionalModel.buscarPorId(req.params.id, (erro, resultados) => {
+        if (erro) {
+            return res.status(500).json({ erro: erro.message });
         }
 
-    );
+        if (!resultados || resultados.length === 0) {
+            return res.status(404).json({ mensagem: "Adicional não encontrado." });
+        }
 
+        return res.status(200).json(resultados[0]);
+    });
 }
 
-
-//==================================================
-//          BUSCAR ADICIONAL POR NOME
-//==================================================
-
+// BUSCAR POR NOME
 function buscarPorNome(req, res) {
-
-    const nome =
-        req.params.nome;
-
-
-    //==================================================
-    //              VALIDAR NOME
-    //==================================================
-
-    if (!nome) {
-
-        return res.status(400).json({
-
-            erro:
-                "Nome do adicional não informado."
-
-        });
-
-    }
-
-
-    //==================================================
-    //              BUSCAR
-    //==================================================
-
-    adicionalModel.buscarPorNome(
-
-        nome,
-
-        (erro, resultados) => {
-
-            if (erro) {
-
-                console.error(
-                    "Erro ao buscar adicional por nome:",
-                    erro
-                );
-
-                return res.status(500).json({
-
-                    erro:
-                        erro.message
-
-                });
-
-            }
-
-
-            //==================================================
-            //              VERIFICAR RESULTADO
-            //==================================================
-
-            if (
-                resultados.length === 0
-            ) {
-
-                return res.status(404).json({
-
-                    mensagem:
-                        "Adicional não encontrado."
-
-                });
-
-            }
-
-
-            //==================================================
-            //              RESPOSTA
-            //==================================================
-
-            return res.status(200).json(
-                resultados
-            );
-
+    adicionalModel.buscarPorNome(req.params.nome, (erro, resultados) => {
+        if (erro) {
+            return res.status(500).json({ erro: erro.message });
         }
 
-    );
+        if (!resultados || resultados.length === 0) {
+            return res.status(404).json({ mensagem: "Adicional não encontrado." });
+        }
 
+        return res.status(200).json(resultados);
+    });
 }
 
-
-//==================================================
-//              ATUALIZAR ADICIONAL
-//==================================================
-
+// ATUALIZAR
 function atualizar(req, res) {
-
-    const id =
-        req.params.id;
-
-    const adicional =
-        req.body || {};
-
-
-    //==================================================
-    //              VALIDAR ID
-    //==================================================
-
-    if (!id) {
-
-        return res.status(400).json({
-
-            erro:
-                "ID do adicional não informado."
-
-        });
-
-    }
-
-
-    //==================================================
-    //              PEGAR IMAGEM
-    //==================================================
+    const id = req.params.id;
+    const adicional = req.body || {};
 
     if (req.file) {
-
-        adicional.imagem =
-            req.file.buffer;
-
+        adicional.imagem = req.file.buffer;
     }
 
-
-    //==================================================
-    //              VALIDAR NOME
-    //==================================================
-
-    if (
-        !adicional.nome ||
-        adicional.nome.trim() === ""
-    ) {
-
+    if (!adicional.nome || !adicional.descricao) {
         return res.status(400).json({
-
-            erro:
-                "O nome do adicional é obrigatório."
-
+            erro: "Nome e descrição são obrigatórios."
         });
-
     }
-
-
-    //==================================================
-    //              VALIDAR DESCRIÇÃO
-    //==================================================
-
-    if (
-        !adicional.descricao ||
-        adicional.descricao.trim() === ""
-    ) {
-
-        return res.status(400).json({
-
-            erro:
-                "A descrição do adicional é obrigatória."
-
-        });
-
-    }
-
-
-    //==================================================
-    //              VALIDAR PREÇO
-    //==================================================
 
     if (
         adicional.preco === undefined ||
-        adicional.preco === null ||
         adicional.preco === "" ||
         isNaN(Number(adicional.preco)) ||
         Number(adicional.preco) <= 0
     ) {
-
-        return res.status(400).json({
-
-            erro:
-                "Informe um preço válido."
-
-        });
-
+        return res.status(400).json({ erro: "Informe um preço válido." });
     }
 
+    adicional.preco = Number(adicional.preco);
 
-    //==================================================
-    //              CONVERTER PREÇO
-    //==================================================
-
-    adicional.preco =
-        Number(adicional.preco);
-
-
-    //==================================================
-    //              ATUALIZAR
-    //==================================================
-
-    adicionalModel.atualizar(
-
-        id,
-
-        adicional,
-
-        (erro, resultado) => {
-
-            if (erro) {
-
-                console.error(
-                    "Erro ao atualizar adicional:",
-                    erro
-                );
-
-                return res.status(500).json({
-
-                    erro:
-                        erro.message
-
-                });
-
-            }
-
-
-            //==================================================
-            //              VERIFICAR EXISTÊNCIA
-            //==================================================
-
-            if (
-                resultado.affectedRows === 0
-            ) {
-
-                return res.status(404).json({
-
-                    mensagem:
-                        "Adicional não encontrado."
-
-                });
-
-            }
-
-
-            //==================================================
-            //              RESPOSTA
-            //==================================================
-
-            return res.status(200).json({
-
-                mensagem:
-                    "Adicional atualizado com sucesso!"
-
-            });
-
+    adicionalModel.atualizar(id, adicional, (erro, resultado) => {
+        if (erro) {
+            return res.status(500).json({ erro: erro.message });
         }
 
-    );
+        if (!resultado || resultado.affectedRows === 0) {
+            return res.status(404).json({ mensagem: "Adicional não encontrado." });
+        }
 
+        return res.status(200).json({
+            mensagem: "Adicional atualizado com sucesso!"
+        });
+    });
 }
 
-
-//==================================================
-//              EXCLUIR ADICIONAL
-//==================================================
-
+// EXCLUIR
 function excluir(req, res) {
-
-    const id =
-        req.params.id;
-
-
-    //==================================================
-    //              VALIDAR ID
-    //==================================================
-
-    if (!id) {
-
-        return res.status(400).json({
-
-            erro:
-                "ID do adicional não informado."
-
-        });
-
-    }
-
-
-    //==================================================
-    //              EXCLUIR
-    //==================================================
-
-    adicionalModel.excluir(
-
-        id,
-
-        (erro, resultado) => {
-
-            if (erro) {
-
-                console.error(
-                    "Erro ao excluir adicional:",
-                    erro
-                );
-
-                return res.status(500).json({
-
-                    erro:
-                        erro.message
-
-                });
-
-            }
-
-
-            //==================================================
-            //              VERIFICAR EXISTÊNCIA
-            //==================================================
-
-            if (
-                resultado.affectedRows === 0
-            ) {
-
-                return res.status(404).json({
-
-                    mensagem:
-                        "Adicional não encontrado."
-
-                });
-
-            }
-
-
-            //==================================================
-            //              RESPOSTA
-            //==================================================
-
-            return res.status(200).json({
-
-                mensagem:
-                    "Adicional excluído com sucesso!"
-
-            });
-
+    adicionalModel.excluir(req.params.id, (erro, resultado) => {
+        if (erro) {
+            return res.status(500).json({ erro: erro.message });
         }
 
-    );
+        if (!resultado || resultado.affectedRows === 0) {
+            return res.status(404).json({ mensagem: "Adicional não encontrado." });
+        }
 
+        return res.status(200).json({
+            mensagem: "Adicional excluído com sucesso!"
+        });
+    });
 }
-
-
-//==================================================
-//                  EXPORTAR
-//==================================================
 
 module.exports = {
-
     cadastrar,
-
     listar,
-
     buscarPorId,
-
     buscarPorNome,
-
     atualizar,
-
     excluir
-
 };

@@ -1,52 +1,31 @@
 const conexao = require("../conexao/conexao.js");
 
-// =========================
-// Cadastrar Carrinho
-// =========================
-
+// CADASTRAR CARRINHO
 function cadastrar(carrinho, callback) {
-
-    const sql = `INSERT INTO Carrinho
-        (
-            quantidade_produto,
-            preco_total,
-            Cliente_idCliente
-        )
-        VALUES (?, ?, ?)`;
+    const sql = `
+        INSERT INTO Carrinho
+        (quantidade_produto, preco_total, Cliente_idCliente)
+        VALUES (?, ?, ?)
+    `;
 
     conexao.query(
         sql,
         [
-            carrinho.quantidade_produto,
-            carrinho.preco_total,
+            carrinho.quantidade_produto ?? 0,
+            carrinho.preco_total ?? 0,
             carrinho.Cliente_idCliente
         ],
         callback
     );
-
 }
 
-// =========================
-// Listar Carrinhos
-// =========================
-
+// LISTAR CARRINHOS
 function listar(callback) {
-
-    const sql = `
-        SELECT *
-        FROM Carrinho
-    `;
-
-    conexao.query(sql, callback);
-
+    conexao.query("SELECT * FROM Carrinho", callback);
 }
 
-// =========================
-// Buscar por ID
-// =========================
-
+// BUSCAR POR ID
 function buscarPorId(id, callback) {
-
     const sql = `
         SELECT *
         FROM Carrinho
@@ -54,15 +33,10 @@ function buscarPorId(id, callback) {
     `;
 
     conexao.query(sql, [id], callback);
-
 }
 
-// =========================
-// Buscar por Cliente
-// =========================
-
+// BUSCAR POR CLIENTE
 function buscarPorCliente(idCliente, callback) {
-
     const sql = `
         SELECT *
         FROM Carrinho
@@ -70,23 +44,15 @@ function buscarPorCliente(idCliente, callback) {
     `;
 
     conexao.query(sql, [idCliente], callback);
-
 }
 
-// =========================
-// Atualizar Carrinho
-// =========================
-
+// ATUALIZAR CARRINHO
 function atualizar(id, carrinho, callback) {
-
     const sql = `
         UPDATE Carrinho
-        SET
-
-            quantidade_produto = ?,
+        SET quantidade_produto = ?,
             preco_total = ?,
             Cliente_idCliente = ?
-
         WHERE idCarrinho = ?
     `;
 
@@ -100,31 +66,23 @@ function atualizar(id, carrinho, callback) {
         ],
         callback
     );
-
 }
 
-// =========================
-// Excluir Carrinho
-// =========================
-
+// EXCLUIR CARRINHO
 function excluir(id, callback) {
-
     const sql = `
         DELETE FROM Carrinho
         WHERE idCarrinho = ?
     `;
 
     conexao.query(sql, [id], callback);
-
 }
 
 module.exports = {
-
     cadastrar,
     listar,
     buscarPorId,
     buscarPorCliente,
     atualizar,
     excluir
-
 };

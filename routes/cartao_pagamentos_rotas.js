@@ -1,75 +1,16 @@
-// =====================================================
-// ROTAS DE CARTÃO DE PAGAMENTO
-// =====================================================
-//
-// POST    /cartoes-pagamento       -> Cadastrar cartão
-// GET     /cartoes-pagamento       -> Listar cartões
-// GET     /cartoes-pagamento/:id   -> Buscar cartão por ID
-// PUT     /cartoes-pagamento/:id   -> Atualizar cartão
-// DELETE  /cartoes-pagamento/:id   -> Excluir cartão
-//
-// =====================================================
-
-
 const express = require("express");
 
-// Criando o roteador do Express
 const router = express.Router();
 
+const Controller = require("../controller/cartao_pagamento_controller.js");
 
-// Importando Controller de Cartão de Pagamento
-const CartaoPagamentoController = require("../controller//cartao_pagamento_controller");
+// Estas rotas permanecem disponíveis apenas para retornar HTTP 501,
+// pois o recurso correspondente não existe no banco atual.
 
+router.post("/", Controller.cadastrar);
+router.get("/", Controller.listar);
+router.get("/:id", Controller.buscarPorId);
+router.put("/:id", Controller.atualizar);
+router.delete("/:id", Controller.excluir);
 
-// =========================
-// CADASTRAR CARTÃO
-// =========================
-
-router.post(
-    "/",
-    CartaoPagamentoController.cadastrar
-);
-
-
-// =========================
-// LISTAR CARTÕES
-// =========================
-
-router.get(
-    "/",
-    CartaoPagamentoController.listar
-);
-
-
-// =========================
-// BUSCAR CARTÃO POR ID
-// =========================
-
-router.get(
-    "/:id",
-    CartaoPagamentoController.buscarPorId
-);
-
-
-// =========================
-// ATUALIZAR CARTÃO
-// =========================
-
-router.put(
-    "/:id",
-    CartaoPagamentoController.atualizar
-);
-
-
-// =========================
-// EXCLUIR CARTÃO
-// =========================
-
-router.delete(
-    "/:id",
-    CartaoPagamentoController.excluir
-);
-
-
-// Exportando as rotas
 module.exports = router;

@@ -1,19 +1,10 @@
 const conexao = require("../conexao/conexao.js");
 
-// =========================
-// Cadastrar Adicional
-// =========================
-
+// CADASTRAR ADICIONAL
 function cadastrar(adicional, callback) {
-
     const sql = `
         INSERT INTO Adicional
-        (
-            nome,
-            descricao,
-            preco,
-            imagem
-        )
+        (nome, descricao, preco, imagem)
         VALUES (?, ?, ?, ?)
     `;
 
@@ -23,83 +14,53 @@ function cadastrar(adicional, callback) {
             adicional.nome,
             adicional.descricao,
             adicional.preco,
-            adicional.imagem
+            adicional.imagem || null
         ],
         callback
     );
 }
 
-
-// =========================
-// Listar Adicionais
-// =========================
-
+// LISTAR ADICIONAIS
 function listar(callback) {
-
     const sql = `
         SELECT *
         FROM Adicional
+        ORDER BY nome ASC
     `;
 
     conexao.query(sql, callback);
 }
 
-
-// =========================
-// Buscar por ID
-// =========================
-
+// BUSCAR POR ID
 function buscarPorId(id, callback) {
-
     const sql = `
         SELECT *
         FROM Adicional
         WHERE idAdicional = ?
     `;
 
-    conexao.query(
-        sql,
-        [id],
-        callback
-    );
+    conexao.query(sql, [id], callback);
 }
 
-
-// =========================
-// Buscar por Nome
-// =========================
-
+// BUSCAR POR NOME
 function buscarPorNome(nome, callback) {
-
     const sql = `
         SELECT *
         FROM Adicional
         WHERE nome = ?
     `;
 
-    conexao.query(
-        sql,
-        [nome],
-        callback
-    );
+    conexao.query(sql, [nome], callback);
 }
 
-
-// =========================
-// Atualizar Adicional
-// =========================
-
+// ATUALIZAR ADICIONAL
 function atualizar(id, adicional, callback) {
-
     const sql = `
         UPDATE Adicional
-        SET
-
-            nome = ?,
+        SET nome = ?,
             descricao = ?,
             preco = ?,
             imagem = ?
-
         WHERE idAdicional = ?
     `;
 
@@ -109,44 +70,28 @@ function atualizar(id, adicional, callback) {
             adicional.nome,
             adicional.descricao,
             adicional.preco,
-            adicional.imagem,
+            adicional.imagem || null,
             id
         ],
         callback
     );
 }
 
-
-// =========================
-// Excluir Adicional
-// =========================
-
+// EXCLUIR ADICIONAL
 function excluir(id, callback) {
-
     const sql = `
         DELETE FROM Adicional
         WHERE idAdicional = ?
     `;
 
-    conexao.query(
-        sql,
-        [id],
-        callback
-    );
+    conexao.query(sql, [id], callback);
 }
 
-
-// =========================
-// Exportar Funções
-// =========================
-
 module.exports = {
-
     cadastrar,
     listar,
     buscarPorId,
     buscarPorNome,
     atualizar,
     excluir
-
 };

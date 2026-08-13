@@ -1,75 +1,16 @@
-// =====================================================
-// ROTAS DE PROMOÇÃO
-// =====================================================
-//
-// POST    /promocoes       -> Cadastrar promoção
-// GET     /promocoes       -> Listar promoções
-// GET     /promocoes/:id   -> Buscar promoção por ID
-// PUT     /promocoes/:id   -> Atualizar promoção
-// DELETE  /promocoes/:id   -> Excluir promoção
-//
-// =====================================================
-
-
 const express = require("express");
 
-// Criando o roteador do Express
 const router = express.Router();
 
+const Controller = require("../controller/promocao_controller.js");
 
-// Importando Controller de Promoção
-const PromocaoController = require("../controller/promocao_controller.js");
+// Estas rotas permanecem disponíveis apenas para retornar HTTP 501,
+// pois o recurso correspondente não existe no banco atual.
 
+router.post("/", Controller.cadastrar);
+router.get("/", Controller.listar);
+router.get("/:id", Controller.buscarPorId);
+router.put("/:id", Controller.atualizar);
+router.delete("/:id", Controller.excluir);
 
-// =========================
-// CADASTRAR PROMOÇÃO
-// =========================
-
-router.post(
-    "/",
-    PromocaoController.cadastrar
-);
-
-
-// =========================
-// LISTAR PROMOÇÕES
-// =========================
-
-router.get(
-    "/",
-    PromocaoController.listar
-);
-
-
-// =========================
-// BUSCAR PROMOÇÃO POR ID
-// =========================
-
-router.get(
-    "/:id",
-    PromocaoController.buscarPorId
-);
-
-
-// =========================
-// ATUALIZAR PROMOÇÃO
-// =========================
-
-router.put(
-    "/:id",
-    PromocaoController.atualizar
-);
-
-
-// =========================
-// EXCLUIR PROMOÇÃO
-// =========================
-
-router.delete(
-    "/:id",
-    PromocaoController.excluir
-);
-
-
-// Exportando as rotas
 module.exports = router;

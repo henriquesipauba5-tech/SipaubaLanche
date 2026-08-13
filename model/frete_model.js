@@ -1,146 +1,35 @@
-const conexao = require("../conexao/conexao.js");
+// ============================================================
+// MODEL NÃO UTILIZÁVEL COM O BANCO ATUAL
+// ============================================================
+//
+// Este arquivo existia no projeto do aluno, porém o banco
+// SipaubaLanche enviado como referência NÃO possui a tabela:
+// Frete
+//
+// Como o banco não deve ser alterado, este model não pode
+// executar INSERT, SELECT, UPDATE ou DELETE nessa tabela.
+//
+// Mantenha este arquivo fora das rotas do servidor enquanto
+// a estrutura oficial do banco continuar sem essa tabela.
+// ============================================================
 
-// =========================
-// Cadastrar Frete
-// =========================
-
-function cadastrar(frete, callback) {
-
-    const sql = `INSERT INTO Frete
-        (
-            valor,
-            tipo,
-            bairro,
-            entrega_full,
-            codigo_rastreio,
-            Pedidos_idPedidos,
-            Pedidos_Endereco_idEndereco
-        )
-        VALUES (?, ?, ?, ?, ?, ?, ?)`;
-
-    conexao.query(
-        sql,
-        [
-            frete.valor,
-            frete.tipo,
-            frete.bairro,
-            frete.entrega_full,
-            frete.codigo_rastreio,
-            frete.Pedidos_idPedidos,
-            frete.Pedidos_Endereco_idEndereco
-        ],
-        callback
+function tabelaNaoExiste(callback) {
+    const erro = new Error(
+        "Este recurso não existe no banco de dados SipaubaLanche atual."
     );
 
-}
+    if (typeof callback === "function") {
+        return callback(erro);
+    }
 
-// =========================
-// Listar Fretes
-// =========================
-
-function listar(callback) {
-
-    const sql = `
-        SELECT *
-        FROM Frete
-    `;
-
-    conexao.query(sql, callback);
-
-}
-
-// =========================
-// Buscar por ID
-// =========================
-
-function buscarPorId(id, callback) {
-
-    const sql = `
-        SELECT *
-        FROM Frete
-        WHERE idFrete = ?
-    `;
-
-    conexao.query(sql, [id], callback);
-
-}
-
-// =========================
-// Buscar por Código de Rastreio
-// =========================
-
-function buscarPorCodigoRastreio(codigo, callback) {
-
-    const sql = `
-        SELECT *
-        FROM Frete
-        WHERE codigo_rastreio = ?
-    `;
-
-    conexao.query(sql, [codigo], callback);
-
-}
-
-// =========================
-// Atualizar Frete
-// =========================
-
-function atualizar(id, frete, callback) {
-
-    const sql = `
-        UPDATE Frete
-        SET
-
-            valor = ?,
-            tipo = ?,
-            bairro = ?,
-            entrega_full = ?,
-            codigo_rastreio = ?,
-            Pedidos_idPedidos = ?,
-            Pedidos_Endereco_idEndereco = ?
-
-        WHERE idFrete = ?
-    `;
-
-    conexao.query(
-        sql,
-        [
-            frete.valor,
-            frete.tipo,
-            frete.bairro,
-            frete.entrega_full,
-            frete.codigo_rastreio,
-            frete.Pedidos_idPedidos,
-            frete.Pedidos_Endereco_idEndereco,
-            id
-        ],
-        callback
-    );
-
-}
-
-// =========================
-// Excluir Frete
-// =========================
-
-function excluir(id, callback) {
-
-    const sql = `
-        DELETE FROM Frete
-        WHERE idFrete = ?
-    `;
-
-    conexao.query(sql, [id], callback);
-
+    throw erro;
 }
 
 module.exports = {
-
-    cadastrar,
-    listar,
-    buscarPorId,
-    buscarPorCodigoRastreio,
-    atualizar,
-    excluir
-
+    cadastrar: tabelaNaoExiste,
+    listar: tabelaNaoExiste,
+    buscarPorId: tabelaNaoExiste,
+    buscar: tabelaNaoExiste,
+    atualizar: tabelaNaoExiste,
+    excluir: tabelaNaoExiste
 };

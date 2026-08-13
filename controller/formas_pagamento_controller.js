@@ -1,33 +1,33 @@
-const carrinhoModel = require("../model/carrinho_model.js");
+const formasPagamentoModel = require("../model/formas_pagamentos_model.js");
 
-// CADASTRAR CARRINHO
+// CADASTRAR FORMA DE PAGAMENTO
 function cadastrar(req, res) {
     const dados = req.body || {};
 
-    if (dados.Cliente_idCliente === undefined || dados.Cliente_idCliente === null || String(dados.Cliente_idCliente).trim() === "") {
+    if (dados.nome === undefined || dados.nome === null || String(dados.nome).trim() === "") {
         return res.status(400).json({
-            erro: "O cliente é obrigatório."
+            erro: "O nome é obrigatório."
         });
     }
 
-    carrinhoModel.cadastrar(dados, (erro, resultado) => {
+    formasPagamentoModel.cadastrar(dados, (erro, resultado) => {
         if (erro) {
-            console.error("Erro ao cadastrar carrinho:", erro);
+            console.error("Erro ao cadastrar forma de pagamento:", erro);
             return res.status(500).json({ erro: erro.message });
         }
 
         return res.status(201).json({
-            mensagem: "Carrinho cadastrado(a) com sucesso!",
+            mensagem: "Forma de pagamento cadastrado(a) com sucesso!",
             id: resultado.insertId
         });
     });
 }
 
-// LISTAR CARRINHOS
+// LISTAR FORMAS DE PAGAMENTO
 function listar(req, res) {
-    carrinhoModel.listar((erro, resultados) => {
+    formasPagamentoModel.listar((erro, resultados) => {
         if (erro) {
-            console.error("Erro ao listar carrinhos:", erro);
+            console.error("Erro ao listar formas de pagamento:", erro);
             return res.status(500).json({ erro: erro.message });
         }
 
@@ -35,7 +35,7 @@ function listar(req, res) {
     });
 }
 
-// BUSCAR CARRINHO POR ID
+// BUSCAR FORMA DE PAGAMENTO POR ID
 function buscarPorId(req, res) {
     const id = req.params.id;
 
@@ -43,15 +43,15 @@ function buscarPorId(req, res) {
         return res.status(400).json({ erro: "ID não informado." });
     }
 
-    carrinhoModel.buscarPorId(id, (erro, resultados) => {
+    formasPagamentoModel.buscarPorId(id, (erro, resultados) => {
         if (erro) {
-            console.error("Erro ao buscar carrinho:", erro);
+            console.error("Erro ao buscar forma de pagamento:", erro);
             return res.status(500).json({ erro: erro.message });
         }
 
         if (!resultados || resultados.length === 0) {
             return res.status(404).json({
-                mensagem: "Carrinho não encontrado(a)."
+                mensagem: "Forma de pagamento não encontrado(a)."
             });
         }
 
@@ -59,19 +59,19 @@ function buscarPorId(req, res) {
     });
 }
 
-// BUSCAR CARRINHO POR CLIENTEID
-function buscarPorCliente(req, res) {
-    const valor = req.params.clienteId;
+// BUSCAR FORMA DE PAGAMENTO POR NOME
+function buscarPorNome(req, res) {
+    const valor = req.params.nome;
 
-    carrinhoModel.buscarPorCliente(valor, (erro, resultados) => {
+    formasPagamentoModel.buscarPorNome(valor, (erro, resultados) => {
         if (erro) {
-            console.error("Erro ao buscar carrinho:", erro);
+            console.error("Erro ao buscar forma de pagamento:", erro);
             return res.status(500).json({ erro: erro.message });
         }
 
         if (!resultados || resultados.length === 0) {
             return res.status(404).json({
-                mensagem: "Carrinho não encontrado para este cliente."
+                mensagem: "Forma de pagamento não encontrada."
             });
         }
 
@@ -79,7 +79,7 @@ function buscarPorCliente(req, res) {
     });
 }
 
-// ATUALIZAR CARRINHO
+// ATUALIZAR FORMA DE PAGAMENTO
 function atualizar(req, res) {
     const id = req.params.id;
     const dados = req.body || {};
@@ -88,31 +88,31 @@ function atualizar(req, res) {
         return res.status(400).json({ erro: "ID não informado." });
     }
 
-    if (dados.Cliente_idCliente === undefined || dados.Cliente_idCliente === null || String(dados.Cliente_idCliente).trim() === "") {
+    if (dados.nome === undefined || dados.nome === null || String(dados.nome).trim() === "") {
         return res.status(400).json({
-            erro: "O cliente é obrigatório."
+            erro: "O nome é obrigatório."
         });
     }
 
-    carrinhoModel.atualizar(id, dados, (erro, resultado) => {
+    formasPagamentoModel.atualizar(id, dados, (erro, resultado) => {
         if (erro) {
-            console.error("Erro ao atualizar carrinho:", erro);
+            console.error("Erro ao atualizar forma de pagamento:", erro);
             return res.status(500).json({ erro: erro.message });
         }
 
         if (!resultado || resultado.affectedRows === 0) {
             return res.status(404).json({
-                mensagem: "Carrinho não encontrado(a)."
+                mensagem: "Forma de pagamento não encontrado(a)."
             });
         }
 
         return res.status(200).json({
-            mensagem: "Carrinho atualizado(a) com sucesso!"
+            mensagem: "Forma de pagamento atualizado(a) com sucesso!"
         });
     });
 }
 
-// EXCLUIR CARRINHO
+// EXCLUIR FORMA DE PAGAMENTO
 function excluir(req, res) {
     const id = req.params.id;
 
@@ -120,20 +120,20 @@ function excluir(req, res) {
         return res.status(400).json({ erro: "ID não informado." });
     }
 
-    carrinhoModel.excluir(id, (erro, resultado) => {
+    formasPagamentoModel.excluir(id, (erro, resultado) => {
         if (erro) {
-            console.error("Erro ao excluir carrinho:", erro);
+            console.error("Erro ao excluir forma de pagamento:", erro);
             return res.status(500).json({ erro: erro.message });
         }
 
         if (!resultado || resultado.affectedRows === 0) {
             return res.status(404).json({
-                mensagem: "Carrinho não encontrado(a)."
+                mensagem: "Forma de pagamento não encontrado(a)."
             });
         }
 
         return res.status(200).json({
-            mensagem: "Carrinho excluído(a) com sucesso!"
+            mensagem: "Forma de pagamento excluído(a) com sucesso!"
         });
     });
 }
@@ -144,5 +144,5 @@ module.exports = {
     buscarPorId,
     atualizar,
     excluir,
-    buscarPorCliente
+    buscarPorNome
 };

@@ -1,139 +1,339 @@
 const conexao = require("../conexao/conexao.js");
 
-// =========================
-// Cadastrar Produto
-// =========================
+
+//==================================================
+//              CADASTRAR PRODUTO
+//==================================================
 
 function cadastrar(produto, callback) {
 
-    const sql = `INSERT INTO Produto
+    const sql = `
+        INSERT INTO Produto
         (
             nome,
             descricao,
-            codigo,
             preco_antigo,
             preco_promocional,
             quantidade_estoque,
             ativo,
             Loja_idLoja,
-            Categoria_idCategoria,
-            Adicional_idAdicional
+            imagem,
+            Categoria_idCategoria
         )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+
+
+    const valores = [
+
+        produto.nome,
+
+        produto.descricao,
+
+        produto.preco_antigo,
+
+        produto.preco_promocional,
+
+        produto.quantidade_estoque,
+
+        produto.ativo,
+
+        produto.Loja_idLoja,
+
+        produto.imagem,
+
+        produto.Categoria_idCategoria
+
+    ];
+
 
     conexao.query(
         sql,
-        [
-            produto.nome,
-            produto.descricao,
-            produto.codigo,
-            produto.preco_antigo,
-            produto.preco_promocional,
-            produto.quantidade_estoque,
-            produto.ativo,
-            produto.Loja_idLoja,
-            produto.Categoria_idCategoria,
-            produto.Adicional_idAdicional
-        ],
+        valores,
         callback
     );
 
 }
 
-// =========================
-// Listar Produtos
-// =========================
+
+//==================================================
+//              LISTAR PRODUTOS
+//==================================================
 
 function listar(callback) {
 
     const sql = `
-        SELECT *
-        FROM Produto
+        SELECT
+
+            p.idProduto,
+
+            p.nome,
+
+            p.descricao,
+
+            p.preco_antigo,
+
+            p.preco_promocional,
+
+            p.quantidade_estoque,
+
+            p.ativo,
+
+            p.Loja_idLoja,
+
+            p.imagem,
+
+            p.Categoria_idCategoria,
+
+            c.nome AS categoria
+
+        FROM Produto p
+
+        LEFT JOIN Categoria c
+
+            ON p.Categoria_idCategoria =
+               c.idCategoria
+
+        ORDER BY p.idProduto DESC
     `;
 
-    conexao.query(sql, callback);
+
+    conexao.query(
+        sql,
+        callback
+    );
 
 }
 
-// =========================
-// Buscar por ID
-// =========================
+
+//==================================================
+//              BUSCAR POR ID
+//==================================================
 
 function buscarPorId(id, callback) {
 
     const sql = `
-        SELECT *
-        FROM Produto
-        WHERE idProduto = ?
+        SELECT
+
+            p.idProduto,
+
+            p.nome,
+
+            p.descricao,
+
+            p.preco_antigo,
+
+            p.preco_promocional,
+
+            p.quantidade_estoque,
+
+            p.ativo,
+
+            p.Loja_idLoja,
+
+            p.imagem,
+
+            p.Categoria_idCategoria,
+
+            c.nome AS categoria
+
+        FROM Produto p
+
+        LEFT JOIN Categoria c
+
+            ON p.Categoria_idCategoria =
+               c.idCategoria
+
+        WHERE p.idProduto = ?
     `;
 
-    conexao.query(sql, [id], callback);
+
+    conexao.query(
+        sql,
+        [id],
+        callback
+    );
 
 }
 
-// =========================
-// Buscar por Código
-// =========================
 
-function buscarPorCodigo(codigo, callback) {
+//==================================================
+//          BUSCAR POR CATEGORIA
+//==================================================
+
+function buscarPorCategoria(
+    idCategoria,
+    callback
+) {
 
     const sql = `
-        SELECT *
-        FROM Produto
-        WHERE codigo = ?
+        SELECT
+
+            p.idProduto,
+
+            p.nome,
+
+            p.descricao,
+
+            p.preco_antigo,
+
+            p.preco_promocional,
+
+            p.quantidade_estoque,
+
+            p.ativo,
+
+            p.Loja_idLoja,
+
+            p.imagem,
+
+            p.Categoria_idCategoria,
+
+            c.nome AS categoria
+
+        FROM Produto p
+
+        LEFT JOIN Categoria c
+
+            ON p.Categoria_idCategoria =
+               c.idCategoria
+
+        WHERE p.Categoria_idCategoria = ?
+
+        ORDER BY p.nome ASC
     `;
 
-    conexao.query(sql, [codigo], callback);
+
+    conexao.query(
+        sql,
+        [idCategoria],
+        callback
+    );
 
 }
 
-// =========================
-// Atualizar Produto
-// =========================
 
-function atualizar(id, produto, callback) {
+//==================================================
+//              ATUALIZAR PRODUTO
+//==================================================
+
+function atualizar(
+    id,
+    produto,
+    callback
+) {
+
+    //==================================================
+    //      SE FOI ENVIADA UMA NOVA IMAGEM
+    //==================================================
+
+    if (produto.imagem) {
+
+        const sql = `
+            UPDATE Produto
+            SET
+                nome = ?,
+                descricao = ?,
+                preco_antigo = ?,
+                preco_promocional = ?,
+                quantidade_estoque = ?,
+                ativo = ?,
+                Loja_idLoja = ?,
+                imagem = ?,
+                Categoria_idCategoria = ?
+            WHERE idProduto = ?
+        `;
+
+
+        const valores = [
+
+            produto.nome,
+
+            produto.descricao,
+
+            produto.preco_antigo,
+
+            produto.preco_promocional,
+
+            produto.quantidade_estoque,
+
+            produto.ativo,
+
+            produto.Loja_idLoja,
+
+            produto.imagem,
+
+            produto.Categoria_idCategoria,
+
+            id
+
+        ];
+
+
+        return conexao.query(
+            sql,
+            valores,
+            callback
+        );
+
+    }
+
+
+    //==================================================
+    //      SEM NOVA IMAGEM
+    //      MANTÉM A IMAGEM ANTIGA
+    //==================================================
 
     const sql = `
         UPDATE Produto
         SET
-
             nome = ?,
             descricao = ?,
-            codigo = ?,
             preco_antigo = ?,
             preco_promocional = ?,
             quantidade_estoque = ?,
             ativo = ?,
             Loja_idLoja = ?,
-            Categoria_idCategoria = ?,
-            Adicional_idAdicional = ?
-
+            Categoria_idCategoria = ?
         WHERE idProduto = ?
     `;
 
+
+    const valores = [
+
+        produto.nome,
+
+        produto.descricao,
+
+        produto.preco_antigo,
+
+        produto.preco_promocional,
+
+        produto.quantidade_estoque,
+
+        produto.ativo,
+
+        produto.Loja_idLoja,
+
+        produto.Categoria_idCategoria,
+
+        id
+
+    ];
+
+
     conexao.query(
         sql,
-        [
-            produto.nome,
-            produto.descricao,
-            produto.codigo,
-            produto.preco_antigo,
-            produto.preco_promocional,
-            produto.quantidade_estoque,
-            produto.ativo,
-            produto.Loja_idLoja,
-            produto.Categoria_idCategoria,
-            produto.Adicional_idAdicional,
-            id
-        ],
+        valores,
         callback
     );
 
 }
 
-// =========================
-// Excluir Produto
-// =========================
+
+//==================================================
+//              EXCLUIR PRODUTO
+//==================================================
 
 function excluir(id, callback) {
 
@@ -142,17 +342,32 @@ function excluir(id, callback) {
         WHERE idProduto = ?
     `;
 
-    conexao.query(sql, [id], callback);
+
+    conexao.query(
+        sql,
+        [id],
+        callback
+    );
 
 }
+
+
+//==================================================
+//                  EXPORTAR
+//==================================================
 
 module.exports = {
 
     cadastrar,
+
     listar,
+
     buscarPorId,
-    buscarPorCodigo,
+
+    buscarPorCategoria,
+
     atualizar,
+
     excluir
 
 };

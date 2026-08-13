@@ -1,116 +1,35 @@
-const conexao = require("../conexao/conexao.js");
+// ============================================================
+// MODEL NÃO UTILIZÁVEL COM O BANCO ATUAL
+// ============================================================
+//
+// Este arquivo existia no projeto do aluno, porém o banco
+// SipaubaLanche enviado como referência NÃO possui a tabela:
+// Pedidos_has_Produto / Pedidos
+//
+// Como o banco não deve ser alterado, este model não pode
+// executar INSERT, SELECT, UPDATE ou DELETE nessa tabela.
+//
+// Mantenha este arquivo fora das rotas do servidor enquanto
+// a estrutura oficial do banco continuar sem essa tabela.
+// ============================================================
 
-// =========================
-// Vincular Produto ao Pedido
-// =========================
-
-function cadastrar(relacao, callback) {
-
-    const sql = `INSERT INTO Pedidos_has_Produto
-        (
-            Pedidos_idPedidos,
-            Produto_idProduto
-        )
-        VALUES (?, ?)`;
-
-    conexao.query(
-        sql,
-        [
-            relacao.Pedidos_idPedidos,
-            relacao.Produto_idProduto
-        ],
-        callback
+function tabelaNaoExiste(callback) {
+    const erro = new Error(
+        "Este recurso não existe no banco de dados SipaubaLanche atual."
     );
 
-}
+    if (typeof callback === "function") {
+        return callback(erro);
+    }
 
-// =========================
-// Listar Relações
-// =========================
-
-function listar(callback) {
-
-    const sql = `
-        SELECT *
-        FROM Pedidos_has_Produto
-    `;
-
-    conexao.query(sql, callback);
-
-}
-
-// =========================
-// Buscar Relação
-// =========================
-
-function buscar(pedidoId, produtoId, callback) {
-
-    const sql = `
-        SELECT *
-        FROM Pedidos_has_Produto
-        WHERE Pedidos_idPedidos = ?
-        AND Produto_idProduto = ?
-    `;
-
-    conexao.query(sql, [pedidoId, produtoId], callback);
-
-}
-
-// =========================
-// Buscar Produtos do Pedido
-// =========================
-
-function buscarPorPedido(pedidoId, callback) {
-
-    const sql = `
-        SELECT *
-        FROM Pedidos_has_Produto
-        WHERE Pedidos_idPedidos = ?
-    `;
-
-    conexao.query(sql, [pedidoId], callback);
-
-}
-
-// =========================
-// Buscar Pedidos do Produto
-// =========================
-
-function buscarPorProduto(produtoId, callback) {
-
-    const sql = `
-        SELECT *
-        FROM Pedidos_has_Produto
-        WHERE Produto_idProduto = ?
-    `;
-
-    conexao.query(sql, [produtoId], callback);
-
-}
-
-// =========================
-// Remover Produto do Pedido
-// =========================
-
-function excluir(pedidoId, produtoId, callback) {
-
-    const sql = `
-        DELETE FROM Pedidos_has_Produto
-        WHERE Pedidos_idPedidos = ?
-        AND Produto_idProduto = ?
-    `;
-
-    conexao.query(sql, [pedidoId, produtoId], callback);
-
+    throw erro;
 }
 
 module.exports = {
-
-    cadastrar,
-    listar,
-    buscar,
-    buscarPorPedido,
-    buscarPorProduto,
-    excluir
-
+    cadastrar: tabelaNaoExiste,
+    listar: tabelaNaoExiste,
+    buscarPorId: tabelaNaoExiste,
+    buscar: tabelaNaoExiste,
+    atualizar: tabelaNaoExiste,
+    excluir: tabelaNaoExiste
 };

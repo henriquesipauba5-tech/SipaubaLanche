@@ -1,0 +1,42 @@
+ROTAS CORRIGIDAS - SIPAÚBA LANCHES
+
+As rotas foram alinhadas com os controllers corrigidos anteriormente.
+
+ROTAS FUNCIONAIS:
+- adicional_rotas.js
+- banner_has_produtos_rotas.js
+- banner_rotas.js
+- carrinho_has_produto_rotas.js
+- carrinho_rotas.js
+- categoria_rotas.js
+- cliente_rotas.js
+- cupom_has_categoria_rotas.js
+- cupom_has_produto_rotas.js
+- cupom_rotas.js
+- endereco_rotas.js
+- formas_pagamentos_rotas.js
+- produto_rotas.js
+
+ROTAS DE RECURSOS NÃO EXISTENTES NO BANCO:
+- cartao_pagamentos_rotas.js
+- categoria_has_promocoes_rotas.js
+- endereco_has_clientes_rotas.js
+- frete_rotas.js
+- imagem_produto_rotas.js
+- pedidos_has_produtos_rotas.js
+- pedidos_rotas.js
+- promocao_rotas.js
+- promocoes_has_produto_rotas.js
+
+Essas rotas apontam para controllers que retornam HTTP 501.
+
+CORREÇÕES IMPORTANTES:
+- removido upload de imagens de produto;
+- corrigidos caminhos dos controllers;
+- login de cliente vem antes da rota /:id;
+- categoria não possui código de app.use dentro do arquivo de rotas;
+- cupom/categoria usa cupomId e categoriaId de forma consistente;
+- produto ganhou rota /categoria/:categoriaId;
+- cupom ganhou rota /codigo/:codigo;
+- endereço ganhou rota /cep/:cep;
+- banner e adicional usam multer em memória porque possuem campo de imagem no banco.

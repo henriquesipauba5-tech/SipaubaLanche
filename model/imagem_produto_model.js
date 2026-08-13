@@ -1,113 +1,35 @@
-//==================================================
-//      imagem_produto_model.js
-//      Sipaúba Lanches
-//==================================================
+// ============================================================
+// MODEL NÃO UTILIZÁVEL COM O BANCO ATUAL
+// ============================================================
+//
+// Este arquivo existia no projeto do aluno, porém o banco
+// SipaubaLanche enviado como referência NÃO possui a tabela:
+// Imagem_Produto
+//
+// Como o banco não deve ser alterado, este model não pode
+// executar INSERT, SELECT, UPDATE ou DELETE nessa tabela.
+//
+// Mantenha este arquivo fora das rotas do servidor enquanto
+// a estrutura oficial do banco continuar sem essa tabela.
+// ============================================================
 
-
-const conexao = require(
-    "../conexao/conexao.js"
-);
-
-
-//==================================================
-//              CADASTRAR IMAGEM
-//==================================================
-
-function cadastrar(imagem, callback) {
-
-    const sql = `
-        INSERT INTO Imagem_Produto
-        (
-            imagem,
-            Produto_idProduto
-        )
-        VALUES (?, ?)
-    `;
-
-
-    conexao.query(
-
-        sql,
-
-        [
-            imagem.imagem,
-            imagem.Produto_idProduto
-        ],
-
-        callback
-
+function tabelaNaoExiste(callback) {
+    const erro = new Error(
+        "Este recurso não existe no banco de dados SipaubaLanche atual."
     );
 
+    if (typeof callback === "function") {
+        return callback(erro);
+    }
+
+    throw erro;
 }
-
-
-//==================================================
-//              LISTAR IMAGENS DO PRODUTO
-//==================================================
-
-function listarPorProduto(
-    idProduto,
-    callback
-) {
-
-    const sql = `
-        SELECT *
-        FROM Imagem_Produto
-        WHERE Produto_idProduto = ?
-    `;
-
-
-    conexao.query(
-
-        sql,
-
-        [idProduto],
-
-        callback
-
-    );
-
-}
-
-
-//==================================================
-//              EXCLUIR IMAGENS DO PRODUTO
-//==================================================
-
-function excluirPorProduto(
-    idProduto,
-    callback
-) {
-
-    const sql = `
-        DELETE FROM Imagem_Produto
-        WHERE Produto_idProduto = ?
-    `;
-
-
-    conexao.query(
-
-        sql,
-
-        [idProduto],
-
-        callback
-
-    );
-
-}
-
-
-//==================================================
-//              EXPORTAR
-//==================================================
 
 module.exports = {
-
-    cadastrar,
-
-    listarPorProduto,
-
-    excluirPorProduto
-
+    cadastrar: tabelaNaoExiste,
+    listar: tabelaNaoExiste,
+    buscarPorId: tabelaNaoExiste,
+    buscar: tabelaNaoExiste,
+    atualizar: tabelaNaoExiste,
+    excluir: tabelaNaoExiste
 };

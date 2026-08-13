@@ -1,85 +1,44 @@
-// =====================================================
-// ROTAS DE CLIENTE
-// =====================================================
-//
-// POST    /clientes       -> Cadastrar cliente
-// GET     /clientes       -> Listar clientes
-// GET     /clientes/:id   -> Buscar cliente por ID
-// PUT     /clientes/:id   -> Atualizar cliente
-// DELETE  /clientes/:id   -> Excluir cliente
-//
-// =====================================================
-
-
 const express = require("express");
 
-// Criando o roteador do Express
 const router = express.Router();
 
+const ClienteController = require("../controller/usuario_controller.js");
 
-// Importando Controller de Cliente
-const ClienteController = require("../controller/usuario_controller");
-
-
-// =========================
-// CADASTRAR CLIENTE
-// =========================
-
-router.post(
-    "/",
-    ClienteController.cadastrar
-);
-
-
-// =========================
-// LISTAR CLIENTES
-// =========================
-
-router.get(
-    "/",
-    ClienteController.listar
-);
-
-
-// =========================
-// BUSCAR CLIENTE POR ID
-// =========================
-
-router.get(
-    "/:id",
-    ClienteController.buscarPorId
-);
-
-
-// =========================
-// ATUALIZAR CLIENTE
-// =========================
-
-router.put(
-    "/:id",
-    ClienteController.atualizar
-);
-
-
-// =========================
-// EXCLUIR CLIENTE
-// =========================
-
-router.delete(
-    "/:id",
-    ClienteController.excluir
-);
-
-
-// =========================
 // LOGIN
-// =========================
-
+// IMPORTANTE: esta rota precisa vir antes de "/:id"
 router.post(
     "/login",
     ClienteController.login
 );
 
+// CADASTRAR
+router.post(
+    "/",
+    ClienteController.cadastrar
+);
 
-// Exportando as rotas
+// LISTAR
+router.get(
+    "/",
+    ClienteController.listar
+);
+
+// BUSCAR POR ID
+router.get(
+    "/:id",
+    ClienteController.buscarPorId
+);
+
+// ATUALIZAR
+router.put(
+    "/:id",
+    ClienteController.atualizar
+);
+
+// EXCLUIR
+router.delete(
+    "/:id",
+    ClienteController.excluir
+);
+
 module.exports = router;

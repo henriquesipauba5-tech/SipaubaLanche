@@ -1,21 +1,12 @@
 const conexao = require("../conexao/conexao.js");
 
-// =========================
-// Cadastrar Banner
-// =========================
-
+// CADASTRAR BANNER
 function cadastrar(banner, callback) {
-
-    const sql = `INSERT INTO Banner
-        (
-            imagem,
-            data_inicio,
-            data_final,
-            status_visibilidade,
-            nome,
-            Loja_idLoja
-        )
-        VALUES (?, ?, ?, ?, ?, ?)`;
+    const sql = `
+        INSERT INTO Banner
+        (imagem, data_inicio, data_final, status_visibilidade, Loja_idLoja)
+        VALUES (?, ?, ?, ?, ?)
+    `;
 
     conexao.query(
         sql,
@@ -23,36 +14,20 @@ function cadastrar(banner, callback) {
             banner.imagem,
             banner.data_inicio,
             banner.data_final,
-            banner.status_visibilidade,
-            banner.nome,
+            banner.status_visibilidade ?? true,
             banner.Loja_idLoja
         ],
         callback
     );
-
 }
 
-// =========================
-// Listar Banners
-// =========================
-
+// LISTAR BANNERS
 function listar(callback) {
-
-    const sql = `
-        SELECT *
-        FROM Banner
-    `;
-
-    conexao.query(sql, callback);
-
+    conexao.query("SELECT * FROM Banner", callback);
 }
 
-// =========================
-// Buscar por ID
-// =========================
-
+// BUSCAR POR ID
 function buscarPorId(id, callback) {
-
     const sql = `
         SELECT *
         FROM Banner
@@ -60,42 +35,17 @@ function buscarPorId(id, callback) {
     `;
 
     conexao.query(sql, [id], callback);
-
 }
 
-// =========================
-// Buscar por Nome
-// =========================
-
-function buscarPorNome(nome, callback) {
-
-    const sql = `
-        SELECT *
-        FROM Banner
-        WHERE nome = ?
-    `;
-
-    conexao.query(sql, [nome], callback);
-
-}
-
-// =========================
-// Atualizar Banner
-// =========================
-
+// ATUALIZAR BANNER
 function atualizar(id, banner, callback) {
-
     const sql = `
         UPDATE Banner
-        SET
-
-            imagem = ?,
+        SET imagem = ?,
             data_inicio = ?,
             data_final = ?,
             status_visibilidade = ?,
-            nome = ?,
             Loja_idLoja = ?
-
         WHERE idBanner = ?
     `;
 
@@ -106,37 +56,27 @@ function atualizar(id, banner, callback) {
             banner.data_inicio,
             banner.data_final,
             banner.status_visibilidade,
-            banner.nome,
             banner.Loja_idLoja,
             id
         ],
         callback
     );
-
 }
 
-// =========================
-// Excluir Banner
-// =========================
-
+// EXCLUIR BANNER
 function excluir(id, callback) {
-
     const sql = `
         DELETE FROM Banner
         WHERE idBanner = ?
     `;
 
     conexao.query(sql, [id], callback);
-
 }
 
 module.exports = {
-
     cadastrar,
     listar,
     buscarPorId,
-    buscarPorNome,
     atualizar,
     excluir
-
 };

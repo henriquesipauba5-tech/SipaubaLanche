@@ -1,20 +1,14 @@
-//==================================================
-//      produto_rotas.js
-//      Sipaúba Lanches
-//==================================================
-
-
 const express =
     require("express");
+
+
+const multer =
+    require("multer");
 
 
 const router =
     express.Router();
 
-
-//==================================================
-//              CONTROLLER
-//==================================================
 
 const ProdutoController =
     require(
@@ -26,24 +20,36 @@ const ProdutoController =
 //              MULTER
 //==================================================
 
+const storage =
+    multer.memoryStorage();
+
+
 const upload =
-    require(
-        "../multer/upload.js"
-    );
+    multer({
+
+        storage:
+
+            storage,
+
+        limits: {
+
+            fileSize:
+                5 * 1024 * 1024
+
+        }
+
+    });
 
 
 //==================================================
-//              CADASTRAR PRODUTO
+//              CADASTRAR
 //==================================================
 
 router.post(
 
     "/",
 
-    upload.array(
-        "imagens",
-        10
-    ),
+    upload.single("imagem"),
 
     ProdutoController.cadastrar
 
@@ -51,7 +57,7 @@ router.post(
 
 
 //==================================================
-//              LISTAR PRODUTOS
+//              LISTAR
 //==================================================
 
 router.get(
@@ -59,6 +65,19 @@ router.get(
     "/",
 
     ProdutoController.listar
+
+);
+
+
+//==================================================
+//          BUSCAR POR CATEGORIA
+//==================================================
+
+router.get(
+
+    "/categoria/:categoriaId",
+
+    ProdutoController.buscarPorCategoria
 
 );
 
@@ -77,25 +96,14 @@ router.get(
 
 
 //==================================================
-//              BUSCAR POR CÓDIGO
-//==================================================
-
-router.get(
-
-    "/codigo/:codigo",
-
-    ProdutoController.buscarPorCodigo
-
-);
-
-
-//==================================================
-//              ATUALIZAR PRODUTO
+//              ATUALIZAR
 //==================================================
 
 router.put(
 
     "/:id",
+
+    upload.single("imagem"),
 
     ProdutoController.atualizar
 
@@ -103,7 +111,7 @@ router.put(
 
 
 //==================================================
-//              EXCLUIR PRODUTO
+//              EXCLUIR
 //==================================================
 
 router.delete(
@@ -115,8 +123,5 @@ router.delete(
 );
 
 
-//==================================================
-//              EXPORTAR
-//==================================================
-
-module.exports = router;
+module.exports =
+    router;

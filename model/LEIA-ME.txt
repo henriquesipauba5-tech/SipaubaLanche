@@ -1,0 +1,32 @@
+MODELS CORRIGIDOS - SIPAÚBA LANCHES
+
+Referência: banco SipaubaLanche enviado pela usuária.
+
+Models ajustados para tabelas existentes:
+- adicional_model.js
+- banner_has_produto_model.js
+- banner_model.js
+- carrinho_has_produto_model.js (usa Produto_has_Carrinho)
+- carrinho_model.js
+- categoria_model.js
+- cupom_has_categoria_model.js (usa Categoria_has_Cupom)
+- cupom_has_produto_model.js
+- cupom_model.js
+- endereco_model.js
+- formas_pagamentos_model.js (usa Forma_Pagamento)
+- produto_model.js
+- usuario_model.js (usa Cliente)
+
+Models preservados apenas como bloqueio explicativo porque suas tabelas NÃO existem no banco enviado:
+- cartao_pagamento_model.js
+- categoria_has_promocoes_model.js
+- endereco_has_cliente_model.js
+- frete_model.js
+- imagem_produto_model.js
+- pedidos_has_produtos_model.js
+- pedidos_model.js
+- promocao_has_produto_model.js
+- promocao_model.js
+
+IMPORTANTE:
+Não foram adicionadas tabelas ou colunas ao banco.

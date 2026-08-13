@@ -1,347 +1,141 @@
 //==================================================
-//      cadastro-produto.js
+//      cadastro_produto.js
 //      Sipaúba Lanches
 //==================================================
 
 
 //==================================================
-//              CARREGAR CATEGORIAS
+//              CONFIGURAÇÕES
 //==================================================
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+const API =
+    "http://localhost:3000";
 
-        carregarCategorias();
 
-    }
-);
+const API_PRODUTOS =
+    `${API}/produtos`;
+
+
+const API_CATEGORIAS =
+    `${API}/categorias`;
 
 
 //==================================================
-//              FUNÇÃO CARREGAR CATEGORIAS
+//              CONTROLE DE EDIÇÃO
 //==================================================
 
-function carregarCategorias() {
+let idProdutoEditando =
+    null;
 
 
-    //==================================================
-    //              PEGAR SELECT
-    //==================================================
+//==================================================
+//              ELEMENTOS
+//==================================================
 
-    const categoriaProduto =
-        document.getElementById(
-            "categoriaProduto"
-        );
-
-
-    //==================================================
-    //              VERIFICAR SELECT
-    //==================================================
-
-    if (!categoriaProduto) {
-
-        console.error(
-            "Campo de categoria não encontrado."
-        );
-
-        return;
-
-    }
-
-
-    //==================================================
-    //              BUSCAR CATEGORIAS
-    //==================================================
-
-    fetch(
-        "http://localhost:3000/categorias"
-    )
-
-
-    //==================================================
-    //              CONVERTER RESPOSTA
-    //==================================================
-
-    .then(
-        response => {
-
-            if (!response.ok) {
-
-                throw new Error(
-                    "Erro ao buscar categorias."
-                );
-
-            }
-
-            return response.json();
-
-        }
-    )
-
-
-    //==================================================
-    //              PREENCHER SELECT
-    //==================================================
-
-    .then(
-        categorias => {
-
-
-            //==================================================
-            //              LIMPAR SELECT
-            //==================================================
-
-            categoriaProduto.innerHTML = "";
-
-
-            //==================================================
-            //              OPÇÃO PADRÃO
-            //==================================================
-
-            const opcaoInicial =
-                document.createElement(
-                    "option"
-                );
-
-
-            opcaoInicial.value = "";
-
-            opcaoInicial.textContent =
-                "Selecione";
-
-
-            categoriaProduto.appendChild(
-                opcaoInicial
-            );
-
-
-            //==================================================
-            //              VERIFICAR CATEGORIAS
-            //==================================================
-
-            if (
-                !categorias ||
-                categorias.length === 0
-            ) {
-
-                console.log(
-                    "Nenhuma categoria cadastrada."
-                );
-
-                return;
-
-            }
-
-
-            //==================================================
-            //              PERCORRER CATEGORIAS
-            //==================================================
-
-            categorias.forEach(
-                function (categoria) {
-
-
-                    //==================================================
-                    //              CRIAR OPTION
-                    //==================================================
-
-                    const opcao =
-                        document.createElement(
-                            "option"
-                        );
-
-
-                    //==================================================
-                    //              ID DA CATEGORIA
-                    //==================================================
-
-                    opcao.value =
-                        categoria.idCategoria;
-
-
-                    //==================================================
-                    //              NOME DA CATEGORIA
-                    //==================================================
-
-                    opcao.textContent =
-                        categoria.nome;
-
-
-                    //==================================================
-                    //              ADICIONAR OPTION
-                    //==================================================
-
-                    categoriaProduto.appendChild(
-                        opcao
-                    );
-
-                }
-            );
-
-        }
-    )
-
-
-    //==================================================
-    //              ERRO
-    //==================================================
-
-    .catch(
-        error => {
-
-            console.error(
-                "Erro ao carregar categorias:",
-                error
-            );
-
-
-            categoriaProduto.innerHTML = "";
-
-
-            const opcaoErro =
-                document.createElement(
-                    "option"
-                );
-
-
-            opcaoErro.value = "";
-
-            opcaoErro.textContent =
-                "Erro ao carregar categorias";
-
-
-            categoriaProduto.appendChild(
-                opcaoErro
-            );
-
-        }
+const formProduto =
+    document.getElementById(
+        "formProduto"
     );
 
-}
+
+const nomeProduto =
+    document.getElementById(
+        "nomeProduto"
+    );
+
+
+const descricaoProduto =
+    document.getElementById(
+        "descricaoProduto"
+    );
+
+
+const categoriaProduto =
+    document.getElementById(
+        "categoriaProduto"
+    );
+
+
+const precoAntigoProduto =
+    document.getElementById(
+        "precoAntigoProduto"
+    );
+
+
+const precoPromocionalProduto =
+    document.getElementById(
+        "precoPromocionalProduto"
+    );
+
+
+const quantidadeProduto =
+    document.getElementById(
+        "quantidadeProduto"
+    );
+
+
+const statusProduto =
+    document.getElementById(
+        "statusProduto"
+    );
+
+
+const imagemProduto =
+    document.getElementById(
+        "imagemProduto"
+    );
+
+
+const previewImagem =
+    document.getElementById(
+        "previewImagem"
+    );
+
+
+const btnSalvar =
+    document.getElementById(
+        "btnSalvar"
+    );
 
 
 //==================================================
-//              SELECIONAR IMAGEM
+//          SELECIONAR IMAGEM
 //==================================================
 
 document.getElementById(
     "btnSelecionarImagem"
-).
-addEventListener(
-    "click",
-    function () {
+)
+    .addEventListener(
+        "click",
+        function () {
 
+            imagemProduto.click();
 
-        //==================================================
-        //              PEGAR INPUT
-        //==================================================
-
-        const imagemProduto =
-            document.getElementById(
-                "imagemProduto"
-            );
-
-
-        //==================================================
-        //              ABRIR SELEÇÃO
-        //==================================================
-
-        imagemProduto.click();
-
-    }
-);
+        }
+    );
 
 
 //==================================================
-//              SELECIONAR IMAGENS
+//              PREVIEW DA IMAGEM
 //==================================================
 
-document.getElementById(
-    "imagemProduto"
-).
-addEventListener(
+imagemProduto.addEventListener(
     "change",
     function () {
 
-
-        //==================================================
-        //              PEGAR ARQUIVOS
-        //==================================================
-
-        const arquivos =
-            this.files;
-
-
-        //==================================================
-        //              MOSTRAR MINIATURAS
-        //==================================================
-
-        mostrarMiniaturas(
-            arquivos
-        );
-
-    }
-);
-
-
-//==================================================
-//              MOSTRAR MINIATURAS
-//==================================================
-
-function mostrarMiniaturas(
-    arquivos
-) {
-
-
-    //==================================================
-    //              PEGAR ÁREA
-    //==================================================
-
-    const miniaturas =
-        document.getElementById(
-            "miniaturas"
-        );
-
-
-    //==================================================
-    //              LIMPAR
-    //==================================================
-
-    miniaturas.innerHTML = "";
-
-
-    //==================================================
-    //              VERIFICAR ARQUIVOS
-    //==================================================
-
-    if (
-        !arquivos ||
-        arquivos.length === 0
-    ) {
-
-        return;
-
-    }
-
-
-    //==================================================
-    //              PERCORRER ARQUIVOS
-    //==================================================
-
-    for (
-        let i = 0;
-        i < arquivos.length;
-        i++
-    ) {
-
-
-        //==================================================
-        //              PEGAR ARQUIVO
-        //==================================================
-
         const arquivo =
-            arquivos[i];
+            imagemProduto.files[0];
+
+
+        previewImagem.innerHTML =
+            "";
+
+
+        if (!arquivo) {
+
+            return;
+
+        }
 
 
         //==================================================
@@ -354,165 +148,357 @@ function mostrarMiniaturas(
             )
         ) {
 
-            continue;
+            alert(
+                "Selecione uma imagem válida."
+            );
+
+
+            imagemProduto.value =
+                "";
+
+
+            return;
 
         }
 
 
         //==================================================
-        //              CRIAR CONTAINER
+        //              VALIDAR TAMANHO
         //==================================================
 
-        const container =
-            document.createElement(
-                "div"
+        if (
+            arquivo.size >
+            5 * 1024 * 1024
+        ) {
+
+            alert(
+                "A imagem deve possuir no máximo 5MB."
             );
 
 
-        container.className =
-            "miniaturaItem";
+            imagemProduto.value =
+                "";
 
 
-        //==================================================
-        //              CRIAR IMAGEM
-        //==================================================
+            return;
 
-        const imagem =
-            document.createElement(
-                "img"
-            );
+        }
 
 
-        imagem.src =
-            URL.createObjectURL(
-                arquivo
-            );
-
-
-        imagem.alt =
-            arquivo.name;
-
-
-        //==================================================
-        //              ADICIONAR IMAGEM
-        //==================================================
-
-        container.appendChild(
-            imagem
-        );
-
-
-        //==================================================
-        //              ADICIONAR CONTAINER
-        //==================================================
-
-        miniaturas.appendChild(
-            container
+        mostrarPreviewArquivo(
+            arquivo
         );
 
     }
+);
+
+
+//==================================================
+//              PREVIEW NOVA IMAGEM
+//==================================================
+
+function mostrarPreviewArquivo(
+    arquivo
+) {
+
+    previewImagem.innerHTML =
+        "";
+
+
+    const imagem =
+        document.createElement(
+            "img"
+        );
+
+
+    imagem.src =
+        URL.createObjectURL(
+            arquivo
+        );
+
+
+    imagem.alt =
+        "Imagem do produto";
+
+
+    previewImagem.appendChild(
+        imagem
+    );
 
 }
 
 
 //==================================================
-//              ARRASTAR IMAGEM
+//          CONVERTER BUFFER EM IMAGEM
+//==================================================
+
+function converterImagem(
+    buffer
+) {
+
+    if (
+        !buffer ||
+        !buffer.data
+    ) {
+
+        return "";
+
+    }
+
+
+    const bytes =
+        new Uint8Array(
+            buffer.data
+        );
+
+
+    let binario =
+        "";
+
+
+    for (
+        let i = 0;
+        i < bytes.length;
+        i++
+    ) {
+
+        binario +=
+            String.fromCharCode(
+                bytes[i]
+            );
+
+    }
+
+
+    return (
+        "data:image/jpeg;base64," +
+        btoa(binario)
+    );
+
+}
+
+
+//==================================================
+//              CARREGAR CATEGORIAS
+//==================================================
+
+function carregarCategorias(
+    categoriaSelecionada = null
+) {
+
+    fetch(
+        API_CATEGORIAS
+    )
+
+        .then(response => {
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Erro ao carregar categorias."
+                );
+
+            }
+
+
+            return response.json();
+
+        })
+
+        .then(categorias => {
+
+            categoriaProduto.innerHTML = `
+
+            <option value="">
+
+                Selecione uma categoria
+
+            </option>
+
+        `;
+
+
+            categorias.forEach(
+                categoria => {
+
+                    const option =
+                        document.createElement(
+                            "option"
+                        );
+
+
+                    option.value =
+                        categoria.idCategoria;
+
+
+                    option.innerText =
+                        categoria.nome;
+
+
+                    categoriaProduto.appendChild(
+                        option
+                    );
+
+                }
+            );
+
+
+            if (
+                categoriaSelecionada !== null
+            ) {
+
+                categoriaProduto.value =
+                    String(
+                        categoriaSelecionada
+                    );
+
+            }
+
+        })
+
+        .catch(error => {
+
+            console.error(
+                "Erro ao carregar categorias:",
+                error
+            );
+
+        });
+
+}
+
+
+//==================================================
+//              CADASTRAR CATEGORIA
 //==================================================
 
 document.getElementById(
-    "uploadArea"
-).
-addEventListener(
-    "dragover",
+    "btnCadastrarCategoria"
+)
+    .addEventListener(
+        "click",
+        function () {
+
+            const campo =
+                document.getElementById(
+                    "novaCategoria"
+                );
+
+
+            const nome =
+                campo.value.trim();
+
+
+            if (
+                nome === ""
+            ) {
+
+                alert(
+                    "Informe o nome da categoria."
+                );
+
+
+                return;
+
+            }
+
+
+            fetch(
+                API_CATEGORIAS,
+                {
+
+                    method:
+                        "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            nome:
+                                nome
+
+                        })
+
+                }
+            )
+
+                .then(async response => {
+
+                    const data =
+                        await response.json();
+
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            data.erro ||
+                            data.mensagem
+                        );
+
+                    }
+
+
+                    return data;
+
+                })
+
+                .then(data => {
+
+                    alert(
+                        "Categoria cadastrada com sucesso!"
+                    );
+
+
+                    campo.value =
+                        "";
+
+
+                    carregarCategorias(
+                        data.idCategoria
+                    );
+
+                })
+
+                .catch(error => {
+
+                    console.error(
+                        error
+                    );
+
+
+                    alert(
+                        error.message
+                    );
+
+                });
+
+        }
+    );
+
+
+//==================================================
+//          CADASTRAR / ATUALIZAR PRODUTO
+//==================================================
+
+formProduto.addEventListener(
+    "submit",
     function (event) {
-
-
-        //==================================================
-        //              IMPEDIR COMPORTAMENTO
-        //==================================================
 
         event.preventDefault();
 
 
         //==================================================
-        //              CLASSE VISUAL
-        //==================================================
-
-        this.classList.add(
-            "arrastando"
-        );
-
-    }
-);
-
-
-//==================================================
-//              SAIR DA ÁREA
-//==================================================
-
-document.getElementById(
-    "uploadArea"
-).
-addEventListener(
-    "dragleave",
-    function () {
-
-
-        //==================================================
-        //              REMOVER CLASSE
-        //==================================================
-
-        this.classList.remove(
-            "arrastando"
-        );
-
-    }
-);
-
-
-//==================================================
-//              SOLTAR IMAGEM
-//==================================================
-
-document.getElementById(
-    "uploadArea"
-).
-addEventListener(
-    "drop",
-    function (event) {
-
-
-        //==================================================
-        //              IMPEDIR COMPORTAMENTO
-        //==================================================
-
-        event.preventDefault();
-
-
-        //==================================================
-        //              REMOVER CLASSE
-        //==================================================
-
-        this.classList.remove(
-            "arrastando"
-        );
-
-
-        //==================================================
-        //              PEGAR ARQUIVOS
-        //==================================================
-
-        const arquivos =
-            event.dataTransfer.files;
-
-
-        //==================================================
-        //              VERIFICAR ARQUIVOS
+        //              EVITAR DUPLICAÇÃO
         //==================================================
 
         if (
-            !arquivos ||
-            arquivos.length === 0
+            btnSalvar.disabled
         ) {
 
             return;
@@ -521,215 +507,121 @@ addEventListener(
 
 
         //==================================================
-        //              MOSTRAR MINIATURAS
+        //              PEGAR DADOS
         //==================================================
 
-        mostrarMiniaturas(
-            arquivos
-        );
+        const nome =
+            nomeProduto.value.trim();
 
 
-        //==================================================
-        //              COLOCAR ARQUIVOS NO INPUT
-        //==================================================
-
-        const imagemProduto =
-            document.getElementById(
-                "imagemProduto"
-            );
+        const descricao =
+            descricaoProduto.value.trim();
 
 
-        imagemProduto.files =
-            arquivos;
-
-    }
-);
+        const categoria =
+            categoriaProduto.value;
 
 
-//==================================================
-//              CADASTRO PRODUTO
-//==================================================
+        const precoAntigo =
+            precoAntigoProduto.value;
 
-document.getElementById(
-    "btnSalvar"
-).
-addEventListener(
-    "click",
-    function (event) {
+
+        const precoPromocional =
+            precoPromocionalProduto.value;
+
+
+        const quantidade =
+            quantidadeProduto.value;
+
+
+        const arquivoImagem =
+            imagemProduto.files[0];
 
 
         //==================================================
-        //              IMPEDIR FORMULÁRIO
-        //==================================================
-
-        event.preventDefault();
-
-
-        //==================================================
-        //              CAPTURAR NOME
-        //==================================================
-
-        const nomeProduto =
-            document.getElementById(
-                "nomeProduto"
-            ).value.trim();
-
-
-        //==================================================
-        //              CAPTURAR CATEGORIA
-        //==================================================
-
-        const categoriaProduto =
-            document.getElementById(
-                "categoriaProduto"
-            ).value;
-
-
-        //==================================================
-        //              CAPTURAR DESCRIÇÃO
-        //==================================================
-
-        const descricaoProduto =
-            document.getElementById(
-                "descricaoProduto"
-            ).value.trim();
-
-
-        //==================================================
-        //              CAPTURAR PREÇO
-        //==================================================
-
-        const precoProduto =
-            document.getElementById(
-                "precoProduto"
-            ).value;
-
-
-        //==================================================
-        //              CAPTURAR ESTOQUE
-        //==================================================
-
-        const quantidadeProduto =
-            document.getElementById(
-                "quantidadeProduto"
-            ).value;
-
-
-        //==================================================
-        //              CAPTURAR STATUS
-        //==================================================
-
-        const statusProduto =
-            document.getElementById(
-                "statusProduto"
-            ).checked;
-
-
-        //==================================================
-        //              CAPTURAR IMAGENS
-        //==================================================
-
-        const imagemProduto =
-            document.getElementById(
-                "imagemProduto"
-            );
-
-
-        const imagens =
-            imagemProduto.files;
-
-
-        //==================================================
-        //              VALIDAR NOME
+        //              VALIDAR
         //==================================================
 
         if (
-            nomeProduto === ""
+            nome === ""
         ) {
 
             alert(
-                "Por favor, preencha o nome do produto."
+                "Informe o nome do produto."
             );
+
 
             return;
 
         }
 
 
-        //==================================================
-        //              VALIDAR CATEGORIA
-        //==================================================
-
         if (
-            categoriaProduto === ""
+            descricao === ""
         ) {
 
             alert(
-                "Por favor, selecione uma categoria."
+                "Informe a descrição do produto."
             );
+
 
             return;
 
         }
 
 
-        //==================================================
-        //              VALIDAR DESCRIÇÃO
-        //==================================================
-
         if (
-            descricaoProduto === ""
+            categoria === ""
         ) {
 
             alert(
-                "Por favor, preencha a descrição do produto."
+                "Selecione uma categoria."
             );
+
 
             return;
 
         }
 
 
-        //==================================================
-        //              VALIDAR PREÇO
-        //==================================================
-
         if (
-            precoProduto === "" ||
-            isNaN(
-                Number(precoProduto)
-            ) ||
-            Number(precoProduto) <= 0
-        ) {
-
-            alert(
-                "Por favor, informe um preço válido."
-            );
-
-            return;
-
-        }
-
-
-        //==================================================
-        //              VALIDAR ESTOQUE
-        //==================================================
-
-        if (
-            quantidadeProduto === "" ||
+            precoPromocional === "" ||
             isNaN(
                 Number(
-                    quantidadeProduto
+                    precoPromocional
                 )
             ) ||
             Number(
-                quantidadeProduto
+                precoPromocional
+            ) <= 0
+        ) {
+
+            alert(
+                "Informe um preço válido."
+            );
+
+
+            return;
+
+        }
+
+
+        if (
+            quantidade === "" ||
+            isNaN(
+                Number(
+                    quantidade
+                )
+            ) ||
+            Number(
+                quantidade
             ) < 0
         ) {
 
             alert(
-                "Por favor, informe uma quantidade válida para o estoque."
+                "Informe uma quantidade válida."
             );
+
 
             return;
 
@@ -737,470 +629,917 @@ addEventListener(
 
 
         //==================================================
-        //              VALIDAR IMAGEM
+        //      IMAGEM OBRIGATÓRIA SÓ NO CADASTRO
         //==================================================
 
         if (
-            imagens.length === 0
+            idProdutoEditando === null &&
+            !arquivoImagem
         ) {
 
             alert(
-                "Por favor, selecione pelo menos uma imagem."
+                "Selecione uma imagem do produto."
             );
+
 
             return;
 
         }
-
-
-        //==================================================
-        //              VALIDAR TAMANHO DAS IMAGENS
-        //==================================================
-
-        for (
-            let i = 0;
-            i < imagens.length;
-            i++
-        ) {
-
-
-            const arquivo =
-                imagens[i];
-
-
-            //==================================================
-            //              VALIDAR TIPO
-            //==================================================
-
-            if (
-                !arquivo.type.startsWith(
-                    "image/"
-                )
-            ) {
-
-                alert(
-                    "Selecione somente arquivos de imagem."
-                );
-
-                return;
-
-            }
-
-
-            //==================================================
-            //              VALIDAR TAMANHO
-            //==================================================
-
-            const tamanhoMaximo =
-                10 * 1024 * 1024;
-
-
-            if (
-                arquivo.size >
-                tamanhoMaximo
-            ) {
-
-                alert(
-                    "Cada imagem deve ter no máximo 10MB."
-                );
-
-                return;
-
-            }
-
-        }
-
-
-        //==================================================
-        //              GERAR CÓDIGO
-        //==================================================
-
-        const codigo =
-            "PROD-" +
-            Date.now();
 
 
         //==================================================
         //              CRIAR FORMDATA
         //==================================================
 
-        const produto =
+        const dados =
             new FormData();
 
 
-        //==================================================
-        //              ADICIONAR NOME
-        //==================================================
-
-        produto.append(
+        dados.append(
             "nome",
-            nomeProduto
+            nome
         );
 
 
-        //==================================================
-        //              ADICIONAR DESCRIÇÃO
-        //==================================================
-
-        produto.append(
+        dados.append(
             "descricao",
-            descricaoProduto
+            descricao
         );
 
 
-        //==================================================
-        //              ADICIONAR CÓDIGO
-        //==================================================
-
-        produto.append(
-            "codigo",
-            codigo
+        dados.append(
+            "preco_antigo",
+            precoAntigo === ""
+                ? "0"
+                : precoAntigo
         );
 
 
-        //==================================================
-        //              ADICIONAR PREÇO
-        //==================================================
-
-        produto.append(
-            "preco",
-            Number(precoProduto)
+        dados.append(
+            "preco_promocional",
+            precoPromocional
         );
 
 
-        //==================================================
-        //              ADICIONAR ESTOQUE
-        //==================================================
-
-        produto.append(
+        dados.append(
             "quantidade_estoque",
-            Number(
-                quantidadeProduto
-            )
+            quantidade
         );
 
 
-        //==================================================
-        //              ADICIONAR STATUS
-        //==================================================
-
-        produto.append(
+        dados.append(
             "ativo",
-            statusProduto ? 1 : 0
+            statusProduto.checked
         );
 
 
-        //==================================================
-        //              ID DA LOJA
-        //==================================================
-
-        /*
-            ATENÇÃO:
-
-            Por enquanto estamos usando
-            Loja_idLoja = 1.
-
-            Depois podemos pegar o ID da loja
-            do login do lojista.
-        */
-
-        produto.append(
+        dados.append(
             "Loja_idLoja",
-            1
+            "1"
         );
 
 
-        //==================================================
-        //              ID DA CATEGORIA
-        //==================================================
-
-        produto.append(
+        dados.append(
             "Categoria_idCategoria",
-            Number(
-                categoriaProduto
-            )
+            categoria
         );
 
 
         //==================================================
-        //              ADICIONAR IMAGENS
+        //              IMAGEM
         //==================================================
 
-        for (
-            let i = 0;
-            i < imagens.length;
-            i++
-        ) {
+        if (arquivoImagem) {
 
-            produto.append(
-                "imagens",
-                imagens[i]
+            dados.append(
+                "imagem",
+                arquivoImagem
             );
 
         }
 
 
         //==================================================
-        //              MOSTRAR NO CONSOLE
+        //          CADASTRO OU EDIÇÃO
         //==================================================
 
-        console.log(
-            "Dados enviados:"
-        );
+        const estaEditando =
+            idProdutoEditando !== null;
 
 
-        console.log(
-            "Nome:",
-            nomeProduto
-        );
+        let url =
+            API_PRODUTOS;
 
 
-        console.log(
-            "Categoria:",
-            categoriaProduto
-        );
+        let metodo =
+            "POST";
 
 
-        console.log(
-            "Descrição:",
-            descricaoProduto
-        );
+        if (
+            estaEditando
+        ) {
+
+            url =
+                `${API_PRODUTOS}/${idProdutoEditando}`;
 
 
-        console.log(
-            "Preço:",
-            precoProduto
-        );
+            metodo =
+                "PUT";
 
-
-        console.log(
-            "Estoque:",
-            quantidadeProduto
-        );
-
-
-        console.log(
-            "Ativo:",
-            statusProduto
-        );
-
-
-        console.log(
-            "Quantidade de imagens:",
-            imagens.length
-        );
+        }
 
 
         //==================================================
-        //              ENVIAR PARA SERVIDOR
+        //              BLOQUEAR BOTÃO
+        //==================================================
+
+        btnSalvar.disabled =
+            true;
+
+
+        //==================================================
+        //              ENVIAR
         //==================================================
 
         fetch(
-            "http://localhost:3000/produtos",
+            url,
             {
 
-                method: "POST",
+                method:
+                    metodo,
 
-                body: produto
+                body:
+                    dados
 
             }
         )
 
+            .then(async response => {
 
-        //==================================================
-        //              RECEBER RESPOSTA
-        //==================================================
+                const data =
+                    await response.json();
 
-        .then(
-            response => {
-
-
-                //==================================================
-                //              VERIFICAR RESPOSTA
-                //==================================================
 
                 if (!response.ok) {
 
-                    return response.json()
-                    .then(
-                        data => {
-
-                            throw new Error(
-                                data.erro ||
-                                "Erro ao cadastrar produto."
-                            );
-
-                        }
+                    throw new Error(
+                        data.erro ||
+                        data.mensagem ||
+                        "Erro ao salvar produto."
                     );
 
                 }
 
 
-                return response.json();
+                return data;
 
-            }
-        )
+            })
 
+            .then(() => {
 
-        //==================================================
-        //              RESULTADO
-        //==================================================
+                if (
+                    estaEditando
+                ) {
 
-        .then(
-            data => {
+                    alert(
+                        "Produto atualizado com sucesso!"
+                    );
 
+                }
 
-                console.log(
-                    "Produto cadastrado:",
-                    data
-                );
+                else {
 
+                    alert(
+                        "Produto cadastrado com sucesso!"
+                    );
 
-                //==================================================
-                //              MENSAGEM
-                //==================================================
-
-                alert(
-                    "Produto cadastrado com sucesso!"
-                );
+                }
 
 
-                //==================================================
-                //              LIMPAR FORMULÁRIO
-                //==================================================
-
-                document.getElementById(
-                    "formProduto"
-                ).reset();
+                limparFormularioProduto();
 
 
-                //==================================================
-                //              LIMPAR MINIATURAS
-                //==================================================
+                listarProdutos();
 
-                document.getElementById(
-                    "miniaturas"
-                ).innerHTML = "";
+            })
 
-
-                //==================================================
-                //              RECARREGAR CATEGORIAS
-                //==================================================
-
-                carregarCategorias();
-
-            }
-        )
-
-
-        //==================================================
-        //              TRATAR ERRO
-        //==================================================
-
-        .catch(
-            error => {
-
+            .catch(error => {
 
                 console.error(
-                    "Erro ao cadastrar produto:",
+                    "Erro ao salvar produto:",
                     error
                 );
 
 
                 alert(
-                    error.message ||
-                    "Erro ao cadastrar produto."
+                    error.message
                 );
 
-            }
-        );
+            })
+
+            .finally(() => {
+
+                btnSalvar.disabled =
+                    false;
+
+            });
 
     }
 );
 
 
 //==================================================
-//              BOTÃO CANCELAR
+//              LISTAR PRODUTOS
+//==================================================
+
+function listarProdutos() {
+
+    fetch(
+        API_PRODUTOS
+    )
+
+        .then(response => {
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Erro ao carregar produtos."
+                );
+
+            }
+
+
+            return response.json();
+
+        })
+
+        .then(produtos => {
+
+            const lista =
+                document.getElementById(
+                    "listaProdutosCadastrados"
+                );
+
+
+            const contador =
+                document.getElementById(
+                    "quantidadeProdutos"
+                );
+
+
+            lista.innerHTML =
+                "";
+
+
+            contador.innerText =
+                produtos.length;
+
+
+            if (
+                produtos.length === 0
+            ) {
+
+                lista.innerHTML = `
+
+                <p class="mensagemLista">
+
+                    Nenhum produto cadastrado.
+
+                </p>
+
+            `;
+
+
+                return;
+
+            }
+
+
+            produtos.forEach(
+                produto => {
+
+                    const card =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    card.classList.add(
+                        "cardProdutoCadastrado"
+                    );
+
+
+                    const imagem =
+                        converterImagem(
+                            produto.imagem
+                        );
+
+
+                    const precoAtual =
+                        Number(
+                            produto.preco_promocional ||
+                            0
+                        );
+
+
+                    const precoAntigo =
+                        Number(
+                            produto.preco_antigo ||
+                            0
+                        );
+
+
+                    card.innerHTML = `
+
+                    <div class="imagemProdutoCard">
+
+                        ${imagem
+
+                            ?
+
+                            `
+                                <img
+                                    src="${imagem}"
+                                    alt="${produto.nome}"
+                                >
+                                `
+
+                            :
+
+                            `
+                                <div class="semImagem">
+
+                                    <i class="fa-solid fa-image"></i>
+
+                                </div>
+                                `
+                        }
+
+                    </div>
+
+
+                    <div class="dadosProduto">
+
+                        <h3>
+
+                            ${produto.nome}
+
+                        </h3>
+
+
+                        <p>
+
+                            ${produto.descricao}
+
+                        </p>
+
+
+                        <p>
+
+                            <strong>
+                                Categoria:
+                            </strong>
+
+                            ${produto.categoria || "Não informada"}
+
+                        </p>
+
+
+                        <p>
+
+                            <strong>
+                                Estoque:
+                            </strong>
+
+                            ${produto.quantidade_estoque}
+
+                        </p>
+
+
+                        <div class="precosProduto">
+
+                            ${precoAntigo > 0
+
+                            ?
+
+                            `
+                                    <span class="precoAntigo">
+
+                                        R$
+                                        ${precoAntigo
+                                .toFixed(2)
+                                .replace(".", ",")}
+
+                                    </span>
+                                    `
+
+                            :
+
+                            ""
+                        }
+
+
+                            <strong class="precoAtual">
+
+                                R$
+                                ${precoAtual
+                            .toFixed(2)
+                            .replace(".", ",")}
+
+                            </strong>
+
+                        </div>
+
+
+                        <span
+                            class="
+                                statusLista
+                                ${produto.ativo
+                            ? "ativo"
+                            : "inativo"
+                        }
+                            "
+                        >
+
+                            ${produto.ativo
+                            ? "Ativo"
+                            : "Inativo"
+                        }
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="acoes">
+
+                        <button
+                            type="button"
+                            onclick="editarProduto(${produto.idProduto})"
+                        >
+
+                            <i class="fa-solid fa-pen"></i>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            onclick="excluirProduto(${produto.idProduto})"
+                        >
+
+                            <i class="fa-solid fa-trash"></i>
+
+                        </button>
+
+                    </div>
+
+                `;
+
+
+                    lista.appendChild(
+                        card
+                    );
+
+                }
+            );
+
+        })
+
+        .catch(error => {
+
+            console.error(
+                error
+            );
+
+
+            document.getElementById(
+                "listaProdutosCadastrados"
+            ).innerHTML = `
+
+            <p class="mensagemErro">
+
+                Não foi possível carregar os produtos.
+
+            </p>
+
+        `;
+
+        });
+
+}
+
+
+//==================================================
+//              EDITAR PRODUTO
+//==================================================
+
+function editarProduto(
+    idProduto
+) {
+
+    fetch(
+        `${API_PRODUTOS}/${idProduto}`
+    )
+
+        .then(async response => {
+
+            const data =
+                await response.json();
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    data.erro ||
+                    "Produto não encontrado."
+                );
+
+            }
+
+
+            return data;
+
+        })
+
+        .then(produto => {
+
+            //==================================================
+            //              GUARDAR ID
+            //==================================================
+
+            idProdutoEditando =
+                produto.idProduto;
+
+
+            //==================================================
+            //              PREENCHER CAMPOS
+            //==================================================
+
+            nomeProduto.value =
+                produto.nome || "";
+
+
+            descricaoProduto.value =
+                produto.descricao || "";
+
+
+            precoAntigoProduto.value =
+                produto.preco_antigo || 0;
+
+
+            precoPromocionalProduto.value =
+                produto.preco_promocional || "";
+
+
+            quantidadeProduto.value =
+                produto.quantidade_estoque || 0;
+
+
+            statusProduto.checked =
+                Boolean(
+                    produto.ativo
+                );
+
+
+            categoriaProduto.value =
+                String(
+                    produto.Categoria_idCategoria ||
+                    ""
+                );
+
+
+            //==================================================
+            //      LIMPAR INPUT DE NOVA IMAGEM
+            //==================================================
+
+            imagemProduto.value =
+                "";
+
+
+            //==================================================
+            //              IMAGEM ATUAL
+            //==================================================
+
+            previewImagem.innerHTML =
+                "";
+
+
+            const imagem =
+                converterImagem(
+                    produto.imagem
+                );
+
+
+            if (imagem) {
+
+                const img =
+                    document.createElement(
+                        "img"
+                    );
+
+
+                img.src =
+                    imagem;
+
+
+                img.alt =
+                    produto.nome;
+
+
+                previewImagem.appendChild(
+                    img
+                );
+
+            }
+
+
+            //==================================================
+            //              MODO EDIÇÃO
+            //==================================================
+
+            document.getElementById(
+                "tituloPagina"
+            ).innerText =
+                "Editar Produto";
+
+
+            btnSalvar.innerHTML = `
+
+            <i class="fa-solid fa-floppy-disk"></i>
+
+            Atualizar Produto
+
+        `;
+
+
+            formProduto.scrollIntoView({
+
+                behavior:
+                    "smooth",
+
+                block:
+                    "start"
+
+            });
+
+        })
+
+        .catch(error => {
+
+            console.error(
+                error
+            );
+
+
+            alert(
+                error.message
+            );
+
+        });
+
+}
+
+
+//==================================================
+//              EXCLUIR PRODUTO
+//==================================================
+
+function excluirProduto(
+    idProduto
+) {
+
+    const confirmar =
+        confirm(
+            "Deseja realmente excluir este produto?"
+        );
+
+
+    if (!confirmar) {
+
+        return;
+
+    }
+
+
+    fetch(
+        `${API_PRODUTOS}/${idProduto}`,
+        {
+
+            method:
+                "DELETE"
+
+        }
+    )
+
+        .then(async response => {
+
+            const data =
+                await response.json();
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    data.erro ||
+                    data.mensagem
+                );
+
+            }
+
+
+            return data;
+
+        })
+
+        .then(() => {
+
+            alert(
+                "Produto excluído com sucesso!"
+            );
+
+
+            if (
+                Number(
+                    idProdutoEditando
+                ) ===
+                Number(
+                    idProduto
+                )
+            ) {
+
+                limparFormularioProduto();
+
+            }
+
+
+            listarProdutos();
+
+        })
+
+        .catch(error => {
+
+            console.error(
+                error
+            );
+
+
+            alert(
+                error.message
+            );
+
+        });
+
+}
+
+
+//==================================================
+//              LIMPAR FORMULÁRIO
+//==================================================
+
+function limparFormularioProduto() {
+
+    formProduto.reset();
+
+
+    previewImagem.innerHTML =
+        "";
+
+
+    imagemProduto.value =
+        "";
+
+
+    idProdutoEditando =
+        null;
+
+
+    statusProduto.checked =
+        true;
+
+
+    document.getElementById(
+        "tituloPagina"
+    ).innerText =
+        "Cadastrar Novo Produto";
+
+
+    document.getElementById(
+        "descricaoPagina"
+    ).innerText =
+        "Preencha as informações abaixo para cadastrar um produto.";
+
+
+    btnSalvar.innerHTML = `
+
+        <i class="fa-solid fa-floppy-disk"></i>
+
+        Salvar Produto
+
+    `;
+
+}
+
+
+//==================================================
+//              CANCELAR
 //==================================================
 
 document.getElementById(
     "btnCancelar"
-).
-addEventListener(
-    "click",
-    function () {
+)
+    .addEventListener(
+        "click",
+        function () {
 
+            limparFormularioProduto();
 
-        //==================================================
-        //              LIMPAR FORMULÁRIO
-        //==================================================
-
-        document.getElementById(
-            "formProduto"
-        ).reset();
-
-
-        //==================================================
-        //              LIMPAR MINIATURAS
-        //==================================================
-
-        document.getElementById(
-            "miniaturas"
-        ).innerHTML = "";
-
-
-        //==================================================
-        //              RECARREGAR CATEGORIAS
-        //==================================================
-
-        carregarCategorias();
-
-
-    }
-);
+        }
+    );
 
 
 //==================================================
-//              ÁREA DE UPLOAD
+//              PESQUISAR
+//==================================================
+
+function pesquisarProdutos() {
+
+    const pesquisa =
+        document.getElementById(
+            "campoPesquisa"
+        )
+            .value
+            .trim()
+            .toLowerCase();
+
+
+    const cards =
+        document.querySelectorAll(
+            ".cardProdutoCadastrado"
+        );
+
+
+    cards.forEach(
+        card => {
+
+            const texto =
+                card.innerText
+                    .toLowerCase();
+
+
+            card.style.display =
+
+                texto.includes(
+                    pesquisa
+                )
+
+                    ? ""
+
+                    : "none";
+
+        }
+    );
+
+}
+
+
+//==================================================
+//              BOTÃO PESQUISAR
 //==================================================
 
 document.getElementById(
-    "uploadArea"
-).
-addEventListener(
-    "click",
-    function (event) {
+    "btnPesquisar"
+)
+    .addEventListener(
+        "click",
+        pesquisarProdutos
+    );
 
 
-        //==================================================
-        //              NÃO ABRIR DUAS VEZES
-        //==================================================
+//==================================================
+//              PESQUISA AO DIGITAR
+//==================================================
 
-        if (
-            event.target.id ===
-            "btnSelecionarImagem"
-        ) {
-
-            return;
-
-        }
-
-
-        //==================================================
-        //              PEGAR INPUT
-        //==================================================
-
-        const imagemProduto =
-            document.getElementById(
-                "imagemProduto"
-            );
+document.getElementById(
+    "campoPesquisa"
+)
+    .addEventListener(
+        "input",
+        pesquisarProdutos
+    );
 
 
-        //==================================================
-        //              ABRIR ARQUIVO
-        //==================================================
+//==================================================
+//              INICIAR PÁGINA
+//==================================================
 
-        imagemProduto.click();
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        carregarCategorias();
+
+        listarProdutos();
 
     }
 );

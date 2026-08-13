@@ -1,162 +1,108 @@
-const categoriaModel = require("../model/categoria_model");
-
-// =========================
-// Cadastrar Categoria
-// =========================
+const categoriaModel = require("../model/categoria_model.js");
 
 function cadastrar(req, res) {
+    const nome = req.body?.nome;
 
-    const categoria = req.body;
+    if (!nome || nome.trim() === "") {
+        return res.status(400).json({
+            erro: "O nome da categoria é obrigatório."
+        });
+    }
 
-    categoriaModel.cadastrar(categoria, (erro, resultado) => {
-
+    categoriaModel.cadastrar({ nome: nome.trim() }, (erro, resultado) => {
         if (erro) {
-            return res.status(500).json({
-                erro: erro.message
-            });
+            if (erro.code === "ER_DUP_ENTRY") {
+                return res.status(409).json({
+                    erro: "Já existe uma categoria com esse nome."
+                });
+            }
+
+            return res.status(500).json({ erro: erro.message });
         }
 
-        res.status(201).json({
-            mensagem: "Categoria cadastrada com sucesso!",
-            id: resultado.insertId
+        return res.status(201).json({
+            mensagem: "Categoria cadastrada com sucesso.",
+            idCategoria: resultado.insertId
         });
-
     });
-
 }
-
-// =========================
-// Listar Categorias
-// =========================
 
 function listar(req, res) {
-
-    categoriaModel.listar((erro, resultados) => {
-
-        if (erro) {
-            return res.status(500).json({
-                erro: erro.message
-            });
-        }
-
-        res.json(resultados);
-
+    categoriaModel.listar((erro, resultado) => {
+        if (erro) return res.status(500).json({ erro: erro.message });
+        return res.status(200).json(resultado);
     });
-
 }
-
-// =========================
-// Buscar Categoria por ID
-// =========================
 
 function buscarPorId(req, res) {
+    categoriaModel.buscarPorId(req.params.id, (erro, resultado) => {
+        if (erro) return res.status(500).json({ erro: erro.message });
 
-    const id = req.params.id;
-
-    categoriaModel.buscarPorId(id, (erro, resultados) => {
-
-        if (erro) {
-            return res.status(500).json({
-                erro: erro.message
-            });
+        if (!resultado || resultado.length === 0) {
+            return res.status(404).json({ erro: "Categoria não encontrada." });
         }
 
-        if (resultados.length === 0) {
-            return res.status(404).json({
-                mensagem: "Categoria não encontrada."
-            });
-        }
-
-        res.json(resultados[0]);
-
+        return res.status(200).json(resultado[0]);
     });
-
 }
-
-// =========================
-// Buscar Categoria por Nome
-// =========================
 
 function buscarPorNome(req, res) {
+    categoriaModel.buscarPorNome(req.params.nome, (erro, resultado) => {
+        if (erro) return res.status(500).json({ erro: erro.message });
 
-    const nome = req.params.nome;
-
-    categoriaModel.buscarPorNome(nome, (erro, resultados) => {
-
-        if (erro) {
-            return res.status(500).json({
-                erro: erro.message
-            });
+        if (!resultado || resultado.length === 0) {
+            return res.status(404).json({ erro: "Categoria não encontrada." });
         }
 
-        if (resultados.length === 0) {
-            return res.status(404).json({
-                mensagem: "Categoria não encontrada."
-            });
-        }
-
-        res.json(resultados[0]);
-
+        return res.status(200).json(resultado[0]);
     });
-
 }
-
-// =========================
-// Atualizar Categoria
-// =========================
 
 function atualizar(req, res) {
+    const nome = req.body?.nome;
 
-    const id = req.params.id;
-    const categoria = req.body;
+    if (!nome || nome.trim() === "") {
+        return res.status(400).json({
+            erro: "O nome da categoria é obrigatório."
+        });
+    }
 
-    categoriaModel.atualizar(id, categoria, (erro) => {
+    categoriaModel.atualizar(
+        req.params.id,
+        { nome: nome.trim() },
+        (erro, resultado) => {
+            if (erro) return res.status(500).json({ erro: erro.message });
 
-        if (erro) {
-            return res.status(500).json({
-                erro: erro.message
+            if (!resultado || resultado.affectedRows === 0) {
+                return res.status(404).json({ erro: "Categoria não encontrada." });
+            }
+
+            return res.status(200).json({
+                mensagem: "Categoria atualizada com sucesso."
             });
         }
-
-        res.json({
-            mensagem: "Categoria atualizada com sucesso!"
-        });
-
-    });
-
+    );
 }
 
-// =========================
-// Excluir Categoria
-// =========================
-
 function excluir(req, res) {
+    categoriaModel.excluir(req.params.id, (erro, resultado) => {
+        if (erro) return res.status(500).json({ erro: erro.message });
 
-    const id = req.params.id;
-
-    categoriaModel.excluir(id, (erro) => {
-
-        if (erro) {
-            return res.status(500).json({
-                erro: erro.message
-            });
+        if (!resultado || resultado.affectedRows === 0) {
+            return res.status(404).json({ erro: "Categoria não encontrada." });
         }
 
-        res.json({
-            mensagem: "Categoria excluída com sucesso!"
+        return res.status(200).json({
+            mensagem: "Categoria excluída com sucesso."
         });
-
     });
-
 }
 
 module.exports = {
-
     cadastrar,
     listar,
     buscarPorId,
     buscarPorNome,
     atualizar,
     excluir
-
 };

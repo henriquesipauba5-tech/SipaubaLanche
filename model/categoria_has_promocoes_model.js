@@ -1,116 +1,35 @@
-const conexao = require("../conexao/conexao.js");
+// ============================================================
+// MODEL NÃO UTILIZÁVEL COM O BANCO ATUAL
+// ============================================================
+//
+// Este arquivo existia no projeto do aluno, porém o banco
+// SipaubaLanche enviado como referência NÃO possui a tabela:
+// Categoria_has_Promocao / Promocao
+//
+// Como o banco não deve ser alterado, este model não pode
+// executar INSERT, SELECT, UPDATE ou DELETE nessa tabela.
+//
+// Mantenha este arquivo fora das rotas do servidor enquanto
+// a estrutura oficial do banco continuar sem essa tabela.
+// ============================================================
 
-// =========================
-// Vincular Categoria à Promoção
-// =========================
-
-function cadastrar(relacao, callback) {
-
-    const sql = `INSERT INTO Categoria_has_Promocao
-        (
-            Categoria_idCategoria,
-            Promocao_idPromocao
-        )
-        VALUES (?, ?)`;
-
-    conexao.query(
-        sql,
-        [
-            relacao.Categoria_idCategoria,
-            relacao.Promocao_idPromocao
-        ],
-        callback
+function tabelaNaoExiste(callback) {
+    const erro = new Error(
+        "Este recurso não existe no banco de dados SipaubaLanche atual."
     );
 
-}
+    if (typeof callback === "function") {
+        return callback(erro);
+    }
 
-// =========================
-// Listar Relações
-// =========================
-
-function listar(callback) {
-
-    const sql = `
-        SELECT *
-        FROM Categoria_has_Promocao
-    `;
-
-    conexao.query(sql, callback);
-
-}
-
-// =========================
-// Buscar Relação
-// =========================
-
-function buscar(categoriaId, promocaoId, callback) {
-
-    const sql = `
-        SELECT *
-        FROM Categoria_has_Promocao
-        WHERE Categoria_idCategoria = ?
-        AND Promocao_idPromocao = ?
-    `;
-
-    conexao.query(sql, [categoriaId, promocaoId], callback);
-
-}
-
-// =========================
-// Buscar Promoções da Categoria
-// =========================
-
-function buscarPorCategoria(categoriaId, callback) {
-
-    const sql = `
-        SELECT *
-        FROM Categoria_has_Promocao
-        WHERE Categoria_idCategoria = ?
-    `;
-
-    conexao.query(sql, [categoriaId], callback);
-
-}
-
-// =========================
-// Buscar Categorias da Promoção
-// =========================
-
-function buscarPorPromocao(promocaoId, callback) {
-
-    const sql = `
-        SELECT *
-        FROM Categoria_has_Promocao
-        WHERE Promocao_idPromocao = ?
-    `;
-
-    conexao.query(sql, [promocaoId], callback);
-
-}
-
-// =========================
-// Remover Categoria da Promoção
-// =========================
-
-function excluir(categoriaId, promocaoId, callback) {
-
-    const sql = `
-        DELETE FROM Categoria_has_Promocao
-        WHERE Categoria_idCategoria = ?
-        AND Promocao_idPromocao = ?
-    `;
-
-    conexao.query(sql, [categoriaId, promocaoId], callback);
-
+    throw erro;
 }
 
 module.exports = {
-
-    cadastrar,
-    listar,
-    buscar,
-    buscarPorCategoria,
-    buscarPorPromocao,
-    excluir
-
+    cadastrar: tabelaNaoExiste,
+    listar: tabelaNaoExiste,
+    buscarPorId: tabelaNaoExiste,
+    buscar: tabelaNaoExiste,
+    atualizar: tabelaNaoExiste,
+    excluir: tabelaNaoExiste
 };

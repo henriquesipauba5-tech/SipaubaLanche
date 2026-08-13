@@ -1,15 +1,24 @@
 const conexao = require("../conexao/conexao.js");
 
-// =========================
-// Cadastrar Cliente
-// =========================
+// OBSERVAÇÃO:
+// Apesar do nome do arquivo ser usuario_model.js,
+// este model trabalha com a tabela Cliente.
 
+// CADASTRAR CLIENTE
 function cadastrar(cliente, callback) {
-
-    const sql = `INSERT INTO Cliente
-        ( nome,cpf,telefone,email,senha,
-         data_nascimento,Loja_idLoja )
-        VALUES (?, ?, ?, ?, ?, ?, ?)`;
+    const sql = `
+        INSERT INTO Cliente
+        (
+            nome,
+            cpf,
+            telefone,
+            email,
+            senha,
+            data_nascimento,
+            Loja_idLoja
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    `;
 
     conexao.query(
         sql,
@@ -20,33 +29,19 @@ function cadastrar(cliente, callback) {
             cliente.email,
             cliente.senha,
             cliente.data_nascimento,
-            cliente.Loja_idLoja
+            cliente.Loja_idLoja || null
         ],
         callback
     );
-
 }
 
-// =========================
-// Listar Clientes
-// =========================
-
+// LISTAR CLIENTES
 function listar(callback) {
-
-    const sql = `
-        SELECT * FROM Cliente
-    `;
-
-    conexao.query(sql, callback);
-
+    conexao.query("SELECT * FROM Cliente", callback);
 }
 
-// =========================
-// Buscar por ID
-// =========================
-
+// BUSCAR POR ID
 function buscarPorId(id, callback) {
-
     const sql = `
         SELECT *
         FROM Cliente
@@ -54,42 +49,42 @@ function buscarPorId(id, callback) {
     `;
 
     conexao.query(sql, [id], callback);
-
 }
 
-// =========================
-// Buscar por Email
-// =========================
-
+// BUSCAR POR EMAIL
 function buscarPorEmail(email, callback) {
-
     const sql = `
-        SELECT * FROM Cliente
+        SELECT *
+        FROM Cliente
         WHERE email = ?
     `;
 
     conexao.query(sql, [email], callback);
-
 }
 
-// =========================
-// Atualizar Cliente
-// =========================
+// LOGIN
+function login(email, senha, callback) {
+    const sql = `
+        SELECT *
+        FROM Cliente
+        WHERE email = ?
+          AND senha = ?
+    `;
 
+    conexao.query(sql, [email, senha], callback);
+}
+
+// ATUALIZAR CLIENTE
 function atualizar(id, cliente, callback) {
-
     const sql = `
         UPDATE Cliente
-        SET
-
-            nome = ?,
+        SET nome = ?,
             cpf = ?,
             telefone = ?,
             email = ?,
             senha = ?,
             data_nascimento = ?,
             Loja_idLoja = ?
-
         WHERE idCliente = ?
     `;
 
@@ -102,36 +97,29 @@ function atualizar(id, cliente, callback) {
             cliente.email,
             cliente.senha,
             cliente.data_nascimento,
-            cliente.Loja_idLoja,
+            cliente.Loja_idLoja || null,
             id
         ],
         callback
     );
-
 }
 
-// =========================
-// Excluir Cliente
-// =========================
-
+// EXCLUIR CLIENTE
 function excluir(id, callback) {
-
     const sql = `
         DELETE FROM Cliente
         WHERE idCliente = ?
     `;
 
     conexao.query(sql, [id], callback);
-
 }
 
 module.exports = {
-
     cadastrar,
     listar,
     buscarPorId,
     buscarPorEmail,
+    login,
     atualizar,
     excluir
-
 };

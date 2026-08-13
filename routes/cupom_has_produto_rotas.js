@@ -1,63 +1,45 @@
-// =====================================================
-// ROTAS DE CUPOM HAS PRODUTO
-// =====================================================
-//
-// POST    /cupons-produtos                    -> Cadastrar relacionamento
-// GET     /cupons-produtos                    -> Listar relacionamentos
-// GET     /cupons-produtos/:cupom/:produto    -> Buscar relacionamento
-// DELETE  /cupons-produtos/:cupom/:produto    -> Excluir relacionamento
-//
-// =====================================================
-
-
 const express = require("express");
 
 const router = express.Router();
 
+const CupomHasProdutoController = require(
+    "../controller/cupom_has_produto_controller.js"
+);
 
-// Importando Controller
-const CupomHasProdutoController = require("../controller/cupom_has_produto_controller.js");
-
-
-// =========================
-// CADASTRAR RELACIONAMENTO
-// =========================
-
+// CADASTRAR
 router.post(
     "/",
     CupomHasProdutoController.cadastrar
 );
 
-
-// =========================
-// LISTAR RELACIONAMENTOS
-// =========================
-
+// LISTAR
 router.get(
     "/",
     CupomHasProdutoController.listar
 );
 
+// BUSCAR PRODUTOS DO CUPOM
+router.get(
+    "/cupom/:cupomId",
+    CupomHasProdutoController.buscarPorCupom
+);
 
-// =========================
+// BUSCAR CUPONS DO PRODUTO
+router.get(
+    "/produto/:produtoId",
+    CupomHasProdutoController.buscarPorProduto
+);
+
 // BUSCAR RELACIONAMENTO
-// =========================
-
 router.get(
     "/:cupomId/:produtoId",
     CupomHasProdutoController.buscar
 );
 
-
-// =========================
-// EXCLUIR RELACIONAMENTO
-// =========================
-
+// EXCLUIR
 router.delete(
     "/:cupomId/:produtoId",
     CupomHasProdutoController.excluir
 );
 
-
-// Exportando rotas
 module.exports = router;

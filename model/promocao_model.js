@@ -1,138 +1,35 @@
-const conexao = require("../conexao/conexao.js");
+// ============================================================
+// MODEL NÃO UTILIZÁVEL COM O BANCO ATUAL
+// ============================================================
+//
+// Este arquivo existia no projeto do aluno, porém o banco
+// SipaubaLanche enviado como referência NÃO possui a tabela:
+// Promocao
+//
+// Como o banco não deve ser alterado, este model não pode
+// executar INSERT, SELECT, UPDATE ou DELETE nessa tabela.
+//
+// Mantenha este arquivo fora das rotas do servidor enquanto
+// a estrutura oficial do banco continuar sem essa tabela.
+// ============================================================
 
-// =========================
-// Cadastrar Promoção
-// =========================
-
-function cadastrar(promocao, callback) {
-
-    const sql = `INSERT INTO Promocao
-        (
-            data_inicio,
-            data_final,
-            valor_promocao,
-            nome,
-            Banner_idBanner
-        )
-        VALUES (?, ?, ?, ?, ?)`;
-
-    conexao.query(
-        sql,
-        [
-            promocao.data_inicio,
-            promocao.data_final,
-            promocao.valor_promocao,
-            promocao.nome,
-            promocao.Banner_idBanner
-        ],
-        callback
+function tabelaNaoExiste(callback) {
+    const erro = new Error(
+        "Este recurso não existe no banco de dados SipaubaLanche atual."
     );
 
-}
+    if (typeof callback === "function") {
+        return callback(erro);
+    }
 
-// =========================
-// Listar Promoções
-// =========================
-
-function listar(callback) {
-
-    const sql = `
-        SELECT *
-        FROM Promocao
-    `;
-
-    conexao.query(sql, callback);
-
-}
-
-// =========================
-// Buscar por ID
-// =========================
-
-function buscarPorId(id, callback) {
-
-    const sql = `
-        SELECT *
-        FROM Promocao
-        WHERE idPromocao = ?
-    `;
-
-    conexao.query(sql, [id], callback);
-
-}
-
-// =========================
-// Buscar por Nome
-// =========================
-
-function buscarPorNome(nome, callback) {
-
-    const sql = `
-        SELECT *
-        FROM Promocao
-        WHERE nome = ?
-    `;
-
-    conexao.query(sql, [nome], callback);
-
-}
-
-// =========================
-// Atualizar Promoção
-// =========================
-
-function atualizar(id, promocao, callback) {
-
-    const sql = `
-        UPDATE Promocao
-        SET
-
-            data_inicio = ?,
-            data_final = ?,
-            valor_promocao = ?,
-            nome = ?,
-            Banner_idBanner = ?
-
-        WHERE idPromocao = ?
-    `;
-
-    conexao.query(
-        sql,
-        [
-            promocao.data_inicio,
-            promocao.data_final,
-            promocao.valor_promocao,
-            promocao.nome,
-            promocao.Banner_idBanner,
-            id
-        ],
-        callback
-    );
-
-}
-
-// =========================
-// Excluir Promoção
-// =========================
-
-function excluir(id, callback) {
-
-    const sql = `
-        DELETE FROM Promocao
-        WHERE idPromocao = ?
-    `;
-
-    conexao.query(sql, [id], callback);
-
+    throw erro;
 }
 
 module.exports = {
-
-    cadastrar,
-    listar,
-    buscarPorId,
-    buscarPorNome,
-    atualizar,
-    excluir
-
+    cadastrar: tabelaNaoExiste,
+    listar: tabelaNaoExiste,
+    buscarPorId: tabelaNaoExiste,
+    buscar: tabelaNaoExiste,
+    atualizar: tabelaNaoExiste,
+    excluir: tabelaNaoExiste
 };

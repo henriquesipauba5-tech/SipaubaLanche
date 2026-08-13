@@ -1,17 +1,12 @@
 const conexao = require("../conexao/conexao.js");
 
-// =========================
-// Vincular Produto ao Cupom
-// =========================
-
+// VINCULAR PRODUTO AO CUPOM
 function cadastrar(relacao, callback) {
-
-    const sql = `INSERT INTO Cupom_has_Produto
-        (
-            Cupom_idCupom,
-            Produto_idProduto
-        )
-        VALUES (?, ?)`;
+    const sql = `
+        INSERT INTO Cupom_has_Produto
+        (Cupom_idCupom, Produto_idProduto)
+        VALUES (?, ?)
+    `;
 
     conexao.query(
         sql,
@@ -21,47 +16,27 @@ function cadastrar(relacao, callback) {
         ],
         callback
     );
-
 }
 
-// =========================
-// Listar Relações
-// =========================
-
+// LISTAR RELAÇÕES
 function listar(callback) {
-
-    const sql = `
-        SELECT *
-        FROM Cupom_has_Produto
-    `;
-
-    conexao.query(sql, callback);
-
+    conexao.query("SELECT * FROM Cupom_has_Produto", callback);
 }
 
-// =========================
-// Buscar Relação
-// =========================
-
+// BUSCAR RELAÇÃO
 function buscar(cupomId, produtoId, callback) {
-
     const sql = `
         SELECT *
         FROM Cupom_has_Produto
         WHERE Cupom_idCupom = ?
-        AND Produto_idProduto = ?
+          AND Produto_idProduto = ?
     `;
 
     conexao.query(sql, [cupomId, produtoId], callback);
-
 }
 
-// =========================
-// Buscar Produtos do Cupom
-// =========================
-
+// BUSCAR PRODUTOS DO CUPOM
 function buscarPorCupom(cupomId, callback) {
-
     const sql = `
         SELECT *
         FROM Cupom_has_Produto
@@ -69,15 +44,10 @@ function buscarPorCupom(cupomId, callback) {
     `;
 
     conexao.query(sql, [cupomId], callback);
-
 }
 
-// =========================
-// Buscar Cupons do Produto
-// =========================
-
+// BUSCAR CUPONS DO PRODUTO
 function buscarPorProduto(produtoId, callback) {
-
     const sql = `
         SELECT *
         FROM Cupom_has_Produto
@@ -85,32 +55,24 @@ function buscarPorProduto(produtoId, callback) {
     `;
 
     conexao.query(sql, [produtoId], callback);
-
 }
 
-// =========================
-// Remover Produto do Cupom
-// =========================
-
+// EXCLUIR RELAÇÃO
 function excluir(cupomId, produtoId, callback) {
-
     const sql = `
         DELETE FROM Cupom_has_Produto
         WHERE Cupom_idCupom = ?
-        AND Produto_idProduto = ?
+          AND Produto_idProduto = ?
     `;
 
     conexao.query(sql, [cupomId, produtoId], callback);
-
 }
 
 module.exports = {
-
     cadastrar,
     listar,
     buscar,
     buscarPorCupom,
     buscarPorProduto,
     excluir
-
 };

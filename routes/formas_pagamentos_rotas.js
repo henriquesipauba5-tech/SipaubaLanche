@@ -1,75 +1,45 @@
-// =====================================================
-// ROTAS DE FORMAS DE PAGAMENTO
-// =====================================================
-//
-// POST    /formas-pagamento       -> Cadastrar forma de pagamento
-// GET     /formas-pagamento       -> Listar formas de pagamento
-// GET     /formas-pagamento/:id   -> Buscar forma de pagamento por ID
-// PUT     /formas-pagamento/:id   -> Atualizar forma de pagamento
-// DELETE  /formas-pagamento/:id   -> Excluir forma de pagamento
-//
-// =====================================================
-
-
 const express = require("express");
 
-// Criando o roteador do Express
 const router = express.Router();
 
+const FormasPagamentoController = require(
+    "../controller/formas_pagamento_controller.js"
+);
 
-// Importando Controller de Formas de Pagamento
-const FormasPagamentoController = require("../controller//formas_pagamento");
-
-
-// =========================
-// CADASTRAR FORMA DE PAGAMENTO
-// =========================
-
+// CADASTRAR
 router.post(
     "/",
     FormasPagamentoController.cadastrar
 );
 
-
-// =========================
-// LISTAR FORMAS DE PAGAMENTO
-// =========================
-
+// LISTAR
 router.get(
     "/",
     FormasPagamentoController.listar
 );
 
+// BUSCAR POR NOME
+router.get(
+    "/nome/:nome",
+    FormasPagamentoController.buscarPorNome
+);
 
-// =========================
 // BUSCAR POR ID
-// =========================
-
 router.get(
     "/:id",
     FormasPagamentoController.buscarPorId
 );
 
-
-// =========================
-// ATUALIZAR FORMA DE PAGAMENTO
-// =========================
-
+// ATUALIZAR
 router.put(
     "/:id",
     FormasPagamentoController.atualizar
 );
 
-
-// =========================
-// EXCLUIR FORMA DE PAGAMENTO
-// =========================
-
+// EXCLUIR
 router.delete(
     "/:id",
     FormasPagamentoController.excluir
 );
 
-
-// Exportando as rotas
 module.exports = router;

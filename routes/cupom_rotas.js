@@ -1,75 +1,43 @@
-// =====================================================
-// ROTAS DE CUPOM
-// =====================================================
-//
-// POST    /cupons       -> Cadastrar cupom
-// GET     /cupons       -> Listar cupons
-// GET     /cupons/:id   -> Buscar cupom por ID
-// PUT     /cupons/:id   -> Atualizar cupom
-// DELETE  /cupons/:id   -> Excluir cupom
-//
-// =====================================================
-
-
 const express = require("express");
 
-// Criando o roteador do Express
 const router = express.Router();
 
+const CupomController = require("../controller/cupom_controller.js");
 
-// Importando Controller de Cupom
-const CupomController = require("../controller//cupom-controller");
-
-
-// =========================
-// CADASTRAR CUPOM
-// =========================
-
+// CADASTRAR
 router.post(
     "/",
     CupomController.cadastrar
 );
 
-
-// =========================
-// LISTAR CUPONS
-// =========================
-
+// LISTAR
 router.get(
     "/",
     CupomController.listar
 );
 
+// BUSCAR POR CÓDIGO
+router.get(
+    "/codigo/:codigo",
+    CupomController.buscarPorCodigo
+);
 
-// =========================
-// BUSCAR CUPOM POR ID
-// =========================
-
+// BUSCAR POR ID
 router.get(
     "/:id",
     CupomController.buscarPorId
 );
 
-
-// =========================
-// ATUALIZAR CUPOM
-// =========================
-
+// ATUALIZAR
 router.put(
     "/:id",
     CupomController.atualizar
 );
 
-
-// =========================
-// EXCLUIR CUPOM
-// =========================
-
+// EXCLUIR
 router.delete(
     "/:id",
     CupomController.excluir
 );
 
-
-// Exportando as rotas
 module.exports = router;

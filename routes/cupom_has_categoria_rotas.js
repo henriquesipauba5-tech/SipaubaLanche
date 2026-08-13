@@ -1,63 +1,45 @@
-// =====================================================
-// ROTAS DE CUPOM HAS CATEGORIA
-// =====================================================
-//
-// POST    /cupons-categorias                         -> Cadastrar relacionamento
-// GET     /cupons-categorias                         -> Listar relacionamentos
-// GET     /cupons-categorias/:cupom/:categoria       -> Buscar relacionamento
-// DELETE  /cupons-categorias/:cupom/:categoria       -> Excluir relacionamento
-//
-// =====================================================
-
-
 const express = require("express");
 
 const router = express.Router();
 
+const CupomHasCategoriaController = require(
+    "../controller/cupom_has_categoria_controller.js"
+);
 
-// Importando Controller
-const CupomHasCategoriaController = require("../controller/cupom_has_categoria_controller.js");
-
-
-// =========================
-// CADASTRAR RELACIONAMENTO
-// =========================
-
+// CADASTRAR
 router.post(
     "/",
     CupomHasCategoriaController.cadastrar
 );
 
-
-// =========================
-// LISTAR RELACIONAMENTOS
-// =========================
-
+// LISTAR
 router.get(
     "/",
     CupomHasCategoriaController.listar
 );
 
+// BUSCAR CATEGORIAS DO CUPOM
+router.get(
+    "/cupom/:cupomId",
+    CupomHasCategoriaController.buscarPorCupom
+);
 
-// =========================
+// BUSCAR CUPONS DA CATEGORIA
+router.get(
+    "/categoria/:categoriaId",
+    CupomHasCategoriaController.buscarPorCategoria
+);
+
 // BUSCAR RELACIONAMENTO
-// =========================
-
 router.get(
     "/:cupomId/:categoriaId",
     CupomHasCategoriaController.buscar
 );
 
-
-// =========================
-// EXCLUIR RELACIONAMENTO
-// =========================
-
+// EXCLUIR
 router.delete(
-    "/:cupom/:categoria",
+    "/:cupomId/:categoriaId",
     CupomHasCategoriaController.excluir
 );
 
-
-// Exportando rotas
 module.exports = router;

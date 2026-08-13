@@ -1,16 +1,23 @@
-// =====================================================
-// IMPORTAÇÕES
-// =====================================================
-
-// express é um framework para criar servidores web
+// express é um framework para criar aplicações web com Node.js
 const express = require("express");
 
-// cors permite requisições de outros domínios
+// cors permite requisições externas
 const cors = require("cors");
 
 
-// Criando aplicação
+// criar servidor
 const app = express();
+
+
+// configurações
+app.use(cors());
+app.use(express.json());
+
+app.use(
+    express.urlencoded({
+        extended: true
+    })
+);
 
 
 // Middlewares

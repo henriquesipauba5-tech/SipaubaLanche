@@ -4,7 +4,7 @@
 //
 // Este arquivo existia no projeto do aluno, porém o banco
 // SipaubaLanche enviado como referência NÃO possui a tabela:
-// Endereco_has_Cliente
+// Promocao_has_Produto / Promocao
 //
 // Como o banco não deve ser alterado, este model não pode
 // executar INSERT, SELECT, UPDATE ou DELETE nessa tabela.

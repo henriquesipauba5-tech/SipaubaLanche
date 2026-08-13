@@ -1,932 +1,711 @@
-/*==================================================
-                PRODUTO.JS
-        Projeto: Sipaúba Lanches
-==================================================*/
+//==================================================
+//      produto.js
+//      HOME - Sipaúba Lanches
+//==================================================
 
 
-/*==================================================
-                TEXTOS DA TELA
-==================================================*/
+//==================================================
+//              CONFIGURAÇÕES
+//==================================================
 
+const API =
+    "http://localhost:3000";
 
-const textos = {
 
+const API_PRODUTOS =
+    `${API}/produtos`;
 
-    titulo:
 
-    "Nosso Cardápio",
+const API_CATEGORIAS =
+    `${API}/categorias`;
 
 
+//==================================================
+//              ELEMENTOS
+//==================================================
 
-    subtitulo:
+const categoriasProdutos =
+    document.getElementById(
+        "categoriasProdutos"
+    );
 
-    "Escolha seu lanche ou bebida favorita e monte seu pedido."
 
+const listaProdutos =
+    document.getElementById(
+        "listaProdutos"
+    );
 
-};
 
+//==================================================
+//          CONFIGURAR TÍTULOS
+//==================================================
 
+document.getElementById(
+    "tituloProdutos"
+).innerText =
+    "Nosso Cardápio";
 
 
+document.getElementById(
+    "subtituloProdutos"
+).innerText =
+    "Escolha uma categoria e encontre seu lanche favorito.";
 
 
-/*==================================================
-                PRODUTOS
-==================================================*/
+//==================================================
+//          CONVERTER BUFFER EM IMAGEM
+//==================================================
 
+function converterImagem(
+    buffer
+) {
 
-const produtos = [
+    if (
+        !buffer ||
+        !buffer.data
+    ) {
 
-
-
-    //==============================================
-    // LANCHES
-    //==============================================
-
-
-    {
-
-        id:1,
-
-        categoria:"lanches",
-
-        nome:"ONION SUPREMO",
-
-        descricao:
-
-        "Pão brioche, hambúrguer 160g, mussarela, barbecue, bacon, anel de cebola empanado e molho especial.",
-
-        preco:32.00,
-
-        imagem:"../assets/produto1.png"
-
-
-    },
-
-
-
-    {
-
-        id:2,
-
-        categoria:"lanches",
-
-        nome:"LOUKÃO CAMPEÃO DE VENDAS 🏆",
-
-        descricao:
-
-        "Pão brioche, hambúrguer 160g, mussarela, bacon, alface, tomate, cebola e molho especial.",
-
-        preco:29.90,
-
-        imagem:"../assets/produto2.png"
-
-
-    },
-
-
-
-    {
-
-        id:3,
-
-        categoria:"lanches",
-
-        nome:"EXPLOSIVO QUEIJO",
-
-        descricao:
-
-        "Pão brioche, hambúrguer 160g, bacon, mussarela empanada e molho especial.",
-
-        preco:31.90,
-
-        imagem:"../assets/produto4.png"
-
-
-    },
-
-
-
-    {
-
-        id:4,
-
-        categoria:"lanches",
-
-        nome:"COMBO SOLTEIRÃO",
-
-        descricao:
-
-        "Dois hambúrgueres artesanais, cheddar cremoso e bacon crocante.",
-
-        preco:30.90,
-
-        imagem:"../assets/produto5.jpeg"
-
-
-    },
-
-
-
-    {
-
-        id:5,
-
-        categoria:"lanches",
-
-        nome:"TRIO DE OURO",
-
-        descricao:
-
-        "Três hambúrgueres artesanais, cheddar cremoso e bacon crocante.",
-
-        preco:87.90,
-
-        imagem:"../assets/produto6.jpeg"
-
-
-    },
-
-
-
-    {
-
-        id:6,
-
-        categoria:"lanches",
-
-        nome:"MEGA BACON",
-
-        descricao:
-
-        "Hambúrguer artesanal, bacon extra, catupiry e molho especial.",
-
-        preco:34.90,
-
-        imagem:"../assets/produto7.jpeg"
-
-
-    },
-
-
-
-    {
-
-        id:7,
-
-        categoria:"lanches",
-
-        nome:"GLORIOSO",
-
-        descricao:
-
-        "Pão brioche, 3 hambúrgueres 160g, 3 mussarelas, cebola roxa, triplo bacon, tomate, barbecue e molho especial.",
-
-        preco:35.90,
-
-        imagem:"../assets/produto9.jpeg"
-
-
-    },
-
-
-
-    {
-
-        id:8,
-
-        categoria:"lanches",
-
-        nome:"BATATA TURBINADA",
-
-        descricao:
-
-        "Batata frita crocante, cheddar e bacon crocante.",
-
-        preco:41.90,
-
-        imagem:"../assets/produto8.jpeg"
-
-
-    },
-
-
-
-    //==============================================
-    // BEBIDAS
-    //==============================================
-
-
-    {
-
-        id:9,
-
-        categoria:"bebidas",
-
-        nome:"COCA COLA LATA",
-
-        descricao:
-
-        "Coca Cola 350ml bem gelada.",
-
-        preco:6.00,
-
-        imagem:"../assets/coca.jpg"
-
-
-    },
-
-
-
-    {
-
-        id:10,
-
-        categoria:"bebidas",
-
-        nome:"GUARANÁ LATA",
-
-        descricao:
-
-        "Guaraná Antarctica 350ml gelado.",
-
-        preco:6.00,
-
-        imagem:"../assets/guarana.jpg"
-
-
-    },
-
-
-
-    {
-
-        id:11,
-
-        categoria:"bebidas",
-
-        nome:"SUCO NATURAL",
-
-        descricao:
-
-        "Suco natural de laranja preparado na hora.",
-
-        preco:8.00,
-
-        imagem:"../assets/suco.jpg"
-
-
-    },
-
-
-
-    {
-
-        id:12,
-
-        categoria:"bebidas",
-
-        nome:"ÁGUA MINERAL",
-
-        descricao:
-
-        "Água mineral 500ml.",
-
-        preco:3.00,
-
-        imagem:"../assets/agua.jpg"
-
+        return "";
 
     }
 
 
-];
-/*==================================================
-            ELEMENTOS DA TELA
-==================================================*/
+    const bytes =
+        new Uint8Array(
+            buffer.data
+        );
 
 
-const tituloProdutos =
+    let binario =
+        "";
 
-document.getElementById("tituloProdutos");
 
+    for (
+        let i = 0;
+        i < bytes.length;
+        i++
+    ) {
 
+        binario +=
+            String.fromCharCode(
+                bytes[i]
+            );
 
-const subtituloProdutos =
+    }
 
-document.getElementById("subtituloProdutos");
 
+    return (
+        "data:image/jpeg;base64," +
+        btoa(binario)
+    );
 
+}
 
-const listaProdutos =
 
-document.getElementById("listaProdutos");
+//==================================================
+//              CARREGAR CATEGORIAS
+//==================================================
 
+function carregarCategorias() {
 
+    fetch(
+        API_CATEGORIAS
+    )
 
-const botoesCategoria =
+        .then(response => {
 
-document.querySelectorAll(".btnCategoria");
+            if (!response.ok) {
 
+                throw new Error(
+                    "Erro ao carregar categorias."
+                );
 
+            }
 
 
+            return response.json();
 
+        })
 
-/*==================================================
-            INSERIR TEXTOS
-==================================================*/
+        .then(categorias => {
 
+            categoriasProdutos.innerHTML =
+                "";
 
-tituloProdutos.textContent =
 
-textos.titulo;
+            //==================================================
+            //              SEM CATEGORIAS
+            //==================================================
 
+            if (
+                categorias.length === 0
+            ) {
 
+                categoriasProdutos.innerHTML = `
 
-subtituloProdutos.textContent =
+                <p>
+                    Nenhuma categoria cadastrada.
+                </p>
 
-textos.subtitulo;
+            `;
 
 
+                listaProdutos.innerHTML = `
 
+                <p>
+                    Nenhum produto disponível.
+                </p>
 
+            `;
 
 
+                return;
 
-/*==================================================
-            FUNÇÃO MOSTRAR PRODUTOS
-==================================================*/
+            }
 
 
-function mostrarProdutos(lista){
+            //==================================================
+            //              CRIAR BOTÕES
+            //==================================================
 
+            categorias.forEach(
+                (
+                    categoria,
+                    indice
+                ) => {
 
+                    const botao =
+                        document.createElement(
+                            "button"
+                        );
 
-    // Limpa produtos antigos
 
-    listaProdutos.innerHTML = "";
+                    botao.type =
+                        "button";
 
 
+                    botao.classList.add(
+                        "btnCategoria"
+                    );
 
 
+                    botao.dataset.id =
+                        categoria.idCategoria;
 
-    lista.forEach((produto)=>{
 
+                    botao.innerHTML = `
 
+                    <i class="fa-solid fa-utensils"></i>
 
-        //==========================================
-        // CRIANDO CARD
-        //==========================================
+                    <span>
 
+                        ${categoria.nome}
 
-        const card =
+                    </span>
 
-        document.createElement("div");
+                `;
 
 
+                    //==================================================
+                    // PRIMEIRA CATEGORIA ATIVA
+                    //==================================================
 
-        card.className =
+                    if (
+                        indice === 0
+                    ) {
 
-        "cardProduto";
+                        botao.classList.add(
+                            "ativo"
+                        );
 
+                    }
 
 
+                    //==================================================
+                    // CLIQUE NA CATEGORIA
+                    //==================================================
 
+                    botao.addEventListener(
+                        "click",
+                        function () {
 
+                            //==================================================
+                            // REMOVER ATIVO
+                            //==================================================
 
-        //==========================================
-        // IMAGEM
-        //==========================================
+                            document
+                                .querySelectorAll(
+                                    ".btnCategoria"
+                                )
+                                .forEach(
+                                    item => {
 
+                                        item.classList.remove(
+                                            "ativo"
+                                        );
 
-        const imagem =
+                                    }
+                                );
 
-        document.createElement("img");
 
+                            //==================================================
+                            // ATIVAR ATUAL
+                            //==================================================
 
+                            botao.classList.add(
+                                "ativo"
+                            );
 
-        imagem.src =
 
-        produto.imagem;
+                            //==================================================
+                            // CARREGAR PRODUTOS
+                            //==================================================
 
+                            listarProdutosPorCategoria(
+                                categoria.idCategoria
+                            );
 
+                        }
+                    );
 
-        imagem.alt =
 
-        produto.nome;
+                    categoriasProdutos.appendChild(
+                        botao
+                    );
 
-
-
-
-
-
-
-        //==========================================
-        // ÁREA DE INFORMAÇÕES
-        //==========================================
-
-
-        const info =
-
-        document.createElement("div");
-
-
-
-        info.className =
-
-        "infoProduto";
-
-
-
-
-
-
-
-        //==========================================
-        // NOME
-        //==========================================
-
-
-        const nome =
-
-        document.createElement("h2");
-
-
-
-        nome.textContent =
-
-        produto.nome;
-
-
-
-
-
-
-
-        //==========================================
-        // DESCRIÇÃO
-        //==========================================
-
-
-        const descricao =
-
-        document.createElement("p");
-
-
-
-        descricao.textContent =
-
-        produto.descricao;
-
-
-
-
-
-
-
-        //==========================================
-        // PREÇO
-        //==========================================
-
-
-        const preco =
-
-        document.createElement("div");
-
-
-
-        preco.className =
-
-        "preco";
-
-
-
-        preco.textContent =
-
-        "R$ " + produto.preco.toFixed(2);
-
-
-
-
-
-
-
-        //==========================================
-        // BOTÃO ESCOLHER
-        //==========================================
-
-
-        const btnEscolher =
-
-        document.createElement("button");
-
-
-
-        btnEscolher.className =
-
-        "btnEscolher";
-
-
-
-        btnEscolher.textContent =
-
-        "Escolher";
-
-
-
-
-
-
-
-        btnEscolher.addEventListener("click",()=>{
-
-
-
-            alert(
-
-                "Você escolheu:\n\n"
-
-                + produto.nome
-
+                }
             );
 
 
+            //==================================================
+            // CARREGAR PRIMEIRA CATEGORIA
+            //==================================================
+
+            listarProdutosPorCategoria(
+                categorias[0].idCategoria
+            );
+
+        })
+
+        .catch(error => {
+
+            console.error(
+                "Erro ao carregar categorias:",
+                error
+            );
+
+
+            categoriasProdutos.innerHTML = `
+
+            <p>
+                Não foi possível carregar as categorias.
+            </p>
+
+        `;
 
         });
 
-
-
-
-
-
-
-        //==========================================
-        // MONTAGEM DO CARD
-        //==========================================
-
-
-        info.appendChild(nome);
-
-        info.appendChild(descricao);
-
-        info.appendChild(preco);
-
-        info.appendChild(btnEscolher);
-
-
-
-        card.appendChild(imagem);
-
-        card.appendChild(info);
-
-
-
-        listaProdutos.appendChild(card);
-
-
-
-    });
-
-
-
 }
 
 
-
-
-
-
-
-/*==================================================
-        CARREGAR CATEGORIA INICIAL
-            MOSTRA LANCHES
-==================================================*/
-
-
-const listaLanches =
-
-
-produtos.filter((produto)=>{
-
-
-    return produto.categoria === "lanches";
-
-
-});
-
-
-
-mostrarProdutos(listaLanches);
-/*==================================================
-            FILTRO DE CATEGORIAS
-==================================================*/
-
-
-botoesCategoria.forEach((botao)=>{
-
-
-
-    botao.addEventListener("click",()=>{
-
-
-
-        //==========================================
-        // REMOVE BOTÃO ATIVO
-        //==========================================
-
-
-        const categoriaAtiva =
-
-        document.querySelector(".btnCategoria.ativo");
-
-
-
-        if(categoriaAtiva){
-
-            categoriaAtiva.classList.remove("ativo");
-
-        }
-
-
-
-
-
-
-        //==========================================
-        // ADICIONA ATIVO NO BOTÃO CLICADO
-        //==========================================
-
-
-        botao.classList.add("ativo");
-
-
-
-
-
-
-
-        //==========================================
-        // PEGA CATEGORIA ESCOLHIDA
-        //==========================================
-
-
-        const categoriaSelecionada =
-
-        botao.dataset.categoria;
-
-
-
-
-
-
-
-        //==========================================
-        // FILTRA PRODUTOS
-        //==========================================
-
-
-        const produtosFiltrados =
-
-
-        produtos.filter((produto)=>{
-
-
-            return produto.categoria === categoriaSelecionada;
-
-
-        });
-
-
-
-
-
-
-
-        //==========================================
-        // MOSTRA PRODUTOS
-        //==========================================
-
-
-        mostrarProdutos(produtosFiltrados);
-
-
-
-    });
-
-
-
-});
-
-
-
-
-
-
-
-/*==================================================
-            BOTÕES DO MENU
-==================================================*/
-
-
-const btnHome =
-
-document.getElementById("btnHome");
-
-
-
-const btnPromocoes =
-
-document.getElementById("btnPromocoes");
-
-
-
-const btnPedidos =
-
-document.getElementById("btnPedidos");
-
-
-
-const btnEntrar =
-
-document.getElementById("btnEntrar");
-
-
-
-
-
-
-
-
-/*==================================================
-            EVENTOS DO MENU
-==================================================*/
-
-
-if(btnHome){
-
-
-    btnHome.addEventListener("click",()=>{
-
-
-        alert("Página Inicial");
-
-
-    });
-
-
-}
-
-
-
-
-
-if(btnPromocoes){
-
-
-    btnPromocoes.addEventListener("click",()=>{
-
-
-        alert("Promoções");
-
-
-    });
-
-
-}
-
-
-
-
-
-if(btnPedidos){
-
-
-    btnPedidos.addEventListener("click",()=>{
-
-
-        alert("Meus Pedidos");
-
-
-    });
-
-
-}
-
-
-
-
-
-if(btnEntrar){
-
-
-    btnEntrar.addEventListener("click",()=>{
-
-
-        alert("Entrar / Cadastrar");
-
-
-    });
-
-
-}
-
-
-
-
-
-
-
-/*==================================================
-                RODAPÉ
-==================================================*/
-
-
-const textoRodape =
-
-document.getElementById("textoRodape");
-
-
-
-if(textoRodape){
-
-
-    textoRodape.textContent =
-
-
-    "ARAGUAÍNA - TO | Sipaúba Lanches © 2026";
-
-
-}
-
-
-
-
-
-
-
-const enderecoEmpresa =
-
-document.getElementById("enderecoEmpresa");
-
-
-
-if(enderecoEmpresa){
-
-
-    enderecoEmpresa.textContent =
-
-
-    "Rua 20 com  Rua 01 - Setor Coimbra, Praças Imigrantes";
-
-
-}
-
-
-
-
-
-
-
-const listaRedes =
-
-document.getElementById("listaRedes");
-
-
-
-if(listaRedes){
-
-
-
-    listaRedes.innerHTML =
-
-
-
-    `
-
-    <a href="#" title="Instagram">
-
-        <i class="fa-brands fa-instagram"></i>
-
-    </a>
-
-
-    <a href="#" title="Facebook">
-
-        <i class="fa-brands fa-facebook"></i>
-
-    </a>
-
-
-    <a href="#" title="WhatsApp">
-
-        <i class="fa-brands fa-whatsapp"></i>
-
-    </a>
+//==================================================
+//      LISTAR PRODUTOS POR CATEGORIA
+//==================================================
+
+function listarProdutosPorCategoria(
+    idCategoria
+) {
+
+    //==================================================
+    //              CARREGANDO
+    //==================================================
+
+    listaProdutos.innerHTML = `
+
+        <p>
+            Carregando produtos...
+        </p>
 
     `;
 
 
+    fetch(
+        `${API_PRODUTOS}/categoria/${idCategoria}`
+    )
+
+        .then(response => {
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Erro ao carregar produtos."
+                );
+
+            }
+
+
+            return response.json();
+
+        })
+
+        .then(produtos => {
+
+            listaProdutos.innerHTML =
+                "";
+
+
+            //==================================================
+            //              SEM PRODUTOS
+            //==================================================
+
+            if (
+                produtos.length === 0
+            ) {
+
+                listaProdutos.innerHTML = `
+
+                <p class="semProdutos">
+
+                    Nenhum produto disponível nesta categoria.
+
+                </p>
+
+            `;
+
+
+                return;
+
+            }
+
+
+            //==================================================
+            //              APENAS ATIVOS
+            //==================================================
+
+            const produtosAtivos =
+                produtos.filter(
+                    produto =>
+                        Boolean(
+                            produto.ativo
+                        )
+                );
+
+
+            if (
+                produtosAtivos.length === 0
+            ) {
+
+                listaProdutos.innerHTML = `
+
+                <p class="semProdutos">
+
+                    Nenhum produto disponível nesta categoria.
+
+                </p>
+
+            `;
+
+
+                return;
+
+            }
+
+
+            //==================================================
+            //              CRIAR CARDS
+            //==================================================
+
+            produtosAtivos.forEach(
+                produto => {
+
+                    criarCardProduto(
+                        produto
+                    );
+
+                }
+            );
+
+        })
+
+        .catch(error => {
+
+            console.error(
+                "Erro ao listar produtos:",
+                error
+            );
+
+
+            listaProdutos.innerHTML = `
+
+            <p class="mensagemErro">
+
+                Não foi possível carregar os produtos.
+
+            </p>
+
+        `;
+
+        });
 
 }
 
+
+//==================================================
+//              CRIAR CARD
+//==================================================
+
+function criarCardProduto(
+    produto
+) {
+
+    const card =
+        document.createElement(
+            "article"
+        );
+
+
+    card.classList.add(
+        "cardProduto"
+    );
+
+
+    //==================================================
+    //              IMAGEM
+    //==================================================
+
+    const imagem =
+        converterImagem(
+            produto.imagem
+        );
+
+
+    //==================================================
+    //              PREÇOS
+    //==================================================
+
+    const precoAtual =
+        Number(
+            produto.preco_promocional ||
+            0
+        );
+
+
+    const precoAntigo =
+        Number(
+            produto.preco_antigo ||
+            0
+        );
+
+
+    //==================================================
+    //              CONTEÚDO
+    //==================================================
+
+    card.innerHTML = `
+
+        <div class="imagemProduto">
+
+            ${imagem
+
+            ?
+
+            `
+                    <img
+                        src="${imagem}"
+                        alt="${produto.nome}"
+                    >
+                    `
+
+            :
+
+            `
+                    <div class="semImagem">
+
+                        <i class="fa-solid fa-burger"></i>
+
+                    </div>
+                    `
+        }
+
+        </div>
+
+
+        <div class="conteudoProduto">
+
+
+            <h3>
+
+                ${produto.nome}
+
+            </h3>
+
+
+            <p class="descricaoProduto">
+
+                ${produto.descricao}
+
+            </p>
+
+
+            <div class="precos">
+
+
+                ${precoAntigo > 0
+
+            ?
+
+            `
+                        <span class="precoAntigo">
+
+                            R$
+                            ${precoAntigo
+                .toFixed(2)
+                .replace(".", ",")}
+
+                        </span>
+                        `
+
+            :
+
+            ""
+        }
+
+
+                <strong class="precoAtual">
+
+                    R$
+                    ${precoAtual
+            .toFixed(2)
+            .replace(".", ",")}
+
+                </strong>
+
+
+            </div>
+
+
+            <button
+                type="button"
+                class="btnEscolher"
+            >
+
+                Ver detalhes
+
+            </button>
+
+
+        </div>
+
+    `;
+
+
+    //==================================================
+    //      ABRIR DETALHES CLICANDO NO CARD
+    //==================================================
+
+    card.addEventListener(
+        "click",
+        function () {
+
+            abrirDetalhesProduto(
+                produto.idProduto
+            );
+
+        }
+    );
+
+
+    //==================================================
+    //      BOTÃO TAMBÉM ABRE DETALHES
+    //==================================================
+
+    const botao =
+        card.querySelector(
+            ".btnEscolher"
+        );
+
+
+    botao.addEventListener(
+        "click",
+        function (event) {
+
+            event.stopPropagation();
+
+
+            abrirDetalhesProduto(
+                produto.idProduto
+            );
+
+        }
+    );
+
+
+    listaProdutos.appendChild(
+        card
+    );
+
+}
+
+
+//==================================================
+//          ABRIR DETALHES DO PRODUTO
+//==================================================
+
+function abrirDetalhesProduto(
+    idProduto
+) {
+
+    window.location.href =
+        `../pages/detalhes.html?id=${idProduto}`;
+
+}
+
+
+//==================================================
+//              BOTÃO HOME
+//==================================================
+
+document.getElementById(
+    "btnHome"
+)
+    .addEventListener(
+        "click",
+        function () {
+
+            window.location.href =
+                "index.html";
+
+        }
+    );
+
+
+//==================================================
+//              ENTRAR
+//==================================================
+
+document.getElementById(
+    "btnEntrar"
+)
+    .addEventListener(
+        "click",
+        function () {
+
+            window.location.href =
+                "login.html";
+
+        }
+    );
+
+
+//==================================================
+//              INICIAR
+//==================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        carregarCategorias();
+
+    }
+);

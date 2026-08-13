@@ -1,67 +1,42 @@
 const conexao = require("../conexao/conexao.js");
 
-// =========================
-// Vincular Produto ao Banner
-// =========================
-
+// VINCULAR PRODUTO AO BANNER
 function cadastrar(relacao, callback) {
-
-    const sql = `INSERT INTO Banner_has_Produto
-        (
-            Banner_idBanner,
-            Produto_idProduto
-        )
-        VALUES (?, ?)`;
+    const sql = `
+        INSERT INTO Banner_has_Produto
+        (Produto_idProduto, Banner_idBanner)
+        VALUES (?, ?)
+    `;
 
     conexao.query(
         sql,
         [
-            relacao.Banner_idBanner,
-            relacao.Produto_idProduto
+            relacao.Produto_idProduto,
+            relacao.Banner_idBanner
         ],
         callback
     );
-
 }
 
-// =========================
-// Listar Relações
-// =========================
-
+// LISTAR RELAÇÕES
 function listar(callback) {
-
-    const sql = `
-        SELECT *
-        FROM Banner_has_Produto
-    `;
-
-    conexao.query(sql, callback);
-
+    conexao.query("SELECT * FROM Banner_has_Produto", callback);
 }
 
-// =========================
-// Buscar Relação
-// =========================
-
+// BUSCAR RELAÇÃO
 function buscar(bannerId, produtoId, callback) {
-
     const sql = `
         SELECT *
         FROM Banner_has_Produto
         WHERE Banner_idBanner = ?
-        AND Produto_idProduto = ?
+          AND Produto_idProduto = ?
     `;
 
     conexao.query(sql, [bannerId, produtoId], callback);
-
 }
 
-// =========================
-// Buscar Produtos do Banner
-// =========================
-
+// BUSCAR PRODUTOS DO BANNER
 function buscarPorBanner(bannerId, callback) {
-
     const sql = `
         SELECT *
         FROM Banner_has_Produto
@@ -69,15 +44,10 @@ function buscarPorBanner(bannerId, callback) {
     `;
 
     conexao.query(sql, [bannerId], callback);
-
 }
 
-// =========================
-// Buscar Banners do Produto
-// =========================
-
+// BUSCAR BANNERS DO PRODUTO
 function buscarPorProduto(produtoId, callback) {
-
     const sql = `
         SELECT *
         FROM Banner_has_Produto
@@ -85,32 +55,24 @@ function buscarPorProduto(produtoId, callback) {
     `;
 
     conexao.query(sql, [produtoId], callback);
-
 }
 
-// =========================
-// Remover Produto do Banner
-// =========================
-
+// EXCLUIR RELAÇÃO
 function excluir(bannerId, produtoId, callback) {
-
     const sql = `
         DELETE FROM Banner_has_Produto
         WHERE Banner_idBanner = ?
-        AND Produto_idProduto = ?
+          AND Produto_idProduto = ?
     `;
 
     conexao.query(sql, [bannerId, produtoId], callback);
-
 }
 
 module.exports = {
-
     cadastrar,
     listar,
     buscar,
     buscarPorBanner,
     buscarPorProduto,
     excluir
-
 };

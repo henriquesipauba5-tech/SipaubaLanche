@@ -1,1164 +1,1488 @@
-/* ==================================================
-   RESET
-================================================== */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    background:#f2f2f2;
-    color:#222;
-}
-
-/* ==================================================
-   CONTAINER
-================================================== */
-
-.container{
-
-    width:100%;
-    max-width:1200px;
-
-    margin:0 auto;
-
-    background:#ffffff;
-
-    min-height:100vh;
-
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-
-}
-
-/* ==================================================
-   HEADER
-================================================== */
-
-.header{
-
-    width:100%;
-
-    height:85px;
-
-    background:#ff1f1f;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-}
-
-.header h1{
-
-    color:#000;
-
-    font-size:42px;
-
-    font-style:italic;
-
-    font-weight:900;
-
-    letter-spacing:1px;
-
-}
-
-/* ==================================================
-   PRODUTO
-================================================== */
-
-.produto{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:35px;
-
-    padding:35px;
-
-    align-items:flex-start;
-
-}
-
-/* ==================================================
-   IMAGEM
-================================================== */
-
-.produto-imagem{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-}
-
-.produto-imagem img{
-
-    width:100%;
-
-    max-width:470px;
-
-    border-radius:22px;
-
-    object-fit:cover;
-
-    display:block;
-
-}
-
-/* ==================================================
-   INFORMAÇÕES
-================================================== */
-
-.produto-info{
-
-    display:flex;
-
-    flex-direction:column;
-
-}
-
-/* ==================================================
-   TÍTULO DO PRODUTO
-================================================== */
-
-.produto-info h2{
-
-    width:100%;
-
-    background:#dddddd;
-
-    border:1px solid #999;
-
-    border-radius:40px;
-
-    text-align:center;
-
-    padding:16px;
-
-    margin-bottom:18px;
-
-    font-size:32px;
-
-    font-weight:900;
-
-    font-style:italic;
-
-}
-
-/* ==================================================
-   CAIXA DESCRIÇÃO
-================================================== */
-
-.descricao{
-
-    background:#dddddd;
-
-    border:1px solid #999;
-
-    border-radius:20px;
-
-    padding:24px;
-
-    min-height:250px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:space-between;
-
-}
-
-.descricao p{
-
-    font-size:20px;
-
-    line-height:1.6;
-
-    color:#2b2b2b;
-
-}
-
-.descricao h3{
-
-    font-size:40px;
-
-    font-weight:900;
-
-    color:#000;
-
-    margin:25px 0;
-
-}
-
-/* ==================================================
-   CONTROLE DO PRODUTO
-================================================== */
-
-.controle-produto{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-}
-
-.controle{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:18px;
-
-}
-
-/* Botões */
-
-.controle button{
-
-    width:36px;
-
-    height:36px;
-
-    border:none;
-
-    background:none;
-
-    cursor:pointer;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-}
-
-/* Ícone de imagem (-) */
-
-.controle button img{
-
-    width:26px;
-
-    height:26px;
-
-}
-
-/* Ícone (+) */
-
-.controle button i{
-
-    font-size:28px;
-
-    color:#000;
-
-}
-
-.controle span{
-
-    font-size:24px;
-
-    font-weight:700;
-
-    min-width:20px;
-
-    text-align:center;
-
-}
-
-/* ==================================================
-   BOTÃO DO CARRINHO
-================================================== */
-
-.carrinho{
-
-    border:none;
-
-    background:none;
-
-    cursor:pointer;
-
-}
-
-.carrinho i{
-
-    font-size:28px;
-
-    color:#000;
-
-}
-
-.carrinho:hover{
-
-    transform:scale(1.08);
-
-}
-
-/* ==================================================
-   TÍTULO DOS ADICIONAIS
-================================================== */
-
-.adicionais{
-
-    padding:10px 35px 40px;
-
-}
-
-.adicionais h2{
-
-    text-align:center;
-
-    font-size:44px;
-
-    font-weight:900;
-
-    font-style:italic;
-
-    margin-bottom:30px;
-
-}
-/* ==================================================
-   LISTA DE ADICIONAIS
-================================================== */
-
-#listaAdicionais{
-
-    width:100%;
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:12px;
-
-}
-
-/* ==================================================
-   CARD DO ADICIONAL
-================================================== */
-
-.adicional{
-
-    width:100%;
-
-    height:72px;
-
-    background:#ececec;
-
-    border:1px solid #9d9d9d;
-
-    border-radius:10px;
-
-    padding:12px 18px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    transition:.25s ease;
-
-}
-
-.adicional:hover{
-
-    background:#e3e3e3;
-
-    box-shadow:0 3px 10px rgba(0,0,0,.08);
-
-}
-
-/* ==================================================
-   LADO ESQUERDO
-================================================== */
-
-.info{
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-}
-
-.info h4{
-
-    font-size:20px;
-
-    font-weight:700;
-
-    color:#222;
-
-    margin-bottom:3px;
-
-}
-
-.info span{
-
-    font-size:18px;
-
-    color:#555;
-
-    font-weight:600;
-
-}
-
-/* ==================================================
-   CONTROLE DOS ADICIONAIS
-================================================== */
-
-.controle-adicional{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:16px;
-
-}
-
-/* ==================================================
-   BOTÕES
-================================================== */
-
-.controle-adicional button{
-
-    width:32px;
-
-    height:32px;
-
-    border:none;
-
-    background:none;
-
-    cursor:pointer;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    transition:.2s;
-
-}
-
-.controle-adicional button:hover{
-
-    transform:scale(1.1);
-
-}
-
-.controle-adicional button:active{
-
-    transform:scale(.95);
-
-}
-
-/* ==================================================
-   ÍCONE NEGATIVO (PNG)
-================================================== */
-
-.menosAdicional img{
-
-    width:24px;
-
-    height:24px;
-
-    display:block;
-
-}
-
-/* ==================================================
-   ÍCONE POSITIVO
-================================================== */
-
-.maisAdicional i{
-
-    font-size:25px;
-
-    color:#000;
-
-}
-
-/* ==================================================
-   QUANTIDADE
-================================================== */
-
-.qtdAdicional{
-
-    width:20px;
-
-    text-align:center;
-
-    font-size:20px;
-
-    font-weight:700;
-
-}
-
-/* ==================================================
-   ITEM SELECIONADO
-================================================== */
-
-.adicional.ativo{
-
-    border:2px solid #ff2020;
-
-    background:#fff3f3;
-
-}
-
-/* ==================================================
-   SCROLL
-================================================== */
-
-#listaAdicionais{
-
-    max-height:600px;
-
-    overflow-y:auto;
-
-    padding-right:5px;
-
-}
-
-#listaAdicionais::-webkit-scrollbar{
-
-    width:8px;
-
-}
-
-#listaAdicionais::-webkit-scrollbar-track{
-
-    background:#efefef;
-
-    border-radius:20px;
-
-}
-
-#listaAdicionais::-webkit-scrollbar-thumb{
-
-    background:#b8b8b8;
-
-    border-radius:20px;
-
-}
-
-#listaAdicionais::-webkit-scrollbar-thumb:hover{
-
-    background:#888;
-
-}
-
-/* ==================================================
-   ANIMAÇÃO
-================================================== */
-
-.adicional{
-
-    animation:fadeIn .35s ease;
-
-}
-
-@keyframes fadeIn{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(10px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
-}/*==================================================
-=              BOTÕES INFERIORES
+/*==================================================
+                    RESET
 ==================================================*/
 
-.acoes{
+* {
 
-    width:100%;
+    margin: 0;
 
-    display:flex;
+    padding: 0;
 
-    justify-content:center;
+    box-sizing: border-box;
 
-    align-items:center;
-
-    gap:35px;
-
-    padding:40px 35px 30px;
+    font-family: 'Poppins', sans-serif;
 
 }
 
-/* Botão Voltar */
 
-#btnVoltar{
+html {
 
-    width:220px;
-
-    height:60px;
-
-    border:none;
-
-    border-radius:40px;
-
-    background:#d9d9d9;
-
-    color:#000;
-
-    font-size:32px;
-
-    font-weight:800;
-
-    font-style:italic;
-
-    cursor:pointer;
-
-    transition:.3s;
+    scroll-behavior: smooth;
 
 }
 
-#btnVoltar:hover{
 
-    background:#cfcfcf;
+body {
 
-    transform:translateY(-2px);
+    background: #f2f2f2;
 
-}
-
-/* Botão Adicionar */
-
-#btnAdicionar{
-
-    width:430px;
-
-    height:60px;
-
-    border:none;
-
-    border-radius:40px;
-
-    background:#ff1f1f;
-
-    color:#fff;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding:0 28px;
-
-    cursor:pointer;
-
-    transition:.3s;
+    color: #222;
 
 }
 
-#btnAdicionar:hover{
-
-    background:#e51717;
-
-    transform:translateY(-2px);
-
-}
-
-#btnAdicionar span{
-
-    font-size:34px;
-
-    font-weight:700;
-
-    font-style:italic;
-
-}
-
-#valorTotal{
-
-    font-size:34px;
-
-    font-weight:800;
-
-}
 
 /*==================================================
-=                    FOOTER
+                    CONTAINER
 ==================================================*/
 
-footer{
+.container {
 
-    width:100%;
+    width: 100%;
 
-    background:#ff1f1f;
+    max-width: 1200px;
 
-    display:flex;
+    margin: 0 auto;
 
-    justify-content:space-between;
+    background: #ffffff;
 
-    align-items:flex-start;
+    min-height: 100vh;
 
-    padding:18px 35px;
-
-    color:#fff;
-
-}
-
-.redes{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:12px;
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.08);
 
 }
 
-.redes h3{
-
-    font-size:22px;
-
-    font-weight:800;
-
-    font-style:italic;
-
-}
-
-.icones{
-
-    display:flex;
-
-    gap:18px;
-
-}
-
-.icones a{
-
-    color:#fff;
-
-    font-size:30px;
-
-    transition:.3s;
-
-}
-
-.icones a:hover{
-
-    transform:scale(1.15);
-
-}
-
-.localizacao{
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:flex-start;
-
-}
-
-.localizacao h3{
-
-    font-size:22px;
-
-    font-weight:800;
-
-    font-style:italic;
-
-    margin-bottom:10px;
-
-}
-
-.localizacao p{
-
-    font-size:17px;
-
-    font-weight:600;
-
-    line-height:1.4;
-
-}
 
 /*==================================================
-=               RESPONSIVIDADE
+                    HEADER
 ==================================================*/
 
-@media(max-width:992px){
+.header {
 
-    .produto{
+    width: 100%;
 
-        grid-template-columns:1fr;
+    min-height: 85px;
+
+    background: #ff1f1f;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 15px;
+
+}
+
+
+.header h1 {
+
+    color: #000;
+
+    font-size: 38px;
+
+    font-style: italic;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    text-align: center;
+
+}
+
+
+/*==================================================
+                    PRODUTO
+==================================================*/
+
+.produto {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 35px;
+
+    padding: 35px;
+
+    align-items: stretch;
+
+}
+
+
+/*==================================================
+                IMAGEM DO PRODUTO
+==================================================*/
+
+.produto-imagem {
+
+    width: 100%;
+
+    min-height: 400px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    background: #f5f5f5;
+
+}
+
+
+.produto-imagem img {
+
+    width: 100%;
+
+    height: 100%;
+
+    max-height: 470px;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: 0.4s;
+
+}
+
+
+.produto-imagem img:hover {
+
+    transform: scale(1.03);
+
+}
+
+
+/*==================================================
+                INFORMAÇÕES PRODUTO
+==================================================*/
+
+.produto-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+/*==================================================
+                    CATEGORIA
+==================================================*/
+
+.categoriaProduto {
+
+    display: inline-block;
+
+    width: fit-content;
+
+    background: #ff1f1f;
+
+    color: #ffffff;
+
+    padding: 6px 15px;
+
+    border-radius: 30px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    margin-bottom: 12px;
+
+}
+
+
+/*==================================================
+                    NOME PRODUTO
+==================================================*/
+
+.produto-info h2 {
+
+    width: 100%;
+
+    background: #dddddd;
+
+    border: 1px solid #999;
+
+    border-radius: 40px;
+
+    text-align: center;
+
+    padding: 15px;
+
+    margin-bottom: 18px;
+
+    font-size: 30px;
+
+    font-weight: 900;
+
+    font-style: italic;
+
+}
+
+
+/*==================================================
+                    DESCRIÇÃO
+==================================================*/
+
+.descricao {
+
+    background: #dddddd;
+
+    border: 1px solid #999;
+
+    border-radius: 20px;
+
+    padding: 24px;
+
+    min-height: 300px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.08);
+
+}
+
+
+.descricao p {
+
+    font-size: 17px;
+
+    line-height: 1.6;
+
+    color: #2b2b2b;
+
+}
+
+
+/*==================================================
+                    PREÇO ANTIGO
+==================================================*/
+
+.precoAntigo {
+
+    color: #777;
+
+    font-size: 16px;
+
+    text-decoration: line-through;
+
+    margin-top: 15px;
+
+}
+
+
+/*==================================================
+                    PREÇO ATUAL
+==================================================*/
+
+.descricao h3 {
+
+    font-size: 38px;
+
+    font-weight: 900;
+
+    color: #000;
+
+    margin: 5px 0 20px;
+
+}
+
+
+/*==================================================
+                    ESTOQUE
+==================================================*/
+
+.estoqueProduto {
+
+    margin-top: 15px;
+
+    font-size: 13px !important;
+
+    font-weight: 600;
+
+    color: #555 !important;
+
+}
+
+
+/*==================================================
+                CONTROLE PRODUTO
+==================================================*/
+
+.controle-produto {
+
+    display: flex;
+
+    justify-content: flex-start;
+
+    align-items: center;
+
+}
+
+
+.controle {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+}
+
+
+.controle button {
+
+    width: 38px;
+
+    height: 38px;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+.controle button i {
+
+    font-size: 29px;
+
+    color: #000;
+
+}
+
+
+.controle button:hover {
+
+    transform: scale(1.1);
+
+}
+
+
+.controle span {
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    min-width: 25px;
+
+    text-align: center;
+
+}
+
+
+/*==================================================
+                    ADICIONAIS
+==================================================*/
+
+.adicionais {
+
+    padding: 20px 35px 40px;
+
+}
+
+
+.adicionais h2 {
+
+    text-align: center;
+
+    font-size: 38px;
+
+    font-weight: 900;
+
+    font-style: italic;
+
+    margin-bottom: 5px;
+
+}
+
+
+.textoAdicional {
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 14px;
+
+    margin-bottom: 28px;
+
+}
+
+
+/*==================================================
+                LISTA ADICIONAIS
+==================================================*/
+
+#listaAdicionais {
+
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,
+            minmax(0, 1fr));
+
+    gap: 16px;
+
+    max-height: 650px;
+
+    overflow-y: auto;
+
+    padding: 4px 8px 4px 4px;
+
+}
+
+
+/*==================================================
+                CARD ADICIONAL
+==================================================*/
+
+.adicional {
+
+    width: 100%;
+
+    min-height: 110px;
+
+    background: #f4f4f4;
+
+    border: 1px solid #d4d4d4;
+
+    border-radius: 14px;
+
+    padding: 12px;
+
+    display: grid;
+
+    grid-template-columns:
+        85px 1fr auto;
+
+    gap: 15px;
+
+    align-items: center;
+
+    transition: 0.25s ease;
+
+    animation:
+        fadeIn 0.35s ease;
+
+}
+
+
+.adicional:hover {
+
+    border-color: #ff2020;
+
+    background: #fff7f7;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.08);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/*==================================================
+                IMAGEM ADICIONAL
+==================================================*/
+
+.imagemAdicional {
+
+    width: 85px;
+
+    height: 85px;
+
+    border-radius: 12px;
+
+    background: #e5e5e5;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+}
+
+
+/*==================================================
+            FOTO DO ADICIONAL
+==================================================*/
+
+.imagemAdicional img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+}
+
+
+/*==================================================
+            SEM FOTO DO ADICIONAL
+==================================================*/
+
+.imagemAdicional>i {
+
+    font-size: 28px;
+
+    color: #aaa;
+
+}
+
+
+/*==================================================
+                INFO ADICIONAL
+==================================================*/
+
+.info {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+}
+
+
+.info h4 {
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    color: #222;
+
+    margin-bottom: 4px;
+
+}
+
+
+/* descrição */
+
+.info p {
+
+    font-size: 12px;
+
+    color: #777;
+
+    line-height: 1.4;
+
+    margin-bottom: 5px;
+
+    display: -webkit-box;
+
+    -webkit-line-clamp: 2;
+
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+
+}
+
+
+/* preço */
+
+.info span {
+
+    font-size: 16px;
+
+    color: #222;
+
+    font-weight: 700;
+
+}
+
+
+/*==================================================
+            CONTROLE DO ADICIONAL
+==================================================*/
+
+.controle-adicional {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+}
+
+
+.controle-adicional button {
+
+    width: 30px;
+
+    height: 30px;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+.controle-adicional button i {
+
+    font-size: 24px;
+
+    color: #000;
+
+}
+
+
+.controle-adicional button:hover {
+
+    transform: scale(1.12);
+
+}
+
+
+.qtdAdicional {
+
+    min-width: 22px;
+
+    text-align: center;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    user-select: none;
+
+}
+
+
+/*==================================================
+                ADICIONAL SELECIONADO
+==================================================*/
+
+.adicional:has(.qtdAdicional:not(:empty)) {
+
+    transition: 0.3s;
+
+}
+
+
+/*==================================================
+                    SCROLL
+==================================================*/
+
+#listaAdicionais::-webkit-scrollbar {
+
+    width: 7px;
+
+}
+
+
+#listaAdicionais::-webkit-scrollbar-track {
+
+    background: #efefef;
+
+    border-radius: 20px;
+
+}
+
+
+#listaAdicionais::-webkit-scrollbar-thumb {
+
+    background: #b8b8b8;
+
+    border-radius: 20px;
+
+}
+
+
+#listaAdicionais::-webkit-scrollbar-thumb:hover {
+
+    background: #888;
+
+}
+
+
+/*==================================================
+                    OBSERVAÇÃO
+==================================================*/
+
+.observacaoPedido {
+
+    margin: 5px 35px 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.observacaoPedido label {
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+
+}
+
+
+.observacaoPedido textarea {
+
+    width: 100%;
+
+    min-height: 110px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    resize: vertical;
+
+    outline: none;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 14px;
+
+}
+
+
+.observacaoPedido textarea:focus {
+
+    border-color: #ff2020;
+
+}
+
+
+/*==================================================
+                RESUMO DO PEDIDO
+==================================================*/
+
+.resumoPedido {
+
+    margin: 0 35px;
+
+    padding: 22px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 15px;
+
+    background: #fafafa;
+
+}
+
+
+.resumoPedido>div {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 7px 0;
+
+    font-size: 15px;
+
+}
+
+
+.totalPedido {
+
+    border-top: 1px solid #ddd;
+
+    margin-top: 8px;
+
+    padding-top: 15px !important;
+
+}
+
+
+.totalPedido span {
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+}
+
+
+.totalPedido strong {
+
+    font-size: 23px;
+
+    color: #ff1f1f;
+
+}
+
+
+/*==================================================
+                    BOTÕES
+==================================================*/
+
+.acoes {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 25px;
+
+    padding: 35px;
+
+}
+
+
+/*==================================================
+                BOTÃO VOLTAR
+==================================================*/
+
+#btnVoltar {
+
+    min-width: 200px;
+
+    height: 58px;
+
+    border: none;
+
+    border-radius: 35px;
+
+    background: #d9d9d9;
+
+    color: #000;
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    padding: 0 25px;
+
+}
+
+
+#btnVoltar:hover {
+
+    background: #cfcfcf;
+
+}
+
+
+/*==================================================
+                BOTÃO WHATSAPP
+==================================================*/
+
+#btnWhatsapp {
+
+    min-width: 430px;
+
+    min-height: 60px;
+
+    border: none;
+
+    border-radius: 40px;
+
+    background: #25d366;
+
+    color: #ffffff;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 0 25px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 15px rgba(37, 211, 102, 0.25);
+
+}
+
+
+#btnWhatsapp:hover {
+
+    background: #1ebe5d;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(37, 211, 102, 0.35);
+
+}
+
+
+#btnWhatsapp i {
+
+    font-size: 28px;
+
+}
+
+
+#btnWhatsapp span {
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+}
+
+
+#valorTotalBotao {
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    margin-left: 5px;
+
+}
+
+
+/*==================================================
+                    FOOTER
+==================================================*/
+
+footer {
+
+    width: 100%;
+
+    background: #ff1f1f;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    padding: 20px 35px;
+
+    color: #ffffff;
+
+    margin-top: 35px;
+
+}
+
+
+.redes {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+}
+
+
+.redes h3,
+
+.localizacao h3 {
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+    font-style: italic;
+
+}
+
+
+.icones {
+
+    display: flex;
+
+    gap: 18px;
+
+}
+
+
+.icones a {
+
+    color: #ffffff;
+
+    font-size: 28px;
+
+}
+
+
+.icones a:hover {
+
+    transform: scale(1.15);
+
+}
+
+
+.localizacao {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+}
+
+
+.localizacao p {
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    line-height: 1.5;
+
+}
+
+
+/*==================================================
+                    ANIMAÇÃO
+==================================================*/
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(8px);
 
     }
 
-    .produto-imagem{
 
-        justify-content:center;
+    to {
 
-    }
+        opacity: 1;
 
-    .produto-imagem img{
-
-        max-width:500px;
+        transform:
+            translateY(0);
 
     }
 
 }
 
-@media(max-width:768px){
 
-    .header h1{
+/*==================================================
+                RESPONSIVIDADE 992
+==================================================*/
 
-        font-size:30px;
+@media (max-width: 992px) {
 
-    }
+    .produto {
 
-    .produto{
-
-        padding:20px;
-
-    }
-
-    .produto-info h2{
-
-        font-size:26px;
+        grid-template-columns:
+            1fr;
 
     }
 
-    .descricao p{
 
-        font-size:17px;
+    .produto-imagem {
 
-    }
-
-    .descricao h3{
-
-        font-size:32px;
+        min-height: 350px;
 
     }
 
-    .acoes{
 
-        flex-direction:column;
+    .produto-imagem img {
+
+        max-height: 430px;
 
     }
+
+
+    #listaAdicionais {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
+
+
+/*==================================================
+                RESPONSIVIDADE 768
+==================================================*/
+
+@media (max-width: 768px) {
+
+    .header h1 {
+
+        font-size: 28px;
+
+    }
+
+
+    .produto {
+
+        padding: 22px;
+
+    }
+
+
+    .produto-info h2 {
+
+        font-size: 25px;
+
+    }
+
+
+    .descricao {
+
+        padding: 20px;
+
+    }
+
+
+    .descricao h3 {
+
+        font-size: 31px;
+
+    }
+
+
+    .adicionais {
+
+        padding-left: 20px;
+
+        padding-right: 20px;
+
+    }
+
+
+    .observacaoPedido {
+
+        margin-left: 20px;
+
+        margin-right: 20px;
+
+    }
+
+
+    .resumoPedido {
+
+        margin-left: 20px;
+
+        margin-right: 20px;
+
+    }
+
+
+    .acoes {
+
+        flex-direction: column;
+
+        padding: 30px 20px;
+
+    }
+
 
     #btnVoltar,
-    #btnAdicionar{
 
-        width:100%;
+    #btnWhatsapp {
+
+        width: 100%;
+
+        min-width: 0;
 
     }
 
-    footer{
 
-        flex-direction:column;
+    footer {
 
-        gap:20px;
+        flex-direction: column;
+
+        gap: 25px;
 
     }
 
 }
 
-@media(max-width:480px){
 
-    .header{
-
-        height:70px;
-
-    }
-
-    .header h1{
-
-        font-size:22px;
-
-    }
-
-    .produto{
-
-        gap:20px;
-
-    }
-
-    .produto-imagem img{
-
-        max-width:100%;
-
-    }
-
-    .produto-info h2{
-
-        font-size:22px;
-
-    }
-
-    .descricao{
-
-        padding:18px;
-
-    }
-
-    .descricao p{
-
-        font-size:15px;
-
-    }
-
-    .descricao h3{
-
-        font-size:28px;
-
-    }
-
-    .info h4{
-
-        font-size:16px;
-
-    }
-
-    .info span{
-
-        font-size:14px;
-
-    }
-
-    .controle-adicional{
-
-        gap:10px;
-
-    }
-
-    .controle-adicional button img{
-
-        width:20px;
-
-        height:20px;
-
-    }
-
-    .maisAdicional i{
-
-        font-size:22px;
-
-    }
-
-    .qtdAdicional{
-
-        font-size:17px;
-
-    }
-
-    #btnVoltar{
-
-        font-size:22px;
-
-    }
-
-    #btnAdicionar span{
-
-        font-size:24px;
-
-    }
-
-    #valorTotal{
-
-        font-size:24px;
-
-    }
-
-    footer{
-
-        padding:18px;
-
-    }
-
-    .icones{
-
-        gap:15px;
-
-    }
-
-    .icones a{
-
-        font-size:24px;
-
-    }
-
-}/*==================================================
-=           AJUSTES VISUAIS FINAIS
+/*==================================================
+                RESPONSIVIDADE 600
 ==================================================*/
 
-/* Animação dos botões */
+@media (max-width: 600px) {
 
-button{
-    transition:.25s ease;
-}
+    .produto-imagem {
 
-button:hover{
-    transform:translateY(-2px);
-}
+        min-height: 270px;
 
-button:active{
-    transform:scale(.96);
-}
+    }
 
-/* Imagem */
 
-.produto-imagem{
+    .adicional {
 
-    border-radius:20px;
+        grid-template-columns:
+            70px 1fr;
 
-    overflow:hidden;
+        min-height: 100px;
 
-}
+    }
 
-.produto-imagem img{
 
-    transition:.4s;
-}
+    .imagemAdicional {
 
-.produto-imagem img:hover{
+        width: 70px;
 
-    transform:scale(1.04);
+        height: 70px;
 
-}
+    }
 
-/* Caixa de descrição */
 
-.descricao{
+    .controle-adicional {
 
-    box-shadow:0 3px 10px rgba(0,0,0,.08);
+        grid-column:
+            1 / 3;
 
-}
+        justify-content: flex-end;
 
-/* Cartões dos adicionais */
+        padding-top: 5px;
 
-.adicional{
+    }
 
-    cursor:pointer;
 
-}
+    #btnWhatsapp {
 
-.adicional:hover{
+        flex-wrap: wrap;
 
-    border-color:#ff2020;
+        padding: 12px 20px;
+
+    }
 
 }
 
-/* Quantidade */
 
-#quantidadeProduto,
-.qtdAdicional{
+/*==================================================
+                RESPONSIVIDADE 480
+==================================================*/
 
-    user-select:none;
+@media (max-width: 480px) {
+
+    .header {
+
+        min-height: 65px;
+
+    }
+
+
+    .header h1 {
+
+        font-size: 21px;
+
+    }
+
+
+    .produto {
+
+        padding: 15px;
+
+    }
+
+
+    .produto-imagem {
+
+        min-height: 230px;
+
+    }
+
+
+    .produto-info h2 {
+
+        font-size: 21px;
+
+    }
+
+
+    .descricao {
+
+        padding: 17px;
+
+    }
+
+
+    .descricao p {
+
+        font-size: 14px;
+
+    }
+
+
+    .descricao h3 {
+
+        font-size: 27px;
+
+    }
+
+
+    .adicionais h2 {
+
+        font-size: 30px;
+
+    }
+
+
+    .adicional {
+
+        padding: 10px;
+
+    }
+
+
+    .info h4 {
+
+        font-size: 15px;
+
+    }
+
+
+    .info p {
+
+        font-size: 11px;
+
+    }
+
+
+    .info span {
+
+        font-size: 14px;
+
+    }
+
+
+    .imagemAdicional {
+
+        width: 65px;
+
+        height: 65px;
+
+    }
+
+
+    #btnWhatsapp span {
+
+        font-size: 16px;
+
+    }
+
+
+    #valorTotalBotao {
+
+        font-size: 16px;
+
+    }
+
+
+    footer {
+
+        padding: 18px;
+
+    }
 
 }
 
-/* Botão adicionar */
 
-#btnAdicionar{
+/*==================================================
+                ELEMENTOS GERAIS
+==================================================*/
 
-    box-shadow:0 5px 15px rgba(255,30,30,.25);
+button {
 
-}
-
-#btnAdicionar:hover{
-
-    box-shadow:0 8px 25px rgba(255,30,30,.35);
+    transition:
+        all 0.25s ease;
 
 }
 
-/* Botão voltar */
 
-#btnVoltar{
+button:active {
 
-    box-shadow:0 3px 8px rgba(0,0,0,.08);
-
-}
-
-/* Footer */
-
-footer{
-
-    margin-top:40px;
+    transform:
+        scale(0.97);
 
 }
 
-/* Links */
 
-a{
+a {
 
-    text-decoration:none;
-
-}
-
-/* Scroll suave */
-
-html{
-
-    scroll-behavior:smooth;
+    text-decoration: none;
 
 }
 
-/* Texto */
 
-h1,h2,h3,h4{
+img {
 
-    letter-spacing:.5px;
+    max-width: 100%;
 
-}
-
-/* Seleção */
-
-::selection{
-
-    background:#ff2020;
-
-    color:#fff;
+    display: block;
 
 }
 
-/* Inputs (caso futuramente existam) */
 
-input{
+::selection {
 
-    outline:none;
+    background: #ff2020;
 
-}
-
-/* Melhor aparência das imagens */
-
-img{
-
-    max-width:100%;
-
-    display:block;
+    color: #ffffff;
 
 }

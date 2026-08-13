@@ -1,75 +1,16 @@
-// =====================================================
-// ROTAS DE PEDIDOS
-// =====================================================
-//
-// POST    /pedidos       -> Cadastrar pedido
-// GET     /pedidos       -> Listar pedidos
-// GET     /pedidos/:id   -> Buscar pedido por ID
-// PUT     /pedidos/:id   -> Atualizar pedido
-// DELETE  /pedidos/:id   -> Excluir pedido
-//
-// =====================================================
-
-
 const express = require("express");
 
-// Criando o roteador do Express
 const router = express.Router();
 
+const Controller = require("../controller/pedidos_controller.js");
 
-// Importando Controller de Pedidos
-const PedidosController = require("../controller/pedidos_controller.js");
+// Estas rotas permanecem disponíveis apenas para retornar HTTP 501,
+// pois o recurso correspondente não existe no banco atual.
 
+router.post("/", Controller.cadastrar);
+router.get("/", Controller.listar);
+router.get("/:id", Controller.buscarPorId);
+router.put("/:id", Controller.atualizar);
+router.delete("/:id", Controller.excluir);
 
-// =========================
-// CADASTRAR PEDIDO
-// =========================
-
-router.post(
-    "/",
-    PedidosController.cadastrar
-);
-
-
-// =========================
-// LISTAR PEDIDOS
-// =========================
-
-router.get(
-    "/",
-    PedidosController.listar
-);
-
-
-// =========================
-// BUSCAR PEDIDO POR ID
-// =========================
-
-router.get(
-    "/:id",
-    PedidosController.buscarPorId
-);
-
-
-// =========================
-// ATUALIZAR PEDIDO
-// =========================
-
-router.put(
-    "/:id",
-    PedidosController.atualizar
-);
-
-
-// =========================
-// EXCLUIR PEDIDO
-// =========================
-
-router.delete(
-    "/:id",
-    PedidosController.excluir
-);
-
-
-// Exportando as rotas
 module.exports = router;

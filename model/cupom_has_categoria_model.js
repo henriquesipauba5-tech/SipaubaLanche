@@ -1,116 +1,81 @@
 const conexao = require("../conexao/conexao.js");
 
-// =========================
-// Vincular Categoria ao Cupom
-// =========================
+// OBSERVAÇÃO:
+// No banco, a tabela correta chama-se Categoria_has_Cupom.
 
+// VINCULAR CATEGORIA AO CUPOM
 function cadastrar(relacao, callback) {
-
-    const sql = `INSERT INTO Cupom_has_Categoria
-        (
-            Cupom_idCupom,
-            Categoria_idCategoria
-        )
-        VALUES (?, ?)`;
+    const sql = `
+        INSERT INTO Categoria_has_Cupom
+        (Categoria_idCategoria, Cupom_idCupom)
+        VALUES (?, ?)
+    `;
 
     conexao.query(
         sql,
         [
-            relacao.Cupom_idCupom,
-            relacao.Categoria_idCategoria
+            relacao.Categoria_idCategoria,
+            relacao.Cupom_idCupom
         ],
         callback
     );
-
 }
 
-// =========================
-// Listar Relações
-// =========================
-
+// LISTAR RELAÇÕES
 function listar(callback) {
-
-    const sql = `
-        SELECT *
-        FROM Cupom_has_Categoria
-    `;
-
-    conexao.query(sql, callback);
-
+    conexao.query("SELECT * FROM Categoria_has_Cupom", callback);
 }
 
-// =========================
-// Buscar Relação
-// =========================
-
+// BUSCAR RELAÇÃO
 function buscar(cupomId, categoriaId, callback) {
-
     const sql = `
         SELECT *
-        FROM Cupom_has_Categoria
+        FROM Categoria_has_Cupom
         WHERE Cupom_idCupom = ?
-        AND Categoria_idCategoria = ?
+          AND Categoria_idCategoria = ?
     `;
 
     conexao.query(sql, [cupomId, categoriaId], callback);
-
 }
 
-// =========================
-// Buscar Categorias do Cupom
-// =========================
-
+// BUSCAR CATEGORIAS DO CUPOM
 function buscarPorCupom(cupomId, callback) {
-
     const sql = `
         SELECT *
-        FROM Cupom_has_Categoria
+        FROM Categoria_has_Cupom
         WHERE Cupom_idCupom = ?
     `;
 
     conexao.query(sql, [cupomId], callback);
-
 }
 
-// =========================
-// Buscar Cupons da Categoria
-// =========================
-
+// BUSCAR CUPONS DA CATEGORIA
 function buscarPorCategoria(categoriaId, callback) {
-
     const sql = `
         SELECT *
-        FROM Cupom_has_Categoria
+        FROM Categoria_has_Cupom
         WHERE Categoria_idCategoria = ?
     `;
 
     conexao.query(sql, [categoriaId], callback);
-
 }
 
-// =========================
-// Remover Categoria do Cupom
-// =========================
-
+// EXCLUIR RELAÇÃO
 function excluir(cupomId, categoriaId, callback) {
-
     const sql = `
-        DELETE FROM Cupom_has_Categoria
+        DELETE FROM Categoria_has_Cupom
         WHERE Cupom_idCupom = ?
-        AND Categoria_idCategoria = ?
+          AND Categoria_idCategoria = ?
     `;
 
     conexao.query(sql, [cupomId, categoriaId], callback);
-
 }
 
 module.exports = {
-
     cadastrar,
     listar,
     buscar,
     buscarPorCupom,
     buscarPorCategoria,
     excluir
-
 };
