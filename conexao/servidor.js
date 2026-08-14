@@ -1,17 +1,104 @@
-// express é um framework para criar aplicações web com Node.js
+//==========================================
+// IMPORTAÇÕES
+//==========================================
+ 
 const express = require("express");
-
-// cors permite requisições externas
 const cors = require("cors");
-
-
-// criar servidor
+const path = require("path");
+ 
 const app = express();
-
-
-// configurações
+ 
+console.log(">>> ESTE SERVIDOR.JS ESTÁ RODANDO <<<");
+ 
+ 
+//==========================================
+// CONFIGURAÇÕES
+//==========================================
+ 
 app.use(cors());
+ 
 app.use(express.json());
+ 
+app.use(
+    express.urlencoded({
+        extended: true
+    })
+);
+ 
+ 
+//==========================================
+// ARQUIVOS PÚBLICOS / ASSETS
+//==========================================
+ 
+app.use(
+    "/assets",
+    express.static(
+        path.join(__dirname, "..", "assets")
+    )
+);
+ 
+ 
+//==========================================
+// CONEXÃO COM O BANCO
+//==========================================
+ 
+const conexao = require("./conexao");
+ 
+ 
+//==========================================
+// ARQUIVOS ESTÁTICOS
+//==========================================
+ 
+// Arquivos da raiz do projeto
+app.use(
+    express.static(
+        path.join(__dirname, "..")
+    )
+);
+ 
+ 
+// Arquivos da pasta PAGES
+app.use(
+    "/pages",
+    express.static(
+        path.join(__dirname, "..", "PAGES")
+    )
+);
+ 
+ 
+// Arquivos da pasta STYLE
+app.use(
+    "/style",
+    express.static(
+        path.join(__dirname, "..", "STYLE")
+    )
+);
+ 
+ 
+// Arquivos da pasta JS
+app.use(
+    "/js",
+    express.static(
+        path.join(__dirname, "..", "JS")
+    )
+);
+ 
+ 
+//==========================================
+// PÁGINA INICIAL
+//==========================================
+ 
+app.get("/", (req, res) => {
+ 
+    res.sendFile(
+        path.join(
+            __dirname,
+            "..",
+            "index.html"
+        )
+    );
+ 
+});
 
 app.use(
     express.urlencoded({
@@ -20,13 +107,7 @@ app.use(
 );
 
 
-// Middlewares
-app.use(cors());
-app.use(express.json());
 
-
-// Conexão com banco
-const conexao = require("./conexao");
 
 
 // =====================================================

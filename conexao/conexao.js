@@ -3,10 +3,11 @@ const mysql = require("mysql2");
 
 // variável que vai armazenar a conexão com o banco de dados 
 const conexao = mysql.createConnection({
-    host: "localhost",
+    host: "zephyr.proxy.rlwy.net",
     user: "root",
-    password: "", // senha do MySQL
-    database: "SipaubaLanche"
+    port: 44478, // porta padrão do MySQL
+    password: "UjbdZqVveRMHfypaBaaPpbpCtFyCgtVX", // senha do MySQL
+    database: "railway"
 });
 
 conexao.connect((erro) => {

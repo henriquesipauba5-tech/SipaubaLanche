@@ -179,9 +179,7 @@ CREATE TABLE Cliente (
     telefone VARCHAR(20) NOT NULL,
 
     email VARCHAR(120) NOT NULL UNIQUE,
-
-    senha VARCHAR(255) NOT NULL,
-
+    
     data_nascimento DATE NOT NULL,
 
     Loja_idLoja INT,
@@ -209,8 +207,6 @@ CREATE TABLE Cupom (
     desconto DECIMAL(10,2) NOT NULL,
 
     data_inicio DATE,
-
-    data_final DATE,
 
     ativo BOOLEAN DEFAULT TRUE,
 
