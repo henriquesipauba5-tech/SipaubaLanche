@@ -795,33 +795,40 @@ formProduto.addEventListener(
 
             })
 
-            .then(() => {
+           .then(() => {
 
-                if (
-                    estaEditando
-                ) {
+    //==================================================
+    //              PRODUTO ATUALIZADO
+    //==================================================
 
-                    alert(
-                        "Produto atualizado com sucesso!"
-                    );
+    if (estaEditando) {
 
-                }
+        alert(
+            "Produto atualizado com sucesso!"
+        );
 
-                else {
+        limparFormularioProduto();
 
-                    alert(
-                        "Produto cadastrado com sucesso!"
-                    );
+        listarProdutos();
 
-                }
+    }
 
+    //==================================================
+    //              PRODUTO CADASTRADO
+    //==================================================
 
-                limparFormularioProduto();
+    else {
 
+        alert(
+            "Produto cadastrado com sucesso!"
+        );
 
-                listarProdutos();
+        // Vai automaticamente para a tela Home
+        window.location.href = "produto.html";
 
-            })
+    }
+
+})
 
             .catch(error => {
 

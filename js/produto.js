@@ -37,6 +37,28 @@ const listaProdutos =
 
 
 //==================================================
+//              VERIFICAR ELEMENTOS
+//==================================================
+
+if (!categoriasProdutos) {
+
+    console.error(
+        "Elemento #categoriasProdutos não encontrado."
+    );
+
+}
+
+
+if (!listaProdutos) {
+
+    console.error(
+        "Elemento #listaProdutos não encontrado."
+    );
+
+}
+
+
+//==================================================
 //          CONFIGURAR TÍTULOS
 //==================================================
 
@@ -70,34 +92,50 @@ function converterImagem(
     }
 
 
-    const bytes =
-        new Uint8Array(
-            buffer.data
-        );
+    try {
 
-
-    let binario =
-        "";
-
-
-    for (
-        let i = 0;
-        i < bytes.length;
-        i++
-    ) {
-
-        binario +=
-            String.fromCharCode(
-                bytes[i]
+        const bytes =
+            new Uint8Array(
+                buffer.data
             );
+
+
+        let binario =
+            "";
+
+
+        for (
+            let i = 0;
+            i < bytes.length;
+            i++
+        ) {
+
+            binario +=
+                String.fromCharCode(
+                    bytes[i]
+                );
+
+        }
+
+
+        return (
+            "data:image/jpeg;base64," +
+            btoa(binario)
+        );
 
     }
 
+    catch (error) {
 
-    return (
-        "data:image/jpeg;base64," +
-        btoa(binario)
-    );
+        console.error(
+            "Erro ao converter imagem:",
+            error
+        );
+
+
+        return "";
+
+    }
 
 }
 
@@ -107,6 +145,22 @@ function converterImagem(
 //==================================================
 
 function carregarCategorias() {
+
+    if (!categoriasProdutos) {
+
+        return;
+
+    }
+
+
+    categoriasProdutos.innerHTML = `
+
+        <p>
+            Carregando categorias...
+        </p>
+
+    `;
+
 
     fetch(
         API_CATEGORIAS
@@ -134,29 +188,34 @@ function carregarCategorias() {
 
 
             //==================================================
-            //              SEM CATEGORIAS
+            //              VERIFICAR CATEGORIAS
             //==================================================
 
             if (
+                !Array.isArray(categorias) ||
                 categorias.length === 0
             ) {
 
                 categoriasProdutos.innerHTML = `
 
-                <p>
-                    Nenhuma categoria cadastrada.
-                </p>
+                    <p class="semCategorias">
 
-            `;
+                        Nenhuma categoria cadastrada.
+
+                    </p>
+
+                `;
 
 
                 listaProdutos.innerHTML = `
 
-                <p>
-                    Nenhum produto disponível.
-                </p>
+                    <p class="semProdutos">
 
-            `;
+                        Nenhum produto disponível.
+
+                    </p>
+
+                `;
 
 
                 return;
@@ -193,21 +252,25 @@ function carregarCategorias() {
                         categoria.idCategoria;
 
 
+                    //==================================================
+                    //              ÍCONE
+                    //==================================================
+
                     botao.innerHTML = `
 
-                    <i class="fa-solid fa-utensils"></i>
+                        <i class="fa-solid fa-utensils"></i>
 
-                    <span>
+                        <span>
 
-                        ${categoria.nome}
+                            ${categoria.nome}
 
-                    </span>
+                        </span>
 
-                `;
+                    `;
 
 
                     //==================================================
-                    // PRIMEIRA CATEGORIA ATIVA
+                    //          PRIMEIRA ATIVA
                     //==================================================
 
                     if (
@@ -222,7 +285,7 @@ function carregarCategorias() {
 
 
                     //==================================================
-                    // CLIQUE NA CATEGORIA
+                    //              CLIQUE
                     //==================================================
 
                     botao.addEventListener(
@@ -230,7 +293,7 @@ function carregarCategorias() {
                         function () {
 
                             //==================================================
-                            // REMOVER ATIVO
+                            //          REMOVER ATIVO
                             //==================================================
 
                             document
@@ -249,7 +312,7 @@ function carregarCategorias() {
 
 
                             //==================================================
-                            // ATIVAR ATUAL
+                            //          ATIVAR BOTÃO
                             //==================================================
 
                             botao.classList.add(
@@ -258,7 +321,7 @@ function carregarCategorias() {
 
 
                             //==================================================
-                            // CARREGAR PRODUTOS
+                            //          CARREGAR PRODUTOS
                             //==================================================
 
                             listarProdutosPorCategoria(
@@ -278,7 +341,7 @@ function carregarCategorias() {
 
 
             //==================================================
-            // CARREGAR PRIMEIRA CATEGORIA
+            //      CARREGAR PRIMEIRA CATEGORIA
             //==================================================
 
             listarProdutosPorCategoria(
@@ -297,11 +360,24 @@ function carregarCategorias() {
 
             categoriasProdutos.innerHTML = `
 
-            <p>
-                Não foi possível carregar as categorias.
-            </p>
+                <p class="mensagemErro">
 
-        `;
+                    Não foi possível carregar as categorias.
+
+                </p>
+
+            `;
+
+
+            listaProdutos.innerHTML = `
+
+                <p class="mensagemErro">
+
+                    Não foi possível carregar os produtos.
+
+                </p>
+
+            `;
 
         });
 
@@ -316,14 +392,23 @@ function listarProdutosPorCategoria(
     idCategoria
 ) {
 
+    if (!listaProdutos) {
+
+        return;
+
+    }
+
+
     //==================================================
     //              CARREGANDO
     //==================================================
 
     listaProdutos.innerHTML = `
 
-        <p>
+        <p class="carregando">
+
             Carregando produtos...
+
         </p>
 
     `;
@@ -338,7 +423,7 @@ function listarProdutosPorCategoria(
             if (!response.ok) {
 
                 throw new Error(
-                    "Erro ao carregar produtos."
+                    "Erro ao carregar produtos da categoria."
                 );
 
             }
@@ -355,41 +440,42 @@ function listarProdutosPorCategoria(
 
 
             //==================================================
-            //              SEM PRODUTOS
+            //              VERIFICAR RESPOSTA
             //==================================================
 
             if (
-                produtos.length === 0
+                !Array.isArray(produtos)
             ) {
 
-                listaProdutos.innerHTML = `
-
-                <p class="semProdutos">
-
-                    Nenhum produto disponível nesta categoria.
-
-                </p>
-
-            `;
-
-
-                return;
+                throw new Error(
+                    "Resposta inválida do servidor."
+                );
 
             }
 
 
             //==================================================
-            //              APENAS ATIVOS
+            //              FILTRAR ATIVOS
             //==================================================
 
             const produtosAtivos =
                 produtos.filter(
-                    produto =>
-                        Boolean(
-                            produto.ativo
-                        )
+                    produto => {
+
+                        return (
+                            produto.ativo === true ||
+                            produto.ativo === 1 ||
+                            produto.ativo === "1" ||
+                            produto.ativo === "true"
+                        );
+
+                    }
                 );
 
+
+            //==================================================
+            //              SEM PRODUTOS
+            //==================================================
 
             if (
                 produtosAtivos.length === 0
@@ -397,13 +483,13 @@ function listarProdutosPorCategoria(
 
                 listaProdutos.innerHTML = `
 
-                <p class="semProdutos">
+                    <p class="semProdutos">
 
-                    Nenhum produto disponível nesta categoria.
+                        Nenhum produto disponível nesta categoria.
 
-                </p>
+                    </p>
 
-            `;
+                `;
 
 
                 return;
@@ -437,13 +523,13 @@ function listarProdutosPorCategoria(
 
             listaProdutos.innerHTML = `
 
-            <p class="mensagemErro">
+                <p class="mensagemErro">
 
-                Não foi possível carregar os produtos.
+                    Não foi possível carregar os produtos.
 
-            </p>
+                </p>
 
-        `;
+            `;
 
         });
 
@@ -505,27 +591,28 @@ function criarCardProduto(
 
         <div class="imagemProduto">
 
-            ${imagem
+            ${
+                imagem
 
-            ?
+                ?
 
-            `
+                `
                     <img
                         src="${imagem}"
                         alt="${produto.nome}"
                     >
-                    `
+                `
 
-            :
+                :
 
-            `
+                `
                     <div class="semImagem">
 
                         <i class="fa-solid fa-burger"></i>
 
                     </div>
-                    `
-        }
+                `
+            }
 
         </div>
 
@@ -542,7 +629,7 @@ function criarCardProduto(
 
             <p class="descricaoProduto">
 
-                ${produto.descricao}
+                ${produto.descricao || ""}
 
             </p>
 
@@ -550,33 +637,38 @@ function criarCardProduto(
             <div class="precos">
 
 
-                ${precoAntigo > 0
+                ${
+                    precoAntigo > 0
 
-            ?
+                    ?
 
-            `
+                    `
                         <span class="precoAntigo">
 
                             R$
+
                             ${precoAntigo
-                .toFixed(2)
-                .replace(".", ",")}
+                                .toFixed(2)
+                                .replace(".", ",")
+                            }
 
                         </span>
-                        `
+                    `
 
-            :
+                    :
 
-            ""
-        }
+                    ""
+                }
 
 
                 <strong class="precoAtual">
 
                     R$
+
                     ${precoAtual
-            .toFixed(2)
-            .replace(".", ",")}
+                        .toFixed(2)
+                        .replace(".", ",")
+                    }
 
                 </strong>
 
@@ -600,7 +692,7 @@ function criarCardProduto(
 
 
     //==================================================
-    //      ABRIR DETALHES CLICANDO NO CARD
+    //      CLICAR NO CARD
     //==================================================
 
     card.addEventListener(
@@ -616,7 +708,7 @@ function criarCardProduto(
 
 
     //==================================================
-    //      BOTÃO TAMBÉM ABRE DETALHES
+    //      BOTÃO DETALHES
     //==================================================
 
     const botao =
@@ -625,20 +717,28 @@ function criarCardProduto(
         );
 
 
-    botao.addEventListener(
-        "click",
-        function (event) {
+    if (botao) {
 
-            event.stopPropagation();
+        botao.addEventListener(
+            "click",
+            function (event) {
+
+                event.stopPropagation();
 
 
-            abrirDetalhesProduto(
-                produto.idProduto
-            );
+                abrirDetalhesProduto(
+                    produto.idProduto
+                );
 
-        }
-    );
+            }
+        );
 
+    }
+
+
+    //==================================================
+    //              ADICIONAR À LISTA
+    //==================================================
 
     listaProdutos.appendChild(
         card
@@ -656,7 +756,7 @@ function abrirDetalhesProduto(
 ) {
 
     window.location.href =
-        `../pages/detalhes.html?id=${idProduto}`;
+        `detalhes.html?id=${idProduto}`;
 
 }
 
@@ -665,28 +765,91 @@ function abrirDetalhesProduto(
 //              BOTÃO HOME
 //==================================================
 
-document.getElementById(
-    "btnHome"
-)
-    .addEventListener(
+const btnHome =
+    document.getElementById(
+        "btnHome"
+    );
+
+
+if (btnHome) {
+
+    btnHome.addEventListener(
+        "click",
+        function () {
+
+            // Já está na Home
+            window.location.href =
+                "produto.html";
+
+        }
+    );
+
+}
+
+
+//==================================================
+//              PROMOÇÕES
+//==================================================
+
+const btnPromocoes =
+    document.getElementById(
+        "btnPromocoes"
+    );
+
+
+if (btnPromocoes) {
+
+    btnPromocoes.addEventListener(
         "click",
         function () {
 
             window.location.href =
-                "index.html";
+                "promocoes.html";
 
         }
     );
+
+}
+
+
+//==================================================
+//              PEDIDOS
+//==================================================
+
+const btnPedidos =
+    document.getElementById(
+        "btnPedidos"
+    );
+
+
+if (btnPedidos) {
+
+    btnPedidos.addEventListener(
+        "click",
+        function () {
+
+            window.location.href =
+                "pedidos.html";
+
+        }
+    );
+
+}
 
 
 //==================================================
 //              ENTRAR
 //==================================================
 
-document.getElementById(
-    "btnEntrar"
-)
-    .addEventListener(
+const btnEntrar =
+    document.getElementById(
+        "btnEntrar"
+    );
+
+
+if (btnEntrar) {
+
+    btnEntrar.addEventListener(
         "click",
         function () {
 
@@ -695,6 +858,8 @@ document.getElementById(
 
         }
     );
+
+}
 
 
 //==================================================
